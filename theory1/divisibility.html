@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Делимость | Теория + практика</title>
+    <title>Делимость чисел | Теория + практика</title>
+    <!-- Подключение MathJax для красивых формул -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
     <style>
         * {
             margin: 0;
@@ -11,106 +13,123 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Segoe UI', system-ui, 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e6f0fa 100%);
-            color: #0a2b3e;
-            padding: 2rem 1rem;
-            line-height: 1.5;
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f0f4f8;
+            color: #1e2a3e;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
         }
         header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
         h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(120deg, #1e5f7a, #2c3e66);
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #1e5f7a, #0f3b4f);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
         }
         .badge {
-            background: #1e5f7a20;
+            background: #d4e6f1;
             display: inline-block;
-            padding: 0.3rem 1rem;
+            padding: 0.4rem 1.4rem;
             border-radius: 40px;
             font-size: 0.9rem;
-            margin-top: 0.5rem;
+            margin-top: 0.8rem;
         }
         .card {
             background: white;
             border-radius: 2rem;
-            padding: 1.5rem;
+            padding: 1.8rem 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            border: 1px solid #cbd5e6;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid #cbd5e1;
         }
         .card h2 {
             color: #1e5f7a;
-            border-left: 5px solid #3b82f6;
-            padding-left: 1rem;
-            margin-bottom: 1rem;
+            border-left: 6px solid #3b82f6;
+            padding-left: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+        .card h3 {
+            color: #2c5282;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.4rem;
+        }
+        .theorem {
+            background: #eef2ff;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #2563eb;
+        }
+        .proof {
+            background: #fef9e3;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
         }
         .example {
-            background: #f1f5f9;
-            padding: 0.8rem 1.2rem;
-            border-radius: 1.2rem;
+            background: #e6f7f0;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
             margin: 1rem 0;
-            border-left: 4px solid #3b82f6;
         }
         .formula {
-            background: #eef2ff;
-            font-family: monospace;
-            padding: 0.2rem 0.5rem;
-            border-radius: 8px;
-            font-size: 1.1rem;
-        }
-        .task-list {
-            list-style: none;
-            margin-top: 1rem;
-        }
-        .task-list li {
             background: #f8fafc;
-            margin: 0.8rem 0;
-            padding: 0.8rem;
-            border-radius: 1rem;
-            border: 1px solid #dce3ec;
+            font-family: monospace;
+            font-size: 1.1rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            display: inline-block;
         }
         button {
             background: #1e5f7a;
             color: white;
             border: none;
-            padding: 0.4rem 1rem;
+            padding: 0.5rem 1.2rem;
             border-radius: 2rem;
             cursor: pointer;
             font-weight: 600;
-            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+            transition: background 0.2s;
         }
         button:hover {
             background: #0f4b62;
         }
         .answer {
-            margin-top: 0.6rem;
-            padding: 0.5rem;
-            background: #e0f2fe;
-            border-radius: 1rem;
             display: none;
+            background: #e0f2fe;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin-top: 1rem;
+        }
+        .task-item {
+            background: #f8fafc;
+            margin: 1.2rem 0;
+            padding: 1rem 1.2rem;
+            border-radius: 1.2rem;
+            border-left: 4px solid #3b82f6;
         }
         footer {
             text-align: center;
-            font-size: 0.8rem;
-            color: #4b5563;
             margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #cbd5e1;
+            color: #4b5563;
+            font-size: 0.85rem;
         }
-        hr {
-            margin: 1rem 0;
-        }
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
+        @media (max-width: 700px) {
+            body { padding: 1rem; }
             .card { padding: 1.2rem; }
+            h1 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -118,75 +137,143 @@
 <div class="container">
     <header>
         <h1>🔢 Делимость чисел</h1>
-        <div class="badge">Определение · Свойства · Деление с остатком</div>
+        <div class="badge">Определение · Свойства · Деление с остатком · Полные доказательства</div>
     </header>
 
-    <!-- ТЕОРИЯ -->
+    <!-- 1. Определение -->
     <div class="card">
         <h2>📖 Что значит «делится»?</h2>
-        <p><strong>Определение.</strong> Целое число \(b \neq 0\) <strong>делит</strong> целое число \(a\), если существует целое \(k\) такое, что \(a = b \cdot k\).<br>
-        Обозначение: \(b \mid a\).</p>
+        <p><strong>Определение.</strong> Пусть \(a\) и \(b\) — целые числа, \(b \neq 0\). Говорят, что <strong>\(b\) делит \(a\)</strong>, если существует такое целое число \(k\), что</p>
+        \[
+        a = b \cdot k.
+        \]
+        <p>Обозначение: \(b \mid a\). Если такого \(k\) не существует, пишут \(b \nmid a\).</p>
         <div class="example">
-            📌 Примеры: \(4 \mid 20\) (20 = 4·5), \(7 \mid 0\) (0 = 7·0), \(3 \nmid 14\).
+            <strong>📌 Примеры:</strong><br>
+            • \(4 \mid 20\), так как \(20 = 4 \cdot 5\).<br>
+            • \(7 \mid 0\), потому что \(0 = 7 \cdot 0\).<br>
+            • \(3 \nmid 14\), так как \(14 / 3\) не целое.<br>
+            • Любое число \(a \neq 0\) делит само себя: \(a \mid a\).<br>
+            • \(1\) делит любое целое число.
         </div>
     </div>
 
+    <!-- 2. Три золотых свойства -->
     <div class="card">
-        <h2>✨ Три золотых свойства делимости</h2>
-        <p><strong>1. Транзитивность:</strong> если \(a \mid b\) и \(b \mid c\), то \(a \mid c\).</p>
-        <p><strong>2. Линейность:</strong> если \(d \mid a\) и \(d \mid b\), то \(d \mid (a+b)\) и \(d \mid (a-b)\).</p>
-        <p><strong>3. Умножение:</strong> если \(a \mid b\), то \(a \mid b \cdot c\) для любого целого \(c\).</p>
+        <h2>✨ Основные свойства делимости</h2>
+
+        <h3>1. Транзитивность</h3>
+        <div class="theorem">
+            Если \(a \mid b\) и \(b \mid c\), то \(a \mid c\).
+        </div>
+        <div class="proof">
+            <strong>Доказательство:</strong> Из \(a \mid b\) следует \(b = a \cdot m\) для некоторого целого \(m\). Из \(b \mid c\) следует \(c = b \cdot n = (a \cdot m) \cdot n = a \cdot (mn)\). Значит, \(a \mid c\).
+        </div>
+
+        <h3>2. Линейность (самое важное)</h3>
+        <div class="theorem">
+            Если \(d \mid a\) и \(d \mid b\), то \(d \mid (a + b)\) и \(d \mid (a - b)\).
+        </div>
+        <div class="proof">
+            <strong>Доказательство:</strong> Запишем \(a = d \cdot m\), \(b = d \cdot n\). Тогда \(a + b = d(m + n)\) и \(a - b = d(m - n)\). Оба числа делятся на \(d\).
+        </div>
+
+        <h3>3. Умножение на любое целое</h3>
+        <div class="theorem">
+            Если \(a \mid b\), то для любого целого \(c\) выполняется \(a \mid b c\).
+        </div>
+        <div class="proof">
+            <strong>Доказательство:</strong> \(b = a \cdot k\) ⇒ \(bc = a \cdot (kc)\).
+        </div>
         <div class="example">
-            🧠 Пример: \(3 \mid 12\) и \(3 \mid 9\) ⇒ \(3 \mid 21\) и \(3 \mid 3\).
+            🧠 <strong>Пример использования:</strong> \(3 \mid 12\) и \(3 \mid 9\) ⇒ \(3 \mid (12 + 9) = 21\) и \(3 \mid (12 - 9) = 3\).
         </div>
     </div>
 
+    <!-- 3. Деление с остатком -->
     <div class="card">
         <h2>📐 Деление с остатком</h2>
-        <p><strong>Теорема.</strong> Для любых целых \(a\) и натурального \(m>0\) существуют <strong>единственные</strong> \(q\) и \(r\) такие, что</p>
-        <p class="formula">a = m·q + r, 0 ≤ r < m.</p>
+        <div class="theorem">
+            <strong>Теорема (о делении с остатком).</strong> Для любых целых чисел \(a\) и натурального \(m > 0\) существуют <strong>единственные</strong> целые числа \(q\) (частное) и \(r\) (остаток) такие, что
+            \[
+            a = m q + r, \quad 0 \le r < m.
+            \]
+        </div>
+        <p>Это означает: любое число можно разделить на \(m\) с остатком, причём остаток всегда неотрицателен и строго меньше делителя.</p>
         <div class="example">
-            📌 17 ÷ 5 = 3·5 + 2 (остаток 2).<br>
-            📌 –17 ÷ 5 = (–4)·5 + 3 (остаток 3, потому что –20+3= –17).
+            <strong>📌 Примеры:</strong><br>
+            • \(17 = 5 \cdot 3 + 2\) ⇒ остаток \(2\).<br>
+            • \(-17 = 5 \cdot (-4) + 3\) (потому что \(-20 + 3 = -17\)) ⇒ остаток \(3\), а не \(-2\).<br>
+            • \(100 = 7 \cdot 14 + 2\) ⇒ остаток \(2\).
         </div>
     </div>
 
-    <!-- ПРАКТИКА -->
+    <!-- 4. Признаки делимости (база) -->
     <div class="card">
-        <h2>✍️ Практика: задачи на делимость</h2>
-        <ul class="task-list">
-            <li><strong>Задача 1.</strong> Докажите, что произведение трёх последовательных целых чисел всегда делится на 6.
-                <button onclick="toggleAnswer('ans1')">Показать решение</button>
-                <div id="ans1" class="answer">Среди трёх последовательных чисел есть хотя бы одно чётное (делится на 2) и ровно одно делится на 3. Значит, произведение делится на 2·3 = 6.</div>
-            </li>
-            <li><strong>Задача 2.</strong> Найдите остаток от деления 2<sup>100</sup> на 3.
-                <button onclick="toggleAnswer('ans2')">Показать решение</button>
-                <div id="ans2" class="answer">2 mod 3 = –1. (–1)<sup>100</sup> = 1. Остаток 1.</div>
-            </li>
-            <li><strong>Задача 3.</strong> Делится ли 7<sup>2024</sup> + 5 на 6?
-                <button onclick="toggleAnswer('ans3')">Показать решение</button>
-                <div id="ans3" class="answer">7 ≡ 1 (mod 6) ⇒ 7<sup>2024</sup> ≡ 1 (mod 6). 1+5=6 ≡ 0 (mod 6) → делится.</div>
-            </li>
+        <h2>🔍 Простейшие признаки делимости (первые шаги)</h2>
+        <p>Из десятичной записи числа \(N = \overline{a_n a_{n-1} \dots a_0}\) следует, что</p>
+        \[
+        N = a_n \cdot 10^n + a_{n-1} \cdot 10^{n-1} + \dots + a_1 \cdot 10 + a_0.
+        \]
+        <p>Поэтому, зная остатки степеней 10, получаем:</p>
+        <ul style="margin: 1rem 0 0 1.5rem;">
+            <li>\(10 \equiv 0 \pmod{2}\) ⇒ последняя цифра определяет чётность.</li>
+            <li>\(10 \equiv 0 \pmod{5}\) ⇒ последняя цифра \(0\) или \(5\).</li>
+            <li>\(10 \equiv 1 \pmod{3}\) ⇒ сумма цифр определяет делимость на 3.</li>
+            <li>\(10 \equiv 1 \pmod{9}\) ⇒ сумма цифр определяет делимость на 9.</li>
+            <li>\(100 \equiv 0 \pmod{4}\) ⇒ последние две цифры дают остаток на 4.</li>
+            <li>\(1000 \equiv 0 \pmod{8}\) ⇒ последние три цифры дают остаток на 8.</li>
         </ul>
+        <div class="example">
+            <strong>Пример:</strong> 5724: последние две цифры 24, \(24 \div 4 = 6\) ⇒ число делится на 4.
+        </div>
     </div>
 
-    <!-- ПРОВЕРКА ПОНИМАНИЯ -->
-    <div class="card">
-        <h2>⚡ Проверка за 30 секунд</h2>
-        <p>Верно ли: \(3 \mid 0\)? <button onclick="toggleAnswer('check1')">Ответ</button></p>
-        <div id="check1" class="answer">Да, 0 = 3·0.</div>
-        <p>Верно ли: \(0 \mid 5\)? <button onclick="toggleAnswer('check2')">Ответ</button></p>
-        <div id="check2" class="answer">Нет, на ноль делить нельзя (определение требует b≠0).</div>
+    <!-- ПРАКТИКА (id="practice") -->
+    <div id="practice" class="card">
+        <h2>✍️ Практика: задачи на делимость</h2>
+
+        <div class="task-item">
+            <strong>Задача 1.</strong> Докажите, что произведение трёх последовательных целых чисел всегда делится на 6.
+            <button onclick="toggleAnswer('ans1')">Показать решение</button>
+            <div id="ans1" class="answer">
+                <strong>Решение:</strong> Среди трёх последовательных чисел \(n, n+1, n+2\) обязательно есть хотя бы одно чётное (делится на 2) и ровно одно делится на 3. Значит, произведение делится на \(2 \cdot 3 = 6\).
+            </div>
+        </div>
+
+        <div class="task-item">
+            <strong>Задача 2.</strong> Найдите остаток от деления \(2^{100}\) на 3.
+            <button onclick="toggleAnswer('ans2')">Показать решение</button>
+            <div id="ans2" class="answer">
+                <strong>Решение:</strong> Заметим, что \(2 \equiv -1 \pmod{3}\). Тогда \(2^{100} \equiv (-1)^{100} = 1 \pmod{3}\). Остаток равен 1.
+            </div>
+        </div>
+
+        <div class="task-item">
+            <strong>Задача 3.</strong> Делится ли \(7^{2024} + 5\) на 6?
+            <button onclick="toggleAnswer('ans3')">Показать решение</button>
+            <div id="ans3" class="answer">
+                <strong>Решение:</strong> \(7 \equiv 1 \pmod{6}\) ⇒ \(7^{2024} \equiv 1^{2024} = 1 \pmod{6}\). Тогда \(7^{2024} + 5 \equiv 1 + 5 = 6 \equiv 0 \pmod{6}\). Да, делится.
+            </div>
+        </div>
+
+        <div class="task-item">
+            <strong>Задача 4 (олимпиадная).</strong> Найдите все натуральные \(n\), при которых \(n^2 + 3n + 2\) делится на 6.
+            <button onclick="toggleAnswer('ans4')">Показать решение</button>
+            <div id="ans4" class="answer">
+                <strong>Решение:</strong> \(n^2 + 3n + 2 = (n+1)(n+2)\). Произведение двух последовательных чисел всегда чётно. Чтобы делилось на 6, нужно, чтобы один из множителей делился на 3. Значит, \(n+1\) или \(n+2\) кратно 3 ⇒ \(n \equiv 2 \pmod{3}\) или \(n \equiv 1 \pmod{3}\). Исключение: \(n \equiv 0 \pmod{3}\) не подходит, так как ни один из множителей не делится на 3. Ответ: все \(n\), кроме кратных 3.
+            </div>
+        </div>
     </div>
-    <footer>📘 Теория + практика | Делимость чисел</footer>
+
+    <footer>
+        📘 Полная теория делимости + доказательства | Практика для самопроверки
+    </footer>
 </div>
 <script>
     function toggleAnswer(id) {
         let el = document.getElementById(id);
-        if (el.style.display === 'none' || el.style.display === '')
-            el.style.display = 'block';
-        else
-            el.style.display = 'none';
+        el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
     }
 </script>
 </body>

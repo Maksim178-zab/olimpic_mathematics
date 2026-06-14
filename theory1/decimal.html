@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Десятичная запись числа | Признаки делимости</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #e6f7f0;
+            color: #1a3b32;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 2.5rem; }
+        h1 { font-size: 2.8rem; background: linear-gradient(135deg, #22665c, #0f766e); background-clip: text; -webkit-background-clip: text; color: transparent; }
+        .badge { background: #c0e3db; display: inline-block; padding: 0.4rem 1.4rem; border-radius: 40px; margin-top: 0.8rem; }
+        .card { background: white; border-radius: 2rem; padding: 1.8rem 2rem; margin-bottom: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #bee0d6; }
+        .card h2 { color: #22665c; border-left: 6px solid #14b8a6; padding-left: 1.2rem; margin-bottom: 1.2rem; font-size: 1.8rem; }
+        .theorem { background: #eef9f5; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; border-left: 5px solid #14b8a6; }
+        .example { background: #f0fdfa; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; background: #f9fefc; }
+        th, td { border: 1px solid #cbd5e1; padding: 0.6rem; text-align: left; }
+        th { background: #d6f0e8; }
+        button { background: #22665c; color: white; border: none; padding: 0.5rem 1.2rem; border-radius: 2rem; cursor: pointer; font-weight: 600; margin-top: 0.8rem; }
+        .answer { display: none; background: #d1fae5; padding: 1rem; border-radius: 1rem; margin-top: 1rem; }
+        .task-item { background: #f9fefc; margin: 1.2rem 0; padding: 1rem 1.2rem; border-radius: 1.2rem; border-left: 4px solid #14b8a6; }
+        footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #bee0d6; color: #2c5f55; }
+        @media (max-width: 700px) { body { padding: 1rem; } .card { padding: 1.2rem; } h1 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>🔟 Десятичная запись числа</h1>
+        <div class="badge">Разложение по разрядам · Признаки делимости 2,3,4,5,8,9,11</div>
+    </header>
+
+    <div class="card">
+        <h2>📌 Разложение по разрядам</h2>
+        <p>Любое натуральное число \(N\) можно записать в десятичной системе как</p>
+        \[
+        N = \overline{a_n a_{n-1} \dots a_1 a_0},
+        \]
+        <p>где \(a_i\) — цифры (\(0 \le a_i \le 9\), \(a_n \neq 0\)). Это означает:</p>
+        \[
+        N = a_n \cdot 10^n + a_{n-1} \cdot 10^{n-1} + \dots + a_1 \cdot 10 + a_0.
+        \]
+        <div class="example">
+            📌 \(3456 = 3 \cdot 10^3 + 4 \cdot 10^2 + 5 \cdot 10 + 6\).
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🔍 Остатки степеней 10 (ключевая идея)</h2>
+        <p>Чтобы узнать остаток числа \(N\) при делении на \(m\), мы заменяем каждую степень \(10^k\) на её остаток по модулю \(m\).</p>
+        <table>
+            <thead>
+                <tr><th>Делитель \(m\)</th><th>\(10 \equiv ?\)</th><th>\(10^k \equiv ?\)</th><th>Признак</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>2,5,10</td><td>\(10 \equiv 0\)</td><td>\(10^k \equiv 0\) при \(k\ge 1\)</td><td>смотрим последнюю цифру</td></tr>
+                <tr><td>3,9</td><td>\(10 \equiv 1\)</td><td>\(10^k \equiv 1\)</td><td>сумма цифр</td></tr>
+                <tr><td>11</td><td>\(10 \equiv -1\)</td><td>\(10^k \equiv (-1)^k\)</td><td>знакопеременная сумма</td></tr>
+                <tr><td>4</td><td>\(10^2 = 100 \equiv 0\)</td><td></td><td>последние 2 цифры</td></tr>
+                <tr><td>8</td><td>\(10^3 = 1000 \equiv 0\)</td><td></td><td>последние 3 цифры</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>📖 Полные формулировки признаков</h2>
+        <div class="theorem">
+            <strong>На 2:</strong> Число чётно ⇔ последняя цифра чётная.<br>
+            <strong>На 4:</strong> Число делится на 4 ⇔ две последние цифры образуют число, кратное 4.<br>
+            <strong>На 8:</strong> Число делится на 8 ⇔ три последние цифры образуют число, кратное 8.<br>
+            <strong>На 3:</strong> Число делится на 3 ⇔ сумма цифр делится на 3.<br>
+            <strong>На 9:</strong> Число делится на 9 ⇔ сумма цифр делится на 9.<br>
+            <strong>На 11:</strong> Число делится на 11 ⇔ \((a_0 + a_2 + a_4 + \dots) - (a_1 + a_3 + a_5 + \dots)\) кратно 11.
+        </div>
+        <div class="example">
+            📌 \(572\): сумма на чётных позициях (с единиц) \(2+5=7\), на нечётных \(7\), разность \(0\) ⇒ делится на 11 (\(572=11\cdot52\)).<br>
+            📌 \(1234\): последние две цифры 34 не делятся на 4 ⇒ не делится.
+        </div>
+    </div>
+
+    <!-- ПРАКТИКА -->
+    <div id="practice" class="card">
+        <h2>✍️ Практика: десятичная запись и признаки</h2>
+
+        <div class="task-item">
+            <strong>Задача 1.</strong> Делится ли 3174 на 4?
+            <button onclick="toggleAnswer('dec1')">Решение</button>
+            <div id="dec1" class="answer">
+            Последние две цифры 74. \(74 \div 4 = 18.5\) — не целое. Не делится.
+            </div>
+        </div>
+
+        <div class="task-item">
+            <strong>Задача 2.</strong> Проверьте делимость 5127 на 3 и на 9.
+            <button onclick="toggleAnswer('dec2')">Решение</button>
+            <div id="dec2" class="answer">
+            Сумма цифр \(5+1+2+7=15\). 15 делится на 3, но не на 9. Значит, число делится на 3, но не на 9.
+            </div>
+        </div>
+
+        <div class="task-item">
+            <strong>Задача 3.</strong> Число \(\overline{73x24}\) делится на 11. Найдите цифру \(x\).
+            <button onclick="toggleAnswer('dec3')">Решение</button>
+            <div id="dec3" class="answer">
+            Цифры с единиц: 4,2,3,7. Чётные позиции: 4 + x + 7 = 11 + x. Нечётные: 2 + 3 = 5. Разность \((11+x)-5 = 6+x\) должна делиться на 11. \(6+x=11\) ⇒ \(x=5\). Ответ: 5.
+            </div>
+        </div>
+
+        <div class="task-item">
+            <strong>Задача 4 (олимпиадная).</strong> Найдите все трёхзначные числа, кратные 11, у которых сумма цифр равна 15.
+            <button onclick="toggleAnswer('dec4')">Решение</button>
+            <div id="dec4" class="answer">
+            Пусть число \(\overline{abc}\). Признак 11: \((a+c)-b = 0\) или \(\pm 11\). Сумма \(a+b+c=15\). Вариант 1: \(a+c=b\) ⇒ \(b + b = 15\) ⇒ \(b=7.5\) нет. Вариант 2: \((a+c)-b = 11\) ⇒ \(a+c = b+11\). Подставляем в сумму: \((b+11)+b=15\) ⇒ \(2b=4\) ⇒ \(b=2\), \(a+c=13\). Перебор: (a,c) = (4,9),(5,8),(6,7),(7,6),(8,5),(9,4). Все числа: 429, 528, 627, 726, 825, 924. Проверяем сумму цифр: 4+2+9=15 и т.д. Все подходят.
+            </div>
+        </div>
+    </div>
+
+    <footer>🧮 Десятичная система + мощные признаки делимости</footer>
+</div>
+<script>
+    function toggleAnswer(id) {
+        let el = document.getElementById(id);
+        el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
+    }
+</script>
+</body>
+</html>

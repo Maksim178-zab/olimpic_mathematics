@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сравнения по модулю | Теория + практика</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #fef9e6;
+            color: #2d3e2b;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 2.5rem; }
+        h1 { font-size: 2.8rem; background: linear-gradient(135deg, #b85c1a, #a0522d); background-clip: text; -webkit-background-clip: text; color: transparent; }
+        .badge { background: #f3e0be; display: inline-block; padding: 0.4rem 1.4rem; border-radius: 40px; margin-top: 0.8rem; }
+        .card { background: white; border-radius: 2rem; padding: 1.8rem 2rem; margin-bottom: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #f0dbc0; }
+        .card h2 { color: #a0522d; border-left: 6px solid #f59e0b; padding-left: 1.2rem; margin-bottom: 1.2rem; font-size: 1.8rem; }
+        .card h3 { color: #b85c1a; margin: 1rem 0 0.5rem 0; font-size: 1.4rem; }
+        .theorem { background: #fff7e6; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; border-left: 5px solid #f59e0b; }
+        .proof { background: #fef9e3; padding: 1rem 1.5rem; border-radius: 1.5rem; }
+        .warning { background: #fee2e2; border-left: 5px solid #dc2626; }
+        .example { background: #e6f7f0; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; }
+        button { background: #b85c1a; color: white; border: none; padding: 0.5rem 1.2rem; border-radius: 2rem; cursor: pointer; font-weight: 600; margin-top: 0.8rem; }
+        button:hover { background: #8e4512; }
+        .answer { display: none; background: #fef3c7; padding: 1rem; border-radius: 1rem; margin-top: 1rem; }
+        .task-item { background: #fef9e6; margin: 1.2rem 0; padding: 1rem 1.2rem; border-radius: 1.2rem; border-left: 4px solid #f59e0b; }
+        footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e2d5b6; color: #6b5b3e; }
+        @media (max-width: 700px) { body { padding: 1rem; } .card { padding: 1.2rem; } h1 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>🕒 Сравнения по модулю</h1>
+        <div class="badge">a ≡ b (mod m) · Свойства как у равенств · Обратный элемент</div>
+    </header>
+
+    <div class="card">
+        <h2>🎯 Определение</h2>
+        <div class="theorem">
+            Пусть \(m\) — натуральное число (\(m > 0\)). Числа \(a\) и \(b\) называются <strong>сравнимыми по модулю \(m\)</strong>, если их разность \(a - b\) делится на \(m\):
+            \[
+            a \equiv b \pmod{m} \quad \Longleftrightarrow \quad m \mid (a - b).
+            \]
+        </div>
+        <p><strong>Простыми словами:</strong> \(a\) и \(b\) дают одинаковый остаток при делении на \(m\).</p>
+        <div class="example">
+            📌 \(17 \equiv 2 \pmod{5}\), потому что \(17 - 2 = 15\) делится на 5.<br>
+            📌 \(-3 \equiv 4 \pmod{7}\), так как \(-3 - 4 = -7\) делится на 7 (оба дают остаток 4).<br>
+            📌 \(14 \equiv 0 \pmod{7}\).
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>⚙️ Свойства сравнений (работают как равенства)</h2>
+        <p><strong>1. Прибавление и вычитание числа:</strong> Если \(a \equiv b \pmod{m}\), то \(a \pm c \equiv b \pm c \pmod{m}\).</p>
+        <p><strong>2. Умножение на число:</strong> Если \(a \equiv b \pmod{m}\), то \(a c \equiv b c \pmod{m}\).</p>
+        <p><strong>3. Сложение и умножение сравнений:</strong> Если \(a \equiv b\) и \(c \equiv d\) (по одному модулю), то \(a + c \equiv b + d\) и \(a c \equiv b d\).</p>
+        <p><strong>4. Возведение в степень:</strong> Если \(a \equiv b \pmod{m}\), то \(a^n \equiv b^n \pmod{m}\) для любого натурального \(n\).</p>
+        <div class="proof">
+            <strong>Почему умножение работает?</strong> \(ac - bc = c(a-b)\). Если \(m \mid (a-b)\), то \(m \mid c(a-b)\).
+        </div>
+        <div class="example">
+            📌 \(2 \equiv -1 \pmod{3}\) ⇒ \(2^{100} \equiv (-1)^{100} = 1 \pmod{3}\).
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>⚠️ Осторожно: сокращение</h2>
+        <div class="warning">
+            ❌ Нельзя просто сократить на общий множитель, не изменив модуль.
+        </div>
+        <p><strong>Пример ошибки:</strong> \(6 \equiv 36 \pmod{10}\) — верно. Сократим на 6: получим \(1 \equiv 6 \pmod{10}\) — неверно!</p>
+        <div class="theorem">
+            <strong>Правило сокращения:</strong> Если \(ac \equiv bc \pmod{m}\) и \(d = \gcd(c, m)\), то
+            \[
+            a \equiv b \pmod{\frac{m}{d}}.
+            \]
+        </div>
+        <div class="example">
+            ✅ \(6 \equiv 36 \pmod{10}\), \(\gcd(6,10)=2\) ⇒ \(1 \equiv 6 \pmod{5}\). Верно, так как \(1-6=-5\) делится на 5.
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🔁 Обратный элемент по модулю</h2>
+        <p>Если \(\gcd(a, m) = 1\), то существует такое число \(x\), что</p>
+        \[
+        a \cdot x \equiv 1 \pmod{m}.
+        \]
+        <p>Число \(x\) называется <strong>обратным</strong> к \(a\) по модулю \(m\) и обозначается \(a^{-1}\).</p>
+        <div class="example">
+            📌 Найдём \(3^{-1} \pmod{7}\): перебираем: \(3 \cdot 5 = 15 \equiv 1 \pmod{7}\) ⇒ \(3^{-1} \equiv 5\).<br>
+            📌 Уравнение \(3x \equiv 5 \pmod{7}\) умножаем на \(5\): \(x \equiv 25 \equiv 4 \pmod{7}\).
+        </div>
+    </div>
+
+    <!-- ПРАКТИКА -->
+    <div id="practice" class="card">
+        <h2>✍️ Практика: сравнения по модулю</h2>
+
+        <div class="task-item">
+            <strong>Задача 1.</strong> Найдите остаток от деления \(2^{2025}\) на 5.
+            <button onclick="toggleAnswer('mod1')">Решение</button>
+            <div id="mod1" class="answer">
+                \(2^4 = 16 \equiv 1 \pmod{5}\). \(2025 = 4 \cdot 506 + 1\) ⇒ \(2^{2025} \equiv 2^1 = 2 \pmod{5}\). Остаток 2.
+            </div>
+        </div>
+
+        <div class="task-item">
+            <strong>Задача 2.</strong> Решите сравнение \(5x \equiv 3 \pmod{7}\).
+            <button onclick="toggleAnswer('mod2')">Решение</button>
+            <div id="mod2" class="answer">
+            Обратный к 5 по модулю 7 — это 3, так как \(5 \cdot 3 = 15 \equiv 1\). Умножаем: \(x \equiv 3 \cdot 3 = 9 \equiv 2 \pmod{7}\).
+            </div>
+        </div>
+
+        <div class="task-item">
+            <strong>Задача 3.</strong> Докажите, что \(n^5 - n\) делится на 5 для любого целого \(n\).
+            <button onclick="toggleAnswer('mod3')">Решение</button>
+            <div id="mod3" class="answer">
+            По модулю 5 возможны остатки 0,1,2,3,4. Проверим: \(0^5-0=0\), \(1^5-1=0\), \(2^5=32≡2\) ⇒ 2-2=0, \(3^5=243≡3\) ⇒ 0, \(4^5=1024≡4\) ⇒ 0. Делится.
+            </div>
+        </div>
+
+        <div class="task-item">
+            <strong>Задача 4.</strong> Найдите все \(x\): \(3x \equiv 6 \pmod{9}\).
+            <button onclick="toggleAnswer('mod4')">Решение</button>
+            <div id="mod4" class="answer">
+            Сокращаем на \(\gcd(3,9)=3\): получим \(x \equiv 2 \pmod{3}\). Ответ: \(x = 2, 5, 8, \dots\) (все числа вида \(3k+2\)).
+            </div>
+        </div>
+    </div>
+
+    <footer>🔄 Сравнения по модулю — ключ к олимпиадным задачам</footer>
+</div>
+<script>
+    function toggleAnswer(id) {
+        let el = document.getElementById(id);
+        el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
+    }
+</script>
+</body>
+</html>

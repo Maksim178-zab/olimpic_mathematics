@@ -2,14 +2,12 @@
 const resources = {
     number: {
         theory: [
-            { text: "Делимость и признаки делимости — подробная теория", url: "https://mathworld.wolfram.com/Divisibility.html" },
-            { text: "Сравнения по модулю: введение и свойства", url: "https://brilliant.org/wiki/modular-arithmetic/" },
-            { text: "Десятичная запись числа: теория разрядов", url: "https://www.khanacademy.org/math/arithmetic/arith-review-decimals" }
+            { text: "📘 Делимость чисел (полный сайт с теорией + практикой)", url: "/theory1/divisibility.html", isInternal: true },
+            { text: "📘 Сравнения по модулю (подробный разбор + задачи)", url: "/theory1/modular.html", isInternal: true },
+            { text: "📘 Десятичная запись числа и признаки делимости", url: "/theory1/decimal.html", isInternal: true }
         ],
         practice: [
-            { text: "Задачи на делимость (300+ задач с решениями)", url: "https://artofproblemsolving.com/community/c3t48f3h_divisibility" },
-            { text: "Тренировка: сравнения по модулю — олимпиадные задачи", url: "https://www.mccme.ru/circles/mccme/2021/modular_practice.pdf" },
-            { text: "Упражнения: десятичная запись и свойства чисел", url: "https://problems.ru/ru/collection/decimals" }
+            { text: "📚 Сборник олимпиадных задач (15 задач с решениями)", url: "/theory1/practice-number-theory.html", isInternal: true }
         ]
     },
     ineq: {
@@ -76,6 +74,22 @@ const resources = {
     }
 };
 
+// Функция для создания ссылки (поддерживает внутренние и внешние)
+function createLink(item) {
+    const a = document.createElement("a");
+    a.href = item.url;
+    a.textContent = item.text;
+    if (item.isInternal) {
+        // Внутренняя ссылка — открываем в этой же вкладке
+        a.target = "_self";
+    } else {
+        // Внешняя — в новой вкладке
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+    }
+    return a;
+}
+
 // Заполнение списков для теории и практики
 function populateAllSections() {
     const sections = [
@@ -97,12 +111,7 @@ function populateAllSections() {
             theoryContainer.innerHTML = "";
             data.theory.forEach(item => {
                 const li = document.createElement("li");
-                const a = document.createElement("a");
-                a.href = item.url;
-                a.target = "_blank";
-                a.rel = "noopener noreferrer";
-                a.textContent = item.text;
-                li.appendChild(a);
+                li.appendChild(createLink(item));
                 theoryContainer.appendChild(li);
             });
         }
@@ -118,12 +127,7 @@ function populateAllSections() {
             } else {
                 data.practice.forEach(item => {
                     const li = document.createElement("li");
-                    const a = document.createElement("a");
-                    a.href = item.url;
-                    a.target = "_blank";
-                    a.rel = "noopener noreferrer";
-                    a.textContent = item.text;
-                    li.appendChild(a);
+                    li.appendChild(createLink(item));
                     practiceContainer.appendChild(li);
                 });
             }
@@ -131,10 +135,11 @@ function populateAllSections() {
     });
 }
 
-// Доп. безопасность внешних ссылок
+// Доп. безопасность для внешних ссылок
 function secureExternalLinks() {
     document.querySelectorAll(".link-list a").forEach(link => {
-        if (!link.hasAttribute("target")) {
+        // Если ссылка не ведёт на наши внутренние файлы и не имеет target
+        if (!link.href.includes("theory1/") && !link.hasAttribute("target")) {
             link.setAttribute("target", "_blank");
             link.setAttribute("rel", "noopener noreferrer");
         }
@@ -144,5 +149,5 @@ function secureExternalLinks() {
 document.addEventListener("DOMContentLoaded", () => {
     populateAllSections();
     secureExternalLinks();
-    console.log("✅ Математический навигатор загружен: теория + практика разделены по всем 7 темам.");
+    console.log("✅ Математический навигатор загружен. Ссылки на теорию чисел ведут в папку theory1/");
 });
