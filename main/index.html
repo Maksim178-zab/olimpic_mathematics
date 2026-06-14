@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Математический навигатор | Теория + практика</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <h1>📐 Математический навигатор</h1>
+            <p>Теория + практика по ключевым темам: от чисел до многочленов</p>
+            <div class="hero-badge">🎯 Каждая тема → теория и задачи</div>
+        </header>
+
+        <div class="grid">
+            <!-- Теория чисел -->
+            <div class="card" data-theme="number">
+                <div class="card-header">
+                    <span class="emoji-badge">🔢</span>
+                    <h2>Теория чисел</h2>
+                </div>
+                <div class="card-body">
+                    <p class="topics">делимость · сравнения по модулю · десятичная запись</p>
+                    <div class="links-section">
+                        <div class="subtitle">📘 Теория</div>
+                        <ul class="link-list theory-list" id="theory-number"></ul>
+                        <div class="subtitle">✍️ Практика / задачи</div>
+                        <ul class="link-list practice-list" id="practice-number"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Алгебраические неравенства + метод интервалов -->
+            <div class="card" data-theme="ineq">
+                <div class="card-header">
+                    <span class="emoji-badge">⚖️</span>
+                    <h2>Алгебраические неравенства</h2>
+                </div>
+                <div class="card-body">
+                    <p class="topics">метод интервалов · классические неравенства</p>
+                    <div class="links-section">
+                        <div class="subtitle">📘 Теория</div>
+                        <ul class="link-list theory-list" id="theory-ineq"></ul>
+                        <div class="subtitle">✍️ Практика</div>
+                        <ul class="link-list practice-list" id="practice-ineq"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Иррациональные выражения -->
+            <div class="card" data-theme="irrational">
+                <div class="card-header">
+                    <span class="emoji-badge">√</span>
+                    <h2>Иррациональные выражения</h2>
+                </div>
+                <div class="card-body">
+                    <p class="topics">сравнение · преобразование · рационализация</p>
+                    <div class="links-section">
+                        <div class="subtitle">📘 Теория</div>
+                        <ul class="link-list theory-list" id="theory-irrational"></ul>
+                        <div class="subtitle">✍️ Практика</div>
+                        <ul class="link-list practice-list" id="practice-irrational"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Геометрическая оптимизация -->
+            <div class="card" data-theme="geo-opt">
+                <div class="card-header">
+                    <span class="emoji-badge">📐✨</span>
+                    <h2>Геометрическая оптимизация</h2>
+                </div>
+                <div class="card-body">
+                    <p class="topics">экстремумы · расстояния · изопериметрические задачи</p>
+                    <div class="links-section">
+                        <div class="subtitle">📘 Теория</div>
+                        <ul class="link-list theory-list" id="theory-geoopt"></ul>
+                        <div class="subtitle">✍️ Практика</div>
+                        <ul class="link-list practice-list" id="practice-geoopt"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Инварианты -->
+            <div class="card" data-theme="invariant">
+                <div class="card-header">
+                    <span class="emoji-badge">🔄</span>
+                    <h2>Инварианты</h2>
+                </div>
+                <div class="card-body">
+                    <p class="topics">инварианты в задачах · полуинварианты</p>
+                    <div class="links-section">
+                        <div class="subtitle">📘 Теория</div>
+                        <ul class="link-list theory-list" id="theory-invariant"></ul>
+                        <div class="subtitle">✍️ Практика</div>
+                        <ul class="link-list practice-list" id="practice-invariant"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Принцип Дирихле (обобщённый, весовой) -->
+            <div class="card" data-theme="dirichlet">
+                <div class="card-header">
+                    <span class="emoji-badge">🐦</span>
+                    <h2>Принцип Дирихле</h2>
+                </div>
+                <div class="card-body">
+                    <p class="topics">обобщённый · весовой · комбинаторика</p>
+                    <div class="links-section">
+                        <div class="subtitle">📘 Теория</div>
+                        <ul class="link-list theory-list" id="theory-dirichlet"></ul>
+                        <div class="subtitle">✍️ Практика</div>
+                        <ul class="link-list practice-list" id="practice-dirichlet"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Многочлены -->
+            <div class="card" data-theme="polynomials">
+                <div class="card-header">
+                    <span class="emoji-badge">📈</span>
+                    <h2>Многочлены</h2>
+                </div>
+                <div class="card-body">
+                    <p class="topics">теорема Безу · схема Горнера · интерполяция · целые корни</p>
+                    <div class="links-section">
+                        <div class="subtitle">📘 Теория</div>
+                        <ul class="link-list theory-list" id="theory-polynomials"></ul>
+                        <div class="subtitle">✍️ Практика</div>
+                        <ul class="link-list practice-list" id="practice-polynomials"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer-note">
+            <p>📌 Для каждой темы: отдельно теория (статьи, лекции, видео) и практика (задачники, тесты, олимпиадные подборки).</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Делимость | Теория + практика</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f0fa 100%);
+            color: #0a2b3e;
+            padding: 2rem 1rem;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(120deg, #1e5f7a, #2c3e66);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .badge {
+            background: #1e5f7a20;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        .card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border: 1px solid #cbd5e6;
+        }
+        .card h2 {
+            color: #1e5f7a;
+            border-left: 5px solid #3b82f6;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+        .example {
+            background: #f1f5f9;
+            padding: 0.8rem 1.2rem;
+            border-radius: 1.2rem;
+            margin: 1rem 0;
+            border-left: 4px solid #3b82f6;
+        }
+        .formula {
+            background: #eef2ff;
+            font-family: monospace;
+            padding: 0.2rem 0.5rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+        }
+        .task-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .task-list li {
+            background: #f8fafc;
+            margin: 0.8rem 0;
+            padding: 0.8rem;
+            border-radius: 1rem;
+            border: 1px solid #dce3ec;
+        }
+        button {
+            background: #1e5f7a;
+            color: white;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        button:hover {
+            background: #0f4b62;
+        }
+        .answer {
+            margin-top: 0.6rem;
+            padding: 0.5rem;
+            background: #e0f2fe;
+            border-radius: 1rem;
+            display: none;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #4b5563;
+            margin-top: 2rem;
+        }
+        hr {
+            margin: 1rem 0;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .card { padding: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>🔢 Делимость чисел</h1>
+        <div class="badge">Определение · Свойства · Деление с остатком</div>
+    </header>
+
+    <!-- ТЕОРИЯ -->
+    <div class="card">
+        <h2>📖 Что значит «делится»?</h2>
+        <p><strong>Определение.</strong> Целое число \(b \neq 0\) <strong>делит</strong> целое число \(a\), если существует целое \(k\) такое, что \(a = b \cdot k\).<br>
+        Обозначение: \(b \mid a\).</p>
+        <div class="example">
+            📌 Примеры: \(4 \mid 20\) (20 = 4·5), \(7 \mid 0\) (0 = 7·0), \(3 \nmid 14\).
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>✨ Три золотых свойства делимости</h2>
+        <p><strong>1. Транзитивность:</strong> если \(a \mid b\) и \(b \mid c\), то \(a \mid c\).</p>
+        <p><strong>2. Линейность:</strong> если \(d \mid a\) и \(d \mid b\), то \(d \mid (a+b)\) и \(d \mid (a-b)\).</p>
+        <p><strong>3. Умножение:</strong> если \(a \mid b\), то \(a \mid b \cdot c\) для любого целого \(c\).</p>
+        <div class="example">
+            🧠 Пример: \(3 \mid 12\) и \(3 \mid 9\) ⇒ \(3 \mid 21\) и \(3 \mid 3\).
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📐 Деление с остатком</h2>
+        <p><strong>Теорема.</strong> Для любых целых \(a\) и натурального \(m>0\) существуют <strong>единственные</strong> \(q\) и \(r\) такие, что</p>
+        <p class="formula">a = m·q + r, 0 ≤ r < m.</p>
+        <div class="example">
+            📌 17 ÷ 5 = 3·5 + 2 (остаток 2).<br>
+            📌 –17 ÷ 5 = (–4)·5 + 3 (остаток 3, потому что –20+3= –17).
+        </div>
+    </div>
+
+    <!-- ПРАКТИКА -->
+    <div class="card">
+        <h2>✍️ Практика: задачи на делимость</h2>
+        <ul class="task-list">
+            <li><strong>Задача 1.</strong> Докажите, что произведение трёх последовательных целых чисел всегда делится на 6.
+                <button onclick="toggleAnswer('ans1')">Показать решение</button>
+                <div id="ans1" class="answer">Среди трёх последовательных чисел есть хотя бы одно чётное (делится на 2) и ровно одно делится на 3. Значит, произведение делится на 2·3 = 6.</div>
+            </li>
+            <li><strong>Задача 2.</strong> Найдите остаток от деления 2<sup>100</sup> на 3.
+                <button onclick="toggleAnswer('ans2')">Показать решение</button>
+                <div id="ans2" class="answer">2 mod 3 = –1. (–1)<sup>100</sup> = 1. Остаток 1.</div>
+            </li>
+            <li><strong>Задача 3.</strong> Делится ли 7<sup>2024</sup> + 5 на 6?
+                <button onclick="toggleAnswer('ans3')">Показать решение</button>
+                <div id="ans3" class="answer">7 ≡ 1 (mod 6) ⇒ 7<sup>2024</sup> ≡ 1 (mod 6). 1+5=6 ≡ 0 (mod 6) → делится.</div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ПРОВЕРКА ПОНИМАНИЯ -->
+    <div class="card">
+        <h2>⚡ Проверка за 30 секунд</h2>
+        <p>Верно ли: \(3 \mid 0\)? <button onclick="toggleAnswer('check1')">Ответ</button></p>
+        <div id="check1" class="answer">Да, 0 = 3·0.</div>
+        <p>Верно ли: \(0 \mid 5\)? <button onclick="toggleAnswer('check2')">Ответ</button></p>
+        <div id="check2" class="answer">Нет, на ноль делить нельзя (определение требует b≠0).</div>
+    </div>
+    <footer>📘 Теория + практика | Делимость чисел</footer>
+</div>
+<script>
+    function toggleAnswer(id) {
+        let el = document.getElementById(id);
+        if (el.style.display === 'none' || el.style.display === '')
+            el.style.display = 'block';
+        else
+            el.style.display = 'none';
+    }
+</script>
+</body>
+</html>
