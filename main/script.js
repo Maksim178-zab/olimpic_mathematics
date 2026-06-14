@@ -1,13 +1,63 @@
-// Структура данных: для каждой темы — объект с theory[] и practice[]
+// ============================================================
+// АВТОМАТИЧЕСКОЕ ОПРЕДЕЛЕНИЕ КОРНЯ ДЛЯ GITHUB PAGES И ЛОКАЛЬНОГО ПРОСМОТРА
+// ============================================================
+function getBasePath() {
+    // Получаем текущий путь (например: /repo/main/index.html или /main/index.html)
+    let path = window.location.pathname;
+
+    // Если есть /main/ в пути, то theory1 находится на уровень выше
+    if (path.includes('/main/')) {
+        // Возвращаем путь к корню (где лежит папка theory1)
+        let base = path.substring(0, path.indexOf('/main/') + 1);
+        return base;
+    }
+
+    // Если мы в корне или в другой структуре
+    let lastSlash = path.lastIndexOf('/');
+    if (lastSlash > 0) {
+        return path.substring(0, lastSlash + 1);
+    }
+    return '/';
+}
+
+function getFullPath(relativePath) {
+    // Если это внешняя ссылка или абсолютная — возвращаем как есть
+    if (relativePath.startsWith('http://') ||
+        relativePath.startsWith('https://') ||
+        relativePath.startsWith('//')) {
+        return relativePath;
+    }
+
+    // Если путь начинается с / — это абсолютный путь от корня домена
+    if (relativePath.startsWith('/')) {
+        return relativePath;
+    }
+
+    // Для внутренних ссылок добавляем базовый путь
+    let base = getBasePath();
+
+    // Убираем возможное дублирование слешей
+    let fullPath = base + relativePath;
+    fullPath = fullPath.replace(/([^:]\/)\/+/g, '$1');
+
+    return fullPath;
+}
+
+// ============================================================
+// БАЗА ДАННЫХ ССЫЛОК (теория + практика по темам)
+// ============================================================
 const resources = {
     number: {
         theory: [
-            { text: "📘 Делимость чисел (полный сайт с теорией + практикой)", url: "/theory1/divisibility.html", isInternal: true },
-            { text: "📘 Сравнения по модулю (подробный разбор + задачи)", url: "/theory1/modular.html", isInternal: true },
-            { text: "📘 Десятичная запись числа и признаки делимости", url: "/theory1/decimal.html", isInternal: true }
+            { text: "📘 Делимость чисел (полный сайт с теорией + практикой)", url: "theory1/divisibility.html", isInternal: true },
+            { text: "📘 Сравнения по модулю (подробный разбор + задачи)", url: "theory1/modular.html", isInternal: true },
+            { text: "📘 Десятичная запись числа и признаки делимости", url: "theory1/decimal.html", isInternal: true }
         ],
         practice: [
-            { text: "📚 Сборник олимпиадных задач (15 задач с решениями)", url: "/theory1/practice-number-theory.html", isInternal: true }
+            { text: "📚 Сборник олимпиадных задач (15 задач с решениями)", url: "theory1/practice-number-theory.html", isInternal: true },
+            { text: "✍️ Задачи на делимость (с решениями)", url: "theory1/divisibility.html#practice", isInternal: true },
+            { text: "✍️ Практикум: сравнения по модулю", url: "theory1/modular.html#practice", isInternal: true },
+            { text: "✍️ Упражнения: десятичная запись и признаки", url: "theory1/decimal.html#practice", isInternal: true }
         ]
     },
     ineq: {
@@ -74,23 +124,30 @@ const resources = {
     }
 };
 
-// Функция для создания ссылки (поддерживает внутренние и внешние)
+// ============================================================
+// ФУНКЦИЯ СОЗДАНИЯ ССЫЛКИ (с правильными путями)
+// ============================================================
 function createLink(item) {
     const a = document.createElement("a");
-    a.href = item.url;
     a.textContent = item.text;
+
     if (item.isInternal) {
-        // Внутренняя ссылка — открываем в этой же вкладке
+        // Внутренняя ссылка — используем getFullPath для правильного пути
+        a.href = getFullPath(item.url);
         a.target = "_self";
     } else {
-        // Внешняя — в новой вкладке
+        // Внешняя ссылка — открываем в новой вкладке
+        a.href = item.url;
         a.target = "_blank";
         a.rel = "noopener noreferrer";
     }
+
     return a;
 }
 
-// Заполнение списков для теории и практики
+// ============================================================
+// ЗАПОЛНЕНИЕ ВСЕХ РАЗДЕЛОВ (теория и практика)
+// ============================================================
 function populateAllSections() {
     const sections = [
         { theoryId: "theory-number", practiceId: "practice-number", key: "number" },
@@ -135,19 +192,25 @@ function populateAllSections() {
     });
 }
 
-// Доп. безопасность для внешних ссылок
+// ============================================================
+// ДОПОЛНИТЕЛЬНАЯ ЗАЩИТА ДЛЯ ВНЕШНИХ ССЫЛОК
+// ============================================================
 function secureExternalLinks() {
     document.querySelectorAll(".link-list a").forEach(link => {
         // Если ссылка не ведёт на наши внутренние файлы и не имеет target
-        if (!link.href.includes("theory1/") && !link.hasAttribute("target")) {
+        if (!link.href.includes(window.location.origin) && !link.hasAttribute("target")) {
             link.setAttribute("target", "_blank");
             link.setAttribute("rel", "noopener noreferrer");
         }
     });
 }
 
+// ============================================================
+// ЗАПУСК ПРИ ЗАГРУЗКЕ СТРАНИЦЫ
+// ============================================================
 document.addEventListener("DOMContentLoaded", () => {
     populateAllSections();
     secureExternalLinks();
-    console.log("✅ Математический навигатор загружен. Ссылки на теорию чисел ведут в папку theory1/");
+    console.log("✅ Математический навигатор загружен");
+    console.log("📁 Базовый путь для ссылок:", getBasePath());
 });
