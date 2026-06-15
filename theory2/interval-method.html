@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Метод интервалов | Полное объяснение</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Georgia, serif;
+            background: #f0f4f8;
+            color: #1e2a3e;
+            padding: 2rem;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #1e5f7a;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            background: #d4e6f1;
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cbd5e1;
+        }
+
+        .card h2 {
+            color: #1e5f7a;
+            border-left: 5px solid #3b82f6;
+            padding-left: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .step {
+            background: #fef9e3;
+            padding: 0.5rem 0.8rem;
+            border-radius: 0.8rem;
+            margin: 0.5rem 0;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .example {
+            background: #e6f7f0;
+            padding: 0.8rem;
+            border-radius: 1rem;
+            margin: 0.8rem 0;
+        }
+
+        .warning {
+            background: #fee2e2;
+            padding: 0.8rem;
+            border-radius: 1rem;
+            border-left: 4px solid #dc2626;
+            margin: 0.8rem 0;
+        }
+
+        .task {
+            background: #f8fafc;
+            margin: 1rem 0;
+            padding: 0.8rem;
+            border-radius: 1rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .solve-btn {
+            background: #1e5f7a;
+            color: white;
+            border: none;
+            padding: 0.3rem 1rem;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: #eef2ff;
+            border-radius: 0.8rem;
+            border-left: 3px solid #1e5f7a;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #4b5563;
+            border-top: 1px solid #cbd5e1;
+            padding-top: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div style="text-align: center;"><h1>📐 Метод интервалов</h1>
+        <div class="badge">От полного нуля до уверенного решения</div>
+    </div>
+
+    <div class="card">
+        <h2>🎯 Что такое метод интервалов?</h2>
+        <p>Метод интервалов — это способ решения неравенств, в которых переменная \(x\) находится в числителе и/или
+            знаменателе (рациональные неравенства).</p>
+        <p><strong>Главная идея:</strong> Функция может менять знак (с плюса на минус или наоборот) только в тех точках,
+            где она равна нулю или где она не определена (знаменатель равен нулю). Между такими точками знак остаётся
+            постоянным. Найдя знак на одном интервале, мы можем определить знаки на всех остальных.</p>
+    </div>
+
+    <div class="card">
+        <h2>⚙️ Алгоритм (6 шагов)</h2>
+        <div class="step"><strong>Шаг 1.</strong> Привести неравенство к виду \(f(x) > 0\) (или <, ≥, ≤). Справа должен
+            быть 0.
+        </div>
+        <div class="step"><strong>Шаг 2.</strong> Разложить числитель и знаменатель на множители (по возможности).</div>
+        <div class="step"><strong>Шаг 3.</strong> Найти нули числителя (решить \(f(x)=0\)) и нули знаменателя (точки,
+            где функция не определена).
+        </div>
+        <div class="step"><strong>Шаг 4.</strong> Отметить все найденные точки на числовой прямой в порядке возрастания.
+        </div>
+        <div class="step"><strong>Шаг 5.</strong> Определить знак \(f(x)\) на каждом получившемся интервале (способами
+            ниже).
+        </div>
+        <div class="step"><strong>Шаг 6.</strong> Записать ответ, учитывая знак неравенства и ОДЗ (нули знаменателя
+            всегда выкалываются).
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🔍 Как определить знак на интервале?</h2>
+        <p><strong>Способ 1 (универсальный, никогда не подводит):</strong> Берём любое число внутри интервала,
+            подставляем в \(f(x)\) и смотрим на знак результата.</p>
+        <div class="example">
+            <strong>Пример:</strong> \(f(x) = \frac{(x-2)(x+3)}{x-1}\), интервал \((1, 2)\).<br>
+            Берём \(x = 1.5\):<br>
+            \(1.5 - 2 = -0.5\) (отрицательный)<br>
+            \(1.5 + 3 = 4.5\) (положительный)<br>
+            \(1.5 - 1 = 0.5\) (положительный)<br>
+            Знак дроби: \(\frac{(-) \cdot (+)}{(+)} = (-)\). Значит, на всём интервале \((1,2)\) функция отрицательна.
+        </div>
+        <p><strong>Способ 2 (правило чередования, быстрее):</strong> Если все множители в первой степени, знаки на
+            соседних интервалах чередуются. Достаточно найти знак на крайнем правом интервале (подставив большое число),
+            а затем по очереди менять знак при переходе через каждую точку.</p>
+        <div class="example">
+            <strong>Пример с чередованием:</strong> \(f(x) = (x+3)(x-1)(x-2)\). Точки: -3, 1, 2.<br>
+            Правый интервал \((2,+\infty)\): \(x=10\) ⇒ все множители положительные ⇒ знак \(+\)<br>
+            Переход через 2 (степень 1) ⇒ знак меняется: на \((1,2)\) знак \(–\)<br>
+            Переход через 1 ⇒ знак меняется: на \((-3,1)\) знак \(+\)<br>
+            Переход через -3 ⇒ знак меняется: на \((-\infty,-3)\) знак \(–\)<br>
+            Получили: \( (–) \quad (+) \quad (–) \quad (+) \) слева направо.
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>⚠️ Чётные степени и ОДЗ</h2>
+        <div class="warning">
+            <strong>Важно!</strong><br>
+            • Если множитель \((x-a)\) в чётной степени (например, \((x-1)^2\)), знак при переходе через \(a\) <strong>не
+            меняется</strong> (квадрат всегда ≥0).<br>
+            • Нули знаменателя <strong>всегда выкалываются</strong> из ответа (круглые скобки).<br>
+            • Нули числителя включаются в ответ, если неравенство нестрогое (\(\ge\) или \(\le\)).
+        </div>
+        <div class="example">
+            <strong>Пример с чётной степенью:</strong> \((x-1)^2(x-3) \ge 0\).<br>
+            Правый интервал \((3,+\infty)\): \(+\) ⇒ \((1,3)\): \(–\) (переход через 3) ⇒ \((-\infty,1)\): \(–\) (через
+            1 знак не меняется).<br>
+            Ответ: \(\{1\} \cup [3, +\infty)\).
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>✍️ Практика</h2>
+        <div class="task"><p><strong>Задача 1.</strong> \(\frac{x^2-4x+3}{x-2} \ge 0\)</p>
+            <button class="solve-btn" data-target="sol1">Показать решение</button>
+            <div id="sol1" class="solution"><p>\(x^2-4x+3=(x-1)(x-3)\). Нули: 1,3 (числитель), 2 (знаменатель).
+                Чередование: (2,∞):+ ⇒ (1,2):– ⇒ (-∞,1):+.<br><strong>Ответ:</strong> \((-∞,1] \cup (2,3]\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 2.</strong> \(\frac{(x+2)(x-4)}{x+1} < 0\)</p>
+            <button class="solve-btn" data-target="sol2">Показать решение</button>
+            <div id="sol2" class="solution"><p>Нули: -2,4 (числитель), -1 (знаменатель). Чередование: (4,∞):+ ⇒ (-1,4):–
+                ⇒ (-2,-1):+ ⇒ (-∞,-2):–.<br><strong>Ответ:</strong> \((-∞,-2) \cup (-1,4)\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 3 (ОДЗ и знаки).</strong> \(\frac{x+1}{x-2} \le 0\)</p>
+            <button class="solve-btn" data-target="sol3">Показать решение</button>
+            <div id="sol3" class="solution"><p>Нуль числителя: -1 (включаем), знаменатель: 2 (выколот). Интервалы:
+                (-∞,-1], [-1,2), (2,∞). Подстановка: x=0 ⇒ дробь -0.5 <0 ⇒ подходит. x=3 ⇒ 4>0 нет. x=-2 ⇒ 0.25>0
+                нет.<br><strong>Ответ:</strong> \([-1, 2)\).</p></div>
+        </div>
+    </div>
+    <footer>Метод интервалов — ключ к рациональным неравенствам</footer>
+</div>
+<script>
+    document.querySelectorAll('.solve-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const t = document.getElementById(btn.getAttribute('data-target'));
+            if (t.style.display === 'none' || t.style.display === '') {
+                t.style.display = 'block';
+                btn.textContent = 'Скрыть решение';
+            } else {
+                t.style.display = 'none';
+                btn.textContent = 'Показать решение';
+            }
+        });
+    });
+</script>
+</body>
+</html>
