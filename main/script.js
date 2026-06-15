@@ -49,21 +49,22 @@ function getFullPath(relativePath) {
 const resources = {
     number: {
         theory: [
-            { text: "📘 Делимость чисел (полный сайт с теорией + практикой)", url: "theory1/divisibility.html", isInternal: true },
-            { text: "📘 Сравнения по модулю (подробный разбор + задачи)", url: "theory1/modular.html", isInternal: true },
-            { text: "📘 Десятичная запись числа и признаки делимости", url: "theory1/decimal.html", isInternal: true }
+            { text: "Делимость чисел (полный сайт с теорией + практикой)", url: "theory1/divisibility.html", isInternal: true },
+            { text: "Сравнения по модулю (подробный разбор + задачи)", url: "theory1/modular.html", isInternal: true },
+            { text: "Десятичная запись числа и признаки делимости", url: "theory1/decimal.html", isInternal: true }
         ],
         practice: [
             { text: "📚 Сборник олимпиадных задач (15 задач с решениями)", url: "theory1/practice-number-theory.html", isInternal: true },
-            { text: "✍️ Задачи на делимость (с решениями)", url: "theory1/divisibility.html#practice", isInternal: true },
-            { text: "✍️ Практикум: сравнения по модулю", url: "theory1/modular.html#practice", isInternal: true },
-            { text: "✍️ Упражнения: десятичная запись и признаки", url: "theory1/decimal.html#practice", isInternal: true }
+            { text: "Задачи на делимость (с решениями)", url: "theory1/divisibility.html#practice", isInternal: true },
+            { text: "Практикум: сравнения по модулю", url: "theory1/modular.html#practice", isInternal: true },
+            { text: "Упражнения: десятичная запись и признаки", url: "theory1/decimal.html#practice", isInternal: true }
         ]
     },
     ineq: {
         theory: [
-            { text: "Метод интервалов: полное руководство", url: "https://mathvox.ru/algebra/neravenstva/racionalnye-neravenstva/metod-intervalov/" },
-            { text: "Классические неравенства: Коши, Бернулли, Йенсена", url: "https://artofproblemsolving.com/wiki/index.php/Inequality" }
+            { text: "Метод интервалов: полное руководство", url: "theory2/interval-method.html", isInternal: true},
+            { text: "Классические неравенства: Коши", url: "theory2/cauchy-inequality.html", isInternal: true },
+            { text: "Классические неравенства: Бернулли, Йенсен, Шур", url: "theory2/bernoulli-jensen.html", isInternal: true }
         ],
         practice: [
             { text: "Метод интервалов — практические примеры (с ответами)", url: "https://www.mathtutor.com/inequalities/interval-method-exercises.html" },

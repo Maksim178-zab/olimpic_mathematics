@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>50 задач по неравенствам | Лист для печати А4</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Times New Roman', 'Georgia', 'Segoe UI', serif;
+            background: white;
+            padding: 0;
+            margin: 0;
+            font-size: 7.5pt;
+            line-height: 1.15;
+        }
+        /* Точная настройка для одного листа А4 при печати */
+        @media print {
+            body {
+                margin: 0.5cm;
+                padding: 0;
+            }
+            .container {
+                margin: 0;
+                padding: 0;
+            }
+            .task {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            .no-print {
+                display: none;
+            }
+            h1 {
+                font-size: 14pt;
+                margin-bottom: 2mm;
+            }
+            .part h2 {
+                font-size: 11pt;
+                margin-top: 1mm;
+                margin-bottom: 1mm;
+            }
+        }
+        /* Для экрана (предпросмотр) */
+        @media screen {
+            body {
+                background: #e2e8f0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                padding: 15px;
+            }
+            .container {
+                background: white;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 5mm 7mm;
+            }
+            .print-btn {
+                background: #1e5f7a;
+                color: white;
+                border: none;
+                padding: 6px 12px;
+                border-radius: 20px;
+                cursor: pointer;
+                font-size: 10px;
+                margin-bottom: 8px;
+            }
+        }
+        .container {
+            width: 100%;
+            padding: 0;
+        }
+        .print-btn {
+            display: block;
+            margin: 0 auto 8px auto;
+            text-align: center;
+        }
+        h1 {
+            font-size: 14pt;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .sub {
+            text-align: center;
+            font-size: 7pt;
+            margin-bottom: 6px;
+            border-bottom: 0.5px solid #aaa;
+            padding-bottom: 2px;
+        }
+        .part {
+            margin-bottom: 5px;
+        }
+        .part h2 {
+            font-size: 10pt;
+            font-weight: bold;
+            background: #eef2ff;
+            padding: 1px 4px;
+            margin: 3px 0 4px 0;
+            border-left: 3px solid #1e5f7a;
+        }
+        .tasks-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px 8px;
+        }
+        .task {
+            font-size: 7pt;
+            line-height: 1.25;
+            margin-bottom: 2px;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        .task-num {
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 2px;
+        }
+        footer {
+            text-align: center;
+            font-size: 6pt;
+            margin-top: 5px;
+            border-top: 0.5px solid #ccc;
+            padding-top: 2px;
+        }
+        @media (max-width: 600px) {
+            .tasks-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div style="text-align: center;">
+        <button class="print-btn no-print" onclick="window.print();">🖨️ Распечатать / Сохранить как PDF (A4)</button>
+    </div>
+    <h1>📐 50 задач по неравенствам</h1>
+    <div class="sub">метод интервалов • Коши • Бернулли • Йенсен • Шур • параметры • экстремумы</div>
+
+    <div class="part">
+        <h2>📐 Часть 1. Метод интервалов (задачи 1–10)</h2>
+        <div class="tasks-grid">
+            <div class="task"><span class="task-num">1.</span> \((x+1)(x-2)(x-4) > 0\)</div>
+            <div class="task"><span class="task-num">2.</span> \(\frac{x-2}{x+3} \le 0\)</div>
+            <div class="task"><span class="task-num">3.</span> \(\frac{(x-2)^2(x+1)}{x-4} \ge 0\)</div>
+            <div class="task"><span class="task-num">4.</span> \(\frac{x^2+4}{x-1} > 0\)</div>
+            <div class="task"><span class="task-num">5.</span> \(\frac{(x-1)(x+2)}{(x-3)(x+5)} \le 0\)</div>
+            <div class="task"><span class="task-num">6.</span> \(\frac{2}{x} + \frac{3}{x-2} < 0\)</div>
+            <div class="task"><span class="task-num">7.</span> \(\frac{x^3-9x}{x^2-4} \ge 0\)</div>
+            <div class="task"><span class="task-num">8.</span> \(|x-1| + |x-4| < 5\)</div>
+            <div class="task"><span class="task-num">9.</span> \(\frac{2^x - 4}{x-2} > 0\)</div>
+            <div class="task"><span class="task-num">10.</span> \(\frac{\ln(x-2)}{x-3} \ge 0\)</div>
+        </div>
+    </div>
+
+    <div class="part">
+        <h2>📏 Часть 2. Классические неравенства (Коши, Бернулли, Йенсен) — задачи 11–25</h2>
+        <div class="tasks-grid">
+            <div class="task"><span class="task-num">11.</span> \(a + \frac1a \ge 2,\ a>0\)</div>
+            <div class="task"><span class="task-num">12.</span> \(\frac{a+b+c}{3} \ge \sqrt[3]{abc},\ a,b,c\ge0\)</div>
+            <div class="task"><span class="task-num">13.</span> \((a+b)(b+c)(c+a) \ge 8abc\)</div>
+            <div class="task"><span class="task-num">14.</span> \(\frac{a}{b}+\frac{b}{a}\ge2,\ a,b>0\)</div>
+            <div class="task"><span class="task-num">15.</span> Найти минимум \(x+\frac{16}{x},\ x>0\)</div>
+            <div class="task"><span class="task-num">16.</span> \((1+x)^n \ge 1+nx\) (Бернулли, \(x\ge-1\))</div>
+            <div class="task"><span class="task-num">17.</span> Доказать \(2^n > n\)</div>
+            <div class="task"><span class="task-num">18.</span> \(\left(\frac{a+b}{2}\right)^2 \le \frac{a^2+b^2}{2}\)</div>
+            <div class="task"><span class="task-num">19.</span> \(\sqrt{\frac{a+b}{2}} \ge \frac{\sqrt{a}+\sqrt{b}}{2},\ a,b\ge0\)</div>
+            <div class="task"><span class="task-num">20.</span> При \(a^2+b^2+c^2=1\): \(\frac{a}{b+c}+\frac{b}{c+a}+\frac{c}{a+b}\ge\frac32\)</div>
+            <div class="task"><span class="task-num">21.</span> \(a+b+c=1\): \(\frac{a}{1+a}+\frac{b}{1+b}+\frac{c}{1+c}\le\frac34\)</div>
+            <div class="task"><span class="task-num">22.</span> \(x^2+y^2 \ge 2xy\)</div>
+            <div class="task"><span class="task-num">23.</span> \(\frac{a^2}{b}+\frac{b^2}{c}+\frac{c^2}{a} \ge a+b+c\)</div>
+            <div class="task"><span class="task-num">24.</span> \(x^2+y^2+z^2 \ge xy+yz+zx\)</div>
+            <div class="task"><span class="task-num">25.</span> \(xyz=1,\ x,y,z>0\) ⇒ \(x+y+z\ge3\)</div>
+        </div>
+    </div>
+
+    <div class="part">
+        <h2>🏆 Часть 3. Продвинутые олимпиадные неравенства — задачи 26–35</h2>
+        <div class="tasks-grid">
+            <div class="task"><span class="task-num">26.</span> \(a^3+b^3+c^3+3abc \ge \sum_{\text{sym}} a^2b\) (Шур)</div>
+            <div class="task"><span class="task-num">27.</span> \(a^3+b^3+c^3 \ge a^2b+b^2c+c^2a\) (при \(a\ge b\ge c\))</div>
+            <div class="task"><span class="task-num">28.</span> \(\frac{a}{\sqrt{a^2+8bc}}+\frac{b}{\sqrt{b^2+8ca}}+\frac{c}{\sqrt{c^2+8ab}}\ge1\) (IMO 2001)</div>
+            <div class="task"><span class="task-num">29.</span> \(\frac{a}{b+c}+\frac{b}{c+a}+\frac{c}{a+b}\ge\frac32\) (Несбитт)</div>
+            <div class="task"><span class="task-num">30.</span> \(\frac{a^2}{b^2}+\frac{b^2}{c^2}+\frac{c^2}{a^2}\ge\frac{a}{c}+\frac{b}{a}+\frac{c}{b}\)</div>
+            <div class="task"><span class="task-num">31.</span> Сформулировать теорему Караматы и привести пример</div>
+            <div class="task"><span class="task-num">32.</span> \((a+b)(b+c)(c+a)\ge\frac89(a+b+c)(ab+bc+ca)\)</div>
+            <div class="task"><span class="task-num">33.</span> Найти \(a\): \(\frac{x+3a-4}{x+a}>0\) для всех \(x\in[1;3]\)</div>
+            <div class="task"><span class="task-num">34.</span> Прямоугольный треугольник: \(a^4+a^2b^2+b^4\ge\frac34c^4\)</div>
+            <div class="task"><span class="task-num">35.</span> (повтор 28)</div>
+        </div>
+    </div>
+
+    <div class="part">
+        <h2>⚙️ Часть 4. Неравенства с параметрами — задачи 36–42</h2>
+        <div class="tasks-grid">
+            <div class="task"><span class="task-num">36.</span> Система \(\begin{cases}x^2+2x+a\le0\\ x^2-4x-6a\le0\end{cases}\) имеет единственное решение. Найти \(a\).</div>
+            <div class="task"><span class="task-num">37.</span> \(x+\sqrt{x(a-x)}=1\) имеет хотя бы одно решение.</div>
+            <div class="task"><span class="task-num">38.</span> \(x+\sqrt{a-x^2}=1\) имеет два различных решения.</div>
+            <div class="task"><span class="task-num">39.</span> \(\frac{x^2+px+1}{x^2-x+1}\le3\) для всех \(x\). Найти \(p\).</div>
+            <div class="task"><span class="task-num">40.</span> \(|x-2a|+|x+2a|\le4a\) имеет хотя бы одно решение.</div>
+            <div class="task"><span class="task-num">41.</span> \((a-2)x^2+2(a-3)x+a-4<0\) для всех \(x>0\).</div>
+            <div class="task"><span class="task-num">42.</span> \(\begin{cases}x^2+y^2\le a\\ x+y\ge2\end{cases}\) имеет решение.</div>
+        </div>
+    </div>
+
+    <div class="part">
+        <h2>🏁 Часть 5. Экстремальные и текстовые задачи — задачи 43–50</h2>
+        <div class="tasks-grid">
+            <div class="task"><span class="task-num">43.</span> Среди прямоугольников с периметром \(P\) найти наибольшую площадь.</div>
+            <div class="task"><span class="task-num">44.</span> Четыре трубы. Первая+третья заполняют за 40 мин, вторая+четвёртая за 50 мин. Найти max и min времени заполнения двумя любыми трубами.</div>
+            <div class="task"><span class="task-num">45.</span> Найти минимум \(x+\frac1x\) на \((0,\infty)\).</div>
+            <div class="task"><span class="task-num">46.</span> \(a+b+c=1,\ a,b,c>0\). Найти максимум \(abc\).</div>
+            <div class="task"><span class="task-num">47.</span> Несбитт (повтор 29).</div>
+            <div class="task"><span class="task-num">48.</span> \(\cos\left(\frac32-4x-x^2\right)\ge0\) на интервале \((-\frac{83}{20},0)\).</div>
+            <div class="task"><span class="task-num">49.</span> Точки \(k\sqrt2\) на прямой. Верно ли, что длина отрезка станет постоянной?</div>
+            <div class="task"><span class="task-num">50.</span> \(x^2+y^2+z^2=1\), найти максимум \(xy+yz+zx\).</div>
+        </div>
+    </div>
+
+    <footer>📐 Все задачи — для подготовки к олимпиадам. Решения — в практикуме.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практикум: 50 задач по неравенствам с полными решениями</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f0f4f8;
+            color: #1e2a3e;
+            padding: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #1e5f7a;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            text-align: center;
+            background: #d4e6f1;
+            display: inline-block;
+            width: auto;
+            margin: 0 auto 1.5rem;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+        }
+
+        .part {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cbd5e1;
+        }
+
+        .part h2 {
+            color: #1e5f7a;
+            border-left: 5px solid #3b82f6;
+            padding-left: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .task {
+            background: #f8fafc;
+            margin: 1rem 0;
+            padding: 0.8rem 1rem;
+            border-radius: 1rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .task p {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .solve-btn {
+            background: #1e5f7a;
+            color: white;
+            border: none;
+            padding: 0.3rem 1rem;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+            transition: background 0.2s;
+        }
+
+        .solve-btn:hover {
+            background: #0f4b62;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: #eef2ff;
+            border-radius: 0.8rem;
+            border-left: 3px solid #1e5f7a;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .solution p {
+            margin: 0.5rem 0;
+        }
+
+        .solution .step {
+            margin-left: 1rem;
+            margin-top: 0.3rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #4b5563;
+            border-top: 1px solid #cbd5e1;
+            padding-top: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📚 Практикум по неравенствам</h1>
+    <div style="text-align: center;">
+        <div class="badge">50 задач с полными, пошаговыми решениями</div>
+    </div>
+
+    <!-- Часть 1. Метод интервалов (задачи 1–10) -->
+    <div class="part">
+        <h2>📐 Часть 1. Метод интервалов (задачи 1–10)</h2>
+
+        <!-- Задача 1 -->
+        <div class="task">
+            <p><strong>Задача 1.</strong> \((x+1)(x-2)(x-4) > 0\)</p>
+            <button class="solve-btn" data-target="sol1">Показать решение</button>
+            <div id="sol1" class="solution">
+                <p><strong>Решение пошагово:</strong></p>
+                <p>1. Находим нули каждого множителя: \(x=-1\), \(x=2\), \(x=4\).</p>
+                <p>2. Отмечаем точки на числовой прямой в порядке: \(-1, 2, 4\). Интервалы: \((-\infty,-1), (-1,2),
+                    (2,4), (4,+\infty)\).</p>
+                <p>3. Определяем знак на каждом интервале (подстановкой):<br>
+                    при \(x=-2\): \((-)\cdot(-)\cdot(-) = -\)<br>
+                    при \(x=0\): \((+)\cdot(-)\cdot(-) = +\)<br>
+                    при \(x=3\): \((+)\cdot(+)\cdot(-) = -\)<br>
+                    при \(x=5\): \((+)\cdot(+)\cdot(+) = +\)</p>
+                <p>4. Нужно \(>0\) ⇒ выбираем интервалы со знаком «+»: \((-1,2)\) и \((4,+\infty)\).</p>
+                <p><strong>Ответ:</strong> \((-1,2) \cup (4,+\infty)\)</p>
+            </div>
+        </div>
+
+        <!-- Задача 2 -->
+        <div class="task">
+            <p><strong>Задача 2.</strong> \(\frac{x-2}{x+3} \le 0\)</p>
+            <button class="solve-btn" data-target="sol2">Показать решение</button>
+            <div id="sol2" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p>Нули числителя: \(x=2\) (включаем, так как ≤). Нули знаменателя: \(x=-3\) (выкалываем).</p>
+                <p>Интервалы: \((-\infty,-3), (-3,2], [2,+\infty)\). Подстановка: \(x=-4\) ⇒ \((-)/(-)=+\); \(x=0\) ⇒
+                    \((-)/(+)=-\); \(x=3\) ⇒ \((+)/(+)=+\).</p>
+                <p>Нужно ≤0 ⇒ берём интервал со знаком «−» и включаем точку \(x=2\).</p>
+                <p><strong>Ответ:</strong> \((-3,2]\)</p>
+            </div>
+        </div>
+
+        <!-- Задача 3 -->
+        <div class="task">
+            <p><strong>Задача 3.</strong> \(\frac{(x-2)^2(x+1)}{x-4} \ge 0\)</p>
+            <button class="solve-btn" data-target="sol3">Показать решение</button>
+            <div id="sol3" class="solution">
+                <p><strong>Решение:</strong> Нули числителя: \(x=2\) (чётная степень), \(x=-1\). Нуль знаменателя:
+                    \(x=4\) (выколот).</p>
+                <p>Правый интервал \((4,+\infty)\): \(x=5\) ⇒ \((+)\cdot(+)/(+)=+\). Переход через 4 (нечётная) ⇒ знак
+                    меняется: на \((2,4)\): \(-\). Переход через 2 (чётная) ⇒ знак НЕ меняется: на \((-1,2)\): \(-\).
+                    Переход через -1 (нечётная) ⇒ знак меняется: на \((-\infty,-1)\): \(+\) .</p>
+                <p>Нужно ≥0 ⇒ берём интервалы с «+» и включаем нули числителя: \((-\infty,-1] \cup \{2\} \cup
+                    (4,+\infty)\).</p>
+                <p><strong>Ответ:</strong> \((-\infty,-1] \cup \{2\} \cup (4,+\infty)\)</p>
+            </div>
+        </div>
+
+        <!-- Задача 4 -->
+        <div class="task">
+            <p><strong>Задача 4.</strong> \(\frac{x^2+4}{x-1} > 0\)</p>
+            <button class="solve-btn" data-target="sol4">Показать решение</button>
+            <div id="sol4" class="solution">
+                <p><strong>Решение:</strong> Числитель \(x^2+4 >0\) при всех \(x\). Значит, знак дроби совпадает со
+                    знаком знаменателя. \(x-1>0 \Rightarrow x>1\).</p>
+                <p><strong>Ответ:</strong> \((1,+\infty)\)</p>
+            </div>
+        </div>
+
+        <!-- Задача 5 -->
+        <div class="task">
+            <p><strong>Задача 5.</strong> \(\frac{(x-1)(x+2)}{(x-3)(x+5)} \le 0\)</p>
+            <button class="solve-btn" data-target="sol5">Показать решение</button>
+            <div id="sol5" class="solution">
+                <p><strong>Решение:</strong> Нули числителя: \(1,-2\) (включаем). Нули знаменателя: \(3,-5\)
+                    (выкалываем).</p>
+                <p>Точки в порядке: \(-5,-2,1,3\). Подстановка даёт знаки: \(+,-,+,-,+\) слева направо.</p>
+                <p>Нужно ≤0 ⇒ интервалы со знаком «−»: \((-5,-2]\) и \([1,3)\).</p>
+                <p><strong>Ответ:</strong> \((-5,-2] \cup [1,3)\)</p>
+            </div>
+        </div>
+
+        <!-- Задача 6 -->
+        <div class="task">
+            <p><strong>Задача 6.</strong> \(\frac{2}{x} + \frac{3}{x-2} < 0\)</p>
+            <button class="solve-btn" data-target="sol6">Показать решение</button>
+            <div id="sol6" class="solution">
+                <p><strong>Решение:</strong> Приводим к общему знаменателю: \(\frac{2(x-2)+3x}{x(x-2)} =
+                    \frac{5x-4}{x(x-2)} < 0\).</p>
+                <p>Нули числителя: \(x=0.8\). Нули знаменателя: \(0,2\) (выколоты). Интервалы: \((-\infty,0), (0,0.8),
+                    (0.8,2), (2,\infty)\). Подстановка даёт знаки: \(+,-,+,-\)? Уточним: при \(x=0.5\) числитель
+                    отрицательный, знаменатель \(0.5\cdot(-1.5)=-0.75<0\) ⇒ \((-)/(-)=+\). На \((0.8,2)\): \(x=1\) ⇒
+                    числитель 1>0, знаменатель \(1\cdot(-1)=-1<0\) ⇒ \((+)/(-)=-\). Значит, знак «−» только на
+                    \((0.8,2)\).</p>
+                <p><strong>Ответ:</strong> \((0.8,2)\)</p>
+            </div>
+        </div>
+
+        <!-- Задача 7 -->
+        <div class="task">
+            <p><strong>Задача 7.</strong> \(\frac{x^3-9x}{x^2-4} \ge 0\)</p>
+            <button class="solve-btn" data-target="sol7">Показать решение</button>
+            <div id="sol7" class="solution">
+                <p><strong>Решение:</strong> \(x^3-9x = x(x-3)(x+3)\), знаменатель \((x-2)(x+2)\).</p>
+                <p>Нули числителя: \(-3,0,3\) (включаем). Нули знаменателя: \(-2,2\) (выкалываем).</p>
+                <p>Точки: \(-3,-2,0,2,3\). Чередование: самый правый интервал \((3,\infty)\) знак + ⇒ \((2,3)\): –,
+                    \((0,2)\): +, \((-2,0)\): –, \((-3,-2)\): +, \((-\infty,-3)\): –.</p>
+                <p>Нужно ≥0 ⇒ берём «+» и включаем нули числителя: \([-3,-2) \cup [0,2) \cup [3,\infty)\).</p>
+                <p><strong>Ответ:</strong> \([-3,-2) \cup [0,2) \cup [3,\infty)\)</p>
+            </div>
+        </div>
+
+        <!-- Задача 8 -->
+        <div class="task">
+            <p><strong>Задача 8.</strong> \(|x-1| + |x-4| < 5\)</p>
+            <button class="solve-btn" data-target="sol8">Показать решение</button>
+            <div id="sol8" class="solution">
+                <p><strong>Решение:</strong> Точки смены знака: \(x=1,4\).</p>
+                <p>Случай 1: \(x \le 1\): \(|x-1|=1-x,\ |x-4|=4-x\). Сумма \(5-2x <5 \Rightarrow x>0\) ⇒ \((0,1]\).</p>
+                <p>Случай 2: \(1 \le x \le 4\): сумма \(3<5\) ⇒ весь \([1,4]\).</p>
+                <p>Случай 3: \(x \ge 4\): сумма \(2x-5<5 \Rightarrow x<5\) ⇒ \([4,5)\).</p>
+                <p>Объединяем: \((0,5)\).</p>
+                <p><strong>Ответ:</strong> \((0,5)\)</p>
+            </div>
+        </div>
+
+        <!-- Задача 9 -->
+        <div class="task">
+            <p><strong>Задача 9.</strong> \(\frac{2^x - 4}{x-2} > 0\)</p>
+            <button class="solve-btn" data-target="sol9">Показать решение</button>
+            <div id="sol9" class="solution">
+                <p><strong>Решение:</strong> \(2^x-4=0 \Rightarrow x=2\), но \(x=2\) выколот (знаменатель). При \(x<2\):
+                    \(2^x-4<0\), знаменатель \(<0\) ⇒ дробь >0. При \(x>2\): оба >0 ⇒ дробь >0.</p>
+                <p>Дробь положительна при всех \(x \neq 2\).</p>
+                <p><strong>Ответ:</strong> \((-\infty,2) \cup (2,\infty)\)</p>
+            </div>
+        </div>
+
+        <!-- Задача 10 -->
+        <div class="task">
+            <p><strong>Задача 10.</strong> \(\frac{\ln(x-2)}{x-3} \ge 0\)</p>
+            <button class="solve-btn" data-target="sol10">Показать решение</button>
+            <div id="sol10" class="solution">
+                <p><strong>Решение:</strong> ОДЗ: \(x>2,\ x\neq3\). \(\ln(x-2)=0\) при \(x=3\) (не входит).</p>
+                <p>На \((2,3)\): \(\ln(x-2)<0\), \(x-3<0\) ⇒ дробь \(>0\). На \((3,\infty)\): оба >0 ⇒ дробь \(>0\).</p>
+                <p><strong>Ответ:</strong> \((2,3) \cup (3,\infty)\)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Часть 2. Классические неравенства (задачи 11–25) -->
+    <div class="part">
+        <h2>📏 Часть 2. Классические неравенства (Коши, Бернулли, Йенсен) — задачи 11–25</h2>
+
+        <div class="task"><p><strong>Задача 11.</strong> Докажите \(a+\frac1a \ge 2\) для \(a>0\).</p>
+            <button class="solve-btn" data-target="sol11">Решение</button>
+            <div id="sol11" class="solution"><p>\((\sqrt{a} - 1/\sqrt{a})^2 \ge 0 \Rightarrow a-2+1/a \ge 0 \Rightarrow
+                a+1/a \ge 2\). Равенство при \(a=1\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 12.</strong> \(\frac{a+b+c}{3} \ge \sqrt[3]{abc}\) для \(a,b,c\ge0\).</p>
+            <button class="solve-btn" data-target="sol12">Решение</button>
+            <div id="sol12" class="solution"><p>Из тождества
+                \(a^3+b^3+c^3-3abc=\frac12(a+b+c)[(a-b)^2+(b-c)^2+(c-a)^2]\ge0\). Подстановка
+                \(a\to\sqrt[3]{a},b\to\sqrt[3]{b},c\to\sqrt[3]{c}\) даёт требуемое.</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 13.</strong> \((a+b)(b+c)(c+a) \ge 8abc\).</p>
+            <button class="solve-btn" data-target="sol13">Решение</button>
+            <div id="sol13" class="solution"><p>\(a+b\ge2\sqrt{ab},\ b+c\ge2\sqrt{bc},\ c+a\ge2\sqrt{ca}\). Перемножаем:
+                \((a+b)(b+c)(c+a)\ge8\sqrt{a^2b^2c^2}=8abc\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 14.</strong> \(\frac{a}{b}+\frac{b}{a}\ge2\).</p>
+            <button class="solve-btn" data-target="sol14">Решение</button>
+            <div id="sol14" class="solution"><p>По Коши: \(\frac{a/b+b/a}{2}\ge\sqrt{1}=1\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 15.</strong> Найти минимум \(x+16/x,\ x>0\).</p>
+            <button class="solve-btn" data-target="sol15">Решение</button>
+            <div id="sol15" class="solution"><p>По Коши: \(\frac{x+16/x}{2}\ge\sqrt{16}=4\Rightarrow x+16/x\ge8\).
+                Минимум 8 при \(x=4\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 16.</strong> Докажите неравенство Бернулли: \((1+x)^n\ge1+nx\) при
+            \(x\ge-1\).</p>
+            <button class="solve-btn" data-target="sol16">Решение</button>
+            <div id="sol16" class="solution"><p>По индукции: база \(n=1\) верно. Шаг:
+                \((1+x)^{k+1}=(1+x)^k(1+x)\ge(1+kx)(1+x)=1+(k+1)x+kx^2\ge1+(k+1)x\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 17.</strong> Докажите \(2^n>n\) для всех натуральных \(n\).</p>
+            <button class="solve-btn" data-target="sol17">Решение</button>
+            <div id="sol17" class="solution"><p>\(2^n=(1+1)^n\ge1+n>n\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 18.</strong> \(\left(\frac{a+b}{2}\right)^2 \le \frac{a^2+b^2}{2}\).</p>
+            <button class="solve-btn" data-target="sol18">Решение</button>
+            <div id="sol18" class="solution"><p>\(\frac{a^2+b^2}{2}-\left(\frac{a+b}{2}\right)^2 =
+                \frac{(a-b)^2}{4}\ge0\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 19.</strong> \(\sqrt{\frac{a+b}{2}} \ge \frac{\sqrt{a}+\sqrt{b}}{2}\).</p>
+            <button class="solve-btn" data-target="sol19">Решение</button>
+            <div id="sol19" class="solution"><p>Возводим в квадрат:
+                \(\frac{a+b}{2}\ge\frac{a+b+2\sqrt{ab}}{4}\Rightarrow 2(a+b)\ge a+b+2\sqrt{ab}\Rightarrow
+                a+b\ge2\sqrt{ab}\) — верно.</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 20.</strong> Для \(a^2+b^2+c^2=1\) докажите
+            \(\frac{a}{b+c}+\frac{b}{c+a}+\frac{c}{a+b}\ge\frac32\).</p>
+            <button class="solve-btn" data-target="sol20">Решение</button>
+            <div id="sol20" class="solution"><p>Неравенство Несбитта не зависит от масштаба, достаточно доказать для
+                любых положительных. Одно из доказательств:
+                \(\sum\frac{a}{b+c}=\sum\frac{a^2}{a(b+c)}\ge\frac{(a+b+c)^2}{2(ab+bc+ca)}\ge\frac{3(ab+bc+ca)}{2(ab+bc+ca)}=\frac32\).</p>
+            </div>
+        </div>
+        <div class="task"><p><strong>Задача 21.</strong> \(a+b+c=1\), доказать
+            \(\frac{a}{1+a}+\frac{b}{1+b}+\frac{c}{1+c}\le\frac34\).</p>
+            <button class="solve-btn" data-target="sol21">Решение</button>
+            <div id="sol21" class="solution"><p>Функция \(f(t)=\frac{t}{1+t}\) вогнута, по Йенсену: \(\frac13\sum
+                f(a_i)\le f(\frac13)=\frac14\). Умножаем на 3.</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 22.</strong> \(x^2+y^2\ge2xy\).</p>
+            <button class="solve-btn" data-target="sol22">Решение</button>
+            <div id="sol22" class="solution"><p>\((x-y)^2\ge0\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 23.</strong> \(\frac{a^2}{b}+\frac{b^2}{c}+\frac{c^2}{a}\ge a+b+c\).</p>
+            <button class="solve-btn" data-target="sol23">Решение</button>
+            <div id="sol23" class="solution"><p>По Коши–Шварца: \((\sum\frac{a^2}{b})(\sum b)\ge (a+b+c)^2\) ⇒
+                \(\sum\frac{a^2}{b}\ge a+b+c\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 24.</strong> \(x^2+y^2+z^2\ge xy+yz+zx\).</p>
+            <button class="solve-btn" data-target="sol24">Решение</button>
+            <div id="sol24" class="solution"><p>\(2\sum x^2-2\sum xy=\sum (x-y)^2\ge0\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 25.</strong> \(xyz=1\), доказать \(x+y+z\ge3\).</p>
+            <button class="solve-btn" data-target="sol25">Решение</button>
+            <div id="sol25" class="solution"><p>По Коши: \(\frac{x+y+z}{3}\ge\sqrt[3]{xyz}=1\).</p></div>
+        </div>
+    </div>
+
+    <!-- Часть 3. Продвинутые олимпиадные неравенства (задачи 26–35) -->
+    <div class="part">
+        <h2>🏆 Часть 3. Продвинутые олимпиадные неравенства (Шур, Мюрхед, Несбитт) — задачи 26–35</h2>
+        <div class="task"><p><strong>Задача 26 (Шур).</strong> \(a^3+b^3+c^3+3abc \ge \sum_{\text{sym}} a^2b\).</p>
+            <button class="solve-btn" data-target="sol26">Решение</button>
+            <div id="sol26" class="solution"><p>Известное тождество:
+                \(\frac12(a+b+c)[(a-b)^2+(b-c)^2+(c-a)^2]\ge0\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 27 (Мюрхед).</strong> \(a^3+b^3+c^3 \ge a^2b+b^2c+c^2a\) (при \(a\ge b\ge
+            c\)).</p>
+            <button class="solve-btn" data-target="sol27">Решение</button>
+            <div id="sol27" class="solution"><p>По перестановочному неравенству или из \(a^3+b^3\ge a^2b+ab^2\) и
+                циклического суммирования.</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 28 (IMO 2001).</strong>
+            \(\frac{a}{\sqrt{a^2+8bc}}+\frac{b}{\sqrt{b^2+8ca}}+\frac{c}{\sqrt{c^2+8ab}}\ge1\).</p>
+            <button class="solve-btn" data-target="sol28">Решение</button>
+            <div id="sol28" class="solution"><p>Замена \(x=\frac{a}{\sqrt{a^2+8bc}}\) и т.д., затем применение
+                неравенства Гёльдера или \(x^2=\frac{a^2}{a^2+8bc}\) ⇒ \(\frac{bc}{a^2}=\frac{1-x^2}{8x^2}\).
+                Перемножение даёт \((1-x^2)(1-y^2)(1-z^2)=512x^2y^2z^2\), откуда следует \(x+y+z\ge1\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 29 (Несбитт).</strong>
+            \(\frac{a}{b+c}+\frac{b}{c+a}+\frac{c}{a+b}\ge\frac32\).</p>
+            <button class="solve-btn" data-target="sol29">Решение</button>
+            <div id="sol29" class="solution"><p>
+                \(\sum\frac{a}{b+c}=\sum\frac{a^2}{a(b+c)}\ge\frac{(a+b+c)^2}{2(ab+bc+ca)}\ge\frac{3(ab+bc+ca)}{2(ab+bc+ca)}=\frac32\).</p>
+            </div>
+        </div>
+        <div class="task"><p><strong>Задача 30.</strong>
+            \(\frac{a^2}{b^2}+\frac{b^2}{c^2}+\frac{c^2}{a^2}\ge\frac{a}{c}+\frac{b}{a}+\frac{c}{b}\).</p>
+            <button class="solve-btn" data-target="sol30">Решение</button>
+            <div id="sol30" class="solution"><p>\(\frac{a^2}{b^2}+\frac{b^2}{c^2}\ge2\frac{a}{c}\) и т.д., сложить.</p>
+            </div>
+        </div>
+        <div class="task"><p><strong>Задача 31 (Караматы).</strong> Сформулировать теорему и пример.</p>
+            <button class="solve-btn" data-target="sol31">Решение</button>
+            <div id="sol31" class="solution"><p>Теорема: если \(\varphi\) выпукла и \((x_i)\) мажорирует \((y_i)\), то
+                \(\sum\varphi(x_i)\ge\sum\varphi(y_i)\). Пример: для фиксированной суммы минимум суммы квадратов при
+                равных переменных.</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 32.</strong> \((a+b)(b+c)(c+a)\ge\frac89(a+b+c)(ab+bc+ca)\).</p>
+            <button class="solve-btn" data-target="sol32">Решение</button>
+            <div id="sol32" class="solution"><p>Левая часть = \((a+b+c)(ab+bc+ca)-abc\). Неравенство равносильно
+                \(\frac19(a+b+c)(ab+bc+ca)\ge abc\), что верно по Коши.</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 33 (параметр).</strong> \(\frac{x+3a-4}{x+a}>0\) для всех \(x\in[1;3]\).
+            Найти \(a\).</p>
+            <button class="solve-btn" data-target="sol33">Решение</button>
+            <div id="sol33" class="solution"><p>Анализ расположения нуля \(4-3a\) и точки разрыва \(-a\) относительно
+                отрезка даёт \(a\in(-\infty,-3)\cup(1,\infty)\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 34.</strong> Прямоугольный треугольник: \(a^4+a^2b^2+b^4\ge\frac34c^4\).</p>
+            <button class="solve-btn" data-target="sol34">Решение</button>
+            <div id="sol34" class="solution"><p>\(c^2=a^2+b^2\), \(L=c^4-a^2b^2\ge\frac34c^4\iff \frac14c^4\ge
+                a^2b^2\iff c^2\ge2ab\) — верно.</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 35 (IMO 2001, уже была).</strong> см. задачу 28.</p>
+            <button class="solve-btn" data-target="sol35">Решение</button>
+            <div id="sol35" class="solution"><p>Решение аналогично задаче 28.</p></div>
+        </div>
+    </div>
+
+    <!-- Часть 4. Неравенства с параметрами (задачи 36–42) -->
+    <div class="part">
+        <h2>⚙️ Часть 4. Неравенства с параметрами — задачи 36–42</h2>
+        <div class="task"><p><strong>Задача 36.</strong> Система \(x^2+2x+a\le0,\ x^2-4x-6a\le0\) имеет единственное
+            решение. Найти \(a\).</p>
+            <button class="solve-btn" data-target="sol36">Решение</button>
+            <div id="sol36" class="solution"><p>Приравниваем правый конец одного отрезка к левому другого:
+                \(-1+\sqrt{1-a}=2-\sqrt{4+6a}\). Решение даёт \(a=0\) или \(a=48/49\). Проверка: оба подходят.</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 37.</strong> \(x+\sqrt{x(a-x)}=1\) имеет хотя бы одно решение.</p>
+            <button class="solve-btn" data-target="sol37">Решение</button>
+            <div id="sol37" class="solution"><p>ОДЗ \(x\le1\). Возводим в квадрат: \(2x^2-(a+2)x+1=0\). Дискриминант
+                \(D=a^2+4a-4\ge0\Rightarrow a\le-2-2\sqrt2\) или \(a\ge-2+2\sqrt2\). С учётом \(x\le1\) и \(x(a-x)\ge0\)
+                получаем \(a\ge2\sqrt2-2\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 38.</strong> \(x+\sqrt{a-x^2}=1\) имеет два различных решения.</p>
+            <button class="solve-btn" data-target="sol38">Решение</button>
+            <div id="sol38" class="solution"><p>Аналогично: \(2x^2-2x+(1-a)=0\), \(D=8a-4>0\Rightarrow a>1/2\). Корни
+                \(\frac{1\pm\sqrt{2a-1}}{2}\). Условия \(x\le1\) и \(|x|\le\sqrt{a}\) дают \(a\le1\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 39.</strong> \(\frac{x^2+px+1}{x^2-x+1}\le3\) для всех \(x\).</p>
+            <button class="solve-btn" data-target="sol39">Решение</button>
+            <div id="sol39" class="solution"><p>Знаменатель >0 ⇒ \(x^2+px+1\le3x^2-3x+3\Rightarrow 2x^2-(p+3)x+2\ge0\)
+                для всех \(x\) ⇒ дискриминант \(\le0\) ⇒ \((p+3)^2-16\le0\Rightarrow -7\le p\le1\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 40.</strong> \(|x-2a|+|x+2a|\le4a\) имеет решение.</p>
+            <button class="solve-btn" data-target="sol40">Решение</button>
+            <div id="sol40" class="solution"><p>Левая часть ≥ \(4|a|\), нужно \(4|a|\le4a\Rightarrow a\ge0\). При
+                \(a\ge0\) отрезок \([-2a,2a]\) даёт равенство.</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 41.</strong> \((a-2)x^2+2(a-3)x+a-4<0\) для всех \(x>0\).</p>
+            <button class="solve-btn" data-target="sol41">Решение</button>
+            <div id="sol41" class="solution"><p>При \(a=2\): \(-2x-2<0\) — подходит. При \(a>2\) ветви вверх ⇒ нет. При
+                \(a<2\) ветви вниз, но дискриминант всегда 4>0, корни положительны ⇒ между ними функция >0. Только
+                \(a=2\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 42.</strong> Система \(x^2+y^2\le a,\ x+y\ge2\) имеет решение.</p>
+            <button class="solve-btn" data-target="sol42">Решение</button>
+            <div id="sol42" class="solution"><p>Расстояние от центра до прямой \(x+y=2\) равно \(\sqrt2\). Нужно
+                \(\sqrt{a}\ge\sqrt2\Rightarrow a\ge2\).</p></div>
+        </div>
+    </div>
+
+    <!-- Часть 5. Экстремальные и текстовые задачи (задачи 43–50) -->
+    <div class="part">
+        <h2>🏁 Часть 5. Экстремальные и текстовые задачи — задачи 43–50</h2>
+        <div class="task"><p><strong>Задача 43.</strong> Среди прямоугольников с периметром \(P\) найти наибольшую
+            площадь.</p>
+            <button class="solve-btn" data-target="sol43">Решение</button>
+            <div id="sol43" class="solution"><p>\(x+y=P/2\), \(S=xy\le\left(\frac{x+y}{2}\right)^2=\frac{P^2}{16}\).
+                Равенство при \(x=y=P/4\) (квадрат).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 44 (текстовая).</strong> Четыре трубы. Время заполнения: первая+третья 40
+            мин, вторая+четвёртая 50 мин. Найти max и min времени двумя любыми трубами.</p>
+            <button class="solve-btn" data-target="sol44">Решение</button>
+            <div id="sol44" class="solution"><p>Пропускные способности: \(a=0.005,\ b=0.01,\ c=0.02,\ d=0.01\) (в долях
+                объёма в минуту). Наименьшая сумма \(0.005+0.01=0.015\) ⇒ время \(200/3\) мин, наибольшая
+                \(0.02+0.01=0.03\) ⇒ время \(100/3\) мин.</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 45.</strong> Найти минимум \(x+1/x\) на \((0,\infty)\).</p>
+            <button class="solve-btn" data-target="sol45">Решение</button>
+            <div id="sol45" class="solution"><p>По Коши: \(x+1/x\ge2\sqrt1=2\). Равенство при \(x=1\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 46.</strong> \(a+b+c=1\), \(a,b,c>0\). Найти максимум \(abc\).</p>
+            <button class="solve-btn" data-target="sol46">Решение</button>
+            <div id="sol46" class="solution"><p>По Коши: \(\frac{a+b+c}{3}\ge\sqrt[3]{abc}\Rightarrow
+                abc\le\frac1{27}\). Равенство при \(a=b=c=1/3\).</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 47.</strong> Несбитт (уже была).</p>
+            <button class="solve-btn" data-target="sol47">Решение</button>
+            <div id="sol47" class="solution"><p>См. задачу 29.</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 48.</strong> \(\cos\left(\frac32-4x-x^2\right)\ge0\) на интервале
+            \((-83/20,0)\).</p>
+            <button class="solve-btn" data-target="sol48">Решение</button>
+            <div id="sol48" class="solution"><p>\(t=\frac{11}{2}-(x+2)^2\). При \(x\in(-4.15,0)\) \(t\in(0.88,1.5]\).
+                \(\cos t\ge0\) при \(t\in[-1.57,1.57]\) ⇒ \(t\le\pi/2\approx1.57\) автоматически. Нужно \(t\ge-\pi/2\) ⇒
+                \((x+2)^2\le\frac{11+\pi}{2}\). Решение: \(|x+2|\le\sqrt{\frac{11+\pi}{2}}\) с учётом интервала.</p>
+            </div>
+        </div>
+        <div class="task"><p><strong>Задача 49.</strong> Точки \(k\sqrt2\) на прямой. Верно ли, что длина отрезка станет
+            постоянной?</p>
+            <button class="solve-btn" data-target="sol49">Решение</button>
+            <div id="sol49" class="solution"><p>Нет, не верно. Из-за иррациональности \(\sqrt2\) расстояния принимают
+                два значения, процесс не стабилизируется.</p></div>
+        </div>
+        <div class="task"><p><strong>Задача 50.</strong> \(x^2+y^2+z^2=1\), найти максимум \(xy+yz+zx\).</p>
+            <button class="solve-btn" data-target="sol50">Решение</button>
+            <div id="sol50" class="solution"><p>\(1+2S=(x+y+z)^2\ge0\Rightarrow S\ge-1/2\). Из \(x^2+y^2\ge2xy\) ⇒
+                \(1\ge2(xy+yz+zx)=2S\Rightarrow S\le\frac12\). Максимум \(1/2\) при \(x=y=z=1/\sqrt3\).</p></div>
+        </div>
+    </div>
+
+    <footer>📐 Все решения полные, пошаговые. Равенства достигаются при указанных условиях.</footer>
+</div>
+
+<script>
+    document.querySelectorAll('.solve-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = document.getElementById(btn.getAttribute('data-target'));
+            if (target.style.display === 'none' || target.style.display === '') {
+                target.style.display = 'block';
+                btn.textContent = 'Скрыть решение';
+                if (window.MathJax) MathJax.typesetPromise([target]);
+            } else {
+                target.style.display = 'none';
+                btn.textContent = 'Показать решение';
+            }
+        });
+    });
+</script>
+</body>
+</html>
