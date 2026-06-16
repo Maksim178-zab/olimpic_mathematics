@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача Ферма–Торричелли | Теория + практика</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #fef9e6;
+            color: #2d3e2b;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #b85c1a, #a0522d);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .badge {
+            background: #f3e0be;
+            display: inline-block;
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f0dbc0;
+        }
+
+        .card h2 {
+            color: #a0522d;
+            border-left: 6px solid #f59e0b;
+            padding-left: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+
+        .theorem {
+            background: #fff7e6;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #f59e0b;
+        }
+
+        .proof {
+            background: #fef9e3;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #b85c1a;
+        }
+
+        .example {
+            background: #e6f7f0;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .visual {
+            background: #e0f2fe;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #0284c7;
+        }
+
+        .task {
+            background: #fef9e6;
+            margin: 1.2rem 0;
+            padding: 1rem 1.2rem;
+            border-radius: 1.2rem;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .solve-btn {
+            background: #b85c1a;
+            color: white;
+            border: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .solve-btn:hover {
+            background: #8e4512;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: #fef3c7;
+            border-radius: 0.8rem;
+            border-left: 3px solid #b85c1a;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2d5b6;
+            color: #6b5b3e;
+            font-size: 0.85rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #6b5b3e;
+            padding: 0.5rem 1rem;
+            border-left: 3px solid #a0522d;
+            margin: 0.8rem 0;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1.2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📐 Задача Ферма–Торричелли</h1>
+        <div class="badge">Минимум суммы расстояний до вершин треугольника</div>
+    </header>
+
+    <div class="card">
+        <h2>📖 История задачи</h2>
+        <div class="example">
+            <p>Эта задача насчитывает более <strong>трёх с половиной столетий</strong>. Ею интересовались Кавальери,
+                Торричелли и Ферма.</p>
+            <p><strong>Постановка:</strong> Дан треугольник \(ABC\). Найти точку \(T\) в плоскости, для которой сумма
+                расстояний до вершин</p>
+            \[
+            TA + TB + TC
+            \]
+            <p><strong>минимальна</strong>. Эта точка называется <strong>точкой Ферма–Торричелли</strong>.</p>
+        </div>
+        <div class="quote">«Геометрия — это искусство правильно рассуждать на неправильных чертежах.»</div>
+    </div>
+
+    <div class="card">
+        <h2>🏭 Практический смысл</h2>
+        <div class="example">
+            <p>Представьте: в трёх пунктах \(A, B, C\) добываются полезные ископаемые, которые нужно свозить на
+                центральную станцию \(T\).</p>
+            <p><strong>Где построить станцию, чтобы общая длина дорог была минимальной?</strong></p>
+            <p>Ответ — в точке Ферма–Торричелли.</p>
+            <p>Эта задача используется в логистике, прокладке дорог, связи — везде, где нужно соединить три объекта с
+                минимальными затратами.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🔑 Ключевой факт: угол 120°</h2>
+        <div class="theorem">
+            Если все углы треугольника <strong>меньше 120°</strong>, то точка Ферма–Торричелли — это единственная точка,
+            из которой <strong>все стороны треугольника видны под углом 120°</strong>:
+            \[
+            \angle ATB = \angle BTC = \angle CTA = 120^\circ
+            \]
+        </div>
+        <div class="visual">
+            <p><strong>Наглядное объяснение (почему 120°?):</strong></p>
+            <p>Представьте, что вы стоите в точке \(T\) и смотрите на стороны треугольника. Если угол между
+                направлениями на любые две вершины равен 120°, то силы «притяжения» к вершинам уравновешены. Это точка
+                равновесия, в которой сумма расстояний минимальна.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>⚠️ Особый случай: угол ≥ 120°</h2>
+        <div class="theorem">
+            Если один из углов треугольника <strong>больше или равен 120°</strong>, точка минимума совпадает с <strong>вершиной
+            этого тупого угла</strong>.
+        </div>
+        <div class="example">
+            <p><strong>Почему?</strong></p>
+            <p>Представьте, что вы пытаетесь минимизировать сумму расстояний до вершин очень тупого треугольника.</p>
+            <p>Сумма расстояний от тупой вершины до двух других как раз равна расстоянию между ними (по неравенству
+                треугольника: \(AB \le AC + BC\), и если угол \(C\) тупой, то \(AB\) почти равно \(AC+BC\)).</p>
+            <p>Любая другая точка даст бо́льшую сумму.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📐 Построение точки Ферма–Торричелли</h2>
+        <div class="proof">
+            <p><strong>Метод Штейнера (классическое геометрическое построение):</strong></p>
+            <p><strong>Шаг 1.</strong> На каждой стороне треугольника \(ABC\) <strong>наружу</strong> строим
+                равносторонний треугольник.</p>
+            <p><strong>Шаг 2.</strong> Соединяем свободные вершины этих треугольников с противоположными вершинами
+                исходного треугольника.</p>
+            <p><strong>Шаг 3.</strong> Эти три отрезка пересекаются в <strong>одной точке</strong> — это и есть точка
+                Ферма–Торричелли.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🔄 Метод «выстраивания отрезков в линию» (доказательство)</h2>
+        <div class="visual">
+            <p><strong>Ключевая идея доказательства минимальности:</strong></p>
+            <p>С помощью <strong>поворота плоскости</strong> на \(60^\circ\) мы выстраиваем три отрезка \(TA, TB, TC\) в
+                одну ломаную.</p>
+            <p><strong>Как это работает (по шагам):</strong></p>
+            <p><strong>Шаг 1.</strong> Повернём треугольник \(BTC\) вокруг точки \(B\) на \(60^\circ\).</p>
+            <p><strong>Шаг 2.</strong> Тогда отрезок \(TC\) перейдёт в \(TC'\), а \(BT\) — в \(BT'\). Точки \(C\) и
+                \(C'\) связаны поворотом.</p>
+            <p><strong>Шаг 3.</strong> Точки \(A, T, T', C'\) окажутся на одной прямой <strong>именно тогда</strong>,
+                когда \(\angle ATB = 120^\circ\).</p>
+            <p><strong>Шаг 4.</strong> Длина \(AT + BT + CT\) равна длине прямой \(AC'\) (потому что ломаная
+                выпрямилась).</p>
+            <p><strong>Шаг 5.</strong> По неравенству треугольника, длина ломаной минимальна, когда её звенья лежат на
+                одной прямой.</p>
+            <p><strong>Вывод:</strong> Минимум достигается именно при угле \(120^\circ\) между отрезками.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>✍️ Практика</h2>
+
+        <div class="task">
+            <p><strong>Задача 1.</strong> Для равностороннего треугольника со стороной \(a\) найдите точку
+                Ферма–Торричелли и минимальную сумму расстояний.</p>
+            <button class="solve-btn" data-target="sol1">Показать решение</button>
+            <div id="sol1" class="solution">
+                <p><strong>Решение (пошагово):</strong></p>
+                <p><strong>Шаг 1.</strong> В равностороннем треугольнике все углы равны \(60^\circ\), что меньше
+                    \(120^\circ\). Значит, точка Ферма существует.</p>
+                <p><strong>Шаг 2.</strong> Из-за симметрии точка Ферма совпадает с центром треугольника (точкой
+                    пересечения медиан, биссектрис и высот).</p>
+                <p><strong>Шаг 3.</strong> Расстояние от центра равностороннего треугольника до вершины: \(R =
+                    \frac{a}{\sqrt{3}}\).</p>
+                <p><strong>Шаг 4.</strong> Сумма расстояний до трёх вершин: \(3R = \sqrt{3} \cdot a\).</p>
+                <p><strong>Ответ:</strong> \( \sqrt{3}a\).</p>
+            </div>
+        </div>
+
+        <div class="task">
+            <p><strong>Задача 2.</strong> В треугольнике с углами \(50^\circ, 60^\circ, 70^\circ\) найдите
+                приблизительное положение точки Ферма–Торричелли.</p>
+            <button class="solve-btn" data-target="sol2">Показать решение</button>
+            <div id="sol2" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p><strong>Шаг 1.</strong> Все углы меньше \(120^\circ\) (50°, 60°, 70°), значит, точка Ферма
+                    существует.</p>
+                <p><strong>Шаг 2.</strong> Из неё все стороны треугольника видны под углом \(120^\circ\).</p>
+                <p><strong>Шаг 3.</strong> Построение: на каждой стороне строим равносторонние треугольники наружу,
+                    соединяем свободные вершины — точка пересечения даёт искомую точку.</p>
+            </div>
+        </div>
+
+        <div class="task">
+            <p><strong>Задача 3 (олимпиадная).</strong> Дан треугольник с углом \(130^\circ\). Где находится точка
+                минимума суммы расстояний до вершин?</p>
+            <button class="solve-btn" data-target="sol3">Показать решение</button>
+            <div id="sol3" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p><strong>Шаг 1.</strong> Так как угол \(130^\circ > 120^\circ\), мы находимся в особом случае.</p>
+                <p><strong>Шаг 2.</strong> По теореме, точка минимума совпадает с <strong>вершиной этого тупого
+                    угла</strong>.</p>
+                <p><strong>Почему?</strong> Сумма расстояний от тупой вершины до двух других равна расстоянию между ними
+                    (по неравенству треугольника), и любая другая точка даст бо́льшую сумму.</p>
+                <p><strong>Ответ:</strong> В вершине тупого угла.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>📐 Задача Ферма–Торричелли — классика геометрической оптимизации</footer>
+</div>
+<script>
+    document.querySelectorAll('.solve-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const t = document.getElementById(btn.getAttribute('data-target'));
+            if (t.style.display === 'none' || t.style.display === '') {
+                t.style.display = 'block';
+                btn.textContent = 'Скрыть решение';
+                if (window.MathJax) MathJax.typesetPromise([t]);
+            } else {
+                t.style.display = 'none';
+                btn.textContent = 'Показать решение';
+            }
+        });
+    });
+</script>
+</body>
+</html>

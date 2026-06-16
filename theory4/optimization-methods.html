@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Методы геометрической оптимизации | Теория + практика</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #e6f7f0;
+            color: #1a3b32;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #22665c, #0f766e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .badge {
+            background: #c0e3db;
+            display: inline-block;
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #bee0d6;
+        }
+
+        .card h2 {
+            color: #22665c;
+            border-left: 6px solid #14b8a6;
+            padding-left: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+
+        .theorem {
+            background: #eef9f5;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #14b8a6;
+        }
+
+        .proof {
+            background: #f0fdfa;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #22665c;
+        }
+
+        .example {
+            background: #f0fdfa;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .task {
+            background: #f9fefc;
+            margin: 1.2rem 0;
+            padding: 1rem 1.2rem;
+            border-radius: 1.2rem;
+            border-left: 4px solid #14b8a6;
+        }
+
+        .solve-btn {
+            background: #22665c;
+            color: white;
+            border: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .solve-btn:hover {
+            background: #0f5b52;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: #d1fae5;
+            border-radius: 0.8rem;
+            border-left: 3px solid #22665c;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #bee0d6;
+            color: #2c5f55;
+            font-size: 0.85rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #2c5f55;
+            padding: 0.5rem 1rem;
+            border-left: 3px solid #0f766e;
+            margin: 0.8rem 0;
+        }
+
+        .visual {
+            background: #e0f2fe;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #0284c7;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1.2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        table {
+            width: 100%;
+            background: white;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            padding: 0.6rem;
+            border: 1px solid #bee0d6;
+            text-align: left;
+        }
+
+        th {
+            background: #eef9f5;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📐 Методы геометрической оптимизации</h1>
+        <div class="badge">Функция • Отражение • Неравенства • Преобразования</div>
+    </header>
+
+    <div class="card">
+        <h2>🎯 Что такое геометрическая оптимизация?</h2>
+        <div class="example">
+            <p><strong>Геометрическая оптимизация</strong> — раздел математики, в котором ищут наилучшую (экстремальную)
+                форму, размер или положение геометрического объекта при заданных ограничениях.</p>
+            <p><strong>Примеры:</strong></p>
+            <ul style="margin-left:1.5rem;">
+                <li>Максимальная площадь при фиксированном периметре</li>
+                <li>Минимальная длина дорог между точками</li>
+                <li>Наилучший обзор картины</li>
+                <li>Оптимальная форма резервуара</li>
+            </ul>
+        </div>
+        <div class="quote">«В мире не происходит ничего, в чём бы не был виден смысл какого-нибудь максимума или
+            минимума» — <strong>Леонард Эйлер</strong></div>
+    </div>
+
+    <div class="card">
+        <h2>📐 Метод 1: сведение к функции одной переменной</h2>
+        <div class="proof">
+            <p><strong>Алгоритм:</strong></p>
+            <p><strong>Шаг 1.</strong> Ввести переменную (угол, длину отрезка, радиус).</p>
+            <p><strong>Шаг 2.</strong> Выразить оптимизируемую величину (площадь, объём, расстояние) через эту
+                переменную.</p>
+            <p><strong>Шаг 3.</strong> Найти экстремум с помощью <strong>производной</strong> или
+                <strong>неравенства</strong>.</p>
+        </div>
+        <div class="task">
+            <p><strong>Пример (классика).</strong> Окно имеет форму прямоугольника, завершённого сверху полукругом.
+                Периметр окна равен \(P\). При каком радиусе полукруга площадь окна максимальна?</p>
+            <button class="solve-btn" data-target="func1">Показать решение</button>
+            <div id="func1" class="solution">
+                <p><strong>Решение (пошагово):</strong></p>
+                <p><strong>Шаг 1.</strong> Пусть радиус полукруга \(R\), высота прямоугольной части \(h\).</p>
+                <p><strong>Шаг 2.</strong> Площадь: \(S = 2Rh + \frac{\pi R^2}{2}\).</p>
+                <p><strong>Шаг 3.</strong> Периметр: \(P = 2h + 2R + \pi R\). (Нижняя сторона \(2R\), две боковые
+                    стороны \(2h\), дуга полукруга \(\pi R\).)</p>
+                <p><strong>Шаг 4.</strong> Выражаем \(h\) из периметра: \(2h = P - 2R - \pi R\) ⇒ \(h = \frac{P - 2R -
+                    \pi R}{2}\).</p>
+                <p><strong>Шаг 5.</strong> Подставляем в площадь:</p>
+                <p>\(S(R) = 2R \cdot \frac{P - 2R - \pi R}{2} + \frac{\pi R^2}{2} = R(P - 2R - \pi R) + \frac{\pi
+                    R^2}{2}\).</p>
+                <p>\(S(R) = PR - 2R^2 - \pi R^2 + \frac{\pi R^2}{2} = PR - 2R^2 - \frac{\pi R^2}{2}\).</p>
+                <p><strong>Шаг 6.</strong> Находим производную: \(S'(R) = P - 4R - \pi R\).</p>
+                <p><strong>Шаг 7.</strong> Приравниваем к нулю: \(P - 4R - \pi R = 0\) ⇒ \(P = R(4 + \pi)\) ⇒ \(R =
+                    \frac{P}{4+\pi}\).</p>
+                <p><strong>Ответ:</strong> \(R = \frac{P}{4+\pi}\).</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🔍 Метод 2: принцип отражения (кратчайший путь)</h2>
+        <div class="theorem">
+            <strong>Принцип:</strong> Чтобы найти кратчайший путь от точки \(A\) до точки \(B\) с отражением от прямой,
+            отражаем одну из точек симметрично и соединяем прямой.
+        </div>
+        <div class="visual">
+            <p><strong>Наглядное объяснение:</strong></p>
+            <p>Представьте, что вы играете в бильярд. Шар должен удариться о бортик и попасть в лузу. Отражение точки
+                относительно бортика превращает ломаную траекторию в прямую.</p>
+            <p>Путь \(A \to P \to B\), где \(P\) лежит на прямой \(l\), минимален, когда \(P\) лежит на отрезке \(A'B\),
+                где \(A'\) — отражение \(A\) относительно \(l\).</p>
+        </div>
+        <div class="task">
+            <p><strong>Пример.</strong> Точки \(A\) и \(B\) находятся по одну сторону от прямой. Найдите на прямой точку
+                \(P\), для которой \(AP + PB\) минимально.</p>
+            <button class="solve-btn" data-target="reflect">Показать решение</button>
+            <div id="reflect" class="solution">
+                <p><strong>Решение (пошагово):</strong></p>
+                <p><strong>Шаг 1.</strong> Отражаем точку \(A\) относительно прямой — получаем точку \(A'\).</p>
+                <p><strong>Шаг 2.</strong> Соединяем \(A'\) и \(B\) прямой.</p>
+                <p><strong>Шаг 3.</strong> Пересечение этой прямой с исходной прямой даёт точку \(P\).</p>
+                <p><strong>Почему это работает?</strong> Для любой точки \(Q\) на прямой, \(AQ = A'Q\). Поэтому \(AQ +
+                    QB = A'Q + QB \ge A'B\) (по неравенству треугольника).</p>
+                <p>Минимум достигается, когда \(Q\) лежит на прямой \(A'B\).</p>
+                <p>Это классическая задача о кратчайшем пути с отражением (принцип Ферма).</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📊 Метод 3: неравенства (Коши, Йенсен, изопериметрическое)</h2>
+        <div class="proof">
+            <p><strong>Идея:</strong> Олимпиадные задачи часто решаются без производной — через классические
+                неравенства.</p>
+            <p><strong>Основные инструменты:</strong></p>
+            <ul style="margin-left:1.5rem;">
+                <li><strong>Коши:</strong> \(\frac{x+y}{2} \ge \sqrt{xy}\) — для суммы и произведения</li>
+                <li><strong>Йенсен:</strong> для выпуклых/вогнутых функций</li>
+                <li><strong>Изопериметрическое:</strong> \(L^2 \ge 4\pi A\)</li>
+            </ul>
+        </div>
+        <div class="task">
+            <p><strong>Пример.</strong> Доказать, что среди прямоугольников с заданным периметром максимальную площадь
+                имеет квадрат.</p>
+            <button class="solve-btn" data-target="ineq">Показать решение</button>
+            <div id="ineq" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p><strong>Шаг 1.</strong> Пусть стороны прямоугольника \(x\) и \(y\). Периметр \(P=2(x+y)\) фиксирован.
+                </p>
+                <p><strong>Шаг 2.</strong> Площадь \(S=xy\).</p>
+                <p><strong>Шаг 3.</strong> По неравенству Коши: \(\frac{x+y}{2} \ge \sqrt{xy}\) ⇒ \(xy \le
+                    \left(\frac{x+y}{2}\right)^2\).</p>
+                <p><strong>Шаг 4.</strong> При фиксированном \(x+y\) произведение максимально, когда \(x=y\).</p>
+                <p><strong>Шаг 5.</strong> \(x=y\) ⇒ фигура — квадрат.</p>
+                <p><strong>Вывод:</strong> Максимальная площадь у квадрата.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🔄 Метод 4: геометрические преобразования</h2>
+        <div class="proof">
+            <p><strong>Инструменты:</strong> повороты, симметрии, гомотетии, сдвиги.</p>
+            <p><strong>Примеры:</strong></p>
+            <ul style="margin-left:1.5rem;">
+                <li><strong>Задача Ферма–Торричелли</strong> решается <strong>поворотом</strong> на \(60^\circ\).</li>
+                <li><strong>Принцип симметризации Штейнера</strong> показывает, что невыпуклую или несимметричную фигуру
+                    можно «улучшить» без изменения периметра, но с ростом площади.
+                </li>
+                <li><strong>Принцип отражения</strong> — частный случай использования симметрии.</li>
+            </ul>
+        </div>
+        <div class="visual">
+            <p><strong>Почему поворот помогает?</strong></p>
+            <p>Поворот позволяет «выпрямить» ломаную линию в прямую, после чего задача становится тривиальной — нужно
+                просто найти расстояние между двумя точками.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📋 Шпаргалка для олимпиадника</h2>
+        <table>
+            <tr>
+                <th>Тип задачи</th>
+                <th>Ключевой метод</th>
+                <th>Классический результат</th>
+            </tr>
+            <tr>
+                <td>Максимум площади при фиксированном периметре</td>
+                <td>Неравенство Коши</td>
+                <td>Квадрат (2D), шар (3D)</td>
+            </tr>
+            <tr>
+                <td>Минимум суммы расстояний до вершин треугольника</td>
+                <td>Поворот на 60°</td>
+                <td>Точка Ферма–Торричелли (120°)</td>
+            </tr>
+            <tr>
+                <td>Оптимальная фигура вписанная/описанная</td>
+                <td>Функция + производная</td>
+                <td>См. задачи выше</td>
+            </tr>
+            <tr>
+                <td>Кратчайший путь с отражением</td>
+                <td>Принцип симметрии (отражение)</td>
+                <td>Путь = прямая после отражения</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>🌍 Почему это важно (наглядные примеры из жизни)</h2>
+        <div class="example">
+            <p><strong>Мыльные пузыри</strong> принимают сферическую форму — это минимизация площади поверхности при
+                фиксированном объёме (трёхмерная изопериметрическая задача).</p>
+            <p><strong>Пчёлы</strong> строят соты шестиугольной формы — это оптимальное заполнение плоскости, дающее
+                максимальную площадь при минимальном периметре ячеек.</p>
+            <p><strong>Капли воды</strong> в невесомости становятся шарами — та же причина.</p>
+            <p>Геометрическая оптимизация — мост между чистой математикой и реальным миром. Освоив её, вы научитесь
+                видеть скрытую гармонию форм в природе и технике.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>✍️ Практика</h2>
+
+        <div class="task">
+            <p><strong>Задача 1 (метод отражения).</strong> Точка \(A\) находится на расстоянии 3 см от прямой, точка
+                \(B\) — на расстоянии 5 см. Расстояние между проекциями точек на прямую — 10 см. Найдите длину
+                кратчайшего пути \(A \to P \to B\), где \(P\) лежит на прямой.</p>
+            <button class="solve-btn" data-target="p1">Показать решение</button>
+            <div id="p1" class="solution">
+                <p><strong>Решение (пошагово):</strong></p>
+                <p><strong>Шаг 1.</strong> Отражаем точку \(A\) относительно прямой. Она оказывается на расстоянии 3 см
+                    по другую сторону прямой.</p>
+                <p><strong>Шаг 2.</strong> Расстояние между отражённой точкой \(A'\) и точкой \(B\) вычисляется по
+                    теореме Пифагора.</p>
+                <p><strong>Шаг 3.</strong> По горизонтали: 10 см. По вертикали: \(3+5=8\) см.</p>
+                <p><strong>Шаг 4.</strong> \(A'B = \sqrt{10^2 + 8^2} = \sqrt{100+64} = \sqrt{164} = 2\sqrt{41}\).</p>
+                <p><strong>Ответ:</strong> \(2\sqrt{41}\) см.</p>
+            </div>
+        </div>
+
+        <div class="task">
+            <p><strong>Задача 2 (функция).</strong> Точка \(A(a,0)\) лежит на оси \(x\), точка \(B(0,b)\) — на оси
+                \(y\). Найдите минимальную длину отрезка, соединяющего \(A\) и \(B\), если \(a+b=10\) (a,b > 0).</p>
+            <button class="solve-btn" data-target="p2">Показать решение</button>
+            <div id="p2" class="solution">
+                <p><strong>Решение (пошагово):</strong></p>
+                <p><strong>Шаг 1.</strong> Длина отрезка: \(L = \sqrt{a^2 + b^2}\).</p>
+                <p><strong>Шаг 2.</strong> По условию \(b=10-a\).</p>
+                <p><strong>Шаг 3.</strong> \(L^2 = a^2 + (10-a)^2 = a^2 + 100 - 20a + a^2 = 2a^2 - 20a + 100\).</p>
+                <p><strong>Шаг 4.</strong> Квадратичная функция \(L^2(a) = 2a^2 - 20a + 100\).</p>
+                <p><strong>Шаг 5.</strong> Вершина параболы: \(a = -\frac{-20}{2\cdot2} = \frac{20}{4} = 5\).</p>
+                <p><strong>Шаг 6.</strong> Тогда \(b=5\).</p>
+                <p><strong>Шаг 7.</strong> Минимальная длина: \(L = \sqrt{5^2+5^2} = \sqrt{50} = 5\sqrt{2}\).</p>
+                <p><strong>Ответ:</strong> \(5\sqrt{2}\).</p>
+            </div>
+        </div>
+
+        <div class="task">
+            <p><strong>Задача 3 (вписанный цилиндр).</strong> В конус с радиусом основания \(R\) и высотой \(H\) вписан
+                цилиндр. Найдите его максимальный объём.</p>
+            <button class="solve-btn" data-target="p3">Показать решение</button>
+            <div id="p3" class="solution">
+                <p><strong>Решение (пошагово):</strong></p>
+                <p><strong>Шаг 1.</strong> Рассмотрим осевое сечение — равнобедренный треугольник с вписанным
+                    прямоугольником.</p>
+                <p><strong>Шаг 2.</strong> Из подобия треугольников: \(\frac{r}{R} = \frac{H-h}{H}\) ⇒ \(r = R\left(1 -
+                    \frac{h}{H}\right)\).</p>
+                <p><strong>Шаг 3.</strong> Объём цилиндра: \(V(h) = \pi r^2 h = \pi R^2 \left(1 - \frac{h}{H}\right)^2
+                    h\).</p>
+                <p><strong>Шаг 4.</strong> Найдём максимум функции \(f(h) = \left(1 - \frac{h}{H}\right)^2 h\).</p>
+                <p><strong>Шаг 5.</strong> Производная: \(f'(h) = \left(1 - \frac{h}{H}\right)\left(1 -
+                    \frac{3h}{H}\right)\).</p>
+                <p><strong>Шаг 6.</strong> Приравниваем к нулю: \(h=H\) (не подходит, цилиндр нулевой) или \(h =
+                    \frac{H}{3}\).</p>
+                <p><strong>Шаг 7.</strong> Тогда \(r = R\left(1 - \frac{1}{3}\right) = \frac{2R}{3}\).</p>
+                <p><strong>Шаг 8.</strong> \(V_{\max} = \pi \left(\frac{2R}{3}\right)^2 \cdot \frac{H}{3} = \pi \cdot
+                    \frac{4R^2}{9} \cdot \frac{H}{3} = \frac{4\pi R^2 H}{27}\).</p>
+                <p><strong>Ответ:</strong> \(\frac{4}{27}\pi R^2 H\).</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>📐 Методы геометрической оптимизации — ключ к олимпиадным задачам</footer>
+</div>
+<script>
+    document.querySelectorAll('.solve-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const t = document.getElementById(btn.getAttribute('data-target'));
+            if (t.style.display === 'none' || t.style.display === '') {
+                t.style.display = 'block';
+                btn.textContent = 'Скрыть решение';
+                if (window.MathJax) MathJax.typesetPromise([t]);
+            } else {
+                t.style.display = 'none';
+                btn.textContent = 'Показать решение';
+            }
+        });
+    });
+</script>
+</body>
+</html>
