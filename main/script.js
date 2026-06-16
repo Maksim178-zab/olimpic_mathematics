@@ -67,6 +67,7 @@ const resources = {
             { text: "Классические неравенства: Бернулли, Йенсен, Шур", url: "theory2/bernoulli-jensen.html", isInternal: true }
         ],
         practice: [
+            { text: "📚 Сборник олимпиадных задач (50 задач с решениями)", url: "theory2/practice-inequalities-50.html", isInternal: true },
             { text: "Метод интервалов — практические примеры (с ответами)", url: "https://www.mathtutor.com/inequalities/interval-method-exercises.html" },
             { text: "Сборник задач: алгебраические неравенства", url: "https://imomath.com/index.php?options=Problems&select=inequalities" }
         ]
