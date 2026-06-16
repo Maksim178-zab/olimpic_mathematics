@@ -65,6 +65,14 @@
             border-left: 4px solid #14b8a6;
         }
 
+        .proof {
+            background: #f0fdfa;
+            padding: 0.8rem;
+            border-radius: 1rem;
+            margin: 0.8rem 0;
+            border-left: 4px solid #22665c;
+        }
+
         .example {
             background: #f0fdfa;
             padding: 0.8rem;
@@ -100,6 +108,13 @@
             border-left: 3px solid #22665c;
         }
 
+        .step {
+            background: #eef9f5;
+            padding: 0.5rem;
+            margin: 0.3rem 0;
+            border-radius: 0.5rem;
+        }
+
         footer {
             text-align: center;
             margin-top: 2rem;
@@ -121,6 +136,18 @@
         <div class="theorem">Для любого \(x \ge -1\) и натурального \(n\): \((1+x)^n \ge 1 + nx\). При \(0 < n < 1\)
             знак меняется на \(\le\).
         </div>
+
+        <div class="proof">
+            <p><strong>Доказательство (по индукции):</strong></p>
+            <p><strong>База:</strong> \(n=1\): \((1+x)^1 = 1+x\) — верно.</p>
+            <p><strong>Шаг:</strong> предположим, что \((1+x)^k \ge 1+kx\). Тогда</p>
+            \[
+            (1+x)^{k+1} = (1+x)^k(1+x) \ge (1+kx)(1+x) = 1+(k+1)x + kx^2 \ge 1+(k+1)x.
+            \]
+            <p>Так как \(kx^2 \ge 0\) (при \(x \ge -1\) и \(k \ge 0\)), неравенство доказано.</p>
+            <p>Равенство при \(x=0\) или \(n=1\).</p>
+        </div>
+
         <div class="example"><strong>Числовой пример:</strong> \((1-0.1)^5 = 0.59049 \ge 1 - 0.5 = 0.5\).</div>
         <div class="task"><p><strong>Применение.</strong> Доказать \(2^n > n\).</p>
             <button class="solve-btn" data-target="bern">Решение</button>
@@ -144,6 +171,21 @@
         <div class="theorem">Для выпуклой \(f\): \(f(\frac{x_1+\dots+x_n}{n}) \le \frac{f(x_1)+\dots+f(x_n)}{n}\).<br>Для
             вогнутой — знак \(\ge\).
         </div>
+
+        <div class="proof">
+            <p><strong>Доказательство для \(n=2\) (определение выпуклости):</strong></p>
+            <p>По определению выпуклой функции: для любых \(x_1, x_2\) и \(t \in [0,1]\)</p>
+            \[
+            f(tx_1+(1-t)x_2) \le t f(x_1) + (1-t) f(x_2).
+            \]
+            <p>При \(t=\frac12\) получаем:</p>
+            \[
+            f\left(\frac{x_1+x_2}{2}\right) \le \frac{f(x_1)+f(x_2)}{2}.
+            \]
+            <p>Для \(n\) чисел — обобщение по индукции с использованием выпуклости.</p>
+            <p>Для вогнутой функции все знаки меняются на противоположные.</p>
+        </div>
+
         <div class="example"><strong>Пример с квадратом (выпуклая):</strong> \(\left(\frac{a+b}{2}\right)^2 \le
             \frac{a^2+b^2}{2}\) ⇔ \((a-b)^2 \ge 0\).
         </div>
@@ -163,6 +205,16 @@
         <div class="theorem">\(a^3+b^3+c^3+3abc \ge \sum_{\text{sym}} a^2 b\) (где \(\sum_{\text{sym}} a^2 b =
             a^2b+a^2c+b^2a+b^2c+c^2a+c^2b\)).
         </div>
+
+        <div class="proof">
+            <p><strong>Доказательство:</strong> Известно тождество:</p>
+            \[
+            a^3+b^3+c^3+3abc - \sum_{\text{sym}} a^2 b = \frac12(a+b+c)\big[(a-b)^2+(b-c)^2+(c-a)^2\big] \ge 0.
+            \]
+            <p>Все множители неотрицательны (\(a,b,c \ge 0\)), значит, левая часть \(\ge 0\).</p>
+            <p>Равенство при \(a=b=c\).</p>
+        </div>
+
         <div class="task"><p><strong>Задача.</strong> Доказать \(a^3+b^3+c^3+3abc \ge ab(a+b)+bc(b+c)+ca(c+a)\).</p>
             <button class="solve-btn" data-target="schur">Решение</button>
             <div id="schur" class="solution"><p>Правая часть = \(\sum_{\text{sym}} a^2 b\). Это и есть неравенство
@@ -186,24 +238,12 @@
 
     <div class="card">
         <h2>📋 Пошаговый план решения любого олимпиадного неравенства</h2>
-        <div class="step" style="background:#eef9f5; padding:0.5rem; margin:0.3rem 0;">1. Проверь однородность →
-            нормализуй.
-        </div>
-        <div class="step" style="background:#eef9f5; padding:0.5rem; margin:0.3rem 0;">2. Попробуй перенести всё в одну
-            сторону и выделить квадраты.
-        </div>
-        <div class="step" style="background:#eef9f5; padding:0.5rem; margin:0.3rem 0;">3. Если есть суммы и произведения
-            → Коши.
-        </div>
-        <div class="step" style="background:#eef9f5; padding:0.5rem; margin:0.3rem 0;">4. Если есть степени и корни →
-            Йенсен (выпуклость).
-        </div>
-        <div class="step" style="background:#eef9f5; padding:0.5rem; margin:0.3rem 0;">5. Если есть дроби
-            \(\frac{a^2}{b}\) → Шварц.
-        </div>
-        <div class="step" style="background:#eef9f5; padding:0.5rem; margin:0.3rem 0;">6. Всегда указывай, когда
-            достигается равенство.
-        </div>
+        <div class="step">1. Проверь однородность → нормализуй.</div>
+        <div class="step">2. Попробуй перенести всё в одну сторону и выделить квадраты.</div>
+        <div class="step">3. Если есть суммы и произведения → Коши.</div>
+        <div class="step">4. Если есть степени и корни → Йенсен (выпуклость).</div>
+        <div class="step">5. Если есть дроби \(\frac{a^2}{b}\) → Шварц.</div>
+        <div class="step">6. Всегда указывай, когда достигается равенство.</div>
     </div>
 
     <div class="card">
@@ -228,6 +268,7 @@
             if (t.style.display === 'none' || t.style.display === '') {
                 t.style.display = 'block';
                 btn.textContent = 'Скрыть решение';
+                if (window.MathJax) MathJax.typesetPromise([t]);
             } else {
                 t.style.display = 'none';
                 btn.textContent = 'Показать решение';
