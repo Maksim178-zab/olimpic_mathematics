@@ -64,12 +64,12 @@ const resources = {
         theory: [
             { text: "Метод интервалов: полное руководство", url: "theory2/interval-method.html", isInternal: true},
             { text: "Классические неравенства: Коши", url: "theory2/cauchy-inequality.html", isInternal: true },
-            { text: "Классические неравенства: Бернулли, Йенсен, Шур", url: "theory2/bernoulli-jensen.html", isInternal: true }
+            { text: "Классические неравенства: Бернулли, Йенсен, Шур", url: "theory2/bernoulli-jensen.html", isInternal: true },
+            { text: "Все о производных", url: "theory2/derivative-theory.html", isInternal: true }
         ],
         practice: [
             { text: "📚 Сборник олимпиадных задач (50 задач с решениями)", url: "theory2/practice-inequalities-50.html", isInternal: true },
-            { text: "Метод интервалов — практические примеры (с ответами)", url: "https://www.mathtutor.com/inequalities/interval-method-exercises.html" },
-            { text: "Сборник задач: алгебраические неравенства", url: "https://imomath.com/index.php?options=Problems&select=inequalities" }
+            { text: "📚 Сборник олимпиадных задач (30 задач с решениями)", url: "theory2/practice-derivatives.html", isInternal: true }
         ]
     },
     irrational: {
@@ -84,12 +84,12 @@ const resources = {
     },
     geoopt: {
         theory: [
-            { text: "Геометрическая оптимизация: методы и примеры", url: "https://en.wikipedia.org/wiki/Geometric_optimization" },
-            { text: "Задача Ферма-Торричелли и минимальные расстояния", url: "https://www.cut-the-knot.org/Curriculum/Geometry/FermatPoint.shtml" }
+            { text: "Изопериметрические задачи", url: "theory4/isoperimetric.html" , isInternal: true },
+            { text: "Геометрическая оптимизация: методы и примеры", url: "theory4/optimization-methods.html" , isInternal: true  },
+            { text: "Задача Ферма-Торричелли и минимальные расстояния", url: "theory4/format-torricelli.html" , isInternal: true }
         ],
         practice: [
-            { text: "Олимпиадные задачи на экстремумы в геометрии", url: "https://artofproblemsolving.com/community/c6h1210_geometric_optimization" },
-            { text: "Практикум: изопериметрическая задача (упражнения)", url: "https://www.math.ucla.edu/~mms/Talks/Isoperimetric.pdf" }
+            { text: "📚 Сборник олимпиадных задач (40 задач с решениями)", url: "theory4/practice-geometry-optimization.html", isInternal: true }
         ]
     },
     invariant: {
