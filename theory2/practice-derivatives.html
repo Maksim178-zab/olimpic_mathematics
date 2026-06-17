@@ -6,7 +6,12 @@
     <title>Практикум | Производная | 30 задач с решениями</title>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Segoe UI', 'Georgia', serif;
             background: #f0f4f8;
@@ -14,14 +19,17 @@
             padding: 1.5rem;
             line-height: 1.7;
         }
+
         .container {
             max-width: 1100px;
             margin: 0 auto;
         }
+
         header {
             text-align: center;
             margin-bottom: 2rem;
         }
+
         h1 {
             font-size: 2.5rem;
             background: linear-gradient(135deg, #1e5f7a, #0f3b4f);
@@ -29,11 +37,13 @@
             -webkit-background-clip: text;
             color: transparent;
         }
+
         .subtitle {
             font-size: 1.1rem;
             color: #2c5282;
             margin-top: 0.3rem;
         }
+
         .badge {
             background: #d4e6f1;
             display: inline-block;
@@ -42,14 +52,16 @@
             font-size: 0.85rem;
             margin-top: 0.5rem;
         }
+
         .part {
             background: white;
             border-radius: 1.5rem;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             border: 1px solid #cbd5e1;
         }
+
         .part h2 {
             color: #1e5f7a;
             border-left: 5px solid #3b82f6;
@@ -57,6 +69,7 @@
             margin-bottom: 1rem;
             font-size: 1.4rem;
         }
+
         .task {
             background: #f8fafc;
             margin: 1rem 0;
@@ -64,9 +77,11 @@
             border-radius: 1rem;
             border-left: 4px solid #3b82f6;
         }
+
         .task p {
             margin-bottom: 0.3rem;
         }
+
         .solve-btn {
             background: #1e5f7a;
             color: white;
@@ -79,9 +94,11 @@
             margin-top: 0.3rem;
             transition: background 0.2s;
         }
+
         .solve-btn:hover {
             background: #0f4b62;
         }
+
         .solution {
             display: none;
             margin-top: 0.8rem;
@@ -92,13 +109,16 @@
             font-size: 0.95rem;
             line-height: 1.7;
         }
+
         .solution p {
             margin: 0.6rem 0;
         }
+
         .solution .step {
             margin-left: 1.2rem;
             margin-top: 0.4rem;
         }
+
         .solution .formula-block {
             background: #f8fafc;
             padding: 0.6rem;
@@ -106,6 +126,7 @@
             text-align: center;
             margin: 0.6rem 0;
         }
+
         .solution .answer-block {
             background: #d1fae5;
             padding: 0.6rem;
@@ -115,6 +136,7 @@
             font-weight: bold;
             font-size: 1.05rem;
         }
+
         footer {
             text-align: center;
             margin-top: 2rem;
@@ -123,11 +145,23 @@
             border-top: 1px solid #cbd5e1;
             padding-top: 1rem;
         }
+
         @media (max-width: 700px) {
-            body { padding: 1rem; }
-            .part { padding: 1rem; }
-            h1 { font-size: 2rem; }
-            .solution { padding: 0.8rem; }
+            body {
+                padding: 1rem;
+            }
+
+            .part {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .solution {
+                padding: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -143,83 +177,482 @@
     <div class="part">
         <h2>📖 Часть 1. Базовые задачи на правила дифференцирования</h2>
 
-        <div class="task"><p><strong>Задача 1.</strong> Найдите производную функции \( f(x) = 3x^5 - 2x^3 + 7x - 4 \).</p><button class="solve-btn" data-target="s1">Показать решение</button><div id="s1" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Применяем правило: производная суммы равна сумме производных. \( f'(x) = (3x^5)' - (2x^3)' + (7x)' - (4)' \).</p><p class="step"><strong>Шаг 2.</strong> Правило для степени: \( (x^n)' = n x^{n-1} \).</p><ul><li>\( (3x^5)' = 3 \cdot 5x^{4} = 15x^4 \).</li><li>\( (2x^3)' = 2 \cdot 3x^{2} = 6x^2 \).</li><li>\( (7x)' = 7 \cdot 1 = 7 \).</li><li>\( (4)' = 0 \) (производная константы равна нулю).</li></ul><p class="step"><strong>Шаг 3.</strong> Собираем: \( f'(x) = 15x^4 - 6x^2 + 7 \).</p><div class="answer-block"><strong>Ответ:</strong> \( f'(x) = 15x^4 - 6x^2 + 7 \).</div></div></div>
+        <div class="task"><p><strong>Задача 1.</strong> Найдите производную функции \( f(x) = 3x^5 - 2x^3 + 7x - 4 \).
+        </p>
+            <button class="solve-btn" data-target="s1">Показать решение</button>
+            <div id="s1" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Применяем правило: производная суммы равна сумме производных. \(
+                    f'(x) = (3x^5)' - (2x^3)' + (7x)' - (4)' \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Правило для степени: \( (x^n)' = n x^{n-1} \).</p>
+                <ul>
+                    <li>\( (3x^5)' = 3 \cdot 5x^{4} = 15x^4 \).</li>
+                    <li>\( (2x^3)' = 2 \cdot 3x^{2} = 6x^2 \).</li>
+                    <li>\( (7x)' = 7 \cdot 1 = 7 \).</li>
+                    <li>\( (4)' = 0 \) (производная константы равна нулю).</li>
+                </ul>
+                <p class="step"><strong>Шаг 3.</strong> Собираем: \( f'(x) = 15x^4 - 6x^2 + 7 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f'(x) = 15x^4 - 6x^2 + 7 \).</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 2.</strong> Найдите производную функции \( f(x) = \sin x + \cos x - \operatorname{tg} x \).</p><button class="solve-btn" data-target="s2">Показать решение</button><div id="s2" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Производная суммы: \( f'(x) = (\sin x)' + (\cos x)' - (\operatorname{tg} x)' \).</p><p class="step"><strong>Шаг 2.</strong> Табличные производные:</p><ul><li>\( (\sin x)' = \cos x \).</li><li>\( (\cos x)' = -\sin x \).</li><li>\( (\operatorname{tg} x)' = \frac{1}{\cos^2 x} \).</li></ul><p class="step"><strong>Шаг 3.</strong> Подставляем: \( f'(x) = \cos x - \sin x - \frac{1}{\cos^2 x} \).</p><div class="answer-block"><strong>Ответ:</strong> \( f'(x) = \cos x - \sin x - \frac{1}{\cos^2 x} \).</div></div></div>
+        <div class="task"><p><strong>Задача 2.</strong> Найдите производную функции \( f(x) = \sin x + \cos x -
+            \operatorname{tg} x \).</p>
+            <button class="solve-btn" data-target="s2">Показать решение</button>
+            <div id="s2" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Производная суммы: \( f'(x) = (\sin x)' + (\cos x)' -
+                    (\operatorname{tg} x)' \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Табличные производные:</p>
+                <ul>
+                    <li>\( (\sin x)' = \cos x \).</li>
+                    <li>\( (\cos x)' = -\sin x \).</li>
+                    <li>\( (\operatorname{tg} x)' = \frac{1}{\cos^2 x} \).</li>
+                </ul>
+                <p class="step"><strong>Шаг 3.</strong> Подставляем: \( f'(x) = \cos x - \sin x - \frac{1}{\cos^2 x} \).
+                </p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f'(x) = \cos x - \sin x - \frac{1}{\cos^2 x} \).
+                </div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 3.</strong> Найдите производную функции \( f(x) = x^2 \ln x \).</p><button class="solve-btn" data-target="s3">Показать решение</button><div id="s3" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Это произведение двух функций: \( u = x^2 \), \( v = \ln x \).</p><p class="step"><strong>Шаг 2.</strong> Правило произведения: \( (uv)' = u'v + uv' \).</p><p class="step"><strong>Шаг 3.</strong> Находим: \( u' = 2x \), \( v' = \frac{1}{x} \).</p><p class="step"><strong>Шаг 4.</strong> Подставляем: \( f'(x) = 2x \cdot \ln x + x^2 \cdot \frac{1}{x} = 2x \ln x + x \).</p><div class="answer-block"><strong>Ответ:</strong> \( f'(x) = 2x \ln x + x \).</div></div></div>
+        <div class="task"><p><strong>Задача 3.</strong> Найдите производную функции \( f(x) = x^2 \ln x \).</p>
+            <button class="solve-btn" data-target="s3">Показать решение</button>
+            <div id="s3" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Это произведение двух функций: \( u = x^2 \), \( v = \ln x \).
+                </p>
+                <p class="step"><strong>Шаг 2.</strong> Правило произведения: \( (uv)' = u'v + uv' \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Находим: \( u' = 2x \), \( v' = \frac{1}{x} \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Подставляем: \( f'(x) = 2x \cdot \ln x + x^2 \cdot \frac{1}{x} =
+                    2x \ln x + x \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f'(x) = 2x \ln x + x \).</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 4.</strong> Найдите производную функции \( f(x) = \frac{e^x}{x} \).</p><button class="solve-btn" data-target="s4">Показать решение</button><div id="s4" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Это частное двух функций: \( u = e^x \), \( v = x \).</p><p class="step"><strong>Шаг 2.</strong> Правило частного: \( \left( \frac{u}{v} \right)' = \frac{u'v - uv'}{v^2} \).</p><p class="step"><strong>Шаг 3.</strong> Находим: \( u' = e^x \), \( v' = 1 \).</p><p class="step"><strong>Шаг 4.</strong> Подставляем: \( f'(x) = \frac{e^x \cdot x - e^x \cdot 1}{x^2} = \frac{e^x (x - 1)}{x^2} \).</p><div class="answer-block"><strong>Ответ:</strong> \( f'(x) = \frac{e^x (x - 1)}{x^2} \).</div></div></div>
+        <div class="task"><p><strong>Задача 4.</strong> Найдите производную функции \( f(x) = \frac{e^x}{x} \).</p>
+            <button class="solve-btn" data-target="s4">Показать решение</button>
+            <div id="s4" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Это частное двух функций: \( u = e^x \), \( v = x \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Правило частного: \( \left( \frac{u}{v} \right)' = \frac{u'v -
+                    uv'}{v^2} \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Находим: \( u' = e^x \), \( v' = 1 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Подставляем: \( f'(x) = \frac{e^x \cdot x - e^x \cdot 1}{x^2} =
+                    \frac{e^x (x - 1)}{x^2} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f'(x) = \frac{e^x (x - 1)}{x^2} \).</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 5.</strong> Найдите производную функции \( f(x) = \sin^2 x \).</p><button class="solve-btn" data-target="s5">Показать решение</button><div id="s5" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Это сложная функция: внешняя — \( t^2 \), внутренняя — \( \sin x \).</p><p class="step"><strong>Шаг 2.</strong> Правило цепочки: \( (f(g(x)))' = f'(g(x)) \cdot g'(x) \).</p><p class="step"><strong>Шаг 3.</strong> Внешняя производная: \( (t^2)' = 2t \). Внутренняя: \( (\sin x)' = \cos x \).</p><p class="step"><strong>Шаг 4.</strong> Подставляем: \( f'(x) = 2\sin x \cdot \cos x = \sin 2x \).</p><div class="answer-block"><strong>Ответ:</strong> \( f'(x) = \sin 2x \).</div></div></div>
+        <div class="task"><p><strong>Задача 5.</strong> Найдите производную функции \( f(x) = \sin^2 x \).</p>
+            <button class="solve-btn" data-target="s5">Показать решение</button>
+            <div id="s5" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Это сложная функция: внешняя — \( t^2 \), внутренняя — \( \sin x
+                    \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Правило цепочки: \( (f(g(x)))' = f'(g(x)) \cdot g'(x) \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Внешняя производная: \( (t^2)' = 2t \). Внутренняя: \( (\sin x)'
+                    = \cos x \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Подставляем: \( f'(x) = 2\sin x \cdot \cos x = \sin 2x \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f'(x) = \sin 2x \).</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 6.</strong> Найдите производную функции \( f(x) = \ln(\cos x) \).</p><button class="solve-btn" data-target="s6">Показать решение</button><div id="s6" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Сложная функция: внешняя \( \ln t \), внутренняя \( \cos x \).</p><p class="step"><strong>Шаг 2.</strong> \( (\ln t)' = \frac{1}{t} \), \( (\cos x)' = -\sin x \).</p><p class="step"><strong>Шаг 3.</strong> Подставляем: \( f'(x) = \frac{1}{\cos x} \cdot (-\sin x) = -\operatorname{tg} x \).</p><div class="answer-block"><strong>Ответ:</strong> \( f'(x) = -\operatorname{tg} x \).</div></div></div>
+        <div class="task"><p><strong>Задача 6.</strong> Найдите производную функции \( f(x) = \ln(\cos x) \).</p>
+            <button class="solve-btn" data-target="s6">Показать решение</button>
+            <div id="s6" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Сложная функция: внешняя \( \ln t \), внутренняя \( \cos x \).
+                </p>
+                <p class="step"><strong>Шаг 2.</strong> \( (\ln t)' = \frac{1}{t} \), \( (\cos x)' = -\sin x \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Подставляем: \( f'(x) = \frac{1}{\cos x} \cdot (-\sin x) =
+                    -\operatorname{tg} x \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f'(x) = -\operatorname{tg} x \).</div>
+            </div>
+        </div>
     </div>
 
     <!-- Часть 2. Исследование функций (задачи 7–14) -->
     <div class="part">
         <h2>📊 Часть 2. Исследование функций: монотонность, экстремумы, выпуклость</h2>
 
-        <div class="task"><p><strong>Задача 7.</strong> Найдите промежутки возрастания и убывания функции \( f(x) = x^3 - 3x^2 + 2 \).</p><button class="solve-btn" data-target="s7">Показать решение</button><div id="s7" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Находим производную: \( f'(x) = 3x^2 - 6x = 3x(x-2) \).</p><p class="step"><strong>Шаг 2.</strong> Находим критические точки: \( f'(x) = 0 \) ⇒ \( 3x(x-2) = 0 \) ⇒ \( x = 0 \), \( x = 2 \).</p><p class="step"><strong>Шаг 3.</strong> Определяем знаки производной на интервалах:</p><ul><li>На \( (-\infty, 0) \): \( x = -1 \), \( f'(-1) = 9 > 0 \) ⇒ возрастает.</li><li>На \( (0, 2) \): \( x = 1 \), \( f'(1) = -3 < 0 \) ⇒ убывает.</li><li>На \( (2, +\infty) \): \( x = 3 \), \( f'(3) = 9 > 0 \) ⇒ возрастает.</li></ul><div class="answer-block"><strong>Ответ:</strong> возрастает на \( (-\infty, 0) \cup (2, +\infty) \), убывает на \( (0, 2) \).</div></div></div>
+        <div class="task"><p><strong>Задача 7.</strong> Найдите промежутки возрастания и убывания функции \( f(x) = x^3
+            - 3x^2 + 2 \).</p>
+            <button class="solve-btn" data-target="s7">Показать решение</button>
+            <div id="s7" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Находим производную: \( f'(x) = 3x^2 - 6x = 3x(x-2) \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Находим критические точки: \( f'(x) = 0 \) ⇒ \( 3x(x-2) = 0 \) ⇒
+                    \( x = 0 \), \( x = 2 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Определяем знаки производной на интервалах:</p>
+                <ul>
+                    <li>На \( (-\infty, 0) \): \( x = -1 \), \( f'(-1) = 9 > 0 \) ⇒ возрастает.</li>
+                    <li>На \( (0, 2) \): \( x = 1 \), \( f'(1) = -3 < 0 \) ⇒ убывает.</li>
+                    <li>На \( (2, +\infty) \): \( x = 3 \), \( f'(3) = 9 > 0 \) ⇒ возрастает.</li>
+                </ul>
+                <div class="answer-block"><strong>Ответ:</strong> возрастает на \( (-\infty, 0) \cup (2, +\infty) \),
+                    убывает на \( (0, 2) \).
+                </div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 8.</strong> Найдите точки экстремума функции \( f(x) = x^3 - 3x^2 + 2 \).</p><button class="solve-btn" data-target="s8">Показать решение</button><div id="s8" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Производная: \( f'(x) = 3x(x-2) \).</p><p class="step"><strong>Шаг 2.</strong> Критические точки: \( x = 0 \), \( x = 2 \).</p><p class="step"><strong>Шаг 3.</strong> Знаки производной: при переходе через \( x = 0 \) знак меняется с \( + \) на \( - \) ⇒ <strong>максимум</strong>. При переходе через \( x = 2 \) знак меняется с \( - \) на \( + \) ⇒ <strong>минимум</strong>.</p><p class="step"><strong>Шаг 4.</strong> Значения: \( f(0) = 2 \), \( f(2) = -2 \).</p><div class="answer-block"><strong>Ответ:</strong> \( x = 0 \) — максимум (2), \( x = 2 \) — минимум (-2).</div></div></div>
+        <div class="task"><p><strong>Задача 8.</strong> Найдите точки экстремума функции \( f(x) = x^3 - 3x^2 + 2 \).
+        </p>
+            <button class="solve-btn" data-target="s8">Показать решение</button>
+            <div id="s8" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Производная: \( f'(x) = 3x(x-2) \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Критические точки: \( x = 0 \), \( x = 2 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Знаки производной: при переходе через \( x = 0 \) знак меняется
+                    с \( + \) на \( - \) ⇒ <strong>максимум</strong>. При переходе через \( x = 2 \) знак меняется с \(
+                    - \) на \( + \) ⇒ <strong>минимум</strong>.</p>
+                <p class="step"><strong>Шаг 4.</strong> Значения: \( f(0) = 2 \), \( f(2) = -2 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( x = 0 \) — максимум (2), \( x = 2 \) — минимум
+                    (-2).
+                </div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 9.</strong> Найдите наибольшее и наименьшее значение функции \( f(x) = x^3 - 3x^2 + 2 \) на отрезке \( [-1, 3] \).</p><button class="solve-btn" data-target="s9">Показать решение</button><div id="s9" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Критические точки внутри отрезка: \( x = 0 \), \( x = 2 \).</p><p class="step"><strong>Шаг 2.</strong> Вычисляем значения: \( f(-1) = -2 \), \( f(0) = 2 \), \( f(2) = -2 \), \( f(3) = 2 \).</p><p class="step"><strong>Шаг 3.</strong> Сравниваем: наибольшее значение 2 (в точках \( x=0 \) и \( x=3 \)), наименьшее -2 (в точках \( x=-1 \) и \( x=2 \)).</p><div class="answer-block"><strong>Ответ:</strong> максимум 2, минимум -2.</div></div></div>
+        <div class="task"><p><strong>Задача 9.</strong> Найдите наибольшее и наименьшее значение функции \( f(x) = x^3 -
+            3x^2 + 2 \) на отрезке \( [-1, 3] \).</p>
+            <button class="solve-btn" data-target="s9">Показать решение</button>
+            <div id="s9" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Критические точки внутри отрезка: \( x = 0 \), \( x = 2 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Вычисляем значения: \( f(-1) = -2 \), \( f(0) = 2 \), \( f(2) =
+                    -2 \), \( f(3) = 2 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Сравниваем: наибольшее значение 2 (в точках \( x=0 \) и \( x=3
+                    \)), наименьшее -2 (в точках \( x=-1 \) и \( x=2 \)).</p>
+                <div class="answer-block"><strong>Ответ:</strong> максимум 2, минимум -2.</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 10.</strong> Найдите промежутки выпуклости и точки перегиба функции \( f(x) = x^4 - 6x^2 + 3 \).</p><button class="solve-btn" data-target="s10">Показать решение</button><div id="s10" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Первая производная: \( f'(x) = 4x^3 - 12x \).</p><p class="step"><strong>Шаг 2.</strong> Вторая производная: \( f''(x) = 12x^2 - 12 = 12(x-1)(x+1) \).</p><p class="step"><strong>Шаг 3.</strong> \( f''(x) = 0 \) ⇒ \( x = \pm 1 \).</p><p class="step"><strong>Шаг 4.</strong> Знаки \( f''(x) \):</p><ul><li>На \( (-\infty, -1) \): \( f'' > 0 \) ⇒ выпукла вниз.</li><li>На \( (-1, 1) \): \( f'' < 0 \) ⇒ выпукла вверх.</li><li>На \( (1, +\infty) \): \( f'' > 0 \) ⇒ выпукла вниз.</li></ul><p class="step"><strong>Шаг 5.</strong> В точках \( x = \pm 1 \) вторая производная меняет знак ⇒ точки перегиба.</p><div class="answer-block"><strong>Ответ:</strong> выпукла вниз на \( (-\infty,-1)\cup(1,+\infty) \), выпукла вверх на \( (-1,1) \), точки перегиба \( x=\pm1 \).</div></div></div>
+        <div class="task"><p><strong>Задача 10.</strong> Найдите промежутки выпуклости и точки перегиба функции \( f(x)
+            = x^4 - 6x^2 + 3 \).</p>
+            <button class="solve-btn" data-target="s10">Показать решение</button>
+            <div id="s10" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Первая производная: \( f'(x) = 4x^3 - 12x \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Вторая производная: \( f''(x) = 12x^2 - 12 = 12(x-1)(x+1) \).
+                </p>
+                <p class="step"><strong>Шаг 3.</strong> \( f''(x) = 0 \) ⇒ \( x = \pm 1 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Знаки \( f''(x) \):</p>
+                <ul>
+                    <li>На \( (-\infty, -1) \): \( f'' > 0 \) ⇒ выпукла вниз.</li>
+                    <li>На \( (-1, 1) \): \( f'' < 0 \) ⇒ выпукла вверх.</li>
+                    <li>На \( (1, +\infty) \): \( f'' > 0 \) ⇒ выпукла вниз.</li>
+                </ul>
+                <p class="step"><strong>Шаг 5.</strong> В точках \( x = \pm 1 \) вторая производная меняет знак ⇒ точки
+                    перегиба.</p>
+                <div class="answer-block"><strong>Ответ:</strong> выпукла вниз на \( (-\infty,-1)\cup(1,+\infty) \),
+                    выпукла вверх на \( (-1,1) \), точки перегиба \( x=\pm1 \).
+                </div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 11.</strong> Найдите количество корней уравнения \( x^3 - 3x + a = 0 \) в зависимости от параметра \( a \).</p><button class="solve-btn" data-target="s11">Показать решение</button><div id="s11" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> \( f(x) = x^3 - 3x + a \). \( f'(x) = 3x^2 - 3 = 3(x-1)(x+1) \).</p><p class="step"><strong>Шаг 2.</strong> Критические точки: \( x=-1 \) (максимум), \( x=1 \) (минимум).</p><p class="step"><strong>Шаг 3.</strong> \( f(-1) = a+2 \), \( f(1) = a-2 \).</p><ul><li>\( a < -2 \): максимум < 0, минимум < 0 ⇒ 1 корень.</li><li>\( a = -2 \): максимум = 0 ⇒ 2 корня.</li><li>\( -2 < a < 2 \): максимум > 0, минимум < 0 ⇒ 3 корня.</li><li>\( a = 2 \): минимум = 0 ⇒ 2 корня.</li><li>\( a > 2 \): минимум > 0 ⇒ 1 корень.</li></ul><div class="answer-block"><strong>Ответ:</strong> \( a<-2 \) или \( a>2 \): 1 корень; \( a=\pm2 \): 2 корня; \( -2< a<2 \): 3 корня.</div></div></div>
+        <div class="task"><p><strong>Задача 11.</strong> Найдите количество корней уравнения \( x^3 - 3x + a = 0 \) в
+            зависимости от параметра \( a \).</p>
+            <button class="solve-btn" data-target="s11">Показать решение</button>
+            <div id="s11" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( f(x) = x^3 - 3x + a \). \( f'(x) = 3x^2 - 3 = 3(x-1)(x+1) \).
+                </p>
+                <p class="step"><strong>Шаг 2.</strong> Критические точки: \( x=-1 \) (максимум), \( x=1 \) (минимум).
+                </p>
+                <p class="step"><strong>Шаг 3.</strong> \( f(-1) = a+2 \), \( f(1) = a-2 \).</p>
+                <ul>
+                    <li>\( a < -2 \): максимум < 0, минимум < 0 ⇒ 1 корень.</li>
+                    <li>\( a = -2 \): максимум = 0 ⇒ 2 корня.</li>
+                    <li>\( -2 < a < 2 \): максимум > 0, минимум < 0 ⇒ 3 корня.</li>
+                    <li>\( a = 2 \): минимум = 0 ⇒ 2 корня.</li>
+                    <li>\( a > 2 \): минимум > 0 ⇒ 1 корень.</li>
+                </ul>
+                <div class="answer-block"><strong>Ответ:</strong> \( a<-2 \) или \( a>2 \): 1 корень; \( a=\pm2 \): 2
+                    корня; \( -2< a<2 \): 3 корня.
+                </div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 12.</strong> Найдите все значения параметра \( a \), при которых функция \( f(x) = x^3 + ax^2 + 3x - 1 \) имеет ровно одну критическую точку.</p><button class="solve-btn" data-target="s12">Показать решение</button><div id="s12" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> \( f'(x) = 3x^2 + 2ax + 3 \).</p><p class="step"><strong>Шаг 2.</strong> Чтобы была ровно одна критическая точка, дискриминант должен быть равен нулю: \( D = 4a^2 - 36 = 4(a^2 - 9) \).</p><p class="step"><strong>Шаг 3.</strong> \( D = 0 \) ⇒ \( a = \pm 3 \).</p><div class="answer-block"><strong>Ответ:</strong> \( a = -3 \) или \( a = 3 \).</div></div></div>
+        <div class="task"><p><strong>Задача 12.</strong> Найдите все значения параметра \( a \), при которых функция \(
+            f(x) = x^3 + ax^2 + 3x - 1 \) имеет ровно одну критическую точку.</p>
+            <button class="solve-btn" data-target="s12">Показать решение</button>
+            <div id="s12" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( f'(x) = 3x^2 + 2ax + 3 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Чтобы была ровно одна критическая точка, дискриминант должен
+                    быть равен нулю: \( D = 4a^2 - 36 = 4(a^2 - 9) \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( D = 0 \) ⇒ \( a = \pm 3 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( a = -3 \) или \( a = 3 \).</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 13.</strong> Найдите точки экстремума функции \( f(x) = \frac{x}{x^2+1} \).</p><button class="solve-btn" data-target="s13">Показать решение</button><div id="s13" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> \( f'(x) = \frac{1-x^2}{(x^2+1)^2} \).</p><p class="step"><strong>Шаг 2.</strong> \( f'(x) = 0 \) ⇒ \( x = \pm 1 \).</p><p class="step"><strong>Шаг 3.</strong> Знаки: на \( (-\infty,-1) \) \( f'<0 \), на \( (-1,1) \) \( f'>0 \), на \( (1,\infty) \) \( f'<0 \).</p><p class="step"><strong>Шаг 4.</strong> В \( x=-1 \) — минимум, в \( x=1 \) — максимум.</p><p class="step"><strong>Шаг 5.</strong> \( f(-1) = -\frac{1}{2} \), \( f(1) = \frac{1}{2} \).</p><div class="answer-block"><strong>Ответ:</strong> минимум \( -\frac{1}{2} \) при \( x=-1 \), максимум \( \frac{1}{2} \) при \( x=1 \).</div></div></div>
+        <div class="task"><p><strong>Задача 13.</strong> Найдите точки экстремума функции \( f(x) = \frac{x}{x^2+1} \).
+        </p>
+            <button class="solve-btn" data-target="s13">Показать решение</button>
+            <div id="s13" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( f'(x) = \frac{1-x^2}{(x^2+1)^2} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( f'(x) = 0 \) ⇒ \( x = \pm 1 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Знаки: на \( (-\infty,-1) \) \( f'<0 \), на \( (-1,1) \) \( f'>0
+                    \), на \( (1,\infty) \) \( f'<0 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> В \( x=-1 \) — минимум, в \( x=1 \) — максимум.</p>
+                <p class="step"><strong>Шаг 5.</strong> \( f(-1) = -\frac{1}{2} \), \( f(1) = \frac{1}{2} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> минимум \( -\frac{1}{2} \) при \( x=-1 \), максимум \(
+                    \frac{1}{2} \) при \( x=1 \).
+                </div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 14.</strong> Найдите промежутки монотонности функции \( f(x) = e^{-x^2} \).</p><button class="solve-btn" data-target="s14">Показать решение</button><div id="s14" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> \( f'(x) = -2x e^{-x^2} \).</p><p class="step"><strong>Шаг 2.</strong> \( e^{-x^2} > 0 \) всегда, знак определяется знаком \( -2x \).</p><ul><li>При \( x<0 \): \( -2x > 0 \) ⇒ \( f'(x) > 0 \) ⇒ возрастает.</li><li>При \( x>0 \): \( -2x < 0 \) ⇒ \( f'(x) < 0 \) ⇒ убывает.</li></ul><div class="answer-block"><strong>Ответ:</strong> возрастает на \( (-\infty,0) \), убывает на \( (0,+\infty) \).</div></div></div>
+        <div class="task"><p><strong>Задача 14.</strong> Найдите промежутки монотонности функции \( f(x) = e^{-x^2} \).
+        </p>
+            <button class="solve-btn" data-target="s14">Показать решение</button>
+            <div id="s14" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( f'(x) = -2x e^{-x^2} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( e^{-x^2} > 0 \) всегда, знак определяется знаком \( -2x \).
+                </p>
+                <ul>
+                    <li>При \( x<0 \): \( -2x > 0 \) ⇒ \( f'(x) > 0 \) ⇒ возрастает.</li>
+                    <li>При \( x>0 \): \( -2x < 0 \) ⇒ \( f'(x) < 0 \) ⇒ убывает.</li>
+                </ul>
+                <div class="answer-block"><strong>Ответ:</strong> возрастает на \( (-\infty,0) \), убывает на \(
+                    (0,+\infty) \).
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Часть 3. Оптимизация (задачи 15–22) -->
     <div class="part">
         <h2>🏔️ Часть 3. Применение производной в оптимизации</h2>
 
-        <div class="task"><p><strong>Задача 15.</strong> Из всех прямоугольников с площадью 36 см² найдите прямоугольник с наименьшим периметром.</p><button class="solve-btn" data-target="s15">Показать решение</button><div id="s15" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> \( xy = 36 \). Периметр \( P = 2(x+y) \).</p><p class="step"><strong>Шаг 2.</strong> \( y = \frac{36}{x} \), \( P(x) = 2\left(x + \frac{36}{x}\right) \).</p><p class="step"><strong>Шаг 3.</strong> \( P'(x) = 2\left(1 - \frac{36}{x^2}\right) = 0 \) ⇒ \( x = 6 \).</p><p class="step"><strong>Шаг 4.</strong> При \( x<6 \): \( P'<0 \) (убывает), при \( x>6 \): \( P'>0 \) (возрастает) ⇒ минимум.</p><p class="step"><strong>Шаг 5.</strong> \( y = 6 \), \( P = 24 \).</p><div class="answer-block"><strong>Ответ:</strong> квадрат 6×6, периметр 24 см.</div></div></div>
+        <div class="task"><p><strong>Задача 15.</strong> Из всех прямоугольников с площадью 36 см² найдите прямоугольник
+            с наименьшим периметром.</p>
+            <button class="solve-btn" data-target="s15">Показать решение</button>
+            <div id="s15" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( xy = 36 \). Периметр \( P = 2(x+y) \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( y = \frac{36}{x} \), \( P(x) = 2\left(x + \frac{36}{x}\right)
+                    \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( P'(x) = 2\left(1 - \frac{36}{x^2}\right) = 0 \) ⇒ \( x = 6
+                    \).</p>
+                <p class="step"><strong>Шаг 4.</strong> При \( x<6 \): \( P'<0 \) (убывает), при \( x>6 \): \( P'>0 \)
+                    (возрастает) ⇒ минимум.</p>
+                <p class="step"><strong>Шаг 5.</strong> \( y = 6 \), \( P = 24 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> квадрат 6×6, периметр 24 см.</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 16.</strong> Найдите наименьшее расстояние от точки \( (0, 3) \) до параболы \( y = x^2 \).</p><button class="solve-btn" data-target="s16">Показать решение</button><div id="s16" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Точка на параболе: \( (x, x^2) \). Расстояние: \( d = \sqrt{x^2 + (x^2-3)^2} \).</p><p class="step"><strong>Шаг 2.</strong> Минимум \( d \) там же, где минимум \( f(x) = x^4 - 5x^2 + 9 \).</p><p class="step"><strong>Шаг 3.</strong> \( f'(x) = 4x^3 - 10x = 2x(2x^2 - 5) \). Критические точки: \( x=0 \), \( x=\pm\sqrt{\frac{5}{2}} \).</p><p class="step"><strong>Шаг 4.</strong> \( f(0)=9 \), \( f(\pm\sqrt{5/2}) = \frac{11}{4} \). Минимум \( \frac{11}{4} \).</p><p class="step"><strong>Шаг 5.</strong> Расстояние: \( d = \frac{\sqrt{11}}{2} \).</p><div class="answer-block"><strong>Ответ:</strong> \( \frac{\sqrt{11}}{2} \).</div></div></div>
+        <div class="task"><p><strong>Задача 16.</strong> Найдите наименьшее расстояние от точки \( (0, 3) \) до параболы
+            \( y = x^2 \).</p>
+            <button class="solve-btn" data-target="s16">Показать решение</button>
+            <div id="s16" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Точка на параболе: \( (x, x^2) \). Расстояние: \( d = \sqrt{x^2
+                    + (x^2-3)^2} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Минимум \( d \) там же, где минимум \( f(x) = x^4 - 5x^2 + 9 \).
+                </p>
+                <p class="step"><strong>Шаг 3.</strong> \( f'(x) = 4x^3 - 10x = 2x(2x^2 - 5) \). Критические точки: \(
+                    x=0 \), \( x=\pm\sqrt{\frac{5}{2}} \).</p>
+                <p class="step"><strong>Шаг 4.</strong> \( f(0)=9 \), \( f(\pm\sqrt{5/2}) = \frac{11}{4} \). Минимум \(
+                    \frac{11}{4} \).</p>
+                <p class="step"><strong>Шаг 5.</strong> Расстояние: \( d = \frac{\sqrt{11}}{2} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \frac{\sqrt{11}}{2} \).</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 17.</strong> Найдите максимальную площадь прямоугольника, вписанного в полукруг радиуса \( R \).</p><button class="solve-btn" data-target="s17">Показать решение</button><div id="s17" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Прямоугольник имеет координаты \( (\pm x, y) \) на полуокружности \( x^2 + y^2 = R^2 \). Площадь: \( S = 2xy = 2x\sqrt{R^2 - x^2} \).</p><p class="step"><strong>Шаг 2.</strong> \( f(x) = S^2 = 4x^2(R^2 - x^2) = 4R^2x^2 - 4x^4 \).</p><p class="step"><strong>Шаг 3.</strong> \( f'(x) = 8R^2x - 16x^3 = 8x(R^2 - 2x^2) \). \( f'(x)=0 \) ⇒ \( x = \frac{R}{\sqrt{2}} \).</p><p class="step"><strong>Шаг 4.</strong> \( y = \frac{R}{\sqrt{2}} \), \( S_{\max} = 2 \cdot \frac{R}{\sqrt{2}} \cdot \frac{R}{\sqrt{2}} = R^2 \).</p><div class="answer-block"><strong>Ответ:</strong> \( R^2 \).</div></div></div>
+        <div class="task"><p><strong>Задача 17.</strong> Найдите максимальную площадь прямоугольника, вписанного в
+            полукруг радиуса \( R \).</p>
+            <button class="solve-btn" data-target="s17">Показать решение</button>
+            <div id="s17" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Прямоугольник имеет координаты \( (\pm x, y) \) на
+                    полуокружности \( x^2 + y^2 = R^2 \). Площадь: \( S = 2xy = 2x\sqrt{R^2 - x^2} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( f(x) = S^2 = 4x^2(R^2 - x^2) = 4R^2x^2 - 4x^4 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( f'(x) = 8R^2x - 16x^3 = 8x(R^2 - 2x^2) \). \( f'(x)=0 \) ⇒ \(
+                    x = \frac{R}{\sqrt{2}} \).</p>
+                <p class="step"><strong>Шаг 4.</strong> \( y = \frac{R}{\sqrt{2}} \), \( S_{\max} = 2 \cdot
+                    \frac{R}{\sqrt{2}} \cdot \frac{R}{\sqrt{2}} = R^2 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( R^2 \).</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 18.</strong> Найдите максимальный объём цилиндра, вписанного в конус с радиусом \( R \) и высотой \( H \).</p><button class="solve-btn" data-target="s18">Показать решение</button><div id="s18" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Из подобия: \( r = R\left(1 - \frac{h}{H}\right) \). \( V = \pi r^2 h = \pi R^2 h \left(1 - \frac{h}{H}\right)^2 \).</p><p class="step"><strong>Шаг 2.</strong> Замена \( t = \frac{h}{H} \): \( V = \pi R^2 H \cdot t(1-t)^2 \).</p><p class="step"><strong>Шаг 3.</strong> \( g(t) = t(1-t)^2 \), \( g'(t) = (3t-1)(t-1) \). Максимум при \( t = \frac{1}{3} \).</p><p class="step"><strong>Шаг 4.</strong> \( V_{\max} = \frac{4\pi R^2 H}{27} \).</p><div class="answer-block"><strong>Ответ:</strong> \( \frac{4\pi R^2 H}{27} \).</div></div></div>
+        <div class="task"><p><strong>Задача 18.</strong> Найдите максимальный объём цилиндра, вписанного в конус с
+            радиусом \( R \) и высотой \( H \).</p>
+            <button class="solve-btn" data-target="s18">Показать решение</button>
+            <div id="s18" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Из подобия: \( r = R\left(1 - \frac{h}{H}\right) \). \( V = \pi
+                    r^2 h = \pi R^2 h \left(1 - \frac{h}{H}\right)^2 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Замена \( t = \frac{h}{H} \): \( V = \pi R^2 H \cdot t(1-t)^2
+                    \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( g(t) = t(1-t)^2 \), \( g'(t) = (3t-1)(t-1) \). Максимум при
+                    \( t = \frac{1}{3} \).</p>
+                <p class="step"><strong>Шаг 4.</strong> \( V_{\max} = \frac{4\pi R^2 H}{27} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \frac{4\pi R^2 H}{27} \).</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 19.</strong> Найдите наименьшее значение функции \( f(x) = x^2 + \frac{4}{x} \) при \( x > 0 \).</p><button class="solve-btn" data-target="s19">Показать решение</button><div id="s19" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> \( f'(x) = 2x - \frac{4}{x^2} = \frac{2x^3 - 4}{x^2} \).</p><p class="step"><strong>Шаг 2.</strong> \( f'(x)=0 \) ⇒ \( x^3 = 2 \) ⇒ \( x = \sqrt[3]{2} \).</p><p class="step"><strong>Шаг 3.</strong> При \( x<\sqrt[3]{2} \): \( f'<0 \) (убывает), при \( x>\sqrt[3]{2} \): \( f'>0 \) (возрастает) ⇒ минимум.</p><p class="step"><strong>Шаг 4.</strong> \( f(\sqrt[3]{2}) = 2^{2/3} + 4 \cdot 2^{-1/3} = 3 \cdot 2^{2/3} \).</p><div class="answer-block"><strong>Ответ:</strong> \( 3 \cdot 2^{2/3} \).</div></div></div>
+        <div class="task"><p><strong>Задача 19.</strong> Найдите наименьшее значение функции \( f(x) = x^2 + \frac{4}{x}
+            \) при \( x > 0 \).</p>
+            <button class="solve-btn" data-target="s19">Показать решение</button>
+            <div id="s19" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( f'(x) = 2x - \frac{4}{x^2} = \frac{2x^3 - 4}{x^2} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( f'(x)=0 \) ⇒ \( x^3 = 2 \) ⇒ \( x = \sqrt[3]{2} \).</p>
+                <p class="step"><strong>Шаг 3.</strong> При \( x<\sqrt[3]{2} \): \( f'<0 \) (убывает), при \(
+                    x>\sqrt[3]{2} \): \( f'>0 \) (возрастает) ⇒ минимум.</p>
+                <p class="step"><strong>Шаг 4.</strong> \( f(\sqrt[3]{2}) = 2^{2/3} + 4 \cdot 2^{-1/3} = 3 \cdot 2^{2/3}
+                    \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( 3 \cdot 2^{2/3} \).</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 20.</strong> Найдите точку на графике \( y = \sqrt{x} \), ближайшую к точке \( (4, 0) \).</p><button class="solve-btn" data-target="s20">Показать решение</button><div id="s20" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Точка на графике: \( (x, \sqrt{x}) \). \( d^2 = (x-4)^2 + x = x^2 - 7x + 16 \).</p><p class="step"><strong>Шаг 2.</strong> \( f(x) = x^2 - 7x + 16 \). \( f'(x) = 2x - 7 = 0 \) ⇒ \( x = \frac{7}{2} \).</p><p class="step"><strong>Шаг 3.</strong> \( f''(x) = 2 > 0 \) ⇒ минимум.</p><p class="step"><strong>Шаг 4.</strong> Точка: \( \left( \frac{7}{2}, \sqrt{\frac{7}{2}} \right) \).</p><div class="answer-block"><strong>Ответ:</strong> \( \left( \frac{7}{2}, \sqrt{\frac{7}{2}} \right) \).</div></div></div>
+        <div class="task"><p><strong>Задача 20.</strong> Найдите точку на графике \( y = \sqrt{x} \), ближайшую к точке
+            \( (4, 0) \).</p>
+            <button class="solve-btn" data-target="s20">Показать решение</button>
+            <div id="s20" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Точка на графике: \( (x, \sqrt{x}) \). \( d^2 = (x-4)^2 + x =
+                    x^2 - 7x + 16 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( f(x) = x^2 - 7x + 16 \). \( f'(x) = 2x - 7 = 0 \) ⇒ \( x =
+                    \frac{7}{2} \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( f''(x) = 2 > 0 \) ⇒ минимум.</p>
+                <p class="step"><strong>Шаг 4.</strong> Точка: \( \left( \frac{7}{2}, \sqrt{\frac{7}{2}} \right) \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \left( \frac{7}{2}, \sqrt{\frac{7}{2}} \right) \).
+                </div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 21.</strong> Найдите наибольшее значение функции \( f(x) = \ln x - x \) на \( (0, +\infty) \).</p><button class="solve-btn" data-target="s21">Показать решение</button><div id="s21" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> \( f'(x) = \frac{1}{x} - 1 = \frac{1-x}{x} \).</p><p class="step"><strong>Шаг 2.</strong> \( f'(x)=0 \) ⇒ \( x=1 \).</p><p class="step"><strong>Шаг 3.</strong> При \( x<1 \): \( f'>0 \) (возрастает), при \( x>1 \): \( f'<0 \) (убывает) ⇒ максимум.</p><p class="step"><strong>Шаг 4.</strong> \( f(1) = -1 \).</p><div class="answer-block"><strong>Ответ:</strong> -1.</div></div></div>
+        <div class="task"><p><strong>Задача 21.</strong> Найдите наибольшее значение функции \( f(x) = \ln x - x \) на
+            \( (0, +\infty) \).</p>
+            <button class="solve-btn" data-target="s21">Показать решение</button>
+            <div id="s21" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( f'(x) = \frac{1}{x} - 1 = \frac{1-x}{x} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( f'(x)=0 \) ⇒ \( x=1 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> При \( x<1 \): \( f'>0 \) (возрастает), при \( x>1 \): \( f'<0
+                    \) (убывает) ⇒ максимум.</p>
+                <p class="step"><strong>Шаг 4.</strong> \( f(1) = -1 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> -1.</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 22.</strong> Найдите минимальное значение функции \( f(x) = e^x - x \).</p><button class="solve-btn" data-target="s22">Показать решение</button><div id="s22" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> \( f'(x) = e^x - 1 = 0 \) ⇒ \( x = 0 \).</p><p class="step"><strong>Шаг 2.</strong> При \( x<0 \): \( f'<0 \) (убывает), при \( x>0 \): \( f'>0 \) (возрастает) ⇒ минимум.</p><p class="step"><strong>Шаг 3.</strong> \( f(0) = 1 \).</p><div class="answer-block"><strong>Ответ:</strong> 1.</div></div></div>
+        <div class="task"><p><strong>Задача 22.</strong> Найдите минимальное значение функции \( f(x) = e^x - x \).</p>
+            <button class="solve-btn" data-target="s22">Показать решение</button>
+            <div id="s22" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( f'(x) = e^x - 1 = 0 \) ⇒ \( x = 0 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> При \( x<0 \): \( f'<0 \) (убывает), при \( x>0 \): \( f'>0 \)
+                    (возрастает) ⇒ минимум.</p>
+                <p class="step"><strong>Шаг 3.</strong> \( f(0) = 1 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> 1.</div>
+            </div>
+        </div>
     </div>
 
     <!-- Часть 4. Олимпиадные задачи -->
     <div class="part">
         <h2>🏆 Часть 4. Олимпиадные задачи с параметрами и доказательства</h2>
 
-        <div class="task"><p><strong>Задача 23.</strong> Докажите, что \( e^x \ge 1 + x \) для всех \( x \in \mathbb{R} \).</p><button class="solve-btn" data-target="s23">Показать решение</button><div id="s23" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Рассмотрим \( f(x) = e^x - 1 - x \).</p><p class="step"><strong>Шаг 2.</strong> \( f'(x) = e^x - 1 \). \( f'(x)=0 \) ⇒ \( x=0 \).</p><p class="step"><strong>Шаг 3.</strong> При \( x<0 \): \( f'<0 \) (убывает), при \( x>0 \): \( f'>0 \) (возрастает) ⇒ минимум в \( x=0 \).</p><p class="step"><strong>Шаг 4.</strong> \( f(0) = 0 \). Значит, \( f(x) \ge 0 \) для всех \( x \).</p><div class="answer-block"><strong>Вывод:</strong> \( e^x \ge 1 + x \).</div></div></div>
+        <div class="task"><p><strong>Задача 23.</strong> Докажите, что \( e^x \ge 1 + x \) для всех \( x \in \mathbb{R}
+            \).</p>
+            <button class="solve-btn" data-target="s23">Показать решение</button>
+            <div id="s23" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Рассмотрим \( f(x) = e^x - 1 - x \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( f'(x) = e^x - 1 \). \( f'(x)=0 \) ⇒ \( x=0 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> При \( x<0 \): \( f'<0 \) (убывает), при \( x>0 \): \( f'>0 \)
+                    (возрастает) ⇒ минимум в \( x=0 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> \( f(0) = 0 \). Значит, \( f(x) \ge 0 \) для всех \( x \).</p>
+                <div class="answer-block"><strong>Вывод:</strong> \( e^x \ge 1 + x \).</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 24.</strong> Докажите, что \( \ln x \le x - 1 \) для всех \( x > 0 \).</p><button class="solve-btn" data-target="s24">Показать решение</button><div id="s24" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Рассмотрим \( f(x) = x - 1 - \ln x \).</p><p class="step"><strong>Шаг 2.</strong> \( f'(x) = 1 - \frac{1}{x} = \frac{x-1}{x} \).</p><p class="step"><strong>Шаг 3.</strong> \( f'(x)=0 \) ⇒ \( x=1 \). При \( x<1 \): \( f'<0 \) (убывает), при \( x>1 \): \( f'>0 \) (возрастает) ⇒ минимум в \( x=1 \).</p><p class="step"><strong>Шаг 4.</strong> \( f(1) = 0 \). Значит, \( f(x) \ge 0 \) для всех \( x>0 \).</p><div class="answer-block"><strong>Вывод:</strong> \( \ln x \le x - 1 \).</div></div></div>
+        <div class="task"><p><strong>Задача 24.</strong> Докажите, что \( \ln x \le x - 1 \) для всех \( x > 0 \).</p>
+            <button class="solve-btn" data-target="s24">Показать решение</button>
+            <div id="s24" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Рассмотрим \( f(x) = x - 1 - \ln x \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( f'(x) = 1 - \frac{1}{x} = \frac{x-1}{x} \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( f'(x)=0 \) ⇒ \( x=1 \). При \( x<1 \): \( f'<0 \) (убывает),
+                    при \( x>1 \): \( f'>0 \) (возрастает) ⇒ минимум в \( x=1 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> \( f(1) = 0 \). Значит, \( f(x) \ge 0 \) для всех \( x>0 \).</p>
+                <div class="answer-block"><strong>Вывод:</strong> \( \ln x \le x - 1 \).</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 25.</strong> Найдите все значения параметра \( a \), при которых уравнение \( x^3 - 3x = a \) имеет ровно три корня.</p><button class="solve-btn" data-target="s25">Показать решение</button><div id="s25" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> \( f(x) = x^3 - 3x \). \( f'(x) = 3x^2 - 3 = 3(x-1)(x+1) \).</p><p class="step"><strong>Шаг 2.</strong> Экстремумы: \( x=-1 \) — максимум \( f(-1)=2 \), \( x=1 \) — минимум \( f(1)=-2 \).</p><p class="step"><strong>Шаг 3.</strong> Чтобы уравнение имело три корня, прямая \( y=a \) должна пересекать график в трёх точках. Это возможно при \( -2 < a < 2 \).</p><p class="step"><strong>Шаг 4.</strong> При \( a=\pm2 \) — два корня, при других \( a \) — один корень.</p><div class="answer-block"><strong>Ответ:</strong> \( -2 < a < 2 \).</div></div></div>
+        <div class="task"><p><strong>Задача 25.</strong> Найдите все значения параметра \( a \), при которых уравнение
+            \( x^3 - 3x = a \) имеет ровно три корня.</p>
+            <button class="solve-btn" data-target="s25">Показать решение</button>
+            <div id="s25" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( f(x) = x^3 - 3x \). \( f'(x) = 3x^2 - 3 = 3(x-1)(x+1) \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Экстремумы: \( x=-1 \) — максимум \( f(-1)=2 \), \( x=1 \) —
+                    минимум \( f(1)=-2 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Чтобы уравнение имело три корня, прямая \( y=a \) должна
+                    пересекать график в трёх точках. Это возможно при \( -2 < a < 2 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> При \( a=\pm2 \) — два корня, при других \( a \) — один корень.
+                </p>
+                <div class="answer-block"><strong>Ответ:</strong> \( -2 < a < 2 \).</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 26.</strong> Найдите все значения \( a \), при которых уравнение \( e^x = ax^2 \) имеет ровно два корня.</p><button class="solve-btn" data-target="s26">Показать решение</button><div id="s26" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> \( a = \frac{e^x}{x^2} \), \( x \neq 0 \). Рассмотрим \( f(x) = \frac{e^x}{x^2} \).</p><p class="step"><strong>Шаг 2.</strong> \( f'(x) = \frac{e^x(x-2)}{x^3} \). Критическая точка: \( x=2 \). \( f(2) = \frac{e^2}{4} \).</p><p class="step"><strong>Шаг 3.</strong> На \( (-\infty,0) \) функция убывает от \( +\infty \) до \( 0^+ \). На \( (0,2) \) убывает от \( +\infty \) до \( e^2/4 \). На \( (2,+\infty) \) возрастает от \( e^2/4 \) до \( +\infty \).</p><p class="step"><strong>Шаг 4.</strong> Чтобы было ровно два корня, нужно \( a = \frac{e^2}{4} \) (касание в \( x=2 \) плюс один отрицательный корень).</p><div class="answer-block"><strong>Ответ:</strong> \( a = \frac{e^2}{4} \).</div></div></div>
+        <div class="task"><p><strong>Задача 26.</strong> Найдите все значения \( a \), при которых уравнение \( e^x =
+            ax^2 \) имеет ровно два корня.</p>
+            <button class="solve-btn" data-target="s26">Показать решение</button>
+            <div id="s26" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( a = \frac{e^x}{x^2} \), \( x \neq 0 \). Рассмотрим \( f(x) =
+                    \frac{e^x}{x^2} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( f'(x) = \frac{e^x(x-2)}{x^3} \). Критическая точка: \( x=2
+                    \). \( f(2) = \frac{e^2}{4} \).</p>
+                <p class="step"><strong>Шаг 3.</strong> На \( (-\infty,0) \) функция убывает от \( +\infty \) до \( 0^+
+                    \). На \( (0,2) \) убывает от \( +\infty \) до \( e^2/4 \). На \( (2,+\infty) \) возрастает от \(
+                    e^2/4 \) до \( +\infty \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Чтобы было ровно два корня, нужно \( a = \frac{e^2}{4} \)
+                    (касание в \( x=2 \) плюс один отрицательный корень).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( a = \frac{e^2}{4} \).</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 27.</strong> Найдите все значения \( a \), при которых функция \( f(x) = x^3 + ax^2 + x + 1 \) возрастает на всей числовой прямой.</p><button class="solve-btn" data-target="s27">Показать решение</button><div id="s27" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> \( f'(x) = 3x^2 + 2ax + 1 \).</p><p class="step"><strong>Шаг 2.</strong> Чтобы функция возрастала на всей прямой, нужно \( f'(x) \ge 0 \) для всех \( x \).</p><p class="step"><strong>Шаг 3.</strong> Дискриминант: \( D = 4a^2 - 12 \le 0 \) ⇒ \( a^2 \le 3 \) ⇒ \( -\sqrt{3} \le a \le \sqrt{3} \).</p><div class="answer-block"><strong>Ответ:</strong> \( [-\sqrt{3}, \sqrt{3}] \).</div></div></div>
+        <div class="task"><p><strong>Задача 27.</strong> Найдите все значения \( a \), при которых функция \( f(x) = x^3
+            + ax^2 + x + 1 \) возрастает на всей числовой прямой.</p>
+            <button class="solve-btn" data-target="s27">Показать решение</button>
+            <div id="s27" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( f'(x) = 3x^2 + 2ax + 1 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Чтобы функция возрастала на всей прямой, нужно \( f'(x) \ge 0 \)
+                    для всех \( x \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Дискриминант: \( D = 4a^2 - 12 \le 0 \) ⇒ \( a^2 \le 3 \) ⇒ \(
+                    -\sqrt{3} \le a \le \sqrt{3} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( [-\sqrt{3}, \sqrt{3}] \).</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 28.</strong> Найдите наименьшее значение выражения \( x^2 + y^2 \) при условии \( xy = 1 \).</p><button class="solve-btn" data-target="s28">Показать решение</button><div id="s28" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> \( y = \frac{1}{x} \), \( x \neq 0 \). \( f(x) = x^2 + \frac{1}{x^2} \).</p><p class="step"><strong>Шаг 2.</strong> Замена \( t = x^2 > 0 \): \( f = t + \frac{1}{t} \).</p><p class="step"><strong>Шаг 3.</strong> \( f'(t) = 1 - \frac{1}{t^2} = 0 \) ⇒ \( t = 1 \).</p><p class="step"><strong>Шаг 4.</strong> При \( t<1 \): \( f'<0 \) (убывает), при \( t>1 \): \( f'>0 \) (возрастает) ⇒ минимум.</p><p class="step"><strong>Шаг 5.</strong> \( f(1) = 2 \).</p><div class="answer-block"><strong>Ответ:</strong> 2.</div></div></div>
+        <div class="task"><p><strong>Задача 28.</strong> Найдите наименьшее значение выражения \( x^2 + y^2 \) при
+            условии \( xy = 1 \).</p>
+            <button class="solve-btn" data-target="s28">Показать решение</button>
+            <div id="s28" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( y = \frac{1}{x} \), \( x \neq 0 \). \( f(x) = x^2 +
+                    \frac{1}{x^2} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Замена \( t = x^2 > 0 \): \( f = t + \frac{1}{t} \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( f'(t) = 1 - \frac{1}{t^2} = 0 \) ⇒ \( t = 1 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> При \( t<1 \): \( f'<0 \) (убывает), при \( t>1 \): \( f'>0 \)
+                    (возрастает) ⇒ минимум.</p>
+                <p class="step"><strong>Шаг 5.</strong> \( f(1) = 2 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> 2.</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 29.</strong> Найдите максимальный объём конуса, вписанного в шар радиуса \( R \).</p><button class="solve-btn" data-target="s29">Показать решение</button><div id="s29" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Осевое сечение: окружность радиуса \( R \) с вписанным равнобедренным треугольником. Высота конуса \( h \), радиус основания \( r \). \( r^2 = 2Rh - h^2 \).</p><p class="step"><strong>Шаг 2.</strong> Объём: \( V = \frac{1}{3}\pi r^2 h = \frac{1}{3}\pi (2Rh^2 - h^3) \).</p><p class="step"><strong>Шаг 3.</strong> \( V'(h) = \frac{1}{3}\pi (4Rh - 3h^2) = \frac{1}{3}\pi h(4R - 3h) = 0 \) ⇒ \( h = \frac{4R}{3} \).</p><p class="step"><strong>Шаг 4.</strong> При \( h < 4R/3 \): \( V' > 0 \), при \( h > 4R/3 \): \( V' < 0 \) ⇒ максимум.</p><p class="step"><strong>Шаг 5.</strong> \( V_{\max} = \frac{32\pi R^3}{81} \).</p><div class="answer-block"><strong>Ответ:</strong> \( \frac{32\pi R^3}{81} \).</div></div></div>
+        <div class="task"><p><strong>Задача 29.</strong> Найдите максимальный объём конуса, вписанного в шар радиуса \(
+            R \).</p>
+            <button class="solve-btn" data-target="s29">Показать решение</button>
+            <div id="s29" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Осевое сечение: окружность радиуса \( R \) с вписанным
+                    равнобедренным треугольником. Высота конуса \( h \), радиус основания \( r \). \( r^2 = 2Rh - h^2
+                    \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Объём: \( V = \frac{1}{3}\pi r^2 h = \frac{1}{3}\pi (2Rh^2 -
+                    h^3) \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( V'(h) = \frac{1}{3}\pi (4Rh - 3h^2) = \frac{1}{3}\pi h(4R -
+                    3h) = 0 \) ⇒ \( h = \frac{4R}{3} \).</p>
+                <p class="step"><strong>Шаг 4.</strong> При \( h < 4R/3 \): \( V' > 0 \), при \( h > 4R/3 \): \( V' < 0
+                    \) ⇒ максимум.</p>
+                <p class="step"><strong>Шаг 5.</strong> \( V_{\max} = \frac{32\pi R^3}{81} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \frac{32\pi R^3}{81} \).</div>
+            </div>
+        </div>
 
-        <div class="task"><p><strong>Задача 30.</strong> Докажите, что для всех \( x > 0 \) выполняется \( \sin x < x \).</p><button class="solve-btn" data-target="s30">Показать решение</button><div id="s30" class="solution"><p><strong>Подробное решение:</strong></p><p class="step"><strong>Шаг 1.</strong> Рассмотрим \( f(x) = x - \sin x \). \( f'(x) = 1 - \cos x \).</p><p class="step"><strong>Шаг 2.</strong> \( f'(x) \ge 0 \) при всех \( x \), так как \( \cos x \le 1 \). Значит, \( f \) возрастает на \( [0, +\infty) \).</p><p class="step"><strong>Шаг 3.</strong> \( f(0) = 0 \). Так как функция возрастает, для \( x > 0 \) имеем \( f(x) > f(0) = 0 \).</p><p class="step"><strong>Шаг 4.</strong> Значит, \( x - \sin x > 0 \) ⇒ \( \sin x < x \).</p><div class="answer-block"><strong>Вывод:</strong> \( \sin x < x \) для всех \( x > 0 \).</div></div></div>
+        <div class="task"><p><strong>Задача 30.</strong> Докажите, что для всех \( x > 0 \) выполняется \( \sin x < x
+            \).</p>
+            <button class="solve-btn" data-target="s30">Показать решение</button>
+            <div id="s30" class="solution"><p><strong>Подробное решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Рассмотрим \( f(x) = x - \sin x \). \( f'(x) = 1 - \cos x \).
+                </p>
+                <p class="step"><strong>Шаг 2.</strong> \( f'(x) \ge 0 \) при всех \( x \), так как \( \cos x \le 1 \).
+                    Значит, \( f \) возрастает на \( [0, +\infty) \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( f(0) = 0 \). Так как функция возрастает, для \( x > 0 \)
+                    имеем \( f(x) > f(0) = 0 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Значит, \( x - \sin x > 0 \) ⇒ \( \sin x < x \).</p>
+                <div class="answer-block"><strong>Вывод:</strong> \( \sin x < x \) для всех \( x > 0 \).</div>
+            </div>
+        </div>
     </div>
 
-    <footer>📐 Все 30 задач по производной с полными, пошаговыми решениями</footer>
+    <footer>© Заборовский М. С. Материалы для олимпиадников. 2026</footer>
 </div>
 
 <script>
