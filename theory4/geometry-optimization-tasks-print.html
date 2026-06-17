@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>40 задач по геометрической оптимизации | Распечатка</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Times New Roman', 'Georgia', 'Segoe UI', serif;
+            background: white;
+            padding: 0;
+            margin: 0;
+            font-size: 7.5pt;
+            line-height: 1.2;
+        }
+        /* Точная настройка для одного листа А4 при печати */
+        @media print {
+            body {
+                margin: 0.5cm;
+                padding: 0;
+            }
+            .container {
+                margin: 0;
+                padding: 0;
+            }
+            .task {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            .no-print {
+                display: none;
+            }
+            h1 {
+                font-size: 13pt;
+                margin-bottom: 2mm;
+            }
+            .part h2 {
+                font-size: 10pt;
+                margin-top: 1mm;
+                margin-bottom: 1mm;
+            }
+        }
+        /* Для экрана (предпросмотр) */
+        @media screen {
+            body {
+                background: #e2e8f0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                padding: 15px;
+            }
+            .container {
+                background: white;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 5mm 7mm;
+            }
+            .print-btn {
+                background: #1e5f7a;
+                color: white;
+                border: none;
+                padding: 6px 12px;
+                border-radius: 20px;
+                cursor: pointer;
+                font-size: 10px;
+                margin-bottom: 8px;
+            }
+        }
+        .container {
+            width: 100%;
+            padding: 0;
+        }
+        .print-btn {
+            display: block;
+            margin: 0 auto 8px auto;
+            text-align: center;
+        }
+        h1 {
+            font-size: 13pt;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+        .sub {
+            text-align: center;
+            font-size: 7pt;
+            margin-bottom: 4px;
+            border-bottom: 0.5px solid #aaa;
+            padding-bottom: 2px;
+        }
+        .part {
+            margin-bottom: 4px;
+        }
+        .part h2 {
+            font-size: 10pt;
+            font-weight: bold;
+            background: #eef2ff;
+            padding: 1px 4px;
+            margin: 3px 0 3px 0;
+            border-left: 3px solid #1e5f7a;
+        }
+        .tasks-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3px 8px;
+        }
+        .task {
+            font-size: 7pt;
+            line-height: 1.25;
+            margin-bottom: 2px;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        .task-num {
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 2px;
+        }
+        .task .level {
+            font-size: 5.5pt;
+            padding: 0px 3px;
+            border: 0.5px solid #555;
+            border-radius: 8px;
+            margin-left: 3px;
+        }
+        footer {
+            text-align: center;
+            font-size: 5.5pt;
+            margin-top: 4px;
+            border-top: 0.5px solid #ccc;
+            padding-top: 2px;
+        }
+        @media (max-width: 600px) {
+            .tasks-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div style="text-align: center;">
+        <button class="print-btn no-print" onclick="window.print();">🖨️ Распечатать / Сохранить как PDF (A4)</button>
+    </div>
+    <h1>📐 40 задач по геометрической оптимизации</h1>
+    <div class="sub">Изопериметрика • Ферма–Торричелли • Оптимизация с производной и без</div>
+
+    <div class="part">
+        <h2>📏 Часть 1. Изопериметрические задачи (без производной)</h2>
+        <div class="tasks-grid">
+            <div class="task"><span class="task-num">1.</span> Периметр прямоугольника равен 20 см. Найдите его наибольшую возможную площадь.</div>
+            <div class="task"><span class="task-num">2.</span> Площадь прямоугольника равна 36 см². Найдите его наименьший возможный периметр.</div>
+            <div class="task"><span class="task-num">3.</span> Среди всех прямоугольников с диагональю \(d\) найти наибольшую площадь.</div>
+            <div class="task"><span class="task-num">4.</span> Среди всех прямоугольников, вписанных в окружность радиуса \(R\), найти наибольшую площадь.</div>
+            <div class="task"><span class="task-num">5.</span> Среди всех треугольников с данным периметром \(P\) найти наибольшую площадь.</div>
+            <div class="task"><span class="task-num">6.</span> Среди всех треугольников, вписанных в окружность радиуса \(R\), найти наибольшую площадь.</div>
+            <div class="task"><span class="task-num">7.</span> Окно имеет форму прямоугольника, завершённого сверху полукругом. Периметр окна равен \(P\). Найдите радиус полукруга, при котором площадь окна максимальна.</div>
+            <div class="task"><span class="task-num">8.</span> Среди всех цилиндров с заданным объёмом \(V\) найти цилиндр с наименьшей полной поверхностью.</div>
+            <div class="task"><span class="task-num">9.</span> Среди всех конусов с заданной образующей \(l\) найти конус с наибольшим объёмом.</div>
+            <div class="task"><span class="task-num">10.</span> Верёвка длины \(L\) огораживает участок вдоль прямой стены. Какую форму должен иметь участок, чтобы площадь была максимальной?</div>
+        </div>
+    </div>
+
+    <div class="part">
+        <h2>🏔️ Часть 2. Задача Ферма–Торричелли</h2>
+        <div class="tasks-grid">
+            <div class="task"><span class="task-num">11.</span> Дан треугольник \(ABC\) с углами меньше 120°. Найдите точку, сумма расстояний от которой до вершин минимальна.</div>
+            <div class="task"><span class="task-num">12.</span> В треугольнике \(ABC\) угол \(A = 130^\circ\). Где находится точка минимума суммы расстояний до вершин?</div>
+            <div class="task"><span class="task-num">13.</span> Дан равносторонний треугольник со стороной \(a\). Найдите сумму расстояний от точки Ферма до вершин.</div>
+            <div class="task"><span class="task-num">14.</span> Дан квадрат \(ABCD\) со стороной \(a\). Найдите точку, сумма расстояний от которой до вершин минимальна.</div>
+            <div class="task"><span class="task-num">15.</span> Даны две точки \(A\) и \(B\) и прямая \(l\). Найдите на прямой \(l\) точку \(M\), минимизирующую \(MA+MB\).</div>
+            <div class="task"><span class="task-num">16.</span> Даны две точки \(A\) и \(B\) по одну сторону от прямой \(l\). Найдите на \(l\) точку \(M\), минимизирующую \(MA+MB\).</div>
+            <div class="task"><span class="task-num">17.</span> Даны три точки \(A,B,C\). Найдите точку \(M\), минимизирующую \(MA+MB+MC\), если все углы треугольника \(<120^\circ\). Опишите построение.</div>
+            <div class="task"><span class="task-num">18.</span> В треугольнике со сторонами \(a,b,c\) точка Ферма даёт сумму расстояний \(S\). Верно ли, что \(S < a+b+c\)?</div>
+            <div class="task"><span class="task-num">19.</span> Точка Ферма для треугольника \(ABC\) находится внутри треугольника. Что можно сказать об углах треугольника?</div>
+            <div class="task"><span class="task-num">20.</span> Дан отрезок \(AB\) длины \(l\). Найдите на перпендикуляре к \(AB\), восставленном в середине отрезка, точку \(M\), для которой \(MA+MB\) минимально.</div>
+        </div>
+    </div>
+
+    <div class="part">
+        <h2>🧩 Часть 3. Геометрическая оптимизация (без производной)</h2>
+        <div class="tasks-grid">
+            <div class="task"><span class="task-num">21.</span> Из всех треугольников с заданным основанием \(a\) и углом при вершине \(\alpha\) найти максимальную площадь.</div>
+            <div class="task"><span class="task-num">22.</span> На эллипсе \(x^2/a^2 + y^2/b^2 = 1\) найти точки, ближайшие к центру.</div>
+            <div class="task"><span class="task-num">23.</span> На параболе \(y=x^2\) найти точку, ближайшую к \((0,2)\).</div>
+            <div class="task"><span class="task-num">24.</span> На окружности \(x^2+y^2=R^2\) найти точку, ближайшую к точке \(A(a,b)\) (вне окружности).</div>
+            <div class="task"><span class="task-num">25.</span> На прямой \(y=2x+1\) найти точку, ближайшую к началу координат.</div>
+            <div class="task"><span class="task-num">26.</span> Найти наименьшее расстояние между параболой \(y=x^2\) и прямой \(y=x+2\).</div>
+            <div class="task"><span class="task-num">27.</span> Среди всех прямоугольников, вписанных в равнобедренный треугольник с основанием \(a\) и высотой \(h\), найти максимальную площадь.</div>
+            <div class="task"><span class="task-num">28.</span> Среди всех цилиндров, вписанных в шар радиуса \(R\), найти цилиндр с наибольшим объёмом.</div>
+            <div class="task"><span class="task-num">29.</span> Найти минимальное значение \(x^2+y^2\) при \(x+y=1\).</div>
+            <div class="task"><span class="task-num">30.</span> Найти минимальное значение \(x^2+y^2+z^2\) при \(x+y+z=1\).</div>
+        </div>
+    </div>
+
+    <div class="part">
+        <h2>📈 Часть 4. Геометрическая оптимизация (с производной)</h2>
+        <div class="tasks-grid">
+            <div class="task"><span class="task-num">31.</span> Найти наименьшее расстояние от точки \(A(0,2)\) до параболы \(y=x^2\).</div>
+            <div class="task"><span class="task-num">32.</span> Найти минимальное расстояние между параболой \(y=x^2\) и прямой \(y=x-1\).</div>
+            <div class="task"><span class="task-num">33.</span> Найти наименьшее значение \(f(x)=x+\frac4x\) при \(x>0\).</div>
+            <div class="task"><span class="task-num">34.</span> Найти наибольшее значение \(f(x)=x^3-3x^2+2\) на \([-1,3]\).</div>
+            <div class="task"><span class="task-num">35.</span> Найти точку на прямой \(y=2x+1\), ближайшую к \((1,0)\).</div>
+            <div class="task"><span class="task-num">36.</span> Найти наименьшее значение \(f(x)=\frac{x}{x^2+1}\) при \(x\ge0\).</div>
+            <div class="task"><span class="task-num">37.</span> Найти максимальный объём цилиндра, вписанного в конус с радиусом \(R\) и высотой \(H\).</div>
+            <div class="task"><span class="task-num">38.</span> Найти наименьшее значение \(f(x)=x^2+\frac1{x^2}\) при \(x\ne0\).</div>
+            <div class="task"><span class="task-num">39.</span> Найти минимальное расстояние от \((0,0)\) до кривой \(y=x^3-3x\).</div>
+            <div class="task"><span class="task-num">40.</span> Найти точку на кривой \(y=\sqrt{x}\), ближайшую к \((4,0)\).</div>
+        </div>
+    </div>
+
+    <footer>📐 Все 40 задач по геометрической оптимизации. Уровни: изопериметрика • Ферма–Торричелли • оптимизация</footer>
+</div>
+</body>
+</html>
