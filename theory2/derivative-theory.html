@@ -6,7 +6,12 @@
     <title>Производная | Понятно, наглядно, для олимпиад</title>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Segoe UI', 'Georgia', serif;
             background: #f0f4f8;
@@ -14,29 +19,191 @@
             padding: 2rem 1.5rem;
             line-height: 1.6;
         }
-        .container { max-width: 1100px; margin: 0 auto; }
-        header { text-align: center; margin-bottom: 2.5rem; }
-        h1 { font-size: 2.8rem; background: linear-gradient(135deg, #1e5f7a, #0f3b4f); background-clip: text; -webkit-background-clip: text; color: transparent; }
-        .badge { background: #d4e6f1; display: inline-block; padding: 0.4rem 1.4rem; border-radius: 40px; font-size: 0.9rem; margin-top: 0.8rem; }
-        .card { background: white; border-radius: 2rem; padding: 1.8rem 2rem; margin-bottom: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #cbd5e1; }
-        .card h2 { color: #1e5f7a; border-left: 6px solid #3b82f6; padding-left: 1.2rem; margin-bottom: 1.2rem; font-size: 1.8rem; }
-        .card h3 { color: #2c5282; margin: 1rem 0 0.5rem 0; font-size: 1.4rem; }
-        .theorem { background: #eef2ff; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; border-left: 5px solid #2563eb; }
-        .proof { background: #fef9e3; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; border-left: 4px solid #f59e0b; }
-        .example { background: #e6f7f0; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; }
-        .warning { background: #fee2e2; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; border-left: 5px solid #dc2626; }
-        .insight { background: #e0f2fe; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; border-left: 5px solid #0284c7; }
-        .task { background: #f8fafc; margin: 1.2rem 0; padding: 1rem 1.2rem; border-radius: 1.2rem; border-left: 4px solid #3b82f6; }
-        .solve-btn { background: #1e5f7a; color: white; border: none; padding: 0.4rem 1.2rem; border-radius: 2rem; cursor: pointer; font-weight: 600; font-size: 0.85rem; margin-top: 0.5rem; transition: background 0.2s; }
-        .solve-btn:hover { background: #0f4b62; }
-        .solution { display: none; margin-top: 0.8rem; padding: 0.8rem; background: #eef2ff; border-radius: 0.8rem; border-left: 3px solid #1e5f7a; }
-        table { width: 100%; border-collapse: collapse; margin: 1rem 0; background: #f8fafc; }
-        th, td { border: 1px solid #cbd5e1; padding: 0.6rem; text-align: left; }
-        th { background: #e2e8f0; }
-        footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #cbd5e1; color: #4b5563; font-size: 0.85rem; }
-        .quote { font-style: italic; color: #4b5563; padding: 0.5rem 1rem; border-left: 3px solid #6b7280; margin: 0.8rem 0; }
-        .formula-block { background: #f8fafc; padding: 0.8rem; border-radius: 1rem; text-align: center; margin: 0.8rem 0; font-family: monospace; font-size: 1.05rem; }
-        @media (max-width: 700px) { body { padding: 1rem; } .card { padding: 1.2rem; } h1 { font-size: 2rem; } table { font-size: 0.8rem; } }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #1e5f7a, #0f3b4f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .badge {
+            background: #d4e6f1;
+            display: inline-block;
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cbd5e1;
+        }
+
+        .card h2 {
+            color: #1e5f7a;
+            border-left: 6px solid #3b82f6;
+            padding-left: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+
+        .card h3 {
+            color: #2c5282;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.4rem;
+        }
+
+        .theorem {
+            background: #eef2ff;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #2563eb;
+        }
+
+        .proof {
+            background: #fef9e3;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .example {
+            background: #e6f7f0;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .warning {
+            background: #fee2e2;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #dc2626;
+        }
+
+        .insight {
+            background: #e0f2fe;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #0284c7;
+        }
+
+        .task {
+            background: #f8fafc;
+            margin: 1.2rem 0;
+            padding: 1rem 1.2rem;
+            border-radius: 1.2rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .solve-btn {
+            background: #1e5f7a;
+            color: white;
+            border: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .solve-btn:hover {
+            background: #0f4b62;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: #eef2ff;
+            border-radius: 0.8rem;
+            border-left: 3px solid #1e5f7a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #f8fafc;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 0.6rem;
+            text-align: left;
+        }
+
+        th {
+            background: #e2e8f0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #cbd5e1;
+            color: #4b5563;
+            font-size: 0.85rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4b5563;
+            padding: 0.5rem 1rem;
+            border-left: 3px solid #6b7280;
+            margin: 0.8rem 0;
+        }
+
+        .formula-block {
+            background: #f8fafc;
+            padding: 0.8rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin: 0.8rem 0;
+            font-family: monospace;
+            font-size: 1.05rem;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1.2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -50,23 +217,42 @@
     <div class="card">
         <h2>🚴 Что такое производная на пальцах</h2>
         <div class="insight">
-            <p><strong>Представь, что ты едешь на велосипеде.</strong> Спидометр показывает <strong>скорость прямо сейчас</strong> — не среднюю за час, а ту, что в эту секунду. Вот это «прямо сейчас» и есть <strong>производная</strong>.</p>
+            <p><strong>Представь, что ты едешь на велосипеде.</strong> Спидометр показывает <strong>скорость прямо
+                сейчас</strong> — не среднюю за час, а ту, что в эту секунду. Вот это «прямо сейчас» и есть <strong>производная</strong>.
+            </p>
         </div>
         <p><strong>Производная — это мгновенная скорость изменения величины.</strong></p>
-        <p>Если у тебя есть график функции, производная в каждой точке показывает, <strong>насколько круто</strong> идёт график вверх или вниз. Если график идёт круто вверх — производная большая положительная. Если пологий — маленькая. Если идёт вниз — производная отрицательная. Если горизонтальный — производная равна нулю.</p>
+        <p>Если у тебя есть график функции, производная в каждой точке показывает, <strong>насколько круто</strong> идёт
+            график вверх или вниз. Если график идёт круто вверх — производная большая положительная. Если пологий —
+            маленькая. Если идёт вниз — производная отрицательная. Если горизонтальный — производная равна нулю.</p>
 
         <div class="theorem">
             <p><strong>📌 Три главных смысла производной:</strong></p>
             <table>
-                <thead><tr><th>Смысл</th><th>Что показывает</th></tr></thead>
+                <thead>
+                <tr>
+                    <th>Смысл</th>
+                    <th>Что показывает</th>
+                </tr>
+                </thead>
                 <tbody>
-                    <tr><td><strong>Геометрический</strong></td><td>Крутизну (угол наклона) касательной к графику</td></tr>
-                    <tr><td><strong>Физический</strong></td><td>Мгновенную скорость изменения (путь → скорость, скорость → ускорение)</td></tr>
-                    <tr><td><strong>Оптимизационный</strong></td><td>Где функция достигает максимума или минимума</td></tr>
+                <tr>
+                    <td><strong>Геометрический</strong></td>
+                    <td>Крутизну (угол наклона) касательной к графику</td>
+                </tr>
+                <tr>
+                    <td><strong>Физический</strong></td>
+                    <td>Мгновенную скорость изменения (путь → скорость, скорость → ускорение)</td>
+                </tr>
+                <tr>
+                    <td><strong>Оптимизационный</strong></td>
+                    <td>Где функция достигает максимума или минимума</td>
+                </tr>
                 </tbody>
             </table>
         </div>
-        <div class="quote">«В природе всё происходит по законам дифференциального исчисления.» — <strong>Исаак Ньютон</strong></div>
+        <div class="quote">«В природе всё происходит по законам дифференциального исчисления.» — <strong>Исаак
+            Ньютон</strong></div>
     </div>
 
     <!-- Часть 1. Геометрический смысл -->
@@ -75,13 +261,15 @@
 
         <h3>1.1. Что такое касательная?</h3>
         <div class="insight">
-            <p>Касательная к графику в точке — это прямая, которая <strong>в этом месте сливается с графиком</strong>. Если увеличить картинку, график и касательная станут почти неразличимы.</p>
+            <p>Касательная к графику в точке — это прямая, которая <strong>в этом месте сливается с графиком</strong>.
+                Если увеличить картинку, график и касательная станут почти неразличимы.</p>
         </div>
         <p><strong>Производная \( f'(x_0) \) — это угловой коэффициент (наклон) этой касательной.</strong></p>
 
         <div class="example">
             <p><strong>Как понять «угловой коэффициент»:</strong></p>
-            <p>Коэффициент \( k \) в уравнении прямой \( y = kx + b \) показывает, насколько быстро растёт \( y \) при увеличении \( x \):</p>
+            <p>Коэффициент \( k \) в уравнении прямой \( y = kx + b \) показывает, насколько быстро растёт \( y \) при
+                увеличении \( x \):</p>
             <ul>
                 <li>\( k = 2 \) — при увеличении \( x \) на 1, \( y \) растёт на 2 (круто вверх).</li>
                 <li>\( k = 0.5 \) — при увеличении \( x \) на 1, \( y \) растёт на 0.5 (пологий подъём).</li>
@@ -98,7 +286,9 @@
             \]
         </div>
         <div class="proof">
-            <p><strong>Разберём на пальцах:</strong> Мы знаем, что касательная проходит через точку \( (x_0, f(x_0)) \). Её наклон — \( f'(x_0) \). Подставляем в формулу прямой \( y = kx + b \), находим \( b \), получаем эту формулу.</p>
+            <p><strong>Разберём на пальцах:</strong> Мы знаем, что касательная проходит через точку \( (x_0, f(x_0)) \).
+                Её наклон — \( f'(x_0) \). Подставляем в формулу прямой \( y = kx + b \), находим \( b \), получаем эту
+                формулу.</p>
             <p><strong>Пример:</strong> \( f(x) = x^2 \), \( x_0 = 3 \).</p>
             <p>\( f(3) = 9 \), \( f'(3) = 6 \).</p>
             <p>Касательная: \( y = 9 + 6(x-3) = 6x - 9 \).</p>
@@ -108,11 +298,25 @@
         <div class="theorem">
             <p>Это самое важное для олимпиад!</p>
             <table>
-                <thead><tr><th>Знак \( f'(x) \)</th><th>Что происходит с функцией</th></tr></thead>
+                <thead>
+                <tr>
+                    <th>Знак \( f'(x) \)</th>
+                    <th>Что происходит с функцией</th>
+                </tr>
+                </thead>
                 <tbody>
-                    <tr><td>\( f'(x) > 0 \)</td><td>Функция <strong>возрастает</strong> (график идёт вверх)</td></tr>
-                    <tr><td>\( f'(x) < 0 \)</td><td>Функция <strong>убывает</strong> (график идёт вниз)</td></tr>
-                    <tr><td>\( f'(x) = 0 \)</td><td>График «замирает» — возможен максимум, минимум или перегиб</td></tr>
+                <tr>
+                    <td>\( f'(x) > 0 \)</td>
+                    <td>Функция <strong>возрастает</strong> (график идёт вверх)</td>
+                </tr>
+                <tr>
+                    <td>\( f'(x) < 0 \)</td>
+                    <td>Функция <strong>убывает</strong> (график идёт вниз)</td>
+                </tr>
+                <tr>
+                    <td>\( f'(x) = 0 \)</td>
+                    <td>График «замирает» — возможен максимум, минимум или перегиб</td>
+                </tr>
                 </tbody>
             </table>
         </div>
@@ -134,10 +338,21 @@
         </div>
         <div class="theorem">
             <table>
-                <thead><tr><th>Величина</th><th>Производная от чего</th></tr></thead>
+                <thead>
+                <tr>
+                    <th>Величина</th>
+                    <th>Производная от чего</th>
+                </tr>
+                </thead>
                 <tbody>
-                    <tr><td>Скорость \( v(t) \)</td><td>Производная от пути \( S'(t) \)</td></tr>
-                    <tr><td>Ускорение \( a(t) \)</td><td>Производная от скорости \( v'(t) \) (или вторая производная пути \( S''(t) \))</td></tr>
+                <tr>
+                    <td>Скорость \( v(t) \)</td>
+                    <td>Производная от пути \( S'(t) \)</td>
+                </tr>
+                <tr>
+                    <td>Ускорение \( a(t) \)</td>
+                    <td>Производная от скорости \( v'(t) \) (или вторая производная пути \( S''(t) \))</td>
+                </tr>
                 </tbody>
             </table>
         </div>
@@ -157,7 +372,8 @@
 
         <h3>3.1. Где функция достигает максимума или минимума?</h3>
         <div class="theorem">
-            <p>Если функция плавно поднимается, а потом начинает падать — в точке перелома она достигает максимума. В этой точке касательная горизонтальна, значит:</p>
+            <p>Если функция плавно поднимается, а потом начинает падать — в точке перелома она достигает максимума. В
+                этой точке касательная горизонтальна, значит:</p>
             \[
             f'(x) = 0
             \]
@@ -188,11 +404,15 @@
 
         <div class="insight">
             <p><strong>Почему это работает?</strong></p>
-            <p>Производная показывает, куда идёт график. Когда она положительна — мы идём вверх. Когда становится отрицательной — мы идём вниз. Граница между подъёмом и спуском — это вершина горы (максимум) или дно ямы (минимум).</p>
+            <p>Производная показывает, куда идёт график. Когда она положительна — мы идём вверх. Когда становится
+                отрицательной — мы идём вниз. Граница между подъёмом и спуском — это вершина горы (максимум) или дно ямы
+                (минимум).</p>
         </div>
 
         <div class="warning">
-            <p><strong>Важно:</strong> \( f'(x)=0 \) — это только <em>подозрение</em> на экстремум. Нужно проверить смену знака! Например, у функции \( f(x)=x^3 \) в точке \( x=0 \) производная равна 0, но это не максимум и не минимум, а точка перегиба (график просто «замедляется», но продолжает расти).</p>
+            <p><strong>Важно:</strong> \( f'(x)=0 \) — это только <em>подозрение</em> на экстремум. Нужно проверить
+                смену знака! Например, у функции \( f(x)=x^3 \) в точке \( x=0 \) производная равна 0, но это не
+                максимум и не минимум, а точка перегиба (график просто «замедляется», но продолжает расти).</p>
         </div>
     </div>
 
@@ -202,7 +422,8 @@
 
         <h3>4.1. Что такое вторая производная?</h3>
         <div class="insight">
-            <p>Вторая производная \( f''(x) \) — это производная от производной. Она показывает, как <strong>меняется сам наклон</strong> графика.</p>
+            <p>Вторая производная \( f''(x) \) — это производная от производной. Она показывает, как <strong>меняется
+                сам наклон</strong> графика.</p>
         </div>
         <div class="theorem">
             <ul>
@@ -214,21 +435,37 @@
         <h3>4.2. Выпуклость — простыми словами</h3>
         <div class="example">
             <table>
-                <thead><tr><th>\( f''(x) \)</th><th>Форма графика</th><th>Ассоциация</th></tr></thead>
+                <thead>
+                <tr>
+                    <th>\( f''(x) \)</th>
+                    <th>Форма графика</th>
+                    <th>Ассоциация</th>
+                </tr>
+                </thead>
                 <tbody>
-                    <tr><td>\( > 0 \)</td><td>Чашка / улыбка</td><td>Вода держится</td></tr>
-                    <tr><td>\( < 0 \)</td><td>Крыша / хмурость</td><td>Вода стекает</td></tr>
+                <tr>
+                    <td>\( > 0 \)</td>
+                    <td>Чашка / улыбка</td>
+                    <td>Вода держится</td>
+                </tr>
+                <tr>
+                    <td>\( < 0 \)</td>
+                    <td>Крыша / хмурость</td>
+                    <td>Вода стекает</td>
+                </tr>
                 </tbody>
             </table>
         </div>
 
         <h3>4.3. Точки перегиба</h3>
         <div class="theorem">
-            Если в точке \( f''(x) = 0 \) и знак второй производной меняется — это <strong>точка перегиба</strong>. График меняет форму: был «улыбкой» — стал «крышей».
+            Если в точке \( f''(x) = 0 \) и знак второй производной меняется — это <strong>точка перегиба</strong>.
+            График меняет форму: был «улыбкой» — стал «крышей».
         </div>
         <div class="example">
             <p><strong>Пример:</strong> \( f(x) = x^3 \).</p>
-            <p>\( f''(x) = 6x \). При \( x<0 \) \( f''<0 \) (крыша), при \( x>0 \) \( f''>0 \) (чашка). В \( x=0 \) — точка перегиба.</p>
+            <p>\( f''(x) = 6x \). При \( x<0 \) \( f''<0 \) (крыша), при \( x>0 \) \( f''>0 \) (чашка). В \( x=0 \) —
+                точка перегиба.</p>
         </div>
     </div>
 
@@ -237,24 +474,29 @@
         <h2>🏆 Часть 5. Олимпиадные задачи с решениями</h2>
 
         <div class="task">
-            <p><strong>Задача 1 (на минимум).</strong> Найти наименьшее значение функции \( f(x) = x + \frac{4}{x} \) при \( x>0 \).</p>
+            <p><strong>Задача 1 (на минимум).</strong> Найти наименьшее значение функции \( f(x) = x + \frac{4}{x} \)
+                при \( x>0 \).</p>
             <button class="solve-btn" data-target="task1">Показать решение</button>
             <div id="task1" class="solution">
                 <p><strong>Решение через производную:</strong></p>
                 <p><strong>Шаг 1.</strong> \( f'(x) = 1 - \frac{4}{x^2} \).</p>
-                <p><strong>Шаг 2.</strong> Приравниваем к нулю: \( 1 - \frac{4}{x^2} = 0 \Rightarrow x^2 = 4 \Rightarrow x=2 \) (отрицательный корень не подходит по ОДЗ).</p>
-                <p><strong>Шаг 3.</strong> Знаки: при \( x=1 \): \( f'(1) = 1-4 = -3 <0 \) (убывает). При \( x=3 \): \( f'(3) = 1 - \frac{4}{9} >0 \) (возрастает). Значит, в \( x=2 \) минимум.</p>
+                <p><strong>Шаг 2.</strong> Приравниваем к нулю: \( 1 - \frac{4}{x^2} = 0 \Rightarrow x^2 = 4 \Rightarrow
+                    x=2 \) (отрицательный корень не подходит по ОДЗ).</p>
+                <p><strong>Шаг 3.</strong> Знаки: при \( x=1 \): \( f'(1) = 1-4 = -3 <0 \) (убывает). При \( x=3 \): \(
+                    f'(3) = 1 - \frac{4}{9} >0 \) (возрастает). Значит, в \( x=2 \) минимум.</p>
                 <p><strong>Шаг 4.</strong> Значение: \( f(2) = 2 + 2 = 4 \).</p>
                 <p><strong>Ответ:</strong> 4.</p>
             </div>
         </div>
 
         <div class="task">
-            <p><strong>Задача 2 (с параметром).</strong> При каких \( a \) уравнение \( x^3 - 3x + a = 0 \) имеет ровно три корня?</p>
+            <p><strong>Задача 2 (с параметром).</strong> При каких \( a \) уравнение \( x^3 - 3x + a = 0 \) имеет ровно
+                три корня?</p>
             <button class="solve-btn" data-target="task2">Показать решение</button>
             <div id="task2" class="solution">
                 <p><strong>Решение:</strong></p>
-                <p><strong>Шаг 1.</strong> Рассмотрим \( f(x) = x^3 - 3x + a \). \( f'(x) = 3x^2 - 3 = 3(x-1)(x+1) \).</p>
+                <p><strong>Шаг 1.</strong> Рассмотрим \( f(x) = x^3 - 3x + a \). \( f'(x) = 3x^2 - 3 = 3(x-1)(x+1) \).
+                </p>
                 <p><strong>Шаг 2.</strong> Критические точки: \( x=-1 \) (максимум), \( x=1 \) (минимум).</p>
                 <p><strong>Шаг 3.</strong> Чтобы было три корня, нужно, чтобы максимум был >0, а минимум <0:</p>
                 <p>\( f(-1) = -1 + 3 + a = a+2 >0 \Rightarrow a>-2 \)</p>
@@ -264,7 +506,8 @@
         </div>
 
         <div class="task">
-            <p><strong>Задача 3 (геометрическая оптимизация).</strong> Найти точку на параболе \( y = x^2 \), ближайшую к точке \( (0, 2) \).</p>
+            <p><strong>Задача 3 (геометрическая оптимизация).</strong> Найти точку на параболе \( y = x^2 \), ближайшую
+                к точке \( (0, 2) \).</p>
             <button class="solve-btn" data-target="task3">Показать решение</button>
             <div id="task3" class="solution">
                 <p><strong>Решение:</strong></p>
@@ -272,14 +515,16 @@
                 <p>Минимум \( d \) — там же, где минимум \( d^2 = x^2 + (x^2-2)^2 \).</p>
                 <p><strong>Шаг 2.</strong> \( g(x) = x^4 - 3x^2 + 4 \). \( g'(x) = 4x^3 - 6x = 2x(2x^2 - 3) \).</p>
                 <p><strong>Шаг 3.</strong> Критические точки: \( x=0 \), \( x=\pm\sqrt{\frac{3}{2}} \).</p>
-                <p><strong>Шаг 4.</strong> Проверяем: \( g(0)=4 \), \( g(\pm\sqrt{3/2}) = \frac{9}{4} - \frac{9}{2} + 4 = \frac{7}{4} \). Минимум в \( x = \pm\sqrt{3/2} \).</p>
+                <p><strong>Шаг 4.</strong> Проверяем: \( g(0)=4 \), \( g(\pm\sqrt{3/2}) = \frac{9}{4} - \frac{9}{2} + 4
+                    = \frac{7}{4} \). Минимум в \( x = \pm\sqrt{3/2} \).</p>
                 <p><strong>Шаг 5.</strong> Точки: \( \left( \pm\sqrt{\frac{3}{2}}, \frac{3}{2} \right) \).</p>
                 <p><strong>Ответ:</strong> две точки.</p>
             </div>
         </div>
 
         <div class="task">
-            <p><strong>Задача 4 (физическая).</strong> Тело движется по закону \( S(t) = t^3 - 6t^2 + 9t \) (м). В какой момент времени ускорение равно нулю?</p>
+            <p><strong>Задача 4 (физическая).</strong> Тело движется по закону \( S(t) = t^3 - 6t^2 + 9t \) (м). В какой
+                момент времени ускорение равно нулю?</p>
             <button class="solve-btn" data-target="task4">Показать решение</button>
             <div id="task4" class="solution">
                 <p><strong>Решение:</strong></p>
@@ -298,17 +543,49 @@
         <div class="theorem">
             <p><strong>Запоминаем без предела</strong></p>
             <table>
-                <thead><tr><th>Что нужно знать</th><th>Формула / Правило</th></tr></thead>
+                <thead>
+                <tr>
+                    <th>Что нужно знать</th>
+                    <th>Формула / Правило</th>
+                </tr>
+                </thead>
                 <tbody>
-                    <tr><td>Производная степени \( x^n \)</td><td>\( n \cdot x^{n-1} \)</td></tr>
-                    <tr><td>Производная суммы</td><td>Сумма производных</td></tr>
-                    <tr><td>Производная произведения</td><td>\( (uv)' = u'v + uv' \)</td></tr>
-                    <tr><td>Производная частного</td><td>\( \left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2} \)</td></tr>
-                    <tr><td>Производная сложной функции</td><td>\( (f(g(x)))' = f'(g(x)) \cdot g'(x) \)</td></tr>
-                    <tr><td>Связь с ростом/убыванием</td><td>\( f'>0 \) — рост, \( f'<0 \) — падение</td></tr>
-                    <tr><td>Экстремум</td><td>\( f'=0 \) и смена знака</td></tr>
-                    <tr><td>Касательная</td><td>\( y = f(x_0) + f'(x_0)(x-x_0) \)</td></tr>
-                    <tr><td>Вторая производная</td><td>Форма графика (выпуклость)</td></tr>
+                <tr>
+                    <td>Производная степени \( x^n \)</td>
+                    <td>\( n \cdot x^{n-1} \)</td>
+                </tr>
+                <tr>
+                    <td>Производная суммы</td>
+                    <td>Сумма производных</td>
+                </tr>
+                <tr>
+                    <td>Производная произведения</td>
+                    <td>\( (uv)' = u'v + uv' \)</td>
+                </tr>
+                <tr>
+                    <td>Производная частного</td>
+                    <td>\( \left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2} \)</td>
+                </tr>
+                <tr>
+                    <td>Производная сложной функции</td>
+                    <td>\( (f(g(x)))' = f'(g(x)) \cdot g'(x) \)</td>
+                </tr>
+                <tr>
+                    <td>Связь с ростом/убыванием</td>
+                    <td>\( f'>0 \) — рост, \( f'<0 \) — падение</td>
+                </tr>
+                <tr>
+                    <td>Экстремум</td>
+                    <td>\( f'=0 \) и смена знака</td>
+                </tr>
+                <tr>
+                    <td>Касательная</td>
+                    <td>\( y = f(x_0) + f'(x_0)(x-x_0) \)</td>
+                </tr>
+                <tr>
+                    <td>Вторая производная</td>
+                    <td>Форма графика (выпуклость)</td>
+                </tr>
                 </tbody>
             </table>
         </div>
@@ -316,8 +593,8 @@
         <div class="quote">
             <strong>Запоминалка для производной:</strong><br>
             <em>Степень — вниз, степень — минус один,<br>
-            Сумма — по слагаемым, произведение — по правилу,<br>
-            Сложная — цепным правилом.</em>
+                Сумма — по слагаемым, произведение — по правилу,<br>
+                Сложная — цепным правилом.</em>
         </div>
     </div>
 
@@ -332,8 +609,11 @@
                 <li><strong>Где</strong> находятся вершины и впадины (экстремумы).</li>
             </ul>
         </div>
-        <p>На олимпиадах производная помогает решать задачи, которые без неё кажутся невозможными: найти максимум площади, минимальное расстояние, доказать неравенство, определить количество корней уравнения. Овладев этим инструментом, вы получите ключ к целому классу задач.</p>
-        <div class="quote">«В природе всё происходит по законам дифференциального исчисления.» — <strong>Исаак Ньютон</strong></div>
+        <p>На олимпиадах производная помогает решать задачи, которые без неё кажутся невозможными: найти максимум
+            площади, минимальное расстояние, доказать неравенство, определить количество корней уравнения. Овладев этим
+            инструментом, вы получите ключ к целому классу задач.</p>
+        <div class="quote">«В природе всё происходит по законам дифференциального исчисления.» — <strong>Исаак
+            Ньютон</strong></div>
     </div>
 
     <footer>🚲 Производная — универсальный инструмент олимпиадника</footer>
