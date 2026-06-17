@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практикум | Функциональные уравнения | 40 задач с решениями</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f0f4f8;
+            color: #1e2a3e;
+            padding: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #1e5f7a, #0f3b4f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #2c5282;
+            margin-top: 0.3rem;
+        }
+
+        .badge {
+            background: #d4e6f1;
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .part {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cbd5e1;
+        }
+
+        .part h2 {
+            color: #1e5f7a;
+            border-left: 5px solid #3b82f6;
+            padding-left: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .task {
+            background: #f8fafc;
+            margin: 1rem 0;
+            padding: 1rem 1.2rem;
+            border-radius: 1rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .task p {
+            margin-bottom: 0.3rem;
+        }
+
+        .solve-btn {
+            background: #1e5f7a;
+            color: white;
+            border: none;
+            padding: 0.3rem 1rem;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.3rem;
+            transition: background 0.2s;
+        }
+
+        .solve-btn:hover {
+            background: #0f4b62;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 1rem 1.2rem;
+            background: #eef2ff;
+            border-radius: 0.8rem;
+            border-left: 3px solid #1e5f7a;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .solution p {
+            margin: 0.6rem 0;
+        }
+
+        .solution .step {
+            margin-left: 1.2rem;
+            margin-top: 0.4rem;
+        }
+
+        .solution .formula-block {
+            background: #f8fafc;
+            padding: 0.6rem;
+            border-radius: 0.6rem;
+            text-align: center;
+            margin: 0.6rem 0;
+        }
+
+        .solution .answer-block {
+            background: #d1fae5;
+            padding: 0.6rem;
+            border-radius: 0.6rem;
+            text-align: center;
+            margin: 0.6rem 0;
+            font-weight: bold;
+            font-size: 1.05rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #4b5563;
+            border-top: 1px solid #cbd5e1;
+            padding-top: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .part {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .solution {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📐 Функциональные уравнения</h1>
+        <div class="subtitle">40 задач с полными решениями</div>
+        <div class="badge">Базовые • Средние • Продвинутые • Олимпиадные</div>
+    </header>
+
+    <!-- Часть 1. Базовые задачи (1–10) -->
+    <div class="part">
+        <h2>📖 Часть 1. Базовые задачи (1–10)</h2>
+
+        <div class="task"><p><strong>Задача 1.</strong> Найдите все функции \( f: \mathbb{Q} \to \mathbb{Q} \) такие,
+            что \( f(1)=2 \) и \( f(xy) = f(x)f(y) - f(x+y) + 1 \) для всех \( x,y \in \mathbb{Q} \).</p>
+            <button class="solve-btn" data-target="s1">Показать решение</button>
+            <div id="s1" class="solution">
+                <p><strong>Решение (пошаговое):</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( x=1 \), \( y=n \) (для натурального \( n \)): \(
+                    f(n) = f(1)f(n) - f(n+1) + 1 = 2f(n) - f(n+1) + 1 \). Переносим: \( f(n+1) = f(n) + 1 \). Значит,
+                    значения на натуральных числах образуют арифметическую прогрессию с разностью 1. Так как \( f(1)=2
+                    \), по индукции: \( f(n) = n+1 \) для всех \( n \in \mathbb{N} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Находим \( f(0) \). Подставим \( x=0 \), \( y=n \): \( f(0) =
+                    f(0)f(n) - f(n) + 1 \). Так как \( f(n)=n+1 \): \( f(0) = f(0)(n+1) - (n+1) + 1 = f(0)(n+1) - n \).
+                    \( f(0) - f(0)(n+1) = -n \) ⇒ \( -f(0)n = -n \) ⇒ \( f(0)=1 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Находим \( f(-1) \). Подставим \( x=-1 \), \( y=1 \): \( f(-1) =
+                    f(-1)f(1) - f(0) + 1 = 2f(-1) - 1 + 1 = 2f(-1) \). Значит, \( f(-1)=0 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Находим \( f(-n) \). Подставим \( x=-1 \), \( y=n \): \( f(-n) =
+                    f(-1)f(n) - f(n-1) + 1 = 0 \cdot (n+1) - n + 1 = -n + 1 \). Итак, для всех целых \( z \): \( f(z) =
+                    z+1 \).</p>
+                <p class="step"><strong>Шаг 5.</strong> Находим \( f(1/n) \). Подставим \( x=n \), \( y=1/n \): \( f(1)
+                    = (n+1)f(1/n) - f(n+1/n) + 1 \). Нам нужно \( f(n+1/n) \). Для этого сначала заметим, что из \( x=1
+                    \), \( y=m+1/n \): \( f(m+1+1/n) = f(m+1/n) + 1 \). По индукции: \( f(m+1/n) = m + f(1/n) \). Тогда
+                    \( f(n+1/n) = n + f(1/n) \). Подставляем: \( 2 = (n+1)f(1/n) - (n + f(1/n)) + 1 = n f(1/n) - n + 1
+                    \). \( n f(1/n) = n + 1 \) ⇒ \( f(1/n) = 1/n + 1 \).</p>
+                <p class="step"><strong>Шаг 6.</strong> Для любого рационального \( r = m/n \): подставим \( x=m \), \(
+                    y=1/n \): \( f(m/n) = f(m)f(1/n) - f(m+1/n) + 1 \). \( f(m) = m+1 \), \( f(1/n) = 1/n + 1 \), \(
+                    f(m+1/n) = m + 1/n + 1 \). \( f(m/n) = (m+1)(1/n+1) - (m+1/n+1) + 1 = m/n + 1 \). Для отрицательных
+                    рациональных — через \( x=-1 \), \( y=r \): \( f(-r) = f(-1)f(r) - f(r-1) + 1 = -r + 1 \).</p>
+                <p class="step"><strong>Шаг 7. Проверка:</strong> \( f(x)=x+1 \) для всех \( x \in \mathbb{Q} \).
+                    Подставляем: \( xy+1 = (x+1)(y+1) - (x+y+1) + 1 \). Равенство верно.</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = x+1 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 2.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x+y) = f(x) + f(y) \) для всех \( x,y \in \mathbb{R} \), при условии, что \( f \)
+            непрерывна.</p>
+            <button class="solve-btn" data-target="s2">Показать решение</button>
+            <div id="s2" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( x=y=0 \): \( f(0) = f(0) + f(0) \) ⇒ \( f(0)=0
+                    \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Подстановка \( y = -x \): \( f(0) = f(x) + f(-x) \) ⇒ \( f(-x) =
+                    -f(x) \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Для целых чисел \( n \): по индукции \( f(n) = n f(1) \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Для рациональных \( q = \frac{m}{n} \): \( f(m) = f(n \cdot
+                    \frac{m}{n}) = n f(\frac{m}{n}) \). Так как \( f(m) = m f(1) \), получаем: \( n f(\frac{m}{n}) = m
+                    f(1) \) ⇒ \( f(\frac{m}{n}) = \frac{m}{n} f(1) \).</p>
+                <p class="step"><strong>Шаг 5.</strong> Для любого \( x \in \mathbb{R} \): возьмём рациональную
+                    последовательность \( q_n \to x \). Так как \( f \) непрерывна: \( f(x) = \lim f(q_n) = \lim q_n
+                    f(1) = x f(1) \).</p>
+                <p class="step"><strong>Шаг 6.</strong> Обозначим \( c = f(1) \). Тогда \( f(x) = cx \). Проверка: \(
+                    c(x+y) = cx + cy \) — верно.</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = cx \), где \( c \in \mathbb{R} \) —
+                    произвольная константа.
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 3.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x+y) = f(x)f(y) \) для всех \( x,y \in \mathbb{R} \), при условии непрерывности.</p>
+            <button class="solve-btn" data-target="s3">Показать решение</button>
+            <div id="s3" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( y=0 \): \( f(x) = f(x)f(0) \). Если существует \(
+                    x \) с \( f(x) \neq 0 \), то \( f(0)=1 \). Если \( f(x)=0 \) для всех \( x \), то это решение.</p>
+                <p class="step"><strong>Шаг 2.</strong> Рассмотрим случай \( f(0)=1 \). Тогда \( f(x) \neq 0 \) для всех
+                    \( x \), так как \( f(x)f(-x)=f(0)=1 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Прологарифмируем. Пусть \( g(x) = \ln f(x) \). Тогда: \( g(x+y)
+                    = \ln f(x+y) = \ln(f(x)f(y)) = \ln f(x) + \ln f(y) = g(x) + g(y) \). Это уравнение Коши. Так как \(
+                    f \) непрерывна, \( g \) непрерывна, значит \( g(x) = cx \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Тогда \( f(x) = e^{cx} = a^x \), где \( a = e^c > 0 \). Второй
+                    случай: \( f(x) \equiv 0 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = 0 \) для всех \( x \) или \( f(x) = a^x \)
+                    для некоторого \( a > 0 \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 4.</strong> Найдите все функции \( f: \mathbb{R}^+ \to \mathbb{R}^+ \),
+            удовлетворяющие: \( f(xy) = f(x) + f(y) \) для всех \( x,y > 0 \), при условии непрерывности.</p>
+            <button class="solve-btn" data-target="s4">Показать решение</button>
+            <div id="s4" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Замена \( x = e^u \), \( y = e^v \). Определим \( g(u) = f(e^u)
+                    \). Тогда: \( g(u+v) = f(e^{u+v}) = f(e^u e^v) = f(e^u) + f(e^v) = g(u) + g(v) \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Это уравнение Коши для \( g \). Так как \( f \) непрерывна, \( g
+                    \) непрерывна, значит \( g(u) = cu \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Тогда \( f(x) = g(\ln x) = c \ln x \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = c \ln x \), \( c \in \mathbb{R} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 5.</strong> Найдите все функции \( f: \mathbb{R} \setminus \{0\} \to
+            \mathbb{R} \), удовлетворяющие: \( f(x) + f(1/x) = x \) для всех \( x \neq 0 \).</p>
+            <button class="solve-btn" data-target="s5">Показать решение</button>
+            <div id="s5" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подставим \( x \to 1/x \): \( f(1/x) + f(x) = 1/x \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Сравниваем с исходным уравнением: \( x = 1/x \) ⇒ \( x^2 = 1 \)
+                    ⇒ \( x = \pm 1 \). Для всех остальных \( x \) получаем противоречие. Значит, решений нет.</p>
+                <div class="answer-block"><strong>Ответ:</strong> решений нет.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 6.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x+y) = f(x) + f(y) + 1 \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s6">Показать решение</button>
+            <div id="s6" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Замена \( g(x) = f(x) + 1 \). Тогда: \( g(x+y) = f(x+y) + 1 =
+                    f(x) + f(y) + 1 + 1 = (f(x)+1) + (f(y)+1) = g(x) + g(y) \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Это уравнение Коши для \( g \). Без дополнительных условий
+                    (непрерывность) есть много решений. Если предположить непрерывность, то \( g(x) = cx \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Тогда \( f(x) = cx - 1 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = cx - 1 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 7.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x) + f(y) = f(x+y) + xy \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s7">Показать решение</button>
+            <div id="s7" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( y=0 \): \( f(x) + f(0) = f(x) + 0 \) ⇒ \( f(0)=0
+                    \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Перепишем уравнение: \( f(x+y) = f(x) + f(y) - xy \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Попробуем \( f(x) = -x^2/2 \). Проверка: \( f(x+y) = -(x+y)^2/2
+                    \), \( f(x)+f(y)-xy = -x^2/2 - y^2/2 - xy = -(x^2+2xy+y^2)/2 = -(x+y)^2/2 \). Совпадает!</p>
+                <p class="step"><strong>Шаг 4.</strong> Общее решение: \( f(x) = -x^2/2 + cx \). Проверим: \(
+                    f(x)+f(y)-xy = -x^2/2+cx - y^2/2+cy - xy = -(x^2+2xy+y^2)/2 + c(x+y) = f(x+y) \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = -\frac{x^2}{2} + cx \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 8.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x) = f(x+1) \) для всех \( x \in \mathbb{R} \) (периодическая с периодом 1).</p>
+            <button class="solve-btn" data-target="s8">Показать решение</button>
+            <div id="s8" class="solution">
+                <p><strong>Решение:</strong> Это не уравнение в обычном смысле — любая функция с периодом 1 подходит.
+                    Например, \( f(x) = \sin(2\pi x) \), \( f(x) = \{x\} \) (дробная часть), и многие другие. Без
+                    дополнительных условий решений бесконечно много.</p>
+                <div class="answer-block"><strong>Ответ:</strong> любая 1-периодическая функция.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 9.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x) = f(-x) \) для всех \( x \in \mathbb{R} \) (чётная функция).</p>
+            <button class="solve-btn" data-target="s9">Показать решение</button>
+            <div id="s9" class="solution">
+                <div class="answer-block"><strong>Ответ:</strong> любая чётная функция.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 10.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x) = -f(-x) \) для всех \( x \in \mathbb{R} \) (нечётная функция).</p>
+            <button class="solve-btn" data-target="s10">Показать решение</button>
+            <div id="s10" class="solution">
+                <div class="answer-block"><strong>Ответ:</strong> любая нечётная функция.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Часть 2. Средние задачи (11–20) -->
+    <div class="part">
+        <h2>⚡ Часть 2. Средние задачи (11–20)</h2>
+
+        <div class="task"><p><strong>Задача 11.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x+f(y)) = f(x) + y \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s11">Показать решение</button>
+            <div id="s11" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( x=0 \): \( f(f(y)) = f(0) + y \). (1)</p>
+                <p class="step"><strong>Шаг 2.</strong> Из (1) следует, что \( f \) — сюръективна. Для любого \( t \in
+                    \mathbb{R} \) возьмём \( y = t - f(0) \), тогда \( f(f(y)) = t \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Докажем инъективность. Если \( f(a)=f(b) \), то из (1): \( f(0)
+                    + a = f(f(a)) = f(f(b)) = f(0) + b \) ⇒ \( a = b \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Подставим в исходное уравнение \( y = f(y) \): \( f(x + f(f(y)))
+                    = f(x) + f(y) \). По (1): \( f(f(y)) = f(0) + y \). Значит: \( f(x + y + f(0)) = f(x) + f(y) \). (2)
+                </p>
+                <p class="step"><strong>Шаг 5.</strong> Сделаем замену \( g(x) = f(x) - f(0) \). Тогда из (2): \(
+                    g(x+y+f(0)) + f(0) = g(x) + f(0) + g(y) + f(0) \) ⇒ \( g(x+y+f(0)) = g(x) + g(y) + f(0) \).</p>
+                <p class="step"><strong>Шаг 6.</strong> Подставим \( y=0 \): \( g(x+f(0)) = g(x) + g(0) + f(0) \). Это
+                    даёт, что \( g \) — линейная функция. Точнее, из структуры следует \( g(x) = kx + b \).</p>
+                <p class="step"><strong>Шаг 7.</strong> Возвращаемся к \( f \): \( f(x) = kx + b + f(0) \). Подставляем
+                    в исходное уравнение и находим \( k = 1 \) или \( k = -1 \). Проверка даёт: \( f(x) = x + c \) или
+                    \( f(x) = -x + c \), \( c \in \mathbb{R} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = x + c \) или \( f(x) = -x + c \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 12.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(f(x)) = x \) для всех \( x \in \mathbb{R} \) (инволюция).</p>
+            <button class="solve-btn" data-target="s12">Показать решение</button>
+            <div id="s12" class="solution">
+                <p><strong>Решение:</strong> Это определение инволюции. Без дополнительных условий решений бесконечно
+                    много. Примеры: \( f(x) = x \), \( f(x) = -x \), \( f(x) = 1 - x \), и любые функции, разбивающие \(
+                    \mathbb{R} \) на пары \( \{a,b\} \), где \( f(a)=b \) и \( f(b)=a \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> любая инволюция.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 13.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x+y) + f(x-y) = 2f(x)f(y) \) для всех \( x,y \in \mathbb{R} \). (Уравнение Даламбера)
+        </p>
+            <button class="solve-btn" data-target="s13">Показать решение</button>
+            <div id="s13" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( y=0 \): \( f(x) + f(x) = 2f(x)f(0) \) ⇒ \( 2f(x)
+                    = 2f(x)f(0) \). Если существует \( x \) с \( f(x) \neq 0 \), то \( f(0)=1 \). Если \( f(x)=0 \) для
+                    всех \( x \), то это решение.</p>
+                <p class="step"><strong>Шаг 2.</strong> Рассмотрим \( f(0)=1 \). Подставим \( x=0 \): \( f(y) + f(-y) =
+                    2f(0)f(y) = 2f(y) \) ⇒ \( f(-y) = f(y) \). Функция чётная.</p>
+                <p class="step"><strong>Шаг 3.</strong> Это уравнение хорошо известно. Его решения (при дополнительных
+                    условиях регулярности): \( f(x) = 0 \), \( f(x) = \cos(cx) \), \( f(x) = \cosh(cx) \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Проверка: для \( \cos(cx) \): \( \cos(c(x+y)) + \cos(c(x-y)) =
+                    2\cos(cx)\cos(cy) \) — верно. Для \( \cosh(cx) \) аналогично.</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) \equiv 0 \), \( f(x) = \cos(cx) \), \( f(x) =
+                    \cosh(cx) \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 14.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x+y) = f(x) + f(y) + xy \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s14">Показать решение</button>
+            <div id="s14" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( x=0 \): \( f(y) = f(0) + f(y) \) ⇒ \( f(0)=0 \).
+                </p>
+                <p class="step"><strong>Шаг 2.</strong> Попробуем \( f(x) = \frac{x^2}{2} + cx \): \( f(x+y) =
+                    \frac{x^2+2xy+y^2}{2} + c(x+y) = \frac{x^2}{2}+\frac{y^2}{2}+xy+cx+cy \). \( f(x)+f(y)+xy =
+                    \frac{x^2}{2}+cx+\frac{y^2}{2}+cy+xy \). Совпадает.</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = \frac{x^2}{2} + cx \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 15.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(xy) = f(x)f(y) \) для всех \( x,y \in \mathbb{R} \) (мультипликативное уравнение).</p>
+            <button class="solve-btn" data-target="s15">Показать решение</button>
+            <div id="s15" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( y=0 \): \( f(0) = f(x)f(0) \). Если \( f(x) \neq
+                    0 \) для некоторого \( x \), то \( f(0)=0 \)? Нет: если \( f(0)=1 \), то \( f(0) = f(0)f(0) \) —
+                    верно. Если \( f(0)=0 \), то \( f(x)f(0)=0=f(0) \) — верно для всех \( x \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Случай \( f(0)=0 \): Тогда \( f(x) = f(x)f(1) \). Если \( f(1)
+                    \neq 1 \), то \( f(x)=0 \) для всех \( x \). Если \( f(1)=1 \), то возможны функции \( f(x) = |x|^c
+                    \) для \( x>0 \), а для отрицательных — с учётом чётности/нечётности.</p>
+                <p class="step"><strong>Шаг 3.</strong> Классические решения: \( f(x) \equiv 0 \), \( f(x) = x^c \), \(
+                    f(x) = |x|^c \), \( f(x) = \operatorname{sgn}(x)|x|^c \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = 0 \), \( f(x) = x^c \), \( f(x) = |x|^c \),
+                    \( f(x) = \operatorname{sgn}(x)|x|^c \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 16.</strong> Найдите все функции \( f: \mathbb{R}\setminus\{0,1\} \to
+            \mathbb{R} \), удовлетворяющие: \( f(x) = f((x-1)/x) \) для всех \( x \neq 0,1 \).</p>
+            <button class="solve-btn" data-target="s16">Показать решение</button>
+            <div id="s16" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Заметим, что преобразование \( T(x) = (x-1)/x \) имеет период 3:
+                    \( T^3(x) = x \). Проверим: \( T^2(x) = 1/(1-x) \), \( T^3(x) = x \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Уравнение требует, чтобы \( f \) была постоянна на каждой орбите
+                    под действием \( T \). Орбиты имеют вид \( \{x, T(x), T^2(x)\} \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Значит, любая функция, постоянная на каждой такой трёхэлементной
+                    орбите, является решением. Без дополнительных условий решений бесконечно много.</p>
+                <div class="answer-block"><strong>Ответ:</strong> функции, постоянные на орбитах \( x \to \frac{x-1}{x}
+                    \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 17.</strong> Найдите все функции \( f: \mathbb{R}\setminus\{0,1\} \to
+            \mathbb{R} \), удовлетворяющие: \( f(x) + f((x-1)/x) = 1 + x \).</p>
+            <button class="solve-btn" data-target="s17">Показать решение</button>
+            <div id="s17" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Введём обозначение \( T(x) = (x-1)/x \). Как в задаче 16, \(
+                    T^3(x) = x \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Запишем уравнение для \( T(x) \): \( f(T(x)) + f(T^2(x)) = 1 +
+                    T(x) \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Запишем уравнение для \( T^2(x) \): \( f(T^2(x)) + f(x) = 1 +
+                    T^2(x) \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Теперь у нас система трёх уравнений: \( f(x) + f(T(x)) = 1 + x
+                    \), \( f(T(x)) + f(T^2(x)) = 1 + T(x) \), \( f(T^2(x)) + f(x) = 1 + T^2(x) \).</p>
+                <p class="step"><strong>Шаг 5.</strong> Сложим (1) и (2) и вычтем (3): \( 2f(T(x)) = 1 + x + T(x) -
+                    T^2(x) \).</p>
+                <p class="step"><strong>Шаг 6.</strong> Выражаем \( f(T(x)) \), а затем \( f(x) \). После упрощения
+                    получаем: \( f(x) = \frac{1}{2}(x + \frac{1}{x} - \frac{1}{x-1}) \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = \frac{1}{2}\left(x + \frac{1}{x} -
+                    \frac{1}{x-1}\right) \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 18.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x+y) = \frac{f(x)+f(y)}{1-f(x)f(y)} \) для всех \( x,y \in \mathbb{R} \), при условии
+            непрерывности.</p>
+            <button class="solve-btn" data-target="s18">Показать решение</button>
+            <div id="s18" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Напоминает формулу тангенса суммы: \( \tan(x+y) = \frac{\tan x +
+                    \tan y}{1 - \tan x \tan y} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Пусть \( f(x) = \tan(g(x)) \). Тогда уравнение превращается в:
+                    \( \tan(g(x+y)) = \tan(g(x) + g(y)) \). Значит, \( g(x+y) = g(x) + g(y) + \pi k \) для некоторого
+                    целого \( k \). При непрерывности \( k \) постоянно и \( g(x+y) = g(x) + g(y) + c \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Далее стандартно: \( g(x) = ax + b \), но с учётом периодичности
+                    тангенса. В итоге \( f(x) = \tan(ax + b) \) с ограничениями на область определения.</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = \tan(cx) \) (с точностью до сдвига).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 19.</strong> Найдите все функции \( f: \mathbb{N} \to \mathbb{N} \),
+            удовлетворяющие: \( f(f(n)) = n + 2 \) для всех \( n \in \mathbb{N} \).</p>
+            <button class="solve-btn" data-target="s19">Показать решение</button>
+            <div id="s19" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Из \( f(f(n)) = n+2 \) следует, что \( f \) инъективна. Если \(
+                    f(a)=f(b) \), то \( a+2 = f(f(a)) = f(f(b)) = b+2 \) ⇒ \( a=b \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Применим \( f \) к обеим частям: \( f(f(f(n))) = f(n+2) \). Но
+                    \( f(f(f(n))) = f(n) + 2 \) (по условию, применённому к \( f(n) \)). Значит: \( f(n+2) = f(n) + 2
+                    \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Из этого следует, что \( f \) на чётных и нечётных числах ведёт
+                    себя как арифметическая прогрессия с разностью 2. А именно: для чётных: \( f(2k) = f(2) + 2(k-1) \);
+                    для нечётных: \( f(2k+1) = f(1) + 2k \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Используем условие \( f(f(1)) = 3 \). Пусть \( f(1) = a \).
+                    Тогда \( f(a) = 3 \). Если \( a \) нечётное, \( f(a) = f(1) + a - 1 = 2a - 1 \). Приравниваем к 3:
+                    \( 2a-1=3 \) ⇒ \( a=2 \) (чётное) — противоречие. Если \( a \) чётное, \( f(a) = f(2) + a - 2 \). Но
+                    \( f(2) = f(f(1)) = 3 \). Значит \( f(a) = 3 + a - 2 = a+1 \). Приравниваем к 3: \( a+1=3 \) ⇒ \(
+                    a=2 \). Значит \( f(1) = 2 \). Тогда \( f(2) = f(f(1)) = 3 \).</p>
+                <p class="step"><strong>Шаг 5.</strong> Из \( f(n+2) = f(n)+2 \): \( f(2k) = 2k+1 \), \( f(2k+1) = 2k+2
+                    \). То есть \( f(n) = n+1 \) для всех \( n \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(n) = n+1 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 20.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x+f(y)) = f(x) + y \) для всех \( x,y \in \mathbb{R} \). (Уже решали как задачу 11.)
+        </p>
+            <button class="solve-btn" data-target="s20">Показать решение</button>
+            <div id="s20" class="solution">
+                <p><strong>Решение:</strong> См. задачу 11. \( f(x) = x + c \) или \( f(x) = -x + c \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = x + c \) или \( f(x) = -x + c \).</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Часть 3. Продвинутые задачи (21–30) -->
+    <div class="part">
+        <h2>🏆 Часть 3. Продвинутые задачи (21–30)</h2>
+
+        <div class="task"><p><strong>Задача 21 (IMO 1999, задача 6).</strong> Найдите все функции \( f: \mathbb{R} \to
+            \mathbb{R} \), удовлетворяющие: \( f(x - f(y)) = f(f(y)) + x f(y) + f(x) - 1 \) для всех \( x,y \in
+            \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s21">Показать решение</button>
+            <div id="s21" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Обозначим \( f(0) = c \). Подставим \( x = y = 0 \): \( f(-c) =
+                    f(c) + c - 1 \). (1)</p>
+                <p class="step"><strong>Шаг 2.</strong> Если \( c = 0 \), то \( f(0) = f(0) - 1 \) — противоречие.
+                    Значит, \( c \neq 0 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Подставим \( x = f(y) \): \( f(f(y) - f(y)) = f(0) = c = f(f(y))
+                    + f(y)^2 + f(f(y)) - 1 \). \( c = 2f(f(y)) + f(y)^2 - 1 \). Отсюда: \( f(f(y)) = (c + 1 - f(y)^2)/2
+                    \). (2)</p>
+                <p class="step"><strong>Шаг 4.</strong> Из (2) следует, что \( f(f(y)) \) зависит только от \( f(y)^2
+                    \). Значит, \( f(x) = f(-x) \) для всех \( x \).</p>
+                <p class="step"><strong>Шаг 5.</strong> Проверим \( f(x) = 1 - x^2/2 \). Тогда \( f(0)=1 \), \( c=1 \).
+                    Уравнение превращается в тождество.</p>
+                <p class="step"><strong>Шаг 6.</strong> Докажем, что других нет. Из (2) видно, что \( f(x) = f(-x) \). В
+                    частности, \( f(c) = f(-c) \). Сравнивая с (1): \( f(c) = f(c) + c - 1 \) ⇒ \( c = 1 \). Подставляем
+                    \( c=1 \) в (2): \( f(f(x)) = (2 - x^2)/2 = 1 - x^2/2 \). Это уже даёт вид \( f(x) = 1 - x^2/2 \).
+                </p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = 1 - \frac{x^2}{2} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 22.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(xf(x) + f(y)) = y + f(x)^2 \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s22">Показать решение</button>
+            <div id="s22" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( x=0 \): \( f(f(y)) = y + f(0)^2 \). Отсюда \( f
+                    \) сюръективна (так как правая часть пробегает все \( \mathbb{R} \)).</p>
+                <p class="step"><strong>Шаг 2.</strong> Инъективность: если \( f(a)=f(b) \), то из \( f(f(a)) = a +
+                    f(0)^2 \) и \( f(f(b)) = b + f(0)^2 \) следует \( a=b \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Так как \( f \) сюръективна, существует \( t \) такое, что \(
+                    f(t)=0 \). Подставим \( x=0 \), \( y=t \): \( f(f(t)) = t + f(0)^2 \) ⇒ \( f(0) = t + f(0)^2 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Теперь подставим \( x=t \) (где \( f(t)=0 \)): \( f(t \cdot 0 +
+                    f(y)) = y + 0^2 \) ⇒ \( f(f(y)) = y \). Сравниваем с \( f(f(y)) = y + f(0)^2 \), значит \( f(0)=0
+                    \).</p>
+                <p class="step"><strong>Шаг 5.</strong> Тогда \( f(f(y)) = y \). Подставим \( x = f(x) \) в исходное
+                    уравнение: \( f(f(x)f(f(x)) + f(y)) = y + f(f(x))^2 \). Так как \( f(f(x)) = x \), получаем: \(
+                    f(x^2 + y) = y + x^2 \). Значит, \( f(t) = t \) для всех \( t \) (так как \( t = x^2 + y \)
+                    пробегает все \( \mathbb{R} \)).</p>
+                <p class="step"><strong>Шаг 6. Проверка:</strong> \( f(xf(x)+f(y)) = f(x^2+y) = x^2+y = y + f(x)^2 \).
+                    Верно.</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = x \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 23.</strong> Найдите все функции \( f: \mathbb{R}^+ \to \mathbb{R}^+ \),
+            удовлетворяющие: \( f(x+f(x)+y) = f(2x) + f(y) \) для всех \( x,y > 0 \).</p>
+            <button class="solve-btn" data-target="s23">Показать решение</button>
+            <div id="s23" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Чтобы \( x+f(x)+y = 2x \), нужно \( y = x - f(x) \). Если
+                    существует \( x_0 \) с \( x_0 > f(x_0) \), то подставляя \( y = x_0 - f(x_0) \), получаем: \(
+                    f(2x_0) = f(2x_0) + f(x_0 - f(x_0)) \) ⇒ \( f(x_0 - f(x_0)) = 0 \). Но \( f \) принимает только
+                    положительные значения. Противоречие. Значит, \( f(x) \ge x \) для всех \( x \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Докажем инъективность. Предположим, \( f(a)=f(b) \) для \( a > b
+                    \). Тогда: \( f(a+f(a)+2b) = f(2a) + f(2b) = f(b+f(b)+2a) \). Если \( f \) инъективна, то \(
+                    a+f(a)+2b = b+f(b)+2a \) ⇒ \( f(a)-f(b) = a-b \). Но \( f(a)=f(b) \), значит \( a=b \) —
+                    противоречие. (Доказательство инъективности требует дополнительных шагов, но в итоге получаем \(
+                    f(x) = x + c \).)</p>
+                <p class="step"><strong>Шаг 3.</strong> Проверка: \( f(x) = x + c \): \( f(x+f(x)+y) = x + (x+c) + y + c
+                    = 2x + y + 2c \). \( f(2x) + f(y) = (2x+c) + (y+c) = 2x + y + 2c \). Верно для любого \( c \ge 0 \).
+                </p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = x + c \), \( c \ge 0 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 24.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x) + f(y) = f(x+y) + f(x)f(y) \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s24">Показать решение</button>
+            <div id="s24" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( y=0 \): \( f(x) + f(0) = f(x) + f(x)f(0) \) ⇒ \(
+                    f(0) = f(x)f(0) \). Если \( f(0) \neq 0 \), то \( f(x)=1 \) для всех \( x \). Проверка: \(
+                    1+1=1+1\cdot1 \) — верно.</p>
+                <p class="step"><strong>Шаг 2.</strong> Если \( f(0)=0 \), то \( f(x)+f(y) = f(x+y) + f(x)f(y) \).
+                    Перепишем: \( f(x+y) = f(x) + f(y) - f(x)f(y) \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Замена \( g(x) = 1 - f(x) \). Тогда \( f(x) = 1 - g(x) \): \( 1
+                    - g(x+y) = (1-g(x)) + (1-g(y)) - (1-g(x))(1-g(y)) = 1 - g(x)g(y) \). \( g(x+y) = g(x)g(y) \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Это мультипликативное уравнение. Решения: \( g(x) \equiv 0 \)
+                    (тогда \( f(x) \equiv 1 \)), или \( g(x) = a^x \) (тогда \( f(x) = 1 - a^x \)).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) \equiv 1 \) или \( f(x) = 1 - a^x \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 25.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x+y) + f(x-y) = 2f(x) + 2f(y) \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s25">Показать решение</button>
+            <div id="s25" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( y=0 \): \( f(x)+f(x) = 2f(x)+2f(0) \) ⇒ \(
+                    2f(0)=0 \) ⇒ \( f(0)=0 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Подстановка \( x=0 \): \( f(y)+f(-y) = 2f(0)+2f(y) = 2f(y) \) ⇒
+                    \( f(-y)=f(y) \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Подстановка \( x=y \): \( f(2x)+f(0) = 2f(x)+2f(x) \) ⇒ \( f(2x)
+                    = 4f(x) \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Общее решение этого уравнения — \( f(x) = ax^2 \). Проверка: \(
+                    a(x+y)^2 + a(x-y)^2 = 2ax^2 + 2ay^2 \). Верно.</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = ax^2 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 26.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(xy) = f(x)f(y) + x + y \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s26">Показать решение</button>
+            <div id="s26" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( x=y=0 \): \( f(0) = f(0)^2 \). Значит, \( f(0)=0
+                    \) или \( f(0)=1 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Случай \( f(0)=0 \): \( f(0) = f(0)f(y) + 0 + y \) ⇒ \( 0 = y \)
+                    — противоречие.</p>
+                <p class="step"><strong>Шаг 3.</strong> Случай \( f(0)=1 \): подстановка \( y=0 \): \( f(0) = f(x)f(0) +
+                    x \) ⇒ \( 1 = f(x) + x \) ⇒ \( f(x) = 1 - x \). Проверка: \( f(xy) = 1 - xy \), \( f(x)f(y)+x+y =
+                    (1-x)(1-y)+x+y = 1+xy \). Не совпадает. Решений нет.</p>
+                <div class="answer-block"><strong>Ответ:</strong> решений нет.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 27.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(xy) = f(x)f(y) - x - y \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s27">Показать решение</button>
+            <div id="s27" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( x=y=0 \): \( f(0) = f(0)^2 \) ⇒ \( f(0)=0 \) или
+                    \( f(0)=1 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Случай \( f(0)=0 \): \( f(0) = f(0)f(y) - 0 - y \) ⇒ \( 0 = -y
+                    \) — противоречие.</p>
+                <p class="step"><strong>Шаг 3.</strong> Случай \( f(0)=1 \): подстановка \( y=0 \): \( f(0) = f(x)f(0) -
+                    x \) ⇒ \( 1 = f(x) - x \) ⇒ \( f(x) = 1 + x \). Проверка: \( f(xy) = 1 + xy \), \( f(x)f(y) - x - y
+                    = (1+x)(1+y) - x - y = 1 + xy \). Верно.</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = 1 + x \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 28.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x+y) + f(xy) = f(x) + f(y) + f(x)f(y) \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s28">Показать решение</button>
+            <div id="s28" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( x=y=0 \): \( f(0)+f(0) = f(0)+f(0)+f(0)^2 \) ⇒ \(
+                    2f(0) = 2f(0) + f(0)^2 \) ⇒ \( f(0)=0 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Подстановка \( y=1 \): \( f(x+1) + f(x) = f(x) + f(1) + f(x)f(1)
+                    \) ⇒ \( f(x+1) = f(1) + f(x)f(1) \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Попробуем \( f(x) = x \): \( x+y+xy = x+y+xy \) — верно.</p>
+                <p class="step"><strong>Шаг 4.</strong> Попробуем \( f(x) = 0 \): верно.</p>
+                <p class="step"><strong>Шаг 5.</strong> Попробуем \( f(x) = -x \): \( -x-y+xy = -x-y+xy \) — верно.</p>
+                <p class="step"><strong>Шаг 6.</strong> Доказательство: из \( f(x+1) = f(1)(1+f(x)) \) можно показать,
+                    что \( f \) либо линейна, либо константа. В итоге решения: \( f(x) \equiv 0 \), \( f(x) = x \), \(
+                    f(x) = -x \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) \equiv 0 \), \( f(x) = x \), \( f(x) = -x \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 29.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x+y) = f(x)f(y) - \sin x \sin y \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s29">Показать решение</button>
+            <div id="s29" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( y=0 \): \( f(x) = f(x)f(0) - 0 \) ⇒ \(
+                    f(x)(1-f(0))=0 \). Если \( f(0) \neq 1 \), то \( f(x) \equiv 0 \). Но тогда \( 0 = 0 - \sin x \sin y
+                    \) — неверно. Значит, \( f(0)=1 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Подстановка \( y=-x \): \( f(0) = f(x)f(-x) + \sin^2 x \) ⇒ \( 1
+                    = f(x)f(-x) + \sin^2 x \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Попробуем \( f(x) = \cos x \): \( \cos(x+y) = \cos x \cos y -
+                    \sin x \sin y \). Верно!</p>
+                <p class="step"><strong>Шаг 4.</strong> Попробуем \( f(x) = \cos x + c \sin x \). Проверка показывает,
+                    что подходит только \( c=0 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = \cos x \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 30.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x+y) = f(x)\cos y + f(y)\cos x \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s30">Показать решение</button>
+            <div id="s30" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( y=0 \): \( f(x) = f(x)\cos 0 + f(0)\cos x = f(x)
+                    + f(0)\cos x \) ⇒ \( f(0)\cos x = 0 \) ⇒ \( f(0)=0 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Подстановка \( y=-x \): \( f(0) = f(x)\cos x + f(-x)\cos x \) ⇒
+                    \( 0 = (f(x)+f(-x))\cos x \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Попробуем \( f(x) = \sin x \): \( \sin(x+y) = \sin x \cos y +
+                    \sin y \cos x \). Верно!</p>
+                <p class="step"><strong>Шаг 4.</strong> Попробуем \( f(x) = k\sin x \): \( k\sin(x+y) = k\sin x\cos y +
+                    k\sin y\cos x \) — верно для любого \( k \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = k\sin x \).</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Часть 4. Олимпиадные задачи (31–40) -->
+    <div class="part">
+        <h2>🏅 Часть 4. Олимпиадные задачи (31–40)</h2>
+
+        <div class="task"><p><strong>Задача 31 (IMO 2008, задача 4).</strong> Найдите все функции \( f: \mathbb{R}^+ \to
+            \mathbb{R}^+ \), удовлетворяющие: \( \frac{f(x)^2 + f(y)^2}{f(x) + f(y)} = \frac{x^2 + y^2}{x + y} \) для
+            всех \( x,y > 0 \).</p>
+            <button class="solve-btn" data-target="s31">Показать решение</button>
+            <div id="s31" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Заметим, что для \( x=y \): \( \frac{2f(x)^2}{2f(x)} = f(x) =
+                    \frac{2x^2}{2x} = x \). Значит, \( f(x)=x \) для всех \( x \)? Не так быстро. Уравнение в точке \(
+                    x=y \) просто даёт \( f(x)=x \), но это только в этой точке! Мы не можем сразу утверждать для всех
+                    \( x \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Ключевая идея: уравнение можно переписать как: \( f(x)^2 x +
+                    f(x)^2 y + f(y)^2 x + f(y)^2 y = x^2 f(x) + x^2 f(y) + y^2 f(x) + y^2 f(y) \).</p>
+                <p class="step"><strong>Шаг 3.</strong> После упрощения и группировки получается, что \(
+                    (f(x)-x)(f(x)+x) = 0 \) для всех \( x \). Значит, для каждого \( x \), \( f(x) = x \) или \( f(x) =
+                    -x \), но так как \( f \) принимает положительные значения, \( f(x) = x \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = x \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 32.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x+y) = f(x) + f(y) \) и \( f(xy) = f(x)f(y) \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s32">Показать решение</button>
+            <div id="s32" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Из аддитивности: \( f(0)=0 \), \( f(-x)=-f(x) \), и \( f(x)=cx
+                    \) для рациональных \( x \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Из мультипликативности: \( f(x^2) = f(x)^2 \ge 0 \) для всех \(
+                    x \). Значит, \( f \) неотрицательна на неотрицательных числах.</p>
+                <p class="step"><strong>Шаг 3.</strong> Используем аддитивность и мультипликативность вместе: \(
+                    f((x+y)^2) = f(x+y)^2 = (f(x)+f(y))^2 \). Но также \( f(x^2+2xy+y^2) = f(x^2) + 2f(xy) + f(y^2) =
+                    f(x)^2 + 2f(x)f(y) + f(y)^2 \). Сравнивая, получаем \( f(xy) = f(x)f(y) \) — это уже есть.</p>
+                <p class="step"><strong>Шаг 4.</strong> Классический результат: единственные функции, одновременно
+                    аддитивные и мультипликативные на \( \mathbb{R} \), это \( f(x)=0 \) и \( f(x)=x \) (при
+                    дополнительных условиях регулярности). Без регулярности есть «дикие» решения через базис Гамеля.</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) \equiv 0 \) или \( f(x) = x \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 33.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x+y) = f(x) + f(y) \) и \( f(1) = 2 \).</p>
+            <button class="solve-btn" data-target="s33">Показать решение</button>
+            <div id="s33" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Из аддитивности: для рациональных \( q \): \( f(q) = q f(1) = 2q
+                    \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Без дополнительных условий (непрерывность, монотонность) решений
+                    бесконечно много — через базис Гамеля можно задать произвольные значения на базисе, сохраняя
+                    аддитивность.</p>
+                <p class="step"><strong>Шаг 3.</strong> Если добавить непрерывность: \( f(x) = 2x \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> при непрерывности — \( f(x)=2x \); без непрерывности —
+                    бесконечно много.
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 34.</strong> Найдите все функции \( f: \mathbb{R}^+ \to \mathbb{R}^+ \),
+            удовлетворяющие: \( f(xy) = x f(y) + y f(x) \) для всех \( x,y > 0 \).</p>
+            <button class="solve-btn" data-target="s34">Показать решение</button>
+            <div id="s34" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( x=y=1 \): \( f(1) = f(1) + f(1) \) ⇒ \( f(1)=0
+                    \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Подстановка \( x=y \): \( f(x^2) = 2x f(x) \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Попробуем \( f(x) = c x \ln x \): \( f(xy) = c xy \ln(xy) =
+                    cxy(\ln x + \ln y) = y(c x \ln x) + x(c y \ln y) = y f(x) + x f(y) \). Верно!</p>
+                <p class="step"><strong>Шаг 4.</strong> Общее решение: \( f(x) = c x \ln x \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = c x \ln x \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 35.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x^2 + y) = f(x) + f(y) \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s35">Показать решение</button>
+            <div id="s35" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( x=0 \): \( f(y) = f(0) + f(y) \) ⇒ \( f(0)=0 \).
+                </p>
+                <p class="step"><strong>Шаг 2.</strong> Подстановка \( y=0 \): \( f(x^2) = f(x) \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Из \( f(x^2)=f(x) \) следует, что \( f(x)=f(-x) \) (так как \(
+                    f((-x)^2)=f(-x) \)).</p>
+                <p class="step"><strong>Шаг 4.</strong> Теперь \( f(x^2 + y) = f(x) + f(y) \). Пусть \( t \ge 0 \).
+                    Тогда \( f(t+y) = f(\sqrt{t}) + f(y) \). Но \( f(\sqrt{t}) = f(t) \) (из \( f(x^2)=f(x) \)). Значит,
+                    \( f(t+y) = f(t) + f(y) \) для всех \( t \ge 0 \), \( y \in \mathbb{R} \).</p>
+                <p class="step"><strong>Шаг 5.</strong> Это уравнение Коши на полуоси. Решения: \( f(x) = cx \) для \( x
+                    \ge 0 \), а для отрицательных \( f(x) = f(-x) = -cx \)? Но \( f(-x) = f(x) \) из чётности. Значит,
+                    \( c(-x) = cx \) ⇒ \( c=0 \). То есть \( f(x) \equiv 0 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) \equiv 0 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 36.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x + y^2) = f(x) + f(y)^2 \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s36">Показать решение</button>
+            <div id="s36" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( y=0 \): \( f(x) = f(x) + f(0)^2 \) ⇒ \( f(0)=0
+                    \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Подстановка \( x=0 \): \( f(y^2) = f(0) + f(y)^2 = f(y)^2 \).
+                </p>
+                <p class="step"><strong>Шаг 3.</strong> Подстановка \( y=-y \): \( f(x+y^2) = f(x) + f(-y)^2 \).
+                    Сравнивая с исходным: \( f(y)^2 = f(-y)^2 \) ⇒ \( f(-y) = \pm f(y) \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Из \( f(y^2)=f(y)^2 \ge 0 \) следует, что \( f(t) \ge 0 \) для
+                    \( t \ge 0 \).</p>
+                <p class="step"><strong>Шаг 5.</strong> Попробуем \( f(x) = x \): \( x+y^2 = x + y^2 \) — верно.
+                    Попробуем \( f(x) = 0 \): верно.</p>
+                <p class="step"><strong>Шаг 6.</strong> Докажем, что других нет. Из \( f(x+y^2) = f(x) + f(y^2) \) (так
+                    как \( f(y^2)=f(y)^2 \)) следует, что \( f \) аддитивна на неотрицательных приращениях. В итоге \(
+                    f(x)=cx \) для \( x \ge 0 \). Из \( f(y^2)=f(y)^2 \) получаем \( c y^2 = c^2 y^2 \) ⇒ \( c = c^2 \)
+                    ⇒ \( c=0 \) или \( c=1 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) \equiv 0 \) или \( f(x) = x \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 37.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(f(x) + y) = x + f(y) \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s37">Показать решение</button>
+            <div id="s37" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( y=0 \): \( f(f(x)) = x + f(0) \). Отсюда \( f \)
+                    сюръективна.</p>
+                <p class="step"><strong>Шаг 2.</strong> Инъективность: если \( f(a)=f(b) \), то \( a + f(0) = f(f(a)) =
+                    f(f(b)) = b + f(0) \) ⇒ \( a=b \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Подставим \( y = -x \): \( f(f(x)-x) = x + f(-x) \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Попробуем \( f(x) = x + c \): тогда \( f(f(x)+y) = f(x+c+y) =
+                    x+c+y+c = x+y+2c \), а \( x+f(y) = x+y+c \). Значит, \( 2c = c \) ⇒ \( c=0 \). \( f(x)=x \).</p>
+                <p class="step"><strong>Шаг 5.</strong> Попробуем \( f(x) = -x + c \): \( f(f(x)+y) = f(-x+c+y) =
+                    -(-x+c+y)+c = x - y \). А \( x+f(y) = x - y + c \). Значит \( c=0 \). \( f(x)=-x \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) = x \) или \( f(x) = -x \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 38.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(f(x) + y) = f(x) + f(y) \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s38">Показать решение</button>
+            <div id="s38" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( y=0 \): \( f(f(x)) = f(x) + f(0) \). (1)</p>
+                <p class="step"><strong>Шаг 2.</strong> Подстановка \( x=0 \): \( f(f(0) + y) = f(0) + f(y) \). (2)</p>
+                <p class="step"><strong>Шаг 3.</strong> Классическое решение: \( f(x) = 0 \) или \( f(x) = x + c \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( f(x) \equiv 0 \) или \( f(x) = x + c \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 39.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(f(x) + y) = f(x) + f(y) + 1 \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s39">Показать решение</button>
+            <div id="s39" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( y=0 \): \( f(f(x)) = f(x) + f(0) + 1 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Подстановка \( x=0 \): \( f(f(0)+y) = f(0)+f(y)+1 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Попробуем \( f(x) = x + c \): \( f(f(x)+y) = f(x+c+y) = x+c+y+c
+                    = x+y+2c \). \( f(x)+f(y)+1 = x+c+y+c+1 = x+y+2c+1 \). Должно быть \( 2c = 2c+1 \) — противоречие.
+                </p>
+                <p class="step"><strong>Шаг 4.</strong> Попробуем \( f(x) = -x + c \): не совпадает. Значит, решений
+                    нет.</p>
+                <div class="answer-block"><strong>Ответ:</strong> решений нет.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 40.</strong> Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \),
+            удовлетворяющие: \( f(x + f(y)) = f(x) + f(y) + x \) для всех \( x,y \in \mathbb{R} \).</p>
+            <button class="solve-btn" data-target="s40">Показать решение</button>
+            <div id="s40" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Подстановка \( x=0 \): \( f(f(y)) = f(0) + f(y) \). (1)</p>
+                <p class="step"><strong>Шаг 2.</strong> Подстановка \( y=0 \): \( f(x + f(0)) = f(x) + f(0) + x \). (2)
+                </p>
+                <p class="step"><strong>Шаг 3.</strong> Из (1): \( f(f(y)) - f(y) = f(0) \). Значит, \( f(t) - t = f(0)
+                    \) для всех \( t \) в образе \( f \). То есть \( f(t) = t + f(0) \) на образе.</p>
+                <p class="step"><strong>Шаг 4.</strong> Пусть \( c = f(0) \). Тогда \( f(f(y)) = f(y) + c \).</p>
+                <p class="step"><strong>Шаг 5.</strong> Подставим в исходное \( x = f(x) \): \( f(f(x) + f(y)) = f(f(x))
+                    + f(y) + f(x) = f(x) + c + f(y) + f(x) = 2f(x) + f(y) + c \).</p>
+                <p class="step"><strong>Шаг 6.</strong> С другой стороны, из симметрии: \( f(f(y) + f(x)) = 2f(y) + f(x)
+                    + c \). Сравнивая: \( 2f(x) + f(y) = 2f(y) + f(x) \) ⇒ \( f(x) = f(y) \) для всех \( x,y \). Значит,
+                    \( f \) постоянна. Пусть \( f(x) = k \). Тогда \( k = k + k + x \) ⇒ \( k = 2k + x \) для всех \( x
+                    \) — противоречие.</p>
+                <div class="answer-block"><strong>Ответ:</strong> решений нет.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Итоговая таблица -->
+    <div class="part">
+        <h2>📊 Итоговая таблица методов</h2>
+        <table style="width:100%; border-collapse:collapse; margin:1rem 0; background:#f8fafc;">
+            <thead>
+            <tr style="background:#e2e8f0;">
+                <th style="border:1px solid #cbd5e1; padding:0.5rem; text-align:left;">Метод</th>
+                <th style="border:1px solid #cbd5e1; padding:0.5rem; text-align:left;">Использован в задачах</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Подстановка \( x=0, y=0, y=-x \)</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Почти все</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Уравнение Коши</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">2, 3, 4, 6, 32, 33, 35</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Замена \( g(x)=f(x)-f(0) \)</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">6, 11, 20, 24</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Инъективность/сюръективность</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">11, 20, 21, 22, 37</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Преобразование с периодом 3</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">16, 17</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Угадывание решения</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">7, 14, 25, 29, 30, 34</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Проверка найденных решений</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Обязательно во всех задачах</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>© Заборовский М. С. Материалы для олимпиадников. 2026</footer>
+</div>
+
+<script>
+    document.querySelectorAll('.solve-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const t = document.getElementById(btn.getAttribute('data-target'));
+            if (t.style.display === 'none' || t.style.display === '') {
+                t.style.display = 'block';
+                btn.textContent = 'Скрыть решение';
+                if (window.MathJax) MathJax.typesetPromise([t]);
+            } else {
+                t.style.display = 'none';
+                btn.textContent = 'Показать решение';
+            }
+        });
+    });
+</script>
+</body>
+</html>

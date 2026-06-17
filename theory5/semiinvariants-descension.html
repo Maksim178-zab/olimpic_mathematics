@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Полуинварианты и метод спуска | Теория + примеры</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f0f4f8;
+            color: #1e2a3e;
+            padding: 2rem 1.5rem;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #1e5f7a, #0f3b4f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .badge {
+            background: #d4e6f1;
+            display: inline-block;
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cbd5e1;
+        }
+
+        .card h2 {
+            color: #1e5f7a;
+            border-left: 6px solid #3b82f6;
+            padding-left: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+
+        .card h3 {
+            color: #2c5282;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.4rem;
+        }
+
+        .theorem {
+            background: #eef2ff;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #2563eb;
+        }
+
+        .proof {
+            background: #fef9e3;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .example {
+            background: #e6f7f0;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .method-block {
+            background: #e0f2fe;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #0284c7;
+        }
+
+        .task {
+            background: #f8fafc;
+            margin: 1.2rem 0;
+            padding: 1rem 1.2rem;
+            border-radius: 1.2rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .solve-btn {
+            background: #1e5f7a;
+            color: white;
+            border: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .solve-btn:hover {
+            background: #0f4b62;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: #eef2ff;
+            border-radius: 0.8rem;
+            border-left: 3px solid #1e5f7a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #f8fafc;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 0.6rem;
+            text-align: left;
+        }
+
+        th {
+            background: #e2e8f0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #cbd5e1;
+            color: #4b5563;
+            font-size: 0.85rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4b5563;
+            padding: 0.5rem 1rem;
+            border-left: 3px solid #6b7280;
+            margin: 0.8rem 0;
+        }
+
+        .answer-block {
+            background: #d1fae5;
+            padding: 0.8rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin: 0.8rem 0;
+            font-weight: bold;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1.2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📐 Полуинварианты и метод спуска</h1>
+        <div class="badge">Монотонные инварианты • Бесконечный спуск</div>
+    </header>
+
+    <!-- Часть 1. Полуинварианты -->
+    <div class="card">
+        <h2>📖 Часть 1. Полуинварианты</h2>
+
+        <h3>1.1. Что такое полуинвариант?</h3>
+        <div class="theorem">
+            <p><strong>Полуинвариант</strong> (или <strong>монотонный инвариант</strong>) — это величина, которая
+                <strong>меняется только в одну сторону</strong>: всегда возрастает или всегда убывает. Это позволяет:
+            </p>
+            <ul>
+                <li>доказывать конечность процесса (если полуинвариант ограничен и целочисленный);</li>
+                <li>находить максимальное или минимальное значение;</li>
+                <li>делать вывод о том, что процесс обязательно закончится.</li>
+            </ul>
+        </div>
+        <div class="quote">«Если что-то только уменьшается и не может стать меньше нуля — процесс конечен».</div>
+    </div>
+
+    <!-- Часть 2. Пример с конечностью процесса -->
+    <div class="card">
+        <h2>🎯 Часть 2. Пример с конечностью процесса</h2>
+        <div class="example">
+            <p><strong>Задача:</strong> Дано натуральное число \( n \). Если оно чётное, делим его на 2; если нечётное,
+                заменяем на \( 3n+1 \). Докажите, что процесс не может продолжаться бесконечно без достижения 1? (Это
+                гипотеза Коллатца, она не доказана. Но для некоторых модификаций — работает.)</p>
+        </div>
+        <div class="proof">
+            <p><strong>Более простой пример:</strong></p>
+            <p>Дано число \( n \). Если оно чётное, делим на 2; если нечётное, вычитаем 1. Докажите, что процесс всегда
+                заканчивается.</p>
+            <p><strong>Полуинвариант:</strong> само число \( n \).</p>
+            <ul>
+                <li>Если \( n \) чётное: \( n \to n/2 < n \) (уменьшается).</li>
+                <li>Если \( n \) нечётное: \( n \to n-1 < n \) (уменьшается).</li>
+            </ul>
+            <p>Число всегда уменьшается, а меньше 1 быть не может (натуральное). Значит, процесс конечен.</p>
+        </div>
+    </div>
+
+    <!-- Часть 3. Полуинвариант как сумма или вес -->
+    <div class="card">
+        <h2>⚖️ Часть 3. Полуинвариант как сумма или вес</h2>
+        <div class="method-block">
+            <p>Часто полуинвариант вводят как <strong>сумму с весами</strong>, чтобы она монотонно менялась.</p>
+        </div>
+        <div class="example">
+            <p><strong>Задача:</strong> На доске написаны числа \( 1, 2, \dots, n \). За один ход можно выбрать два
+                числа \( a \) и \( b \) и заменить их на \( a+b \) и \( |a-b| \). Докажите, что процесс конечен.</p>
+        </div>
+        <div class="proof">
+            <p><strong>Решение:</strong></p>
+            <p><strong>Шаг 1.</strong> Рассмотрим сумму квадратов чисел на доске:</p>
+            \[
+            S = \sum a_i^2.
+            \]
+            <p><strong>Шаг 2.</strong> После замены \( a, b \) на \( a+b, |a-b| \) получаем:</p>
+            \[
+            (a+b)^2 + (a-b)^2 = 2a^2 + 2b^2.
+            \]
+            <p>То есть \( S \) <strong>увеличивается</strong> на \( a^2+b^2 \), если \( ab \neq 0 \).</p>
+            <p><strong>Шаг 3.</strong> Значит, \( S \) строго возрастает. Но она ограничена? Нет, не ограничена. Поэтому
+                этот полуинвариант не даёт конечности.</p>
+            <p><strong>Шаг 4.</strong> Ищем другой полуинвариант:</p>
+            <p>Рассмотрим сумму чисел: \( a+b \to (a+b)+|a-b| = 2\max(a,b) \) — не монотонна.</p>
+            <p><strong>Шаг 5.</strong> Рассмотрим <strong>количество нечётных чисел</strong>. Замена \( a, b \):</p>
+            <ul>
+                <li>чётное + чётное → оба чётных (количество нечётных не меняется);</li>
+                <li>нечётное + нечётное → оба чётных (количество нечётных уменьшается на 2);</li>
+                <li>чётное + нечётное → одно нечётное и одно нечётное (количество нечётных не меняется).</li>
+            </ul>
+            <p>Количество нечётных чисел <strong>не возрастает</strong>. Это полуинвариант. Он целый, неотрицательный, и
+                уменьшается каждый раз, когда мы берём два нечётных числа. Значит, процесс конечен.</p>
+        </div>
+    </div>
+
+    <!-- Часть 4. Метод спуска -->
+    <div class="card">
+        <h2>⬇️ Часть 4. Метод спуска (бесконечного спуска)</h2>
+        <div class="theorem">
+            <p><strong>Метод бесконечного спуска</strong> — это вариант доказательства от противного, основанный на том,
+                что из предположения о существовании решения мы строим <strong>меньшее</strong> решение того же типа.
+                Это приводит к бесконечной убывающей последовательности натуральных чисел, что невозможно.</p>
+            <p>Этот метод особенно популярен в теории чисел и диофантовых уравнениях.</p>
+        </div>
+
+        <h3>4.1. Классический пример: иррациональность \( \sqrt{2} \)</h3>
+        <div class="proof">
+            <p><strong>Доказательство методом спуска:</strong></p>
+            <p><strong>Шаг 1.</strong> Предположим, что \( \sqrt{2} = \frac{p}{q} \) — несократимая дробь, \( p,q \in
+                \mathbb{N} \).</p>
+            <p><strong>Шаг 2.</strong> Тогда \( p^2 = 2q^2 \). Значит, \( p^2 \) чётно ⇒ \( p \) чётно. Пусть \( p = 2k
+                \).</p>
+            <p><strong>Шаг 3.</strong> Тогда \( 4k^2 = 2q^2 \) ⇒ \( 2k^2 = q^2 \). Значит, \( q^2 \) чётно ⇒ \( q \)
+                чётно.</p>
+            <p><strong>Шаг 4.</strong> Получили, что \( p \) и \( q \) оба чётные, значит, дробь \( p/q \) сократима.
+                Противоречие с выбором несократимой дроби.</p>
+            <p>Это и есть спуск: из предположения о существовании дроби мы получили другую дробь с меньшими числителем и
+                знаменателем, что невозможно.</p>
+        </div>
+
+        <h3>4.2. Задача на спуск (теория чисел)</h3>
+        <div class="example">
+            <p><strong>Задача:</strong> Докажите, что уравнение \( x^2 + y^2 = 3z^2 \) не имеет решений в натуральных
+                числах.</p>
+        </div>
+        <div class="proof">
+            <p><strong>Решение методом спуска:</strong></p>
+            <p><strong>Шаг 1.</strong> Предположим, что существует решение \( (x, y, z) \) в натуральных числах.</p>
+            <p><strong>Шаг 2.</strong> Рассмотрим остатки по модулю 3. Квадраты дают остатки 0 или 1.</p>
+            <p>Если \( x^2 + y^2 \equiv 0 \pmod{3} \), то \( x^2 \equiv y^2 \equiv 0 \pmod{3} \) (иначе 1+1=2, 1+0=1).
+                Значит, \( x \) и \( y \) делятся на 3.</p>
+            <p><strong>Шаг 3.</strong> Тогда \( x = 3x_1, y = 3y_1 \). Подставляем:</p>
+            \[
+            9x_1^2 + 9y_1^2 = 3z^2 \quad\Rightarrow\quad 3(x_1^2 + y_1^2) = z^2.
+            \]
+            <p>Значит, \( z^2 \) делится на 3, поэтому \( z \) делится на 3: \( z = 3z_1 \).</p>
+            <p><strong>Шаг 4.</strong> Тогда \( 3(x_1^2+y_1^2) = 9z_1^2 \) ⇒ \( x_1^2+y_1^2 = 3z_1^2 \).</p>
+            <p>Получили новое решение \( (x_1, y_1, z_1) \) с меньшими числами.</p>
+            <p><strong>Шаг 5.</strong> Повторяя, получаем бесконечную убывающую последовательность натуральных чисел —
+                противоречие.</p>
+            <div class="answer-block"><strong>Ответ:</strong> решений нет.</div>
+        </div>
+
+        <h3>4.3. Спуск в геометрии</h3>
+        <div class="example">
+            <p><strong>Задача:</strong> Докажите, что не существует прямоугольного треугольника с целыми сторонами и
+                площадью, равной квадрату целого числа.</p>
+        </div>
+        <div class="proof">
+            <p><strong>Схема решения:</strong></p>
+            <p>Это классическая задача, которая решается методом спуска (теорема Ферма о прямоугольном
+                треугольнике).</p>
+            <p><strong>Шаг 1.</strong> Предполагаем существование такого треугольника.</p>
+            <p><strong>Шаг 2.</strong> Строим меньший треугольник того же типа (через формулы Пифагоровых троек).</p>
+            <p><strong>Шаг 3.</strong> Получаем бесконечный спуск.</p>
+            <p>Следовательно, такого треугольника не существует.</p>
+        </div>
+    </div>
+
+    <!-- Часть 5. Таблица -->
+    <div class="card">
+        <h2>📊 Часть 5. Таблица: инварианты и полуинварианты</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Что ищем</th>
+                <th>Где применяем</th>
+                <th>Пример</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><strong>Инвариант</strong></td>
+                <td>Доказать недостижимость</td>
+                <td>Чётность суммы, остаток по модулю</td>
+            </tr>
+            <tr>
+                <td><strong>Полуинвариант</strong></td>
+                <td>Доказать конечность процесса</td>
+                <td>Количество нечётных чисел, сумма весов</td>
+            </tr>
+            <tr>
+                <td><strong>Спуск</strong></td>
+                <td>Доказать отсутствие решений</td>
+                <td>Бесконечная убывающая последовательность</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Часть 6. Шпаргалка -->
+    <div class="card">
+        <h2>📋 Часть 6. Шпаргалка для олимпиадника</h2>
+        <div class="method-block">
+            <p><strong>1.</strong> Если нужно доказать невозможность — ищи инвариант (числовой, по модулю,
+                комбинаторный).</p>
+            <p><strong>2.</strong> Если нужно доказать, что процесс закончится — ищи полуинвариант (монотонно убывающую
+                или возрастающую целую величину).</p>
+            <p><strong>3.</strong> Если нужно доказать, что нет решений — пробуй метод бесконечного спуска.</p>
+            <p><strong>4.</strong> Если не знаешь, с чего начать — попробуй чётность, потом модуль 3, потом модуль 4,
+                потом сумму цифр.</p>
+        </div>
+    </div>
+
+    <!-- Заключение -->
+    <div class="card">
+        <h2>🎯 Заключение</h2>
+        <p>Инварианты и полуинварианты — это не просто трюки, а <strong>способ мышления</strong>. Они учат нас видеть в
+            задаче то, что остаётся неизменным, и использовать это для выводов. Метод спуска — это логический «нож»,
+            который отсекает бесконечные цепочки решений.</p>
+        <div class="quote">Вместе эти три метода покрывают огромный класс олимпиадных задач — от комбинаторики до теории
+            чисел и геометрии. Освоив их, вы получите ключ к задачам, которые кажутся нерешаемыми с первого взгляда.
+        </div>
+    </div>
+
+    <footer>© Заборовский М. С. Материалы для олимпиадников. 2026</footer>
+</div>
+</body>
+</html>
