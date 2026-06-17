@@ -68,8 +68,8 @@ const resources = {
             { text: "Все о производных", url: "theory2/derivative-theory.html", isInternal: true }
         ],
         practice: [
-            { text: "📚 Сборник олимпиадных задач (50 задач с решениями)", url: "theory2/practice-inequalities-50.html", isInternal: true },
-            { text: "📚 Сборник олимпиадных задач (30 задач с решениями)", url: "theory2/practice-derivatives.html", isInternal: true }
+            { text: "📚 Сборник олимпиадных задач по неравенствам и интервалам (50 задач с решениями)", url: "theory2/practice-inequalities-50.html", isInternal: true },
+            { text: "📚 Сборник олимпиадных задач по производным (30 задач с решениями)", url: "theory2/practice-derivatives.html", isInternal: true }
         ]
     },
     irrational: {
@@ -94,12 +94,13 @@ const resources = {
     },
     invariant: {
         theory: [
-            { text: "Инварианты: теория и ключевые примеры", url: "https://www.cantorsparadise.com/invariants-in-olympiad-mathematics-9e7e0a3e2d1c" },
-            { text: "Полуинварианты и метод спуска", url: "https://imomath.com/index.php?options=Invariants" }
+            { text: "Функциональные уравнения", url: "theory5/functional-equations-theory.html", isInternal: true },
+            { text: "Инварианты: теория и ключевые примеры", url: "theory5/invariants-theory.html", isInternal: true },
+            { text: "Полуинварианты и метод спуска", url: "theory5/semiinvariants-descension.html", isInternal: true }
         ],
         practice: [
-            { text: "Задачи на инварианты (от простых до сложных)", url: "https://artofproblemsolving.com/community/c169239_invariants" },
-            { text: "Практика: раскраски, чётность, ходы в играх", url: "https://www.mccme.ru/circles/mccme/2017/invariants_tasks.pdf" }
+            { text: "📚 Сборник олимпиадных задач по функциональным уравнениям (40 задач с решениями)", url: "theory5/practice-functional-equations.html", isInternal: true },
+            { text: "📚 Сборник олимпиадных задач по инвариантам и полуинвариантам (40 задач с решениями)", url: "theory4/practice-geometry-optimization.html", isInternal: true }
         ]
     },
     dirichlet: {
