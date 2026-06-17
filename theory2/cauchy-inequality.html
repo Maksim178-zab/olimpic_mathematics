@@ -2,298 +2,286 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Неравенство Коши | Полное объяснение</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Неравенство Коши | Теория + практика</title>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Georgia, serif;
-            background: #fef9e6;
-            color: #2d3e2b;
-            padding: 2rem;
-            line-height: 1.5;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 2rem;
-            color: #b85c1a;
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .badge {
-            background: #f3e0be;
-            display: inline-block;
-            padding: 0.2rem 1rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .card {
-            background: white;
-            border-radius: 1.5rem;
-            padding: 1.2rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            border: 1px solid #f0dbc0;
-        }
-
-        .card h2 {
-            color: #b85c1a;
-            border-left: 5px solid #f59e0b;
-            padding-left: 0.8rem;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .theorem {
-            background: #fff7e6;
-            padding: 0.8rem;
-            border-radius: 1rem;
-            margin: 0.8rem 0;
-            border-left: 4px solid #f59e0b;
-        }
-
-        .proof {
-            background: #fef9e3;
-            padding: 0.8rem;
-            border-radius: 1rem;
-            margin: 0.8rem 0;
-            border-left: 4px solid #b85c1a;
-        }
-
-        .example {
-            background: #e6f7f0;
-            padding: 0.8rem;
-            border-radius: 1rem;
-            margin: 0.8rem 0;
-        }
-
-        .task {
-            background: #fef9e6;
-            margin: 1rem 0;
-            padding: 0.8rem;
-            border-radius: 1rem;
-            border-left: 4px solid #f59e0b;
-        }
-
-        .solve-btn {
-            background: #b85c1a;
-            color: white;
-            border: none;
-            padding: 0.3rem 1rem;
-            border-radius: 1.5rem;
-            cursor: pointer;
-            font-size: 0.8rem;
-            margin-top: 0.3rem;
-        }
-
-        .solution {
-            display: none;
-            margin-top: 0.8rem;
-            padding: 0.8rem;
-            background: #fef3c7;
-            border-radius: 0.8rem;
-            border-left: 3px solid #b85c1a;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 2rem;
-            font-size: 0.8rem;
-            color: #6b5b3e;
-            border-top: 1px solid #e2d5b6;
-            padding-top: 1rem;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', 'Georgia', serif; background: #fef9e6; color: #2d3e2b; padding: 2rem; line-height: 1.6; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { font-size: 2rem; color: #b85c1a; text-align: center; margin-bottom: 0.5rem; }
+        .badge { background: #f3e0be; display: inline-block; padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.8rem; margin-bottom: 1.5rem; }
+        .card { background: white; border-radius: 1.5rem; padding: 1.2rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #f0dbc0; }
+        .card h2 { color: #b85c1a; border-left: 5px solid #f59e0b; padding-left: 0.8rem; margin-bottom: 1rem; font-size: 1.3rem; }
+        .theorem { background: #fff7e6; padding: 0.8rem; border-radius: 1rem; margin: 0.8rem 0; border-left: 4px solid #f59e0b; }
+        .proof { background: #fef9e3; padding: 0.8rem; border-radius: 1rem; margin: 0.8rem 0; border-left: 4px solid #b85c1a; }
+        .example { background: #e6f7f0; padding: 0.8rem; border-radius: 1rem; margin: 0.8rem 0; }
+        .task { background: #fef9e6; margin: 1rem 0; padding: 0.8rem; border-radius: 1rem; border-left: 4px solid #f59e0b; }
+        .solve-btn { background: #b85c1a; color: white; border: none; padding: 0.3rem 1rem; border-radius: 1.5rem; cursor: pointer; font-size: 0.8rem; margin-top: 0.3rem; }
+        .solution { display: none; margin-top: 0.8rem; padding: 0.8rem; background: #fef3c7; border-radius: 0.8rem; border-left: 3px solid #b85c1a; }
+        footer { text-align: center; margin-top: 2rem; font-size: 0.8rem; color: #6b5b3e; border-top: 1px solid #e2d5b6; padding-top: 1rem; }
+        @media (max-width: 600px) { body { padding: 1rem; } }
     </style>
 </head>
 <body>
 <div class="container">
-    <div style="text-align: center;"><h1>📐 Неравенство Коши</h1>
-        <div class="badge">От квадрата разности до олимпиадных задач</div>
+    <div style="text-align: center;"><h1>📐 Неравенство Коши</h1><div class="badge">Среднее арифметическое ≥ среднего геометрического</div></div>
+
+    <div class="card">
+        <h2>🎯 Формулировка</h2>
+        <div class="theorem">Для любых <strong>неотрицательных</strong> чисел \(a_1, a_2, \dots, a_n\): \[\frac{a_1 + a_2 + \dots + a_n}{n} \ge \sqrt[n]{a_1 a_2 \dots a_n}\] <strong>Равенство</strong> достигается, когда \(a_1 = a_2 = \dots = a_n\).</div>
+        <div class="example">Для \(n=2\): \(\frac{a+b}{2} \ge \sqrt{ab}\), \(a,b \ge 0\).</div>
     </div>
 
     <div class="card">
-        <h2>🔑 Самый главный факт</h2>
-        <div class="theorem">Для любого действительного числа \(t\): \(t^2 \ge 0\). Равенство только при \(t=0\).</div>
-        <div class="example">Почему это важно? Потому что почти все неравенства превращаются в сумму квадратов. Пример:
-            \(a^2 + b^2 \ge 2ab\) ⇔ \((a-b)^2 \ge 0\).
-        </div>
-    </div>
-
-    <div class="card">
-        <h2>📐 Неравенство Коши (для двух чисел)</h2>
-        <div class="theorem">Для любых <strong>неотрицательных</strong> \(x, y\): \(\frac{x+y}{2} \ge \sqrt{xy}\).
-            Равенство при \(x=y\).
-        </div>
-        <div class="example"><strong>Числовой пример:</strong> \(x=4, y=9\): \((4+9)/2 = 6.5\), \(\sqrt{36}=6\), \(6.5
-            \ge 6\).
-        </div>
-        <div class="proof"><strong>Доказательство:</strong> \((\sqrt{x}-\sqrt{y})^2 \ge 0 \Rightarrow x+y-2\sqrt{xy}
-            \ge 0 \Rightarrow x+y \ge 2\sqrt{xy}\).
+        <h2>📖 Доказательство для \(n=2\)</h2>
+        <div class="proof">
+            <p>Для любых неотрицательных чисел \(a\) и \(b\) рассмотрим разность:</p>
+            \[
+            (\sqrt{a} - \sqrt{b})^2 \ge 0.
+            \]
+            <p>Раскрываем скобки:</p>
+            \[
+            a - 2\sqrt{ab} + b \ge 0 \quad\Rightarrow\quad a + b \ge 2\sqrt{ab}.
+            \]
+            <p>Делим обе части на 2:</p>
+            \[
+            \frac{a+b}{2} \ge \sqrt{ab}.
+            \]
+            <p>Равенство достигается, когда \(\sqrt{a} = \sqrt{b}\), то есть \(a = b\).</p>
         </div>
     </div>
 
     <div class="card">
         <h2>📖 Доказательство для \(n=3\)</h2>
         <div class="proof">
-            <p>Используем тождество для неотрицательных \(a,b,c\):</p>
+            <p>Для неотрицательных \(a,b,c\) воспользуемся тождеством:</p>
             \[
-            a^3+b^3+c^3-3abc = \frac12(a+b+c)\big[(a-b)^2+(b-c)^2+(c-a)^2\big] \ge 0.
+            a^3 + b^3 + c^3 - 3abc = \frac12(a+b+c)\bigl((a-b)^2 + (b-c)^2 + (c-a)^2\bigr).
             \]
-            <p>Положим \(a=\sqrt[3]{x}, b=\sqrt[3]{y}, c=\sqrt[3]{z}\). Тогда \(x+y+z \ge 3\sqrt[3]{xyz}\). Делим на 3.</p>
-            <p>Равенство при \(x=y=z\).</p>
+            <p>Правая часть неотрицательна, так как \(a+b+c \ge 0\) и сумма квадратов \(\ge 0\). Значит:</p>
+            \[
+            a^3 + b^3 + c^3 \ge 3abc.
+            \]
+            <p>Теперь положим \(a = \sqrt[3]{x}\), \(b = \sqrt[3]{y}\), \(c = \sqrt[3]{z}\), где \(x,y,z \ge 0\). Тогда:</p>
+            \[
+            x + y + z \ge 3\sqrt[3]{xyz}.
+            \]
+            <p>Делим на 3:</p>
+            \[
+            \frac{x+y+z}{3} \ge \sqrt[3]{xyz}.
+            \]
+            <p>Равенство достигается при \(x = y = z\).</p>
         </div>
     </div>
 
     <div class="card">
-        <h2>📖 Доказательство общего случая (для \(n\) чисел)</h2>
-        <div class="theorem">
-            Для любых неотрицательных \(a_1, a_2, \dots, a_n\):
+        <h2>📖 Доказательство общего случая (через индукцию Коши)</h2>
+        <div class="proof">
+            <p><strong>Шаг 1. База: \(n=2\)</strong></p>
+            <p>Неравенство для двух чисел уже доказано выше.</p>
+
+            <p><strong>Шаг 2. Индукционный переход: от \(n\) к \(2n\)</strong></p>
+            <p>Пусть неравенство Коши верно для любого набора из \(n\) неотрицательных чисел.</p>
+            <p>Докажем его для \(2n\) чисел. Пусть даны \(2n\) неотрицательных чисел:</p>
+            \[
+            a_1, a_2, \dots, a_n, a_{n+1}, \dots, a_{2n}.
+            \]
+            <p>Разобьём их на две группы по \(n\) чисел и обозначим их средние арифметические:</p>
+            \[
+            A = \frac{a_1 + a_2 + \dots + a_n}{n}, \qquad
+            B = \frac{a_{n+1} + a_{n+2} + \dots + a_{2n}}{n}.
+            \]
+            <p>По предположению индукции, для каждой группы выполняется неравенство Коши:</p>
+            \[
+            A \ge \sqrt[n]{a_1 a_2 \dots a_n}, \qquad
+            B \ge \sqrt[n]{a_{n+1} a_{n+2} \dots a_{2n}}.
+            \]
+            <p>Теперь применим неравенство Коши для двух чисел к \(A\) и \(B\):</p>
+            \[
+            \frac{A + B}{2} \ge \sqrt{AB}.
+            \]
+            <p>Но \(\frac{A+B}{2}\) — это в точности среднее арифметическое всех \(2n\) чисел:</p>
+            \[
+            \frac{A+B}{2} = \frac{\frac{a_1+\dots+a_n}{n} + \frac{a_{n+1}+\dots+a_{2n}}{n}}{2}
+            = \frac{a_1+\dots+a_{2n}}{2n}.
+            \]
+            <p>Теперь оценим произведение \(AB\) снизу:</p>
+            \[
+            AB \ge \sqrt[n]{a_1 a_2 \dots a_n} \cdot \sqrt[n]{a_{n+1} a_{n+2} \dots a_{2n}}
+            = \sqrt[n]{a_1 a_2 \dots a_{2n}}.
+            \]
+            <p>Следовательно:</p>
+            \[
+            \sqrt{AB} \ge \sqrt[2n]{a_1 a_2 \dots a_{2n}}.
+            \]
+            <p>Объединяя всё вместе:</p>
+            \[
+            \frac{a_1+\dots+a_{2n}}{2n} \ge \sqrt[2n]{a_1 a_2 \dots a_{2n}}.
+            \]
+            <p>Индукционный переход от \(n\) к \(2n\) доказан.</p>
+
+            <p><strong>Шаг 3. Спуск от \(2^k\) к произвольному \(n\)</strong></p>
+            <p>Мы доказали неравенство для всех \(n\), являющихся степенями двойки: \(n = 2, 4, 8, 16, \dots\).</p>
+            <p>Теперь нужно доказать для любого натурального \(n\).</p>
+
+            <p><strong>Идея:</strong> добавим несколько фиктивных чисел, равных среднему арифметическому, чтобы общее количество стало степенью двойки.</p>
+
+            <p>Пусть даны \(n\) чисел: \(a_1, a_2, \dots, a_n\). Обозначим их среднее арифметическое:</p>
+            \[
+            A = \frac{a_1 + a_2 + \dots + a_n}{n}.
+            \]
+            <p>Выберем такое \(m\), что \(n + m = 2^k\) для некоторого натурального \(k\) (это всегда возможно, так как степени двойки не ограничены сверху).</p>
+
+            <p>Добавим \(m\) фиктивных чисел, каждое из которых равно \(A\):</p>
+            \[
+            a_{n+1} = a_{n+2} = \dots = a_{n+m} = A.
+            \]
+
+            <p>Теперь для этих \(2^k = n+m\) чисел неравенство Коши уже доказано:</p>
+            \[
+            \frac{a_1 + a_2 + \dots + a_n + A + \dots + A}{2^k}
+            \ge \sqrt[2^k]{a_1 a_2 \dots a_n \cdot A^m}.
+            \]
+
+            <p>Левая часть этого неравенства равна:</p>
+            \[
+            \frac{a_1+\dots+a_n + m A}{2^k}
+            = \frac{nA + mA}{2^k}
+            = \frac{(n+m)A}{2^k}
+            = A.
+            \]
+            <p>Значит:</p>
+            \[
+            A \ge \sqrt[2^k]{a_1 a_2 \dots a_n \cdot A^m}.
+            \]
+
+            <p>Возводим обе части в степень \(2^k\):</p>
+            \[
+            A^{2^k} \ge a_1 a_2 \dots a_n \cdot A^m.
+            \]
+
+            <p>Если \(A > 0\), делим обе части на \(A^m\):</p>
+            \[
+            A^{2^k - m} \ge a_1 a_2 \dots a_n.
+            \]
+
+            <p>Но \(2^k - m = n\). Следовательно:</p>
+            \[
+            A^n \ge a_1 a_2 \dots a_n.
+            \]
+
+            <p>Извлекаем корень \(n\)-й степени (все числа неотрицательны, можно):</p>
+            \[
+            A \ge \sqrt[n]{a_1 a_2 \dots a_n}.
+            \]
+
+            <p>А это и есть неравенство Коши для \(n\) чисел.</p>
+
+            <p>Если \(A = 0\), то все \(a_i = 0\) (так как они неотрицательны), и неравенство тривиально.</p>
+
+            <p>✅ <strong>Доказательство завершено.</strong></p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📖 Альтернативное доказательство (через выпуклость \(\ln x\))</h2>
+        <div class="proof">
+            <p>Это доказательство короче, но требует знакомства с логарифмами и выпуклостью.</p>
+
+            <p><strong>Шаг 1. Логарифмируем обе части</strong></p>
+            <p>Нам нужно доказать:</p>
             \[
             \frac{a_1 + a_2 + \dots + a_n}{n} \ge \sqrt[n]{a_1 a_2 \dots a_n}.
             \]
-        </div>
-        <div class="proof">
-            <p><strong>Доказательство (методом выпуклости / Йенсена):</strong></p>
-            <p><strong>Шаг 1.</strong> Рассмотрим функцию \(f(x) = \ln x\) на \((0,+\infty)\). Её вторая производная: \(f''(x) = -\frac{1}{x^2} < 0\). Значит, \(\ln x\) — <strong>вогнутая</strong> функция.</p>
-
-            <p><strong>Шаг 2.</strong> По неравенству Йенсена для вогнутой функции:</p>
+            <p>Если все \(a_i > 0\), можно прологарифмировать обе части. Логарифм — монотонно возрастающая функция, поэтому знак неравенства не меняется:</p>
             \[
-            \ln\left(\frac{a_1 + a_2 + \dots + a_n}{n}\right) \ge \frac{\ln a_1 + \ln a_2 + \dots + \ln a_n}{n}.
+            \ln\left( \frac{a_1 + a_2 + \dots + a_n}{n} \right)
+            \ge
+            \ln\left( \sqrt[n]{a_1 a_2 \dots a_n} \right).
+            \]
+            <p>Правая часть преобразуется:</p>
+            \[
+            \ln\left( \sqrt[n]{a_1 a_2 \dots a_n} \right)
+            = \frac{1}{n} \ln(a_1 a_2 \dots a_n)
+            = \frac{\ln a_1 + \ln a_2 + \dots + \ln a_n}{n}.
+            \]
+            <p>Таким образом, достаточно доказать:</p>
+            \[
+            \ln\left( \frac{a_1 + a_2 + \dots + a_n}{n} \right)
+            \ge
+            \frac{\ln a_1 + \ln a_2 + \dots + \ln a_n}{n}.
             \]
 
-            <p><strong>Шаг 3.</strong> Правая часть: \(\frac{1}{n}\ln(a_1 a_2 \dots a_n) = \ln\sqrt[n]{a_1 a_2 \dots a_n}\).</p>
-
-            <p><strong>Шаг 4.</strong> Так как \(\ln x\) — монотонно возрастающая функция, из \(\ln A \ge \ln B\) следует \(A \ge B\):</p>
+            <p><strong>Шаг 2. Используем выпуклость логарифма</strong></p>
+            <p>Рассмотрим функцию \(f(x) = \ln x\) на промежутке \((0, +\infty)\).</p>
+            <p>Её вторая производная:</p>
             \[
-            \frac{a_1 + a_2 + \dots + a_n}{n} \ge \sqrt[n]{a_1 a_2 \dots a_n}.
+            f''(x) = -\frac{1}{x^2} < 0 \quad \text{для всех } x > 0.
+            \]
+            <p>Значит, функция \(f(x) = \ln x\) является <strong>вогнутой</strong> (выпуклой вверх).</p>
+
+            <p>По <strong>неравенству Йенсена</strong> для вогнутой функции:</p>
+            \[
+            f\left( \frac{x_1 + x_2 + \dots + x_n}{n} \right)
+            \ge
+            \frac{f(x_1) + f(x_2) + \dots + f(x_n)}{n}.
+            \]
+            <p>Подставляем \(f(x) = \ln x\) и \(x_i = a_i\):</p>
+            \[
+            \ln\left( \frac{a_1 + a_2 + \dots + a_n}{n} \right)
+            \ge
+            \frac{\ln a_1 + \ln a_2 + \dots + \ln a_n}{n}.
             \]
 
-            <p><strong>Равенство</strong> достигается, когда \(a_1 = a_2 = \dots = a_n\) (условие равенства в Йенсене для вогнутой функции).</p>
-        </div>
-
-        <div class="proof">
-            <p><strong>Альтернативное доказательство (по индукции, без Йенсена):</strong></p>
-            <p><strong>База:</strong> \(n=2\) уже доказано.</p>
-            <p><strong>Шаг индукции:</strong> Предположим, что неравенство верно для \(n\) чисел. Докажем для \(n+1\).</p>
-            <p>Пусть \(A = \frac{a_1+\dots+a_{n+1}}{n+1}\). Тогда:</p>
+            <p><strong>Шаг 3. Потенцируем</strong></p>
+            <p>Возводим \(e\) в обе части (экспонента — монотонно возрастающая функция):</p>
             \[
-            A = \frac{\frac{a_1+\dots+a_n}{n} \cdot n + a_{n+1}}{n+1}.
+            \frac{a_1 + a_2 + \dots + a_n}{n}
+            \ge
+            \sqrt[n]{a_1 a_2 \dots a_n}.
             \]
-            <p>По предположению индукции: \(\frac{a_1+\dots+a_n}{n} \ge \sqrt[n]{a_1\dots a_n}\).</p>
-            <p>Далее применяем неравенство Коши для двух чисел \(x = \frac{a_1+\dots+a_n}{n}\) и \(y = a_{n+1}\) с весами \(\frac{n}{n+1}\) и \(\frac{1}{n+1}\) (обобщённое Коши). Получаем требуемое.</p>
-            <p>Это доказательство более громоздкое, но оно не использует Йенсена.</p>
+
+            <p>✅ <strong>Альтернативное доказательство завершено.</strong></p>
+
+            <p><strong>Замечание:</strong> это доказательство использует неравенство Йенсена, поэтому оно не является «независимым», но оно очень наглядное и короткое. В олимпиадной практике его часто используют как «доказательство через выпуклость».</p>
         </div>
     </div>
 
     <div class="card">
-        <h2>⚡ Как применять Коши (пошагово)</h2>
-        <div class="task"><p><strong>Задача.</strong> Найти минимум \(x + \frac{4}{x}\) при \(x>0\).</p>
-            <button class="solve-btn" data-target="min1">Решение</button>
-            <div id="min1" class="solution"><p><strong>Шаг 1.</strong> Оба слагаемых положительны.<br><strong>Шаг
-                2.</strong> По Коши: \(\frac{x + \frac{4}{x}}{2} \ge \sqrt{x \cdot \frac{4}{x}} =
-                \sqrt{4}=2\).<br><strong>Шаг 3.</strong> Умножаем на 2: \(x + \frac{4}{x} \ge 4\).<br><strong>Шаг
-                    4.</strong> Равенство при \(x = \frac{4}{x}\) ⇒ \(x=2\).<br><strong>Ответ:</strong> 4.</p></div>
-        </div>
-    </div>
-
-    <div class="card">
-        <h2>📏 Коши для трёх и более чисел</h2>
-        <div class="theorem">\(\frac{a_1+\dots+a_n}{n} \ge \sqrt[n]{a_1 \cdots a_n}\). Равенство при
-            \(a_1=\dots=a_n\).
-        </div>
-        <div class="task"><p><strong>Задача.</strong> Доказать \((a+b)(b+c)(c+a) \ge 8abc\) для \(a,b,c>0\).</p>
-            <button class="solve-btn" data-target="prod">Решение</button>
-            <div id="prod" class="solution"><p>\(a+b \ge 2\sqrt{ab}\), \(b+c \ge 2\sqrt{bc}\), \(c+a \ge 2\sqrt{ca}\).
-                Перемножаем: \((a+b)(b+c)(c+a) \ge 8\sqrt{a^2b^2c^2}=8abc\).</p></div>
-        </div>
-    </div>
-
-    <div class="card">
-        <h2>📐 Неравенство между четырьмя средними</h2>
-        <div class="theorem">\(\min \le \frac{n}{\sum 1/a_i} \le \sqrt[n]{\prod a_i} \le \frac{\sum a_i}{n} \le
-            \sqrt{\frac{\sum a_i^2}{n}} \le \max\)
-        </div>
-        <div class="example">При \(a+b+c=3\): \(abc \le 1\), \(a^2+b^2+c^2 \ge 3\).</div>
-    </div>
-
-    <div class="card">
-        <h2>⚡ Неравенство Коши в форме Шварца</h2>
+        <h2>📐 Неравенство Коши в форме Шварца</h2>
         <div class="theorem">\((\sum a_i b_i)^2 \le (\sum a_i^2)(\sum b_i^2)\). Равенство при пропорциональности.</div>
-
         <div class="proof">
             <p><strong>Доказательство:</strong> Рассмотрим квадратный трёхчлен:</p>
             \[
-            f(t) = \sum_{i=1}^n (a_i t - b_i)^2 = t^2\sum a_i^2 - 2t\sum a_i b_i + \sum b_i^2 \ge 0 \quad \text{для всех } t.
+            f(t) = \sum (a_i t - b_i)^2 = t^2\sum a_i^2 - 2t\sum a_i b_i + \sum b_i^2 \ge 0 \quad \text{для всех } t.
             \]
-            <p>Так как \(f(t) \ge 0\) для всех \(t\), дискриминант неположителен:</p>
+            <p>Так как \(f(t) \ge 0\) для всех \(t\), дискриминант \(\le 0\):</p>
             \[
-            D = 4\left(\sum a_i b_i\right)^2 - 4\left(\sum a_i^2\right)\left(\sum b_i^2\right) \le 0.
+            D = 4(\sum a_i b_i)^2 - 4(\sum a_i^2)(\sum b_i^2) \le 0.
             \]
             <p>Отсюда получаем требуемое неравенство.</p>
         </div>
-
-        <div class="task"><p><strong>Пример.</strong> Доказать \(\frac{x^2}{a} + \frac{y^2}{b} \ge \frac{(x+y)^2}{a+b}\)
-            при \(a,b>0\).</p>
-            <button class="solve-btn" data-target="schwarz">Решение</button>
-            <div id="schwarz" class="solution"><p>По Шварцу: \((\frac{x}{\sqrt{a}}\sqrt{a} +
-                \frac{y}{\sqrt{b}}\sqrt{b})^2 \le (\frac{x^2}{a}+\frac{y^2}{b})(a+b)\) ⇒ \((x+y)^2 \le
-                (\frac{x^2}{a}+\frac{y^2}{b})(a+b)\).</p></div>
-        </div>
+        <div class="task"><p><strong>Пример.</strong> Доказать \(\frac{x^2}{a}+\frac{y^2}{b} \ge \frac{(x+y)^2}{a+b}\) при \(a,b>0\).</p><button class="solve-btn" data-target="schwarz">Решение</button><div id="schwarz" class="solution"><p>По Шварцу: \((\frac{x}{\sqrt{a}}\sqrt{a} + \frac{y}{\sqrt{b}}\sqrt{b})^2 \le (\frac{x^2}{a}+\frac{y^2}{b})(a+b)\) ⇒ \((x+y)^2 \le (\frac{x^2}{a}+\frac{y^2}{b})(a+b)\).</p></div></div>
     </div>
 
     <div class="card">
         <h2>📏 Метод касательной (неопределённых коэффициентов)</h2>
-        <div class="theorem">Чтобы доказать \(\sum f(a_i) \ge 0\) при \(\sum a_i = const\), строим касательную
-            \(L(t)=f(t_0)+f'(t_0)(t-t_0)\) и доказываем \(f(t) \ge L(t)\).
-        </div>
-
+        <div class="theorem">Чтобы доказать \(\sum f(a_i) \ge 0\) при \(\sum a_i = const\), строим касательную \(L(t)=f(t_0)+f'(t_0)(t-t_0)\) и доказываем \(f(t) \ge L(t)\).</div>
         <div class="proof">
-            <p><strong>Доказательство метода:</strong> Если \(f\) выпуклая на рассматриваемом интервале, то график \(f\) лежит выше касательной: \(f(t) \ge L(t)\) для всех \(t\). Тогда:</p>
-            \[
-            \sum f(a_i) \ge \sum L(a_i) = \sum \big(f(t_0) + f'(t_0)(a_i - t_0)\big) = n f(t_0) + f'(t_0)\left(\sum a_i - n t_0\right).
-            \]
-            <p>Если \(t_0 = \frac{\sum a_i}{n}\) (точка равновесия), то второе слагаемое обращается в ноль, и \(\sum f(a_i) \ge n f(t_0)\).</p>
-        </div>
-
-        <div class="task"><p><strong>Пример.</strong> \(a+b+c=3\), доказать \(a^2+b^2+c^2 \ge 3\).</p>
-            <button class="solve-btn" data-target="tangent">Решение</button>
-            <div id="tangent" class="solution"><p>\(f(t)=t^2\), \(f'(t)=2t\). Касательная в \(t_0=1\):
-                \(L(t)=1+2(t-1)=2t-1\). \(t^2-(2t-1)=(t-1)^2\ge0\). Суммируем: \(\sum a^2 \ge 2\sum a -3 = 6-3=3\).</p>
-            </div>
+            <p><strong>Пример:</strong> \(a+b+c=3\), доказать \(a^2+b^2+c^2 \ge 3\).</p>
+            <p>\(f(t)=t^2\), \(f'(t)=2t\). Касательная в \(t_0=1\): \(L(t)=1+2(t-1)=2t-1\).</p>
+            <p>\(t^2-(2t-1)=(t-1)^2\ge0\). Суммируем: \(\sum a^2 \ge 2\sum a -3 = 6-3=3\).</p>
         </div>
     </div>
 
     <div class="card">
-        <h2>✍️ Практика (с полными решениями)</h2>
-        <div class="task"><p><strong>1.</strong> \(\frac{x}{y}+\frac{y}{x} \ge 2\)</p>
-            <button class="solve-btn" data-target="p1">Решение</button>
-            <div id="p1" class="solution"><p>По Коши: \(\frac{x}{y}+\frac{y}{x} \ge 2\sqrt{1}=2\). Равенство при
-                \(x=y\).</p></div>
-        </div>
-        <div class="task"><p><strong>2.</strong> \(\frac{a}{b}+\frac{b}{c}+\frac{c}{a} \ge 3\)</p>
-            <button class="solve-btn" data-target="p2">Решение</button>
-            <div id="p2" class="solution"><p>По Коши для трёх чисел: \(\frac{\sum a/b}{3} \ge \sqrt[3]{1}=1\).</p></div>
-        </div>
-        <div class="task"><p><strong>3 (олимп).</strong> \(\frac{a^2}{b}+\frac{b^2}{c}+\frac{c^2}{a} \ge a+b+c\)</p>
-            <button class="solve-btn" data-target="p3">Решение</button>
-            <div id="p3" class="solution"><p>\(\frac{a^2}{b}+b \ge 2a\), \(\frac{b^2}{c}+c \ge 2b\), \(\frac{c^2}{a}+a
-                \ge 2c\). Складываем: сумма ≥ 2(a+b+c) ⇒ исходное ≥ a+b+c.</p></div>
-        </div>
+        <h2>✍️ Практика</h2>
+        <div class="task"><p><strong>Задача 1.</strong> \(\frac{x}{y}+\frac{y}{x} \ge 2\)</p><button class="solve-btn" data-target="p1">Решение</button><div id="p1" class="solution"><p>По Коши: \(\frac{x}{y}+\frac{y}{x} \ge 2\sqrt{1}=2\). Равенство при \(x=y\).</p></div></div>
+        <div class="task"><p><strong>Задача 2.</strong> \(\frac{a}{b}+\frac{b}{c}+\frac{c}{a} \ge 3\)</p><button class="solve-btn" data-target="p2">Решение</button><div id="p2" class="solution"><p>По Коши для трёх чисел: \(\frac{\sum a/b}{3} \ge \sqrt[3]{1}=1\).</p></div></div>
+        <div class="task"><p><strong>Задача 3 (олимп).</strong> \(\frac{a^2}{b}+\frac{b^2}{c}+\frac{c^2}{a} \ge a+b+c\)</p><button class="solve-btn" data-target="p3">Решение</button><div id="p3" class="solution"><p>\(\frac{a^2}{b}+b \ge 2a\), \(\frac{b^2}{c}+c \ge 2b\), \(\frac{c^2}{a}+a \ge 2c\). Складываем: сумма ≥ 2(a+b+c) ⇒ исходное ≥ a+b+c.</p></div></div>
     </div>
-    <footer>Коши, Шварц, касательная — основа олимпиадной алгебры</footer>
+    <footer>📐 Коши, Шварц и касательная — основа олимпиадной алгебры</footer>
 </div>
 <script>
     document.querySelectorAll('.solve-btn').forEach(btn => {
