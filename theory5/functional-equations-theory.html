@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Функциональные уравнения | Полная теория</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f0f4f8;
+            color: #1e2a3e;
+            padding: 2rem 1.5rem;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #1e5f7a, #0f3b4f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .badge {
+            background: #d4e6f1;
+            display: inline-block;
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cbd5e1;
+        }
+
+        .card h2 {
+            color: #1e5f7a;
+            border-left: 6px solid #3b82f6;
+            padding-left: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+
+        .card h3 {
+            color: #2c5282;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.4rem;
+        }
+
+        .theorem {
+            background: #eef2ff;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #2563eb;
+        }
+
+        .proof {
+            background: #fef9e3;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .example {
+            background: #e6f7f0;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .method-block {
+            background: #e0f2fe;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #0284c7;
+        }
+
+        .warning {
+            background: #fee2e2;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #dc2626;
+        }
+
+        .task {
+            background: #f8fafc;
+            margin: 1.2rem 0;
+            padding: 1rem 1.2rem;
+            border-radius: 1.2rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .solve-btn {
+            background: #1e5f7a;
+            color: white;
+            border: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .solve-btn:hover {
+            background: #0f4b62;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: #eef2ff;
+            border-radius: 0.8rem;
+            border-left: 3px solid #1e5f7a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #f8fafc;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 0.6rem;
+            text-align: left;
+        }
+
+        th {
+            background: #e2e8f0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #cbd5e1;
+            color: #4b5563;
+            font-size: 0.85rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4b5563;
+            padding: 0.5rem 1rem;
+            border-left: 3px solid #6b7280;
+            margin: 0.8rem 0;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1.2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📐 Функциональные уравнения</h1>
+        <div class="badge">Полная теория для олимпиадников</div>
+    </header>
+
+    <!-- Часть 1. Определение -->
+    <div class="card">
+        <h2>📖 Часть 1. Что такое функциональное уравнение?</h2>
+
+        <h3>1.1. Определение</h3>
+        <div class="theorem">
+            <p><strong>Функциональное уравнение</strong> — это уравнение, связывающее значения неизвестной функции в
+                разных точках.</p>
+            <p><strong>Примеры:</strong></p>
+            <ul>
+                <li>\( f(x+y) = f(x) + f(y) \) — уравнение Коши (линейная функция).</li>
+                <li>\( f(xy) = f(x)f(y) \) — мультипликативное уравнение.</li>
+                <li>\( f(x+y) = f(x)f(y) \) — показательная функция.</li>
+                <li>\( f(x+y) + f(x-y) = 2f(x)f(y) \) — уравнение для косинуса.</li>
+            </ul>
+        </div>
+
+        <h3>1.2. Почему это сложно?</h3>
+        <div class="example">
+            <p>В обычном уравнении мы ищем число. В функциональном — <strong>функцию</strong>, то есть бесконечное
+                множество значений. Решений может быть много, и нужно доказать, что мы нашли <strong>все</strong>.</p>
+        </div>
+        <div class="quote">«Функциональное уравнение решается тогда, когда ты перепробовал все возможные подстановки, и
+            одна из них сработала».
+        </div>
+    </div>
+
+    <!-- Часть 2. Базовые методы -->
+    <div class="card">
+        <h2>🔧 Часть 2. Базовые методы решения</h2>
+
+        <h3>2.1. Подстановка конкретных значений</h3>
+        <div class="method-block">
+            <p><strong>Суть:</strong> подставляем вместо переменных удобные числа (0, 1, -1) или выражаем одну
+                переменную через другую.</p>
+        </div>
+        <div class="proof">
+            <p><strong>Пример:</strong> Найти все \( f: \mathbb{R} \to \mathbb{R} \), удовлетворяющие:</p>
+            \[
+            f(x+y) = f(x) + f(y).
+            \]
+            <p><strong>Решение:</strong></p>
+            <p><strong>Шаг 1.</strong> Подставляем \( x = y = 0 \):</p>
+            \[
+            f(0) = f(0) + f(0) \quad\Rightarrow\quad f(0) = 0.
+            \]
+            <p><strong>Шаг 2.</strong> Подставляем \( y = -x \):</p>
+            \[
+            f(0) = f(x) + f(-x) \quad\Rightarrow\quad 0 = f(x) + f(-x) \quad\Rightarrow\quad f(-x) = -f(x).
+            \]
+            <p>Функция нечётная.</p>
+            <p><strong>Шаг 3.</strong> Для целых \( n \) легко показать по индукции: \( f(n) = n f(1) \).</p>
+            <p><strong>Шаг 4.</strong> Для рациональных \( \frac{p}{q} \):</p>
+            \[
+            f(p) = f\left(q \cdot \frac{p}{q}\right) = q f\left(\frac{p}{q}\right).
+            \]
+            <p>Значит, \( f\left(\frac{p}{q}\right) = \frac{p}{q} f(1) \).</p>
+            <p><strong>Шаг 5.</strong> Для всех действительных чисел нужна дополнительная гладкость (непрерывность,
+                монотонность, ограниченность). Если её нет, существуют <strong>дикие</strong> решения (через базис
+                Гамеля).</p>
+            <p><strong>Шаг 6.</strong> Если предположить непрерывность, то \( f(x) = cx \).</p>
+            <p><strong>Вывод:</strong> подстановка нуля и единицы — всегда первый шаг.</p>
+        </div>
+
+        <h3>2.2. Симметризация (замена переменных)</h3>
+        <div class="method-block">
+            <p><strong>Суть:</strong> делаем замену \( x \to y \), \( y \to x \) и сравниваем.</p>
+        </div>
+        <div class="proof">
+            <p><strong>Пример:</strong> Найти все \( f: \mathbb{R} \to \mathbb{R} \):</p>
+            \[
+            f(x+y) = f(x) + f(y) + xy.
+            \]
+            <p><strong>Решение:</strong></p>
+            <p><strong>Шаг 1.</strong> Подставляем \( x = y = 0 \):</p>
+            \[
+            f(0) = f(0) + f(0) + 0 \quad\Rightarrow\quad f(0) = 0.
+            \]
+            <p><strong>Шаг 2.</strong> Подставляем \( y = -x \):</p>
+            \[
+            f(0) = f(x) + f(-x) - x^2 \quad\Rightarrow\quad f(x) + f(-x) = x^2.
+            \]
+            <p><strong>Шаг 3.</strong> Подставляем \( y = 1 \):</p>
+            \[
+            f(x+1) = f(x) + f(1) + x.
+            \]
+            <p>Это уже даёт рекуррентное соотношение.</p>
+            <p><strong>Шаг 4.</strong> Пробуем \( f(x) = \frac{x^2}{2} + cx \). Проверяем:</p>
+            \[
+            f(x+y) = \frac{(x+y)^2}{2} + c(x+y) = \frac{x^2}{2} + xy + \frac{y^2}{2} + cx + cy.
+            \]
+            \[
+            f(x) + f(y) + xy = \frac{x^2}{2} + cx + \frac{y^2}{2} + cy + xy.
+            \]
+            <p>Совпадает. Значит, это решение.</p>
+        </div>
+
+        <h3>2.3. Подстановка выражений</h3>
+        <div class="method-block">
+            <p><strong>Суть:</strong> выбираем замены, чтобы упростить уравнение или получить новые соотношения.</p>
+        </div>
+        <div class="proof">
+            <p><strong>Пример:</strong> \( f(x+y) = f(x)f(y) \).</p>
+            <p><strong>Шаг 1.</strong> \( y = 0 \): \( f(x) = f(x)f(0) \).</p>
+            <p>Если \( f(0) \neq 1 \), то \( f(x) = 0 \) для всех \( x \).</p>
+            <p><strong>Шаг 2.</strong> Если \( f(0) = 1 \), то \( f(0) = f(x)f(-x) \) ⇒ \( f(-x) = \frac{1}{f(x)} \).
+            </p>
+            <p><strong>Шаг 3.</strong> По индукции \( f(n) = f(1)^n \).</p>
+            <p><strong>Шаг 4.</strong> При непрерывности: \( f(x) = a^x \).</p>
+        </div>
+
+        <h3>2.4. Доказательство монотонности или ограниченности</h3>
+        <div class="method-block">
+            <p><strong>Суть:</strong> после подстановок мы часто получаем уравнение Коши. Чтобы перейти от рациональных
+                чисел ко всем действительным, нужно доказать, что функция непрерывна, монотонна или ограничена на
+                интервале.</p>
+        </div>
+        <div class="proof">
+            <p><strong>Пример:</strong> если \( f(x+y) = f(x) + f(y) \) и \( f \) монотонна, то \( f(x) = cx \).</p>
+            <p><strong>Доказательство:</strong></p>
+            <p><strong>Шаг 1.</strong> Для рациональных \( q \): \( f(q) = q f(1) \).</p>
+            <p><strong>Шаг 2.</strong> Для любого \( x \) возьмём две рациональные последовательности \( q_n \to x \)
+                слева и \( r_n \to x \) справа.</p>
+            <p><strong>Шаг 3.</strong> Из монотонности: \( q_n f(1) = f(q_n) \le f(x) \le f(r_n) = r_n f(1) \).</p>
+            <p><strong>Шаг 4.</strong> Переходя к пределу, получаем \( f(x) = x f(1) \).</p>
+        </div>
+    </div>
+
+    <!-- Часть 3. Специальные методы -->
+    <div class="card">
+        <h2>⚡ Часть 3. Специальные методы</h2>
+
+        <h3>3.1. Метод «подставь \( y = x \)»</h3>
+        <div class="method-block">
+            <p>Иногда подстановка \( y = x \) даёт уравнение, которое легко решить.</p>
+        </div>
+        <div class="example">
+            <p><strong>Пример:</strong> \( f(x+y) = f(x) + f(y) + 2xy \).</p>
+            <p>Подставим \( y = x \):</p>
+            \[
+            f(2x) = 2f(x) + 2x^2.
+            \]
+            <p>Это уже не уравнение Коши, а рекуррентное соотношение. Можно искать решение в виде \( f(x) = x^2 + cx
+                \).</p>
+        </div>
+
+        <h3>3.2. Метод «подставь \( y = \frac{1}{x} \)»</h3>
+        <div class="method-block">
+            <p>Для уравнений, содержащих \( f(x) \) и \( f(1/x) \), часто помогает подстановка \( y = 1/x \).</p>
+        </div>
+        <div class="example">
+            <p><strong>Пример:</strong> \( f(x) + f\left(\frac{1}{x}\right) = x \).</p>
+            <p>Подставим \( x \to \frac{1}{x} \):</p>
+            \[
+            f\left(\frac{1}{x}\right) + f(x) = \frac{1}{x}.
+            \]
+            <p>Сравниваем с исходным:</p>
+            \[
+            x = \frac{1}{x} \quad\Rightarrow\quad x^2 = 1.
+            \]
+            <p>Это даёт противоречие для всех \( x \), кроме \( \pm 1 \). Значит, решений нет (или только в частных
+                точках).</p>
+        </div>
+
+        <h3>3.3. Метод конечных разностей</h3>
+        <div class="method-block">
+            <p><strong>Суть:</strong> подставляем \( x + y \) и \( x - y \), затем вычитаем или складываем.</p>
+        </div>
+        <div class="proof">
+            <p><strong>Пример:</strong> \( f(x+y) + f(x-y) = 2f(x)f(y) \).</p>
+            <p><strong>Шаг 1.</strong> Подставим \( y = 0 \):</p>
+            \[
+            f(x) + f(x) = 2f(x)f(0) \quad\Rightarrow\quad f(x) = f(x)f(0).
+            \]
+            <p>Если \( f(x) \neq 0 \), то \( f(0) = 1 \).</p>
+            <p><strong>Шаг 2.</strong> Подставим \( x = 0 \):</p>
+            \[
+            f(y) + f(-y) = 2f(0)f(y) = 2f(y).
+            \]
+            <p>Значит, \( f(-y) = f(y) \) — функция чётная.</p>
+            <p><strong>Шаг 3.</strong> Это уравнение для косинуса: \( \cos(x+y) + \cos(x-y) = 2\cos x \cos y \).</p>
+            <p><strong>Шаг 4.</strong> Решения: \( f(x) = 0 \), \( f(x) = \cos(cx) \), \( f(x) = \cosh(cx) \).</p>
+        </div>
+
+        <h3>3.4. Метод замены \( g(x) = f(x) - f(0) \)</h3>
+        <div class="method-block">
+            <p>Иногда удобно сдвинуть функцию, чтобы избавиться от свободного члена.</p>
+        </div>
+        <div class="proof">
+            <p><strong>Пример:</strong> \( f(x+y) = f(x) + f(y) + 1 \).</p>
+            <p>Попробуем \( g(x) = f(x) + 1 \). Тогда:</p>
+            \[
+            g(x+y) - 1 = (g(x)-1) + (g(y)-1) + 1 = g(x) + g(y) - 1.
+            \]
+            \[
+            g(x+y) = g(x) + g(y).
+            \]
+            <p>Это уже уравнение Коши. Решение: \( g(x) = cx \), значит \( f(x) = cx - 1 \).</p>
+        </div>
+    </div>
+
+    <!-- Часть 4. Классические типы -->
+    <div class="card">
+        <h2>📚 Часть 4. Классические типы функциональных уравнений</h2>
+
+        <div class="theorem">
+            <p><strong>4.1. Уравнение Коши</strong></p>
+            \[
+            f(x+y) = f(x) + f(y).
+            \]
+            <p><strong>Решение (при дополнительных условиях):</strong> \( f(x) = cx \).</p>
+        </div>
+
+        <div class="theorem">
+            <p><strong>4.2. Уравнение Йенсена</strong></p>
+            \[
+            f\left(\frac{x+y}{2}\right) = \frac{f(x) + f(y)}{2}.
+            \]
+            <p><strong>Решение (при непрерывности):</strong> \( f(x) = ax + b \).</p>
+        </div>
+
+        <div class="theorem">
+            <p><strong>4.3. Уравнение Даламбера</strong></p>
+            \[
+            f(x+y) + f(x-y) = 2f(x)f(y).
+            \]
+            <p><strong>Решение:</strong> \( f(x) = 0 \), \( f(x) = \cos(cx) \), \( f(x) = \cosh(cx) \).</p>
+        </div>
+
+        <div class="theorem">
+            <p><strong>4.4. Уравнение для экспоненты</strong></p>
+            \[
+            f(x+y) = f(x)f(y).
+            \]
+            <p><strong>Решение:</strong> \( f(x) = 0 \) или \( f(x) = a^x \).</p>
+        </div>
+
+        <div class="theorem">
+            <p><strong>4.5. Уравнение для логарифма</strong></p>
+            \[
+            f(xy) = f(x) + f(y).
+            \]
+            <p><strong>Решение:</strong> \( f(x) = c \ln x \) (на \( \mathbb{R}^+ \)).</p>
+        </div>
+    </div>
+
+    <!-- Часть 5. Полный разбор олимпиадной задачи -->
+    <div class="card">
+        <h2>🏆 Часть 5. Полный разбор олимпиадной задачи</h2>
+        <div class="theorem">
+            <p><strong>Задача (IMO 2017, вариант):</strong></p>
+            <p>Найдите все функции \( f: \mathbb{R} \to \mathbb{R} \), удовлетворяющие:</p>
+            \[
+            f(x+f(y)) = f(x) + y \quad \forall x, y \in \mathbb{R}.
+            \]
+        </div>
+        <div class="proof">
+            <p><strong>Решение (пошагово):</strong></p>
+
+            <p><strong>Шаг 1.</strong> Подставим \( x = 0 \):</p>
+            \[
+            f(f(y)) = f(0) + y.
+            \]
+            <p>Значит, \( f(f(y)) = y + c \), где \( c = f(0) \).</p>
+
+            <p><strong>Шаг 2.</strong> Покажем, что \( f \) — биекция.</p>
+            <p>Если \( f(a) = f(b) \), то из \( f(f(a)) = a + c \) и \( f(f(b)) = b + c \) следует \( a = b \). Значит,
+                инъективна.</p>
+            <p>Для любого \( t \in \mathbb{R} \) выберем \( y = t - c \), тогда \( f(f(y)) = t \), значит,
+                сюръективна.</p>
+
+            <p><strong>Шаг 3.</strong> Используем инъективность.</p>
+            <p>В исходном уравнении заменим \( y \) на \( f(y) \):</p>
+            \[
+            f(x + f(f(y))) = f(x) + f(y).
+            \]
+            <p>Но \( f(f(y)) = y + c \). Значит:</p>
+            \[
+            f(x + y + c) = f(x) + f(y).
+            \]
+
+            <p><strong>Шаг 4.</strong> Сделаем замену \( g(x) = f(x) - c \).</p>
+            <p>Тогда:</p>
+            \[
+            g(x+y+c) + c = (g(x)+c) + (g(y)+c) = g(x) + g(y) + 2c.
+            \]
+            \[
+            g(x+y+c) = g(x) + g(y) + c.
+            \]
+            <p>Подставим \( y = 0 \):</p>
+            \[
+            g(x+c) = g(x) + g(0) + c.
+            \]
+            <p>Отсюда можно показать, что \( g \) — линейная: \( g(x) = kx + b \).</p>
+
+            <p><strong>Шаг 5.</strong> Подставляем обратно и находим константы.</p>
+            <p>После подстановки получаем: \( f(x) = x + c \) или \( f(x) = -x + c \).</p>
+
+            <div class="answer-block"
+                 style="background:#d1fae5; padding:0.8rem; border-radius:1rem; margin:0.8rem 0; text-align:center; font-weight:bold;">
+                <strong>Ответ:</strong> \( f(x) = x + a \) или \( f(x) = -x + a \), где \( a \in \mathbb{R} \).
+            </div>
+        </div>
+    </div>
+
+    <!-- Часть 6. Шпаргалка -->
+    <div class="card">
+        <h2>📋 Часть 6. Шпаргалка для олимпиадника</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Ситуация</th>
+                <th>Метод</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Есть \( f(0) \)</td>
+                <td>Подставить \( x = 0 \) или \( y = 0 \)</td>
+            </tr>
+            <tr>
+                <td>Нужно найти \( f(-x) \)</td>
+                <td>Подставить \( y = -x \)</td>
+            </tr>
+            <tr>
+                <td>Есть симметрия \( f(x,y) \) и \( f(y,x) \)</td>
+                <td>Поменять переменные и сравнить</td>
+            </tr>
+            <tr>
+                <td>Есть \( f(x) \) и \( f(1/x) \)</td>
+                <td>Подставить \( x \to 1/x \)</td>
+            </tr>
+            <tr>
+                <td>Получилось уравнение Коши</td>
+                <td>Доказать монотонность/непрерывность</td>
+            </tr>
+            <tr>
+                <td>Есть \( f(x+y) \) и \( f(x-y) \)</td>
+                <td>Вычесть или сложить два уравнения</td>
+            </tr>
+            <tr>
+                <td>Есть произвольная константа</td>
+                <td>Сделать замену \( g(x) = f(x) - f(0) \)</td>
+            </tr>
+            <tr>
+                <td>Нужно доказать биективность</td>
+                <td>Использовать инъективность и сюръективность</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Заключение -->
+    <div class="card">
+        <h2>🎯 Заключение</h2>
+        <p>Функциональные уравнения — это искусство. Здесь нет универсального рецепта, но есть <strong>набор
+            приёмов</strong>, которые нужно тренировать. Главное — <strong>не бояться подставлять</strong>, <strong>сравнивать</strong>
+            и <strong>искать закономерности</strong>.</p>
+        <div class="quote">«Функциональное уравнение решается тогда, когда ты перепробовал все возможные подстановки, и
+            одна из них сработала». Так что пробуйте, ошибайтесь, ищите — и успех придёт.
+        </div>
+    </div>
+
+    <footer>© Заборовский М. С. Материалы для олимпиадников. 2026</footer>
+</div>
+</body>
+</html>
