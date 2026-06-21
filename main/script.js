@@ -113,14 +113,12 @@ const resources = {
     },
     polynomials: {
         theory: [
-            { text: "Теорема Безу и схема Горнера — теория", url: "https://mathvox.ru/algebra/polynomials/teorema-bezu" },
-            { text: "Интерполяция многочленов: Лагранж, Ньютон", url: "https://mathworld.wolfram.com/LagrangeInterpolatingPolynomial.html" },
-            { text: "Целые корни многочленов (рациональная теорема о корнях)", url: "https://www.purplemath.com/modules/rtnlroot.htm" }
+            { text: "Теорема Безу и схема Горнера — теория",  url: "theory7/bezout-horner.html", isInternal: true },
+            { text: "Интерполяция многочленов: Лагранж, Ньютон", url: "theory7/interpolation.html", isInternal: true },
+            { text: "Целые корни многочленов (рациональная теорема о корнях)", url: "theory7/integer-roots.html", isInternal: true}
         ],
         practice: [
-            { text: "Схема Горнера — упражнения (много примеров)", url: "https://www.matematicasvisuales.com/english/html/analysis/polynomial/horner_exercises.html" },
-            { text: "Задачи: целые корни, разложение на множители", url: "https://artofproblemsolving.com/community/c4h161142_integer_roots" },
-            { text: "Интерполяция — практические задачи с решениями", url: "https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:polynomials/x9e81a4f98389efdf:lagrange-interpolation" }
+            { text: "📚 Сборник олимпиадных задач (40 задач с решениями)", url: "theory7/practice-polynomials.html", isInternal: true }
         ]
     }
 };
