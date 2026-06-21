@@ -105,12 +105,10 @@ const resources = {
     },
     dirichlet: {
         theory: [
-            { text: "Принцип Дирихле (обобщённый, весовой) — теория", url: "https://brilliant.org/wiki/pigeonhole-principle/" },
-            { text: "Весовой принцип Дирихле: формулировки и идеи", url: "https://www.math.uni-bielefeld.de/~sillke/PUZZLES/pigeonhole" }
+            { text: "Принцип Дирихле", url: "theory6/dirichlet-theory.html", isInternal: true }
         ],
         practice: [
-            { text: "100 задач на принцип Дирихле (с решениями)", url: "https://artofproblemsolving.com/wiki/index.php/Pigeonhole_Principle#Problems" },
-            { text: "Олимпиадный практикум: обобщённый Дирихле", url: "https://www.mccme.ru/circles/mccme/2021/dirichlet_problems.pdf" }
+            { text: "📚 Сборник олимпиадных задач (30 задач с решениями)", url: "theory6/practice-dirichlet.html", isInternal: true }
         ]
     },
     polynomials: {
