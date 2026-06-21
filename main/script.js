@@ -74,12 +74,12 @@ const resources = {
     },
     irrational: {
         theory: [
-            { text: "Преобразование иррациональных выражений — теория", url: "https://www.khanacademy.org/math/algebra-home/alg-exp-and-log/alg-radical-expressions" },
-            { text: "Сравнение иррациональных чисел (методы возведения в квадрат, оценка)", url: "https://math.stackexchange.com/questions/compare-irrational-numbers" }
+            { text: "Преобразование иррациональных выражений", url: "theory3/irrational-transformation.html", isInternal: true},
+            { text: "Сравнение иррациональных чисел", url: "theory3/irrational-comparison.html", isInternal: true},
+            { text: "Олимпиадные приёмы", url: "theory3/irrational-olympiad.html", isInternal: true}
         ],
         practice: [
-            { text: "Рационализация знаменателя — 50 упражнений", url: "https://www.math-exercises.com/radicals/rationalization" },
-            { text: "Практика: сравнение иррациональных чисел", url: "https://www.matematica.pt/en/exercises/irrational-numbers" }
+            { text: "📚 Сборник олимпиадных задач (40 задач с решениями)", url: "theory3/practice-irrational.html", isInternal: true}
         ]
     },
     geoopt: {
