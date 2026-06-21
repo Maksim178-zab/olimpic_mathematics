@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Олимпиадные приёмы | Иррациональные выражения</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f0f4f8;
+            color: #1e2a3e;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #1e5f7a, #0f3b4f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .badge {
+            background: #d4e6f1;
+            display: inline-block;
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cbd5e1;
+        }
+
+        .card h2 {
+            color: #1e5f7a;
+            border-left: 6px solid #3b82f6;
+            padding-left: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+
+        .card h3 {
+            color: #2c5282;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.4rem;
+        }
+
+        .theorem {
+            background: #eef2ff;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #2563eb;
+        }
+
+        .example {
+            background: #e6f7f0;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .task {
+            background: #f8fafc;
+            margin: 1.2rem 0;
+            padding: 1rem 1.2rem;
+            border-radius: 1.2rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .solve-btn {
+            background: #1e5f7a;
+            color: white;
+            border: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .solve-btn:hover {
+            background: #0f4b62;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: #eef2ff;
+            border-radius: 0.8rem;
+            border-left: 3px solid #1e5f7a;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #cbd5e1;
+            color: #4b5563;
+            font-size: 0.85rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4b5563;
+            padding: 0.5rem 1rem;
+            border-left: 3px solid #6b7280;
+            margin: 0.8rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #f8fafc;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 0.5rem;
+            text-align: left;
+        }
+
+        th {
+            background: #e2e8f0;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1.2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📐 Олимпиадные приёмы</h1>
+        <div class="badge">Цепные дроби • Выделение целой части • Средние • Корни разных степеней</div>
+    </header>
+
+    <div class="card">
+        <h2>🏆 Часть 1. Олимпиадные приёмы</h2>
+
+        <h3>1.1. Метод цепных дробей для оценки</h3>
+        <div class="theorem">
+            <p>Иногда для оценки иррационального числа используют цепные дроби.</p>
+        </div>
+        <div class="example">
+            <p><strong>Пример:</strong> оценить \(\sqrt{2}\).</p>
+            <p>\(\sqrt{2} = 1 + (\sqrt{2}-1) = 1 + \frac{1}{\sqrt{2}+1}\).</p>
+            <p>Это даёт приближения: \(1, 1.4, 1.414, \dots\).</p>
+        </div>
+
+        <h3>1.2. Метод выделения целой части</h3>
+        <div class="theorem">
+            <p>Чтобы сравнить число с целым, можно выделить целую часть.</p>
+        </div>
+        <div class="example">
+            <p><strong>Пример:</strong> сравнить \(\sqrt{5} + \sqrt{7}\) с \(4.5\).</p>
+            <p>\((\sqrt{5}+\sqrt{7})^2 = 12 + 2\sqrt{35}\).</p>
+            <p>\(4.5^2 = 20.25\).</p>
+            <p>\(2\sqrt{35} \approx 11.83\), сумма \(\approx 23.83 > 20.25\), значит \(\sqrt{5}+\sqrt{7} > 4.5\).</p>
+        </div>
+
+        <h3>1.3. Сравнение с помощью производной (для старших классов)</h3>
+        <div class="theorem">
+            <p>Если функция \(f(x) = \sqrt{x}\) возрастает, то сравнение чисел сводится к сравнению подкоренных
+                выражений. Для более сложных функций используют монотонность.</p>
+        </div>
+
+        <h3>1.4. Сравнение корней разных степеней</h3>
+        <div class="theorem">
+            <p>Чтобы сравнить корни разных степеней, возводят их в общую степень — НОК показателей корней.</p>
+        </div>
+        <div class="example">
+            <p><strong>Пример:</strong> сравнить \(\sqrt[3]{3}\) и \(\sqrt[4]{4}\).</p>
+            <p>Возведём в 12-ю степень:</p>
+            <p>\((\sqrt[3]{3})^{12} = 3^4 = 81\), \((\sqrt[4]{4})^{12} = 4^3 = 64\).</p>
+            <p>Так как \(81 > 64\), то \(\sqrt[3]{3} > \sqrt[4]{4}\).</p>
+        </div>
+
+        <h3>1.5. Метод оценки через средние</h3>
+        <div class="theorem">
+            <p>Иногда используют неравенство между средним арифметическим и средним геометрическим.</p>
+        </div>
+        <div class="example">
+            <p><strong>Пример:</strong> доказать, что \(\sqrt{2} + \sqrt{3} < \sqrt{10}\).</p>
+            <p>\((\sqrt{2}+\sqrt{3})^2 = 5 + 2\sqrt{6}\).</p>
+            <p>Сравниваем с 10: \(5 + 2\sqrt{6} < 10 \iff 2\sqrt{6} < 5 \iff 24 < 25\).</p>
+            <p>Верно. Значит, \(\sqrt{2}+\sqrt{3} < \sqrt{10}\).</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📋 Часть 2. Шпаргалка для олимпиадника</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Ситуация</th>
+                <th>Метод</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Избавиться от корня в знаменателе</td>
+                <td>Умножить на сопряжённое</td>
+            </tr>
+            <tr>
+                <td>Сравнить \(\sqrt{a} + \sqrt{b}\) и \(\sqrt{c}\)</td>
+                <td>Возвести в квадрат</td>
+            </tr>
+            <tr>
+                <td>Сравнить \(\sqrt{a} - \sqrt{b}\) и \(\sqrt{c} - \sqrt{d}\)</td>
+                <td>Привести к виду \(\frac{1}{\sqrt{a}+\sqrt{b}}\)</td>
+            </tr>
+            <tr>
+                <td>Упростить \(\sqrt{a \pm \sqrt{b}}\)</td>
+                <td>Формула двойного радикала (если \(a^2-b\) — квадрат)</td>
+            </tr>
+            <tr>
+                <td>Сравнить корни разных степеней</td>
+                <td>Возвести в НОК степеней</td>
+            </tr>
+            <tr>
+                <td>Оценить число</td>
+                <td>Найти ближайшие квадраты/кубы</td>
+            </tr>
+            <tr>
+                <td>Доказать неравенство с корнями</td>
+                <td>Возвести в степень, выделить квадрат</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="quote">
+            <p><strong>Главное правило:</strong> если не знаешь, что делать — попробуй возвести в квадрат или умножить
+                на сопряжённое. В 80% случаев это работает.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>✍️ Практика</h2>
+
+        <div class="task">
+            <p><strong>Задача 1.</strong> Сравните \(\sqrt[3]{5}\) и \(\sqrt{3}\).</p>
+            <button class="solve-btn" data-target="sol1">Показать решение</button>
+            <div id="sol1" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p>НОК степеней: \(2 \cdot 3 = 6\).</p>
+                <p>\((\sqrt[3]{5})^6 = 5^2 = 25\).</p>
+                <p>\((\sqrt{3})^6 = 3^3 = 27\).</p>
+                <p>Так как \(25 < 27\), то \(\sqrt[3]{5} < \sqrt{3}\).</p>
+                <p><strong>Ответ:</strong> \(\sqrt[3]{5} < \sqrt{3}\).</p>
+            </div>
+        </div>
+
+        <div class="task">
+            <p><strong>Задача 2.</strong> Докажите, что \(\sqrt{6} + \sqrt{10} < \sqrt{5} + \sqrt{11}\).</p>
+            <button class="solve-btn" data-target="sol2">Показать решение</button>
+            <div id="sol2" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p>Возводим в квадрат:</p>
+                <p>\((\sqrt{6}+\sqrt{10})^2 = 16 + 2\sqrt{60}\).</p>
+                <p>\((\sqrt{5}+\sqrt{11})^2 = 16 + 2\sqrt{55}\).</p>
+                <p>Сравниваем \(\sqrt{60}\) и \(\sqrt{55}\).</p>
+                <p>Так как \(60 > 55\), то \(\sqrt{60} > \sqrt{55}\).</p>
+                <p>Значит, \((\sqrt{6}+\sqrt{10})^2 > (\sqrt{5}+\sqrt{11})^2\).</p>
+                <p><strong>Ответ:</strong> \(\sqrt{6}+\sqrt{10} > \sqrt{5}+\sqrt{11}\).</p>
+            </div>
+        </div>
+
+        <div class="task">
+            <p><strong>Задача 3.</strong> Сравните \(\sqrt[4]{8}\) и \(\sqrt[6]{12}\).</p>
+            <button class="solve-btn" data-target="sol3">Показать решение</button>
+            <div id="sol3" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p>НОК степеней: \(4 \cdot 6 = 24\).</p>
+                <p>\((\sqrt[4]{8})^{24} = 8^6 = (2^3)^6 = 2^{18}\).</p>
+                <p>\((\sqrt[6]{12})^{24} = 12^4 = (2^2 \cdot 3)^4 = 2^8 \cdot 3^4\).</p>
+                <p>Сравниваем \(2^{18}\) и \(2^8 \cdot 3^4\):</p>
+                <p>\(2^{18} = 2^8 \cdot 2^{10}\).</p>
+                <p>Сравниваем \(2^{10}\) и \(3^4 = 81\).</p>
+                <p>\(2^{10} = 1024 > 81\), значит \(2^{18} > 2^8 \cdot 3^4\).</p>
+                <p><strong>Ответ:</strong> \(\sqrt[4]{8} > \sqrt[6]{12}\).</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>© Заборовский М. С. Материалы для олимпиадников. 2026</footer>
+</div>
+<script>
+    document.querySelectorAll('.solve-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const t = document.getElementById(btn.getAttribute('data-target'));
+            if (t.style.display === 'none' || t.style.display === '') {
+                t.style.display = 'block';
+                btn.textContent = 'Скрыть решение';
+                if (window.MathJax) MathJax.typesetPromise([t]);
+            } else {
+                t.style.display = 'none';
+                btn.textContent = 'Показать решение';
+            }
+        });
+    });
+</script>
+</body>
+</html>

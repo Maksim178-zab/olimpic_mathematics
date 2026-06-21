@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Преобразование иррациональных выражений | Теория + практика</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #e6f7f0;
+            color: #1a3b32;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #22665c, #0f766e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .badge {
+            background: #c0e3db;
+            display: inline-block;
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #bee0d6;
+        }
+
+        .card h2 {
+            color: #22665c;
+            border-left: 6px solid #14b8a6;
+            padding-left: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+
+        .card h3 {
+            color: #1a6b5e;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.4rem;
+        }
+
+        .theorem {
+            background: #eef9f5;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #14b8a6;
+        }
+
+        .example {
+            background: #f0fdfa;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .warning {
+            background: #fee2e2;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #dc2626;
+        }
+
+        .task {
+            background: #f9fefc;
+            margin: 1.2rem 0;
+            padding: 1rem 1.2rem;
+            border-radius: 1.2rem;
+            border-left: 4px solid #14b8a6;
+        }
+
+        .solve-btn {
+            background: #22665c;
+            color: white;
+            border: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .solve-btn:hover {
+            background: #0f5b52;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: #d1fae5;
+            border-radius: 0.8rem;
+            border-left: 3px solid #22665c;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #bee0d6;
+            color: #2c5f55;
+            font-size: 0.85rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #2c5f55;
+            padding: 0.5rem 1rem;
+            border-left: 3px solid #0f766e;
+            margin: 0.8rem 0;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1.2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #f8fafc;
+        }
+
+        th, td {
+            border: 1px solid #bee0d6;
+            padding: 0.5rem;
+            text-align: left;
+        }
+
+        th {
+            background: #eef9f5;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📐 Преобразование иррациональных выражений</h1>
+        <div class="badge">Корни • Вынесение • Сопряжённые • Двойные радикалы</div>
+    </header>
+
+    <div class="card">
+        <h2>📖 Часть 1. Основные определения и свойства корней</h2>
+
+        <h3>1.1. Корень \(n\)-й степени</h3>
+        <div class="theorem">
+            <p><strong>Определение:</strong> Корнем \(n\)-й степени из числа \(a\) называется такое число \(b\), что
+                \(b^n = a\).</p>
+            <p>Для \(n\) <strong>нечётного</strong>: корень определён для всех \(a \in \mathbb{R}\).</p>
+            <p>Для \(n\) <strong>чётного</strong>: корень определён только для \(a \ge 0\), и значение корня <strong>неотрицательно</strong>
+                (арифметический корень).</p>
+        </div>
+        <div class="example">
+            <p><strong>Примеры:</strong></p>
+            <ul>
+                <li>\(\sqrt[3]{-8} = -2\), потому что \((-2)^3 = -8\).</li>
+                <li>\(\sqrt{9} = 3\), а не \(\pm 3\) (арифметический корень).</li>
+                <li>\(\sqrt[4]{16} = 2\), потому что \(2^4 = 16\).</li>
+            </ul>
+        </div>
+
+        <h3>1.2. Основные свойства корней</h3>
+        <div class="theorem">
+            <p><strong>1. Корень из произведения:</strong></p>
+            \[
+            \sqrt[n]{ab} = \sqrt[n]{a} \cdot \sqrt[n]{b}, \quad \text{если } a,b \ge 0 \text{ (для чётных } n\text{)}.
+            \]
+            <p><strong>2. Корень из частного:</strong></p>
+            \[
+            \sqrt[n]{\frac{a}{b}} = \frac{\sqrt[n]{a}}{\sqrt[n]{b}}, \quad b \neq 0, \ a \ge 0 \text{ (для чётных }
+            n\text{)}.
+            \]
+            <p><strong>3. Возведение корня в степень:</strong></p>
+            \[
+            (\sqrt[n]{a})^k = \sqrt[n]{a^k}.
+            \]
+            <p><strong>4. Корень из корня:</strong></p>
+            \[
+            \sqrt[m]{\sqrt[n]{a}} = \sqrt[mn]{a}.
+            \]
+            <p><strong>5. Сокращение показателя:</strong></p>
+            \[
+            \sqrt[nk]{a^{mk}} = \sqrt[n]{a^m}, \quad \text{если } a \ge 0.
+            \]
+        </div>
+        <div class="example">
+            <p><strong>Примеры:</strong></p>
+            <p>\(\sqrt[6]{64} = \sqrt[6]{2^6} = 2\).</p>
+            <p>\(\sqrt[4]{x^2} = \sqrt{|x|}\) для чётного корня!</p>
+        </div>
+        <div class="warning">
+            <p><strong>⚠️ Важно:</strong> для чётных корней \(\sqrt[n]{x^n} = |x|\), а не \(x\). Для нечётных:
+                \(\sqrt[n]{x^n} = x\).</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🔧 Часть 2. Преобразование иррациональных выражений</h2>
+
+        <h3>2.1. Вынесение множителя из-под знака корня</h3>
+        <div class="theorem">
+            <p><strong>Алгоритм:</strong></p>
+            <p>1. Разложить подкоренное выражение на множители.</p>
+            <p>2. Представить каждый множитель как \(a^n \cdot b\), где \(a^n\) — полная степень.</p>
+            <p>3. Вынести \(a\) из-под корня.</p>
+        </div>
+        <div class="example">
+            <p><strong>Пример 1:</strong> \(\sqrt{48} = \sqrt{16 \cdot 3} = 4\sqrt{3}\).</p>
+            <p><strong>Пример 2:</strong> \(\sqrt[3]{54} = \sqrt[3]{27 \cdot 2} = 3\sqrt[3]{2}\).</p>
+            <p><strong>Пример 3 (с буквами):</strong> \(\sqrt{8a^5} = 2a^2\sqrt{2a}\) при \(a \ge 0\).</p>
+        </div>
+
+        <h3>2.2. Внесение множителя под знак корня</h3>
+        <div class="theorem">
+            <p>Чтобы внести множитель под корень, его нужно возвести в степень корня:</p>
+            \[
+            a\sqrt[n]{b} = \sqrt[n]{a^n b}.
+            \]
+        </div>
+        <div class="example">
+            <p><strong>Пример:</strong> \(3\sqrt{5} = \sqrt{45}\).</p>
+            <p><strong>Пример:</strong> \(2\sqrt[3]{4} = \sqrt[3]{32}\).</p>
+        </div>
+        <div class="warning">
+            <p><strong>⚠️ Внимание:</strong> если множитель отрицательный, а корень чётной степени, то вносить его
+                нельзя без учёта знака (потому что \(\sqrt{a^2 b} = |a|\sqrt{b}\)).</p>
+        </div>
+
+        <h3>2.3. Избавление от иррациональности в знаменателе</h3>
+        <div class="theorem">
+            <p><strong>Случай 1: Знаменатель — одночлен \(\sqrt{a}\)</strong></p>
+            <p>Умножаем числитель и знаменатель на \(\sqrt{a}\):</p>
+            \[
+            \frac{1}{\sqrt{a}} = \frac{\sqrt{a}}{a}.
+            \]
+        </div>
+        <div class="example">
+            <p><strong>Пример:</strong> \(\frac{3}{\sqrt{2}} = \frac{3\sqrt{2}}{2}\).</p>
+        </div>
+
+        <div class="theorem">
+            <p><strong>Случай 2: Знаменатель — сумма или разность \(\sqrt{a} \pm \sqrt{b}\)</strong></p>
+            <p>Используем <strong>сопряжённое выражение</strong>:</p>
+            <ul>
+                <li>Для \(\sqrt{a} + \sqrt{b}\) сопряжённое — \(\sqrt{a} - \sqrt{b}\).</li>
+                <li>Для \(\sqrt{a} - \sqrt{b}\) сопряжённое — \(\sqrt{a} + \sqrt{b}\).</li>
+            </ul>
+            <p>Формула: \((\sqrt{a} + \sqrt{b})(\sqrt{a} - \sqrt{b}) = a - b\).</p>
+        </div>
+        <div class="example">
+            <p><strong>Пример:</strong></p>
+            \[
+            \frac{1}{\sqrt{3} + \sqrt{2}} = \frac{\sqrt{3} - \sqrt{2}}{3 - 2} = \sqrt{3} - \sqrt{2}.
+            \]
+        </div>
+
+        <div class="theorem">
+            <p><strong>Случай 3: Знаменатель — \(\sqrt{a} \pm b\)</strong></p>
+            <p>Сопряжённое: \(\sqrt{a} \mp b\). Формула: \((\sqrt{a} + b)(\sqrt{a} - b) = a - b^2\).</p>
+        </div>
+        <div class="example">
+            <p><strong>Пример:</strong> \(\frac{5}{\sqrt{2} - 1} = 5(\sqrt{2}+1)\).</p>
+        </div>
+
+        <div class="theorem">
+            <p><strong>Случай 4: Знаменатель — сумма трёх корней</strong></p>
+            <p>Иногда нужно применять сопряжение дважды.</p>
+        </div>
+        <div class="example">
+            <p><strong>Пример:</strong> \(\frac{1}{\sqrt{2} + \sqrt{3} + \sqrt{5}}\).</p>
+            <p>Сначала группируем: \((\sqrt{2}+\sqrt{3}) + \sqrt{5}\).</p>
+            <p>Умножаем на сопряжённое \((\sqrt{2}+\sqrt{3}) - \sqrt{5}\):</p>
+            \[
+            \frac{(\sqrt{2}+\sqrt{3}) - \sqrt{5}}{(\sqrt{2}+\sqrt{3})^2 - 5} =
+            \frac{\sqrt{2}+\sqrt{3}-\sqrt{5}}{2\sqrt{6}}.
+            \]
+            <p>Теперь избавляемся от \(\sqrt{6}\) в знаменателе: умножаем на \(\sqrt{6}\):</p>
+            \[
+            \frac{\sqrt{6}(\sqrt{2}+\sqrt{3}-\sqrt{5})}{12}.
+            \]
+        </div>
+
+        <h3>2.4. Преобразование двойных радикалов</h3>
+        <div class="theorem">
+            <p>Двойной радикал — это выражение вида \(\sqrt{a \pm \sqrt{b}}\).</p>
+            <p><strong>Формула:</strong></p>
+            \[
+            \sqrt{a + \sqrt{b}} = \sqrt{\frac{a + \sqrt{a^2 - b}}{2}} + \sqrt{\frac{a - \sqrt{a^2 - b}}{2}}.
+            \]
+            \[
+            \sqrt{a - \sqrt{b}} = \sqrt{\frac{a + \sqrt{a^2 - b}}{2}} - \sqrt{\frac{a - \sqrt{a^2 - b}}{2}}.
+            \]
+            <p><strong>Условие применимости:</strong> \(a^2 - b\) должно быть <strong>полным квадратом</strong>.</p>
+        </div>
+        <div class="example">
+            <p><strong>Пример:</strong> \(\sqrt{3 + 2\sqrt{2}}\).</p>
+            <p>\(a = 3, \ b = (2\sqrt{2})^2 = 8, \ a^2 - b = 9 - 8 = 1\).</p>
+            \[
+            \sqrt{\frac{3+1}{2}} + \sqrt{\frac{3-1}{2}} = \sqrt{2} + \sqrt{1} = \sqrt{2} + 1.
+            \]
+            <p>Проверка: \((\sqrt{2}+1)^2 = 3 + 2\sqrt{2}\). Верно!</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>✍️ Практика</h2>
+
+        <div class="task">
+            <p><strong>Задача 1.</strong> Упростите \(\sqrt{72} + \sqrt{50} - \sqrt{98}\).</p>
+            <button class="solve-btn" data-target="sol1">Показать решение</button>
+            <div id="sol1" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p>\(\sqrt{72} = \sqrt{36\cdot2} = 6\sqrt{2}\).</p>
+                <p>\(\sqrt{50} = \sqrt{25\cdot2} = 5\sqrt{2}\).</p>
+                <p>\(\sqrt{98} = \sqrt{49\cdot2} = 7\sqrt{2}\).</p>
+                <p>Сумма: \(6\sqrt{2} + 5\sqrt{2} - 7\sqrt{2} = 4\sqrt{2}\).</p>
+                <p><strong>Ответ:</strong> \(4\sqrt{2}\).</p>
+            </div>
+        </div>
+
+        <div class="task">
+            <p><strong>Задача 2.</strong> Избавьтесь от иррациональности в знаменателе: \(\frac{2}{\sqrt{5} -
+                \sqrt{3}}\).</p>
+            <button class="solve-btn" data-target="sol2">Показать решение</button>
+            <div id="sol2" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p>Умножаем числитель и знаменатель на сопряжённое \(\sqrt{5} + \sqrt{3}\):</p>
+                \[
+                \frac{2}{\sqrt{5} - \sqrt{3}} \cdot \frac{\sqrt{5} + \sqrt{3}}{\sqrt{5} + \sqrt{3}} = \frac{2(\sqrt{5} +
+                \sqrt{3})}{5 - 3} = \sqrt{5} + \sqrt{3}.
+                \]
+                <p><strong>Ответ:</strong> \(\sqrt{5} + \sqrt{3}\).</p>
+            </div>
+        </div>
+
+        <div class="task">
+            <p><strong>Задача 3.</strong> Упростите \(\sqrt{7 + 4\sqrt{3}}\).</p>
+            <button class="solve-btn" data-target="sol3">Показать решение</button>
+            <div id="sol3" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p>\(a = 7, \ b = (4\sqrt{3})^2 = 48, \ a^2 - b = 49 - 48 = 1\).</p>
+                \[
+                \sqrt{7 + 4\sqrt{3}} = \sqrt{\frac{7+1}{2}} + \sqrt{\frac{7-1}{2}} = \sqrt{4} + \sqrt{3} = 2 + \sqrt{3}.
+                \]
+                <p><strong>Ответ:</strong> \(2 + \sqrt{3}\).</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>© Заборовский М. С. Материалы для олимпиадников. 2026</footer>
+</div>
+<script>
+    document.querySelectorAll('.solve-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const t = document.getElementById(btn.getAttribute('data-target'));
+            if (t.style.display === 'none' || t.style.display === '') {
+                t.style.display = 'block';
+                btn.textContent = 'Скрыть решение';
+                if (window.MathJax) MathJax.typesetPromise([t]);
+            } else {
+                t.style.display = 'none';
+                btn.textContent = 'Показать решение';
+            }
+        });
+    });
+</script>
+</body>
+</html>

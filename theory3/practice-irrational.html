@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практикум | Иррациональные выражения | 40 задач с решениями</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f0f4f8;
+            color: #1e2a3e;
+            padding: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #1e5f7a, #0f3b4f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #2c5282;
+            margin-top: 0.3rem;
+        }
+
+        .badge {
+            background: #d4e6f1;
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .part {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cbd5e1;
+        }
+
+        .part h2 {
+            color: #1e5f7a;
+            border-left: 5px solid #3b82f6;
+            padding-left: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .task {
+            background: #f8fafc;
+            margin: 1rem 0;
+            padding: 1rem 1.2rem;
+            border-radius: 1rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .task p {
+            margin-bottom: 0.3rem;
+        }
+
+        .solve-btn {
+            background: #1e5f7a;
+            color: white;
+            border: none;
+            padding: 0.3rem 1rem;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.3rem;
+            transition: background 0.2s;
+        }
+
+        .solve-btn:hover {
+            background: #0f4b62;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 1rem 1.2rem;
+            background: #eef2ff;
+            border-radius: 0.8rem;
+            border-left: 3px solid #1e5f7a;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .solution p {
+            margin: 0.6rem 0;
+        }
+
+        .solution .step {
+            margin-left: 1.2rem;
+            margin-top: 0.4rem;
+        }
+
+        .solution .formula-block {
+            background: #f8fafc;
+            padding: 0.6rem;
+            border-radius: 0.6rem;
+            text-align: center;
+            margin: 0.6rem 0;
+        }
+
+        .solution .answer-block {
+            background: #d1fae5;
+            padding: 0.6rem;
+            border-radius: 0.6rem;
+            text-align: center;
+            margin: 0.6rem 0;
+            font-weight: bold;
+            font-size: 1.05rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            border-top: 1px solid #cbd5e1;
+            padding-top: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .part {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .solution {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📐 Иррациональные выражения</h1>
+        <div class="subtitle">40 задач с полными решениями</div>
+        <div class="badge">Преобразование • Двойные радикалы • Сравнение • Олимпиадные</div>
+    </header>
+
+    <!-- Часть 1. Базовые задачи (1–10) -->
+    <div class="part">
+        <h2>📖 Часть 1. Базовые задачи на преобразование (1–10)</h2>
+
+        <div class="task"><p><strong>Задача 1.</strong> Упростите выражение: \( \sqrt{72} \).</p>
+            <button class="solve-btn" data-target="s1">Показать решение</button>
+            <div id="s1" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Разложим 72 на множители, выделив полный квадрат: \( 72 = 36
+                    \cdot 2 = 6^2 \cdot 2 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> По свойству корня из произведения: \( \sqrt{72} = \sqrt{36 \cdot
+                    2} = \sqrt{36} \cdot \sqrt{2} = 6\sqrt{2} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( 6\sqrt{2} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 2.</strong> Упростите выражение: \( \sqrt[3]{81} \).</p>
+            <button class="solve-btn" data-target="s2">Показать решение</button>
+            <div id="s2" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Разложим 81 на множители, выделив полный куб: \( 81 = 27 \cdot 3
+                    = 3^3 \cdot 3 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> По свойству корня из произведения: \( \sqrt[3]{81} = \sqrt[3]{27
+                    \cdot 3} = \sqrt[3]{27} \cdot \sqrt[3]{3} = 3\sqrt[3]{3} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( 3\sqrt[3]{3} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 3.</strong> Упростите выражение: \( \sqrt{50a^3} \) при \( a \ge 0 \).</p>
+            <button class="solve-btn" data-target="s3">Показать решение</button>
+            <div id="s3" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Разложим: \( 50a^3 = 25 \cdot 2 \cdot a^2 \cdot a = 5^2 \cdot 2
+                    \cdot a^2 \cdot a \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Выносим полные квадраты: \( \sqrt{25a^2} = 5a \) (так как \( a
+                    \ge 0 \)).</p>
+                <p class="step"><strong>Шаг 3.</strong> Остаётся: \( 5a\sqrt{2a} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( 5a\sqrt{2a} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 4.</strong> Внесите множитель под знак корня: \( 3\sqrt{5} \).</p>
+            <button class="solve-btn" data-target="s4">Показать решение</button>
+            <div id="s4" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Чтобы внести множитель под квадратный корень, возводим его в
+                    квадрат: \( 3 = \sqrt{3^2} = \sqrt{9} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Тогда \( 3\sqrt{5} = \sqrt{9} \cdot \sqrt{5} = \sqrt{45} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \sqrt{45} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 5.</strong> Внесите множитель под знак корня: \( 2\sqrt[3]{4} \).</p>
+            <button class="solve-btn" data-target="s5">Показать решение</button>
+            <div id="s5" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Чтобы внести множитель под кубический корень, возводим его в
+                    куб: \( 2 = \sqrt[3]{2^3} = \sqrt[3]{8} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Тогда \( 2\sqrt[3]{4} = \sqrt[3]{8} \cdot \sqrt[3]{4} =
+                    \sqrt[3]{32} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \sqrt[3]{32} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 6.</strong> Избавьтесь от иррациональности в знаменателе: \(
+            \frac{5}{\sqrt{3}} \).</p>
+            <button class="solve-btn" data-target="s6">Показать решение</button>
+            <div id="s6" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Умножаем числитель и знаменатель на \( \sqrt{3} \):</p>
+                <p>\( \frac{5}{\sqrt{3}} = \frac{5\sqrt{3}}{\sqrt{3} \cdot \sqrt{3}} = \frac{5\sqrt{3}}{3} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \frac{5\sqrt{3}}{3} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 7.</strong> Избавьтесь от иррациональности в знаменателе: \(
+            \frac{7}{2\sqrt{5}} \).</p>
+            <button class="solve-btn" data-target="s7">Показать решение</button>
+            <div id="s7" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Умножаем числитель и знаменатель на \( \sqrt{5} \):</p>
+                <p>\( \frac{7}{2\sqrt{5}} = \frac{7\sqrt{5}}{2 \cdot 5} = \frac{7\sqrt{5}}{10} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \frac{7\sqrt{5}}{10} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 8.</strong> Избавьтесь от иррациональности в знаменателе: \(
+            \frac{3}{\sqrt{2} + 1} \).</p>
+            <button class="solve-btn" data-target="s8">Показать решение</button>
+            <div id="s8" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Знаменатель — сумма \( \sqrt{2} + 1 \). Сопряжённое выражение:
+                    \( \sqrt{2} - 1 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Умножаем числитель и знаменатель на сопряжённое:</p>
+                \[
+                \frac{3}{\sqrt{2}+1} \cdot \frac{\sqrt{2}-1}{\sqrt{2}-1} = \frac{3(\sqrt{2}-1)}{(\sqrt{2})^2 - 1^2} =
+                \frac{3(\sqrt{2}-1)}{2-1} = 3(\sqrt{2}-1).
+                \]
+                <div class="answer-block"><strong>Ответ:</strong> \( 3(\sqrt{2}-1) \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 9.</strong> Избавьтесь от иррациональности в знаменателе: \(
+            \frac{5}{\sqrt{7} - \sqrt{3}} \).</p>
+            <button class="solve-btn" data-target="s9">Показать решение</button>
+            <div id="s9" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Знаменатель — разность \( \sqrt{7} - \sqrt{3} \). Сопряжённое:
+                    \( \sqrt{7} + \sqrt{3} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Умножаем:</p>
+                \[
+                \frac{5}{\sqrt{7}-\sqrt{3}} \cdot \frac{\sqrt{7}+\sqrt{3}}{\sqrt{7}+\sqrt{3}} =
+                \frac{5(\sqrt{7}+\sqrt{3})}{7-3} = \frac{5(\sqrt{7}+\sqrt{3})}{4}.
+                \]
+                <div class="answer-block"><strong>Ответ:</strong> \( \frac{5(\sqrt{7}+\sqrt{3})}{4} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 10.</strong> Избавьтесь от иррациональности в знаменателе: \(
+            \frac{2}{\sqrt{5} - \sqrt{2} + 1} \).</p>
+            <button class="solve-btn" data-target="s10">Показать решение</button>
+            <div id="s10" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Сгруппируем: \( \sqrt{5} + (1 - \sqrt{2}) \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Сопряжённое: \( \sqrt{5} - (1 - \sqrt{2}) = \sqrt{5} - 1 +
+                    \sqrt{2} \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Умножаем:</p>
+                \[
+                \frac{2}{\sqrt{5} + 1 - \sqrt{2}} \cdot \frac{\sqrt{5} - 1 + \sqrt{2}}{\sqrt{5} - 1 + \sqrt{2}} =
+                \frac{2(\sqrt{5} - 1 + \sqrt{2})}{(\sqrt{5})^2 - (1 - \sqrt{2})^2}.
+                \]
+                <p class="step"><strong>Шаг 4.</strong> Вычисляем знаменатель:</p>
+                <p>\( 5 - (1 - 2\sqrt{2} + 2) = 5 - (3 - 2\sqrt{2}) = 5 - 3 + 2\sqrt{2} = 2 + 2\sqrt{2} = 2(1+\sqrt{2})
+                    \).</p>
+                <p class="step"><strong>Шаг 5.</strong> Получаем:</p>
+                \[
+                \frac{2(\sqrt{5} - 1 + \sqrt{2})}{2(1+\sqrt{2})} = \frac{\sqrt{5} - 1 + \sqrt{2}}{1+\sqrt{2}}.
+                \]
+                <p class="step"><strong>Шаг 6.</strong> Теперь избавляемся от \( 1+\sqrt{2} \) в знаменателе: умножаем
+                    на \( \sqrt{2}-1 \):</p>
+                \[
+                \frac{(\sqrt{5} - 1 + \sqrt{2})(\sqrt{2}-1)}{2-1} = (\sqrt{5} - 1 + \sqrt{2})(\sqrt{2}-1).
+                \]
+                <p class="step"><strong>Шаг 7.</strong> Раскрываем скобки:</p>
+                <p>\( \sqrt{10} - \sqrt{5} - \sqrt{2} + 1 + 2 - \sqrt{2} = \sqrt{10} - \sqrt{5} - 2\sqrt{2} + 3 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \sqrt{10} - \sqrt{5} - 2\sqrt{2} + 3 \).</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Часть 2. Двойные радикалы (11–20) -->
+    <div class="part">
+        <h2>🔧 Часть 2. Преобразование двойных радикалов (11–20)</h2>
+
+        <div class="task"><p><strong>Задача 11.</strong> Упростите: \( \sqrt{5 + 2\sqrt{6}} \).</p>
+            <button class="solve-btn" data-target="s11">Показать решение</button>
+            <div id="s11" class="solution">
+                <p><strong>Решение (через формулу двойного радикала):</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Здесь \( a = 5 \), \( \sqrt{b} = 2\sqrt{6} \), значит \( b =
+                    (2\sqrt{6})^2 = 24 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Проверяем: \( a^2 - b = 25 - 24 = 1 \) — полный квадрат.</p>
+                <p class="step"><strong>Шаг 3.</strong> По формуле:</p>
+                \[
+                \sqrt{5 + 2\sqrt{6}} = \sqrt{\frac{5 + 1}{2}} + \sqrt{\frac{5 - 1}{2}} = \sqrt{3} + \sqrt{2}.
+                \]
+                <p class="step"><strong>Шаг 4.</strong> Проверка: \( (\sqrt{3}+\sqrt{2})^2 = 3 + 2 + 2\sqrt{6} = 5 +
+                    2\sqrt{6} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \sqrt{3} + \sqrt{2} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 12.</strong> Упростите: \( \sqrt{7 - 2\sqrt{10}} \).</p>
+            <button class="solve-btn" data-target="s12">Показать решение</button>
+            <div id="s12" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( a = 7 \), \( \sqrt{b} = 2\sqrt{10} \), значит \( b = 40 \).
+                </p>
+                <p class="step"><strong>Шаг 2.</strong> \( a^2 - b = 49 - 40 = 9 = 3^2 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> По формуле для разности:</p>
+                \[
+                \sqrt{7 - 2\sqrt{10}} = \sqrt{\frac{7+3}{2}} - \sqrt{\frac{7-3}{2}} = \sqrt{5} - \sqrt{2}.
+                \]
+                <p class="step"><strong>Шаг 4.</strong> Проверка: \( (\sqrt{5}-\sqrt{2})^2 = 5 + 2 - 2\sqrt{10} = 7 -
+                    2\sqrt{10} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \sqrt{5} - \sqrt{2} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 13.</strong> Упростите: \( \sqrt{11 + 6\sqrt{2}} \).</p>
+            <button class="solve-btn" data-target="s13">Показать решение</button>
+            <div id="s13" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Заметим, что \( 6\sqrt{2} = 2 \cdot 3 \cdot \sqrt{2} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Ищем числа \( x, y \) такие, что \( x^2 + y^2 = 11 \), \( 2xy =
+                    6\sqrt{2} \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Попробуем \( x = 3, y = \sqrt{2} \):</p>
+                <p>\( x^2 + y^2 = 9 + 2 = 11 \), \( 2xy = 2 \cdot 3 \cdot \sqrt{2} = 6\sqrt{2} \). Подходит.</p>
+                <p class="step"><strong>Шаг 4.</strong> Значит, \( \sqrt{11 + 6\sqrt{2}} = 3 + \sqrt{2} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( 3 + \sqrt{2} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 14.</strong> Упростите: \( \sqrt{9 - 4\sqrt{5}} \).</p>
+            <button class="solve-btn" data-target="s14">Показать решение</button>
+            <div id="s14" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Заметим, что \( 4\sqrt{5} = 2 \cdot 2 \cdot \sqrt{5} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Ищем \( x, y \): \( x^2 + y^2 = 9 \), \( 2xy = 4\sqrt{5}
+                    \Rightarrow xy = 2\sqrt{5} \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Попробуем \( x = \sqrt{5}, y = 2 \):</p>
+                <p>\( x^2 + y^2 = 5 + 4 = 9 \), \( xy = 2\sqrt{5} \). Подходит.</p>
+                <p class="step"><strong>Шаг 4.</strong> Значит, \( \sqrt{9 - 4\sqrt{5}} = \sqrt{5} - 2 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \sqrt{5} - 2 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 15.</strong> Упростите: \( \sqrt{2 + \sqrt{3}} \).</p>
+            <button class="solve-btn" data-target="s15">Показать решение</button>
+            <div id="s15" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( a = 2 \), \( \sqrt{b} = \sqrt{3} \), значит \( b = 3 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( a^2 - b = 4 - 3 = 1 = 1^2 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> По формуле:</p>
+                \[
+                \sqrt{2 + \sqrt{3}} = \sqrt{\frac{2+1}{2}} + \sqrt{\frac{2-1}{2}} = \sqrt{\frac{3}{2}} +
+                \sqrt{\frac{1}{2}} = \frac{\sqrt{3}}{\sqrt{2}} + \frac{1}{\sqrt{2}} = \frac{\sqrt{3}+1}{\sqrt{2}}.
+                \]
+                <p class="step"><strong>Шаг 4.</strong> Можно также записать как \( \frac{\sqrt{6}+\sqrt{2}}{2} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \frac{\sqrt{6}+\sqrt{2}}{2} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 16.</strong> Упростите: \( \sqrt{4 - \sqrt{15}} \).</p>
+            <button class="solve-btn" data-target="s16">Показать решение</button>
+            <div id="s16" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( a = 4 \), \( \sqrt{b} = \sqrt{15} \), значит \( b = 15 \).
+                </p>
+                <p class="step"><strong>Шаг 2.</strong> \( a^2 - b = 16 - 15 = 1 = 1^2 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> По формуле:</p>
+                \[
+                \sqrt{4 - \sqrt{15}} = \sqrt{\frac{4+1}{2}} - \sqrt{\frac{4-1}{2}} = \sqrt{\frac{5}{2}} -
+                \sqrt{\frac{3}{2}} = \frac{\sqrt{10} - \sqrt{6}}{2}.
+                \]
+                <div class="answer-block"><strong>Ответ:</strong> \( \frac{\sqrt{10} - \sqrt{6}}{2} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 17.</strong> Упростите: \( \sqrt{8 + 2\sqrt{7}} \).</p>
+            <button class="solve-btn" data-target="s17">Показать решение</button>
+            <div id="s17" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( a = 8 \), \( \sqrt{b} = 2\sqrt{7} \), значит \( b = 28 \).
+                </p>
+                <p class="step"><strong>Шаг 2.</strong> \( a^2 - b = 64 - 28 = 36 = 6^2 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> По формуле:</p>
+                \[
+                \sqrt{8 + 2\sqrt{7}} = \sqrt{\frac{8+6}{2}} + \sqrt{\frac{8-6}{2}} = \sqrt{7} + \sqrt{1} = \sqrt{7} + 1.
+                \]
+                <div class="answer-block"><strong>Ответ:</strong> \( \sqrt{7} + 1 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 18.</strong> Упростите: \( \sqrt{12 - 2\sqrt{11}} \).</p>
+            <button class="solve-btn" data-target="s18">Показать решение</button>
+            <div id="s18" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( a = 12 \), \( \sqrt{b} = 2\sqrt{11} \), значит \( b = 44 \).
+                </p>
+                <p class="step"><strong>Шаг 2.</strong> \( a^2 - b = 144 - 44 = 100 = 10^2 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> По формуле:</p>
+                \[
+                \sqrt{12 - 2\sqrt{11}} = \sqrt{\frac{12+10}{2}} - \sqrt{\frac{12-10}{2}} = \sqrt{11} - \sqrt{1} =
+                \sqrt{11} - 1.
+                \]
+                <div class="answer-block"><strong>Ответ:</strong> \( \sqrt{11} - 1 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 19.</strong> Упростите: \( \sqrt{4 + 2\sqrt{3}} - \sqrt{4 - 2\sqrt{3}} \).
+        </p>
+            <button class="solve-btn" data-target="s19">Показать решение</button>
+            <div id="s19" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Упростим каждый двойной радикал:</p>
+                <p>\( \sqrt{4+2\sqrt{3}} = \sqrt{3}+1 \) (так как \( (\sqrt{3}+1)^2 = 3+1+2\sqrt{3} = 4+2\sqrt{3}
+                    \)).</p>
+                <p>\( \sqrt{4-2\sqrt{3}} = \sqrt{3}-1 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Разность: \( (\sqrt{3}+1) - (\sqrt{3}-1) = 2 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> 2.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 20.</strong> Упростите: \( \sqrt{9 + 4\sqrt{5}} + \sqrt{9 - 4\sqrt{5}} \).
+        </p>
+            <button class="solve-btn" data-target="s20">Показать решение</button>
+            <div id="s20" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( \sqrt{9+4\sqrt{5}} = \sqrt{5}+2 \) (проверка: \(
+                    (\sqrt{5}+2)^2 = 5+4+4\sqrt{5} = 9+4\sqrt{5} \)).</p>
+                <p>\( \sqrt{9-4\sqrt{5}} = \sqrt{5}-2 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Сумма: \( (\sqrt{5}+2) + (\sqrt{5}-2) = 2\sqrt{5} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( 2\sqrt{5} \).</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Часть 3. Сравнение иррациональных чисел (21–30) -->
+    <div class="part">
+        <h2>📊 Часть 3. Сравнение иррациональных чисел (21–30)</h2>
+
+        <div class="task"><p><strong>Задача 21.</strong> Сравните \( 2\sqrt{3} \) и \( 3\sqrt{2} \).</p>
+            <button class="solve-btn" data-target="s21">Показать решение</button>
+            <div id="s21" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Внесём множители под корень: \( 2\sqrt{3} = \sqrt{4 \cdot 3} =
+                    \sqrt{12} \), \( 3\sqrt{2} = \sqrt{9 \cdot 2} = \sqrt{18} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Так как \( 12 < 18 \), то \( \sqrt{12} < \sqrt{18} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( 2\sqrt{3} < 3\sqrt{2} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 22.</strong> Сравните \( \sqrt{5} + \sqrt{7} \) и \( \sqrt{12} \).</p>
+            <button class="solve-btn" data-target="s22">Показать решение</button>
+            <div id="s22" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Возводим обе части в квадрат (оба числа положительны):</p>
+                <p>\( (\sqrt{5}+\sqrt{7})^2 = 5 + 7 + 2\sqrt{35} = 12 + 2\sqrt{35} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Сравниваем с \( (\sqrt{12})^2 = 12 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Так как \( 12 + 2\sqrt{35} > 12 \), то \( \sqrt{5} + \sqrt{7} >
+                    \sqrt{12} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \sqrt{5} + \sqrt{7} > \sqrt{12} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 23.</strong> Сравните \( \sqrt{8} - \sqrt{5} \) и \( \sqrt{7} - \sqrt{4} \).
+        </p>
+            <button class="solve-btn" data-target="s23">Показать решение</button>
+            <div id="s23" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Преобразуем каждую разность с помощью сопряжённого:</p>
+                <p>\( \sqrt{8} - \sqrt{5} = \frac{3}{\sqrt{8}+\sqrt{5}} \).</p>
+                <p>\( \sqrt{7} - \sqrt{4} = \frac{3}{\sqrt{7}+2} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Сравниваем знаменатели: \( \sqrt{8}+\sqrt{5} \) и \( \sqrt{7}+2
+                    \).</p>
+                <p>\( \sqrt{8} \approx 2.828, \sqrt{5} \approx 2.236 \), сумма ≈ 5.064.</p>
+                <p>\( \sqrt{7} \approx 2.646 \), \( 2 \), сумма ≈ 4.646.</p>
+                <p class="step"><strong>Шаг 3.</strong> Так как \( \sqrt{8}+\sqrt{5} > \sqrt{7}+2 \), то \(
+                    \frac{3}{\sqrt{8}+\sqrt{5}} < \frac{3}{\sqrt{7}+2} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \sqrt{8} - \sqrt{5} < \sqrt{7} - \sqrt{4} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 24.</strong> Сравните \( \sqrt[3]{3} \) и \( \sqrt[4]{4} \).</p>
+            <button class="solve-btn" data-target="s24">Показать решение</button>
+            <div id="s24" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Возведём оба числа в 12-ю степень (НОК степеней 3 и 4):</p>
+                <p>\( (\sqrt[3]{3})^{12} = 3^{12/3} = 3^4 = 81 \).</p>
+                <p>\( (\sqrt[4]{4})^{12} = 4^{12/4} = 4^3 = 64 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Так как \( 81 > 64 \), то \( \sqrt[3]{3} > \sqrt[4]{4} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \sqrt[3]{3} > \sqrt[4]{4} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 25.</strong> Сравните \( \sqrt{10} - \sqrt{7} \) и \( \sqrt{6} - \sqrt{3}
+            \).</p>
+            <button class="solve-btn" data-target="s25">Показать решение</button>
+            <div id="s25" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Преобразуем: \( \sqrt{10} - \sqrt{7} =
+                    \frac{3}{\sqrt{10}+\sqrt{7}} \).</p>
+                <p>\( \sqrt{6} - \sqrt{3} = \frac{3}{\sqrt{6}+\sqrt{3}} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Сравниваем знаменатели: \( \sqrt{10}+\sqrt{7} >
+                    \sqrt{6}+\sqrt{3} \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Значит, \( \frac{3}{\sqrt{10}+\sqrt{7}} <
+                    \frac{3}{\sqrt{6}+\sqrt{3}} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \sqrt{10} - \sqrt{7} < \sqrt{6} - \sqrt{3} \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 26.</strong> Сравните \( \sqrt{11} \) и \( 3 + \sqrt{2} \).</p>
+            <button class="solve-btn" data-target="s26">Показать решение</button>
+            <div id="s26" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Возводим в квадрат:</p>
+                <p>\( (\sqrt{11})^2 = 11 \).</p>
+                <p>\( (3+\sqrt{2})^2 = 9 + 2 + 6\sqrt{2} = 11 + 6\sqrt{2} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Так как \( 11 < 11 + 6\sqrt{2} \), то \( \sqrt{11} < 3 +
+                    \sqrt{2} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \sqrt{11} < 3 + \sqrt{2} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 27.</strong> Сравните \( \sqrt{2} + \sqrt{3} + \sqrt{5} \) и \( \sqrt{10} +
+            \sqrt{2} \).</p>
+            <button class="solve-btn" data-target="s27">Показать решение</button>
+            <div id="s27" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Возводим в квадрат:</p>
+                <p>\( (\sqrt{2}+\sqrt{3}+\sqrt{5})^2 = 2+3+5 + 2\sqrt{6} + 2\sqrt{10} + 2\sqrt{15} = 10 + 2\sqrt{6} +
+                    2\sqrt{10} + 2\sqrt{15} \).</p>
+                <p>\( (\sqrt{10}+\sqrt{2})^2 = 10 + 2 + 2\sqrt{20} = 12 + 4\sqrt{5} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Сравниваем приблизительно:</p>
+                <p>\( \sqrt{6} \approx 2.45, \sqrt{10} \approx 3.16, \sqrt{15} \approx 3.87 \), сумма ≈ 9.48, \( 2 \cdot
+                    9.48 = 18.96 \), итого 28.96.</p>
+                <p>\( 4\sqrt{5} \approx 8.94 \), \( 12 + 8.94 = 20.94 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Значит, первое больше второго.</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \sqrt{2}+\sqrt{3}+\sqrt{5} > \sqrt{10}+\sqrt{2} \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 28.</strong> Сравните \( \frac{\sqrt{5}-1}{2} \) и \( 0.6 \).</p>
+            <button class="solve-btn" data-target="s28">Показать решение</button>
+            <div id="s28" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( \sqrt{5} \approx 2.236 \), тогда \( \frac{2.236-1}{2} =
+                    \frac{1.236}{2} = 0.618 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( 0.618 > 0.6 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \frac{\sqrt{5}-1}{2} > 0.6 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 29.</strong> Сравните \( \sqrt{2} \) и \( \sqrt[3]{3} \).</p>
+            <button class="solve-btn" data-target="s29">Показать решение</button>
+            <div id="s29" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Возведём в 6-ю степень:</p>
+                <p>\( (\sqrt{2})^6 = 2^3 = 8 \).</p>
+                <p>\( (\sqrt[3]{3})^6 = 3^2 = 9 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Так как \( 8 < 9 \), то \( \sqrt{2} < \sqrt[3]{3} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \sqrt{2} < \sqrt[3]{3} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 30.</strong> Сравните \( \sqrt{5} + \sqrt{3} \) и \( 2\sqrt{4} \).</p>
+            <button class="solve-btn" data-target="s30">Показать решение</button>
+            <div id="s30" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( 2\sqrt{4} = 2 \cdot 2 = 4 \).</p>
+                <p>\( \sqrt{5}+\sqrt{3} \approx 2.236 + 1.732 = 3.968 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( 3.968 < 4 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \sqrt{5}+\sqrt{3} < 4 \).</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Часть 4. Олимпиадные задачи (31–40) -->
+    <div class="part">
+        <h2>🏆 Часть 4. Олимпиадные задачи (31–40)</h2>
+
+        <div class="task"><p><strong>Задача 31.</strong> Докажите, что \( \sqrt{6} + \sqrt{10} + \sqrt{15} > 7 \).</p>
+            <button class="solve-btn" data-target="s31">Показать решение</button>
+            <div id="s31" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Заметим, что \( \sqrt{6} + \sqrt{10} + \sqrt{15} \) можно
+                    сравнить с 7, возведя в квадрат:</p>
+                <p>\( (\sqrt{6}+\sqrt{10}+\sqrt{15})^2 = 6+10+15 + 2\sqrt{60} + 2\sqrt{90} + 2\sqrt{150} \).</p>
+                <p>\( = 31 + 2(\sqrt{60}+\sqrt{90}+\sqrt{150}) \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( \sqrt{60} \approx 7.75, \sqrt{90} \approx 9.49, \sqrt{150}
+                    \approx 12.25 \), сумма ≈ 29.49, \( 2 \cdot 29.49 = 58.98 \), итого ≈ 89.98.</p>
+                <p class="step"><strong>Шаг 3.</strong> \( 7^2 = 49 \). Так как 89.98 > 49, то исходное выражение > 7.
+                </p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 32.</strong> Докажите, что \( \sqrt{2} + \sqrt{3} + \sqrt{5} < \sqrt{6} +
+            \sqrt{7} + \sqrt{8} \).</p>
+            <button class="solve-btn" data-target="s32">Показать решение</button>
+            <div id="s32" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Возведём в квадрат обе части:</p>
+                <p>\( (\sqrt{2}+\sqrt{3}+\sqrt{5})^2 = 10 + 2(\sqrt{6}+\sqrt{10}+\sqrt{15}) \).</p>
+                <p>\( (\sqrt{6}+\sqrt{7}+\sqrt{8})^2 = 21 + 2(\sqrt{42}+\sqrt{48}+\sqrt{56}) \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Оценим приблизительно:</p>
+                <p>\( \sqrt{2}+\sqrt{3}+\sqrt{5} \approx 5.382 \).</p>
+                <p>\( \sqrt{6}+\sqrt{7}+\sqrt{8} \approx 2.449+2.646+2.828 = 7.923 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Значит, второе больше.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 33.</strong> Найдите целую часть числа \( \sqrt{5} + \sqrt{7} + \sqrt{11}
+            \).</p>
+            <button class="solve-btn" data-target="s33">Показать решение</button>
+            <div id="s33" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( \sqrt{5} \approx 2.236, \sqrt{7} \approx 2.646, \sqrt{11}
+                    \approx 3.317 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Сумма ≈ 8.199.</p>
+                <div class="answer-block"><strong>Ответ:</strong> 8.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 34.</strong> Сравните \( \sqrt{12} - \sqrt{11} \) и \( \sqrt{11} - \sqrt{10}
+            \).</p>
+            <button class="solve-btn" data-target="s34">Показать решение</button>
+            <div id="s34" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Преобразуем: \( \sqrt{12} - \sqrt{11} =
+                    \frac{1}{\sqrt{12}+\sqrt{11}} \).</p>
+                <p>\( \sqrt{11} - \sqrt{10} = \frac{1}{\sqrt{11}+\sqrt{10}} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Так как \( \sqrt{12}+\sqrt{11} > \sqrt{11}+\sqrt{10} \), то \(
+                    \frac{1}{\sqrt{12}+\sqrt{11}} < \frac{1}{\sqrt{11}+\sqrt{10}} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \sqrt{12} - \sqrt{11} < \sqrt{11} - \sqrt{10} \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 35.</strong> Докажите, что \( \sqrt{1} + \sqrt{2} + \dots + \sqrt{99} < 700
+            \).</p>
+            <button class="solve-btn" data-target="s35">Показать решение</button>
+            <div id="s35" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Оценим каждый корень: \( \sqrt{k} < k \) для \( k \ge 2 \).
+                    Тогда \( \sum \sqrt{k} < 1+2+\dots+99 = 4950 \) — слишком грубая оценка.</p>
+                <p class="step"><strong>Шаг 2.</strong> Используем интегральную оценку:</p>
+                <p>\( \sum_{k=1}^{99} \sqrt{k} < \int_{0}^{99} \sqrt{x} \, dx + \sqrt{99} = \frac{2}{3} \cdot 99^{3/2} +
+                    \sqrt{99} \).</p>
+                <p>\( 99^{3/2} = 99 \cdot \sqrt{99} \approx 99 \cdot 9.95 = 985 \), \( \frac{2}{3} \cdot 985 \approx
+                    656.7 \), плюс 9.95 = 666.65 < 700.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 36.</strong> Докажите, что \( \sqrt{2} + \sqrt{3} < \sqrt{10} \).</p>
+            <button class="solve-btn" data-target="s36">Показать решение</button>
+            <div id="s36" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Возводим в квадрат:</p>
+                <p>\( (\sqrt{2}+\sqrt{3})^2 = 5 + 2\sqrt{6} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Сравниваем с 10: \( 5 + 2\sqrt{6} < 10 \iff 2\sqrt{6} < 5 \iff
+                    24 < 25 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Верно.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 37.</strong> Докажите, что \( \sqrt{3} + \sqrt{8} < \sqrt{5} + \sqrt{6} \).
+        </p>
+            <button class="solve-btn" data-target="s37">Показать решение</button>
+            <div id="s37" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Возводим в квадрат:</p>
+                <p>\( (\sqrt{3}+\sqrt{8})^2 = 3+8+2\sqrt{24} = 11 + 4\sqrt{6} \).</p>
+                <p>\( (\sqrt{5}+\sqrt{6})^2 = 5+6+2\sqrt{30} = 11 + 2\sqrt{30} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Сравниваем \( 4\sqrt{6} \) и \( 2\sqrt{30} \):</p>
+                <p>\( 4\sqrt{6} = \sqrt{96} \), \( 2\sqrt{30} = \sqrt{120} \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Так как \( 96 < 120 \), то \( 4\sqrt{6} < 2\sqrt{30} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 38.</strong> Докажите, что \( \sqrt[3]{2} + \sqrt[3]{4} > 3 \).</p>
+            <button class="solve-btn" data-target="s38">Показать решение</button>
+            <div id="s38" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Заметим, что \( \sqrt[3]{2} + \sqrt[3]{4} = \sqrt[3]{2} +
+                    \sqrt[3]{2^2} = \sqrt[3]{2}(1 + \sqrt[3]{2}) \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Пусть \( t = \sqrt[3]{2} \). Тогда \( t^3 = 2 \). Нужно
+                    доказать, что \( t + t^2 > 3 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( t + t^2 = t(1+t) \). При \( t \approx 1.26 \), \( 1+t \approx
+                    2.26 \), произведение ≈ 2.85 < 3. Значит, утверждение неверно.</p>
+                <p class="step"><strong>Шаг 4.</strong> Проверим: \( \sqrt[3]{2} \approx 1.2599, \sqrt[3]{4} \approx
+                    1.5874 \), сумма ≈ 2.8473 < 3.</p>
+                <div class="answer-block"><strong>Ответ:</strong> утверждение неверно. \( \sqrt[3]{2} + \sqrt[3]{4} < 3
+                    \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 39.</strong> Докажите, что \( \frac{1}{\sqrt{1}} + \frac{1}{\sqrt{2}} +
+            \dots + \frac{1}{\sqrt{100}} > 18 \).</p>
+            <button class="solve-btn" data-target="s39">Показать решение</button>
+            <div id="s39" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Используем интегральную оценку снизу:</p>
+                <p>\( \sum_{k=1}^{100} \frac{1}{\sqrt{k}} > \int_{1}^{101} \frac{dx}{\sqrt{x}} = 2(\sqrt{101} - 1)
+                    \approx 2(10.05-1) = 18.1 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Значит, сумма больше 18.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 40.</strong> Докажите, что \( \sqrt{1} + \sqrt{2} + \dots + \sqrt{100} < 680
+            \).</p>
+            <button class="solve-btn" data-target="s40">Показать решение</button>
+            <div id="s40" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Используем интегральную оценку сверху:</p>
+                <p>\( \sum_{k=1}^{100} \sqrt{k} < \int_{0}^{100} \sqrt{x} \, dx + \sqrt{100} = \frac{2}{3} \cdot
+                    100^{3/2} + 10 = \frac{2}{3} \cdot 1000 + 10 \approx 666.67 + 10 = 676.67 < 680 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Итоговая таблица -->
+    <div class="part">
+        <h2>📊 Итоговая таблица методов</h2>
+        <table style="width:100%; border-collapse:collapse; margin:1rem 0; background:#f8fafc;">
+            <thead>
+            <tr style="background:#e2e8f0;">
+                <th style="border:1px solid #cbd5e1; padding:0.5rem; text-align:left;">Метод</th>
+                <th style="border:1px solid #cbd5e1; padding:0.5rem; text-align:left;">Использован в задачах</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Вынесение из-под корня</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">1, 2, 3</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Внесение под корень</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">4, 5</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Избавление от иррациональности</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">6, 7, 8, 9, 10</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Формула двойного радикала</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">11, 12, 15, 16, 17, 18</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Подбор \(x,y\) для двойного радикала</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">13, 14</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Возведение в квадрат для сравнения</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">21, 22, 26, 30, 36, 37</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Сопряжённое выражение</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">23, 25, 34</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Возведение в общую степень</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">24, 29</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Интегральная оценка</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">35, 39, 40</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Приближённое вычисление</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">27, 28, 33</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>© Заборовский М. С. Материалы для олимпиадников. 2026</footer>
+</div>
+
+<script>
+    document.querySelectorAll('.solve-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const t = document.getElementById(btn.getAttribute('data-target'));
+            if (t.style.display === 'none' || t.style.display === '') {
+                t.style.display = 'block';
+                btn.textContent = 'Скрыть решение';
+                if (window.MathJax) MathJax.typesetPromise([t]);
+            } else {
+                t.style.display = 'none';
+                btn.textContent = 'Показать решение';
+            }
+        });
+    });
+</script>
+</body>
+</html>
