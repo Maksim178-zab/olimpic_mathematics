@@ -74,7 +74,7 @@ const resources = {
     },
     irrational: {
         theory: [
-            { text: "Преобразование иррациональных выражений", url: "theory3/irrational-transformation.html", isInternal: true},
+            { text: "Преобразование иррациональных выражений", url: "theory3/irrational-transformations.html", isInternal: true},
             { text: "Сравнение иррациональных чисел", url: "theory3/irrational-comparison.html", isInternal: true},
             { text: "Олимпиадные приёмы", url: "theory3/irrational-olympiad.html", isInternal: true}
         ],
