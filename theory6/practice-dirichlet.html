@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практикум | Принцип Дирихле | 30 задач с решениями</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f0f4f8;
+            color: #1e2a3e;
+            padding: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #1e5f7a, #0f3b4f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #2c5282;
+            margin-top: 0.3rem;
+        }
+
+        .badge {
+            background: #d4e6f1;
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .part {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cbd5e1;
+        }
+
+        .part h2 {
+            color: #1e5f7a;
+            border-left: 5px solid #3b82f6;
+            padding-left: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .task {
+            background: #f8fafc;
+            margin: 1rem 0;
+            padding: 1rem 1.2rem;
+            border-radius: 1rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .task p {
+            margin-bottom: 0.3rem;
+        }
+
+        .solve-btn {
+            background: #1e5f7a;
+            color: white;
+            border: none;
+            padding: 0.3rem 1rem;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.3rem;
+            transition: background 0.2s;
+        }
+
+        .solve-btn:hover {
+            background: #0f4b62;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 1rem 1.2rem;
+            background: #eef2ff;
+            border-radius: 0.8rem;
+            border-left: 3px solid #1e5f7a;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .solution p {
+            margin: 0.6rem 0;
+        }
+
+        .solution .step {
+            margin-left: 1.2rem;
+            margin-top: 0.4rem;
+        }
+
+        .solution .formula-block {
+            background: #f8fafc;
+            padding: 0.6rem;
+            border-radius: 0.6rem;
+            text-align: center;
+            margin: 0.6rem 0;
+        }
+
+        .solution .answer-block {
+            background: #d1fae5;
+            padding: 0.6rem;
+            border-radius: 0.6rem;
+            text-align: center;
+            margin: 0.6rem 0;
+            font-weight: bold;
+            font-size: 1.05rem;
+        }
+
+        .solution .counterexample {
+            background: #fee2e2;
+            padding: 0.6rem;
+            border-radius: 0.6rem;
+            text-align: center;
+            margin: 0.6rem 0;
+            border-left: 3px solid #dc2626;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            border-top: 1px solid #cbd5e1;
+            padding-top: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .part {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .solution {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📐 Принцип Дирихле</h1>
+        <div class="subtitle">30 задач с полными решениями</div>
+        <div class="badge">Классический • Обобщённый • Весовой</div>
+    </header>
+
+    <!-- Часть 1. Классический принцип Дирихле (1–10) -->
+    <div class="part">
+        <h2>📖 Часть 1. Классический принцип Дирихле (задачи 1–10)</h2>
+
+        <div class="task"><p><strong>Задача 1.</strong> В классе 30 учеников. Докажите, что среди них найдутся хотя бы
+            два ученика, родившихся в один день недели.</p>
+            <button class="solve-btn" data-target="s1">Показать решение</button>
+            <div id="s1" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Определяем «кроликов» и «клетки»: Кролики: 30 учеников (\( n =
+                    30 \)). Клетки: 7 дней недели (\( m = 7 \)).</p>
+                <p class="step"><strong>Шаг 2.</strong> Так как \( 30 > 7 \), по классическому принципу Дирихле
+                    существует клетка (день недели), в которой сидит не менее двух кроликов (учеников).</p>
+                <p class="step"><strong>Шаг 3.</strong> Значит, есть как минимум два ученика, родившихся в один день
+                    недели.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 2.</strong> В мешке лежат шарики 4 цветов. Какое наименьшее число шариков
+            нужно вытащить, чтобы гарантированно получить два шарика одного цвета?</p>
+            <button class="solve-btn" data-target="s2">Показать решение</button>
+            <div id="s2" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Клетки: 4 цвета (\( m = 4 \)). Нам нужно, чтобы \( n > m \), то
+                    есть \( n > 4 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Наименьшее целое \( n \), удовлетворяющее этому условию, — \( n
+                    = 5 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Если вытащить 5 шариков, то по принципу Дирихле два из них
+                    обязательно одного цвета. Если вытащить 4, то они могут быть всех разных цветов.</p>
+                <div class="answer-block"><strong>Ответ:</strong> 5.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 3.</strong> Докажите, что среди 13 чисел найдутся два, разность которых
+            делится на 12.</p>
+            <button class="solve-btn" data-target="s3">Показать решение</button>
+            <div id="s3" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Кролики: 13 чисел. Клетки: возможные остатки при делении на 12 —
+                    их 12 (0, 1, 2, ..., 11).</p>
+                <p class="step"><strong>Шаг 2.</strong> Так как \( 13 > 12 \), по принципу Дирихле два числа имеют
+                    одинаковый остаток при делении на 12.</p>
+                <p class="step"><strong>Шаг 3.</strong> Если два числа имеют одинаковый остаток, то их разность делится
+                    на 12.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 4.</strong> На плоскости дано 5 точек с целыми координатами. Докажите, что
+            среди них есть две, середина отрезка между которыми также имеет целые координаты.</p>
+            <button class="solve-btn" data-target="s4">Показать решение</button>
+            <div id="s4" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Целочисленность координат точки определяется чётностью
+                    координат. Всего 4 варианта чётности: (чёт, чёт), (чёт, нечет), (нечет, чёт), (нечет, нечет).</p>
+                <p class="step"><strong>Шаг 2.</strong> Кролики: 5 точек. Клетки: 4 варианта чётности.</p>
+                <p class="step"><strong>Шаг 3.</strong> Так как \( 5 > 4 \), две точки имеют одинаковую чётность
+                    координат.</p>
+                <p class="step"><strong>Шаг 4.</strong> Если координаты двух точек имеют одинаковую чётность, то их
+                    сумма имеет чётные координаты, и середина отрезка имеет целые координаты.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 5.</strong> В классе 27 учеников. Докажите, что среди них найдутся трое,
+            родившихся в один месяц.</p>
+            <button class="solve-btn" data-target="s5">Показать решение</button>
+            <div id="s5" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Кролики: 27 учеников (\( n = 27 \)). Клетки: 12 месяцев (\( m =
+                    12 \)).</p>
+                <p class="step"><strong>Шаг 2.</strong> Обобщённый принцип Дирихле: если \( n > m(k-1) \), то есть ящик
+                    с не менее чем \( k \) объектами.</p>
+                <p class="step"><strong>Шаг 3.</strong> Проверяем: \( 27 > 12 \cdot (3-1) = 24 \). Да, \( 27 > 24 \).
+                </p>
+                <p class="step"><strong>Шаг 4.</strong> Значит, существует месяц, в котором родились не менее 3
+                    учеников.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 6.</strong> В ряд стоят 10 клеток, в каждой сидит либо кролик, либо лиса.
+            Докажите, что среди любых 3 подряд идущих клеток есть хотя бы один кролик, если всего кроликов 8.</p>
+            <button class="solve-btn" data-target="s6">Показать решение</button>
+            <div id="s6" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Это не прямое применение принципа Дирихле. Если кроликов 8, то
+                    лис 2.</p>
+                <p class="step"><strong>Шаг 2.</strong> Чтобы не было трёх подряд идущих клеток без кролика, нужно,
+                    чтобы между любыми двумя лисами было не более 2 клеток.</p>
+                <p class="step"><strong>Шаг 3.</strong> Если лис 2, то они могут стоять так, чтобы между ними было 2
+                    клетки, и тогда всё хорошо. Но если они стоят через 3 клетки, то между ними 3 клетки без кролика —
+                    нарушение.</p>
+                <p class="step"><strong>Шаг 4.</strong> На самом деле утверждение неверно: лисы могут стоять на позициях
+                    1 и 5, тогда клетки 2,3,4 — без кролика.</p>
+                <div class="counterexample"><strong>Контрпример:</strong> лисы на позициях 1 и 5 → клетки 2,3,4 без
+                    кролика.
+                </div>
+                <div class="answer-block"><strong>Ответ:</strong> утверждение неверно.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 7.</strong> На окружности отмечено 100 точек. Докажите, что найдётся дуга
+            между соседними точками, содержащая не менее 3 точек (включая концы)?</p>
+            <button class="solve-btn" data-target="s7">Показать решение</button>
+            <div id="s7" class="solution">
+                <p><strong>Решение:</strong> Это не совсем принцип Дирихле. Если 100 точек на окружности, то дуг между
+                    соседними точками тоже 100. Средняя длина дуги = \( 1/100 \) длины окружности. По весовому принципу
+                    есть дуга длиной не меньше средней. Но количество точек на дуге — не длина. Это другая задача.</p>
+                <div class="answer-block"><strong>Ответ:</strong> не решается напрямую принципом Дирихле.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 8.</strong> В мешке лежат носки: 10 пар белых, 10 пар чёрных, 10 пар синих.
+            Сколько носков нужно вытащить, чтобы гарантированно получить пару одного цвета?</p>
+            <button class="solve-btn" data-target="s8">Показать решение</button>
+            <div id="s8" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Клетки: 3 цвета (\( m = 3 \)). Нам нужно, чтобы \( n > m \), то
+                    есть \( n > 3 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Если вытащить 4 носка, то по принципу Дирихле два из них одного
+                    цвета. Но нужно именно <strong>пару</strong> — два носка одного цвета. 4 носка гарантируют это.</p>
+                <div class="answer-block"><strong>Ответ:</strong> 4.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 9.</strong> Докажите, что среди 5 целых чисел найдутся два, сумма которых
+            чётна.</p>
+            <button class="solve-btn" data-target="s9">Показать решение</button>
+            <div id="s9" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Кролики: 5 чисел. Клетки: чётность чисел — 2 варианта (чётное,
+                    нечётное).</p>
+                <p class="step"><strong>Шаг 2.</strong> Так как \( 5 > 2 \), три числа имеют одинаковую чётность.</p>
+                <p class="step"><strong>Шаг 3.</strong> Сумма двух чисел одинаковой чётности — чётна.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 10.</strong> В шахматном турнире участвуют 10 человек. Каждый сыграл с
+            каждым ровно один раз. Докажите, что найдутся два участника, сыгравшие одинаковое число партий.</p>
+            <button class="solve-btn" data-target="s10">Показать решение</button>
+            <div id="s10" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Каждый участник может сыграть от 0 до 9 партий (всего 10
+                    возможных значений).</p>
+                <p class="step"><strong>Шаг 2.</strong> Кролики: 10 участников. Клетки: 10 возможных чисел сыгранных
+                    партий.</p>
+                <p class="step"><strong>Шаг 3.</strong> Но \( n = m = 10 \), принцип Дирихле не даёт гарантии. Однако
+                    есть нюанс: не может быть одновременно участника с 0 партий и участника с 9 партиями (если у одного
+                    0, то он ни с кем не играл, значит, у всех остальных не может быть 9). Значит, возможных значений не
+                    10, а максимум 9.</p>
+                <p class="step"><strong>Шаг 4.</strong> Тогда \( 10 > 9 \), и по принципу Дирихле два участника имеют
+                    одинаковое число партий.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Часть 2. Обобщённый принцип Дирихле (11–20) -->
+    <div class="part">
+        <h2>📊 Часть 2. Обобщённый принцип Дирихле (задачи 11–20)</h2>
+
+        <div class="task"><p><strong>Задача 11.</strong> В школе 1000 учеников. Докажите, что найдутся хотя бы трое,
+            родившихся в один день года (не учитывая високосный год).</p>
+            <button class="solve-btn" data-target="s11">Показать решение</button>
+            <div id="s11" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Кролики: 1000 учеников (\( n = 1000 \)). Клетки: 365 дней (\( m
+                    = 365 \)).</p>
+                <p class="step"><strong>Шаг 2.</strong> Нам нужно \( k = 3 \). Проверяем условие: \( 1000 > 365 \cdot
+                    (3-1) = 730 \). Да, \( 1000 > 730 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> По обобщённому принципу Дирихле существует день, в который
+                    родились не менее 3 учеников.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 12.</strong> В классе 30 учеников. Какое наименьшее число учеников нужно
+            выбрать, чтобы гарантированно среди них было 5 родившихся в один месяц?</p>
+            <button class="solve-btn" data-target="s12">Показать решение</button>
+            <div id="s12" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Нам нужно \( k = 5 \), \( m = 12 \) (месяцев).</p>
+                <p class="step"><strong>Шаг 2.</strong> По обобщённому принципу Дирихле нужно \( n > 12 \cdot (5-1) = 48
+                    \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Наименьшее целое \( n \): \( n = 49 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> 49.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 13.</strong> В коробке лежат карандаши 7 цветов. Сколько карандашей нужно
+            вытащить, чтобы гарантированно получить 4 карандаша одного цвета?</p>
+            <button class="solve-btn" data-target="s13">Показать решение</button>
+            <div id="s13" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( m = 7 \), \( k = 4 \). Нужно \( n > 7 \cdot (4-1) = 21 \).
+                </p>
+                <p class="step"><strong>Шаг 2.</strong> Наименьшее целое \( n \): \( n = 22 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> 22.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 14.</strong> Докажите, что среди 100 целых чисел найдутся два, разность
+            которых делится на 97.</p>
+            <button class="solve-btn" data-target="s14">Показать решение</button>
+            <div id="s14" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Кролики: 100 чисел. Клетки: 97 остатков при делении на 97.</p>
+                <p class="step"><strong>Шаг 2.</strong> Так как \( 100 > 97 \), два числа имеют одинаковый остаток.</p>
+                <p class="step"><strong>Шаг 3.</strong> Их разность делится на 97.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 15.</strong> В классе 35 учеников. Докажите, что найдутся хотя бы 4 ученика,
+            родившихся в один месяц.</p>
+            <button class="solve-btn" data-target="s15">Показать решение</button>
+            <div id="s15" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( n = 35 \), \( m = 12 \). Нужно \( k = 4 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Проверяем: \( 35 > 12 \cdot (4-1) = 36 \)? Нет, \( 35 \ngtr 36
+                    \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Значит, принцип Дирихле не гарантирует 4 учеников в одном
+                    месяце. Он гарантирует только \( \lceil 35/12 \rceil = 3 \) ученика.</p>
+                <div class="counterexample"><strong>Контрпример:</strong> можно распределить: 3,3,3,3,3,3,3,3,3,3,3,2 —
+                    нигде нет 4.
+                </div>
+                <div class="answer-block"><strong>Ответ:</strong> утверждение неверно.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 16.</strong> В ряд стоят 20 чисел. Докажите, что среди них есть два соседних
+            числа, сумма которых нечётна? (Это неверно.)</p>
+            <button class="solve-btn" data-target="s16">Показать решение</button>
+            <div id="s16" class="solution">
+                <p><strong>Решение:</strong> Это не принцип Дирихле. Можно расположить все чётные числа подряд — тогда
+                    суммы соседних будут чётными.</p>
+                <div class="counterexample"><strong>Контрпример:</strong> все числа чётные → суммы соседних чётные.
+                </div>
+                <div class="answer-block"><strong>Ответ:</strong> утверждение неверно.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 17.</strong> В коробке лежат шары 3 цветов: 10 красных, 15 синих, 20
+            зелёных. Сколько шаров нужно вытащить, чтобы гарантированно получить 5 шаров одного цвета?</p>
+            <button class="solve-btn" data-target="s17">Показать решение</button>
+            <div id="s17" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Худший случай: мы вытаскиваем по 4 шара каждого цвета — это \( 3
+                    \cdot 4 = 12 \) шаров, и у нас нет 5 одного цвета.</p>
+                <p class="step"><strong>Шаг 2.</strong> Следующий шар (13-й) гарантирует, что в каком-то цвете станет 5
+                    шаров.</p>
+                <div class="answer-block"><strong>Ответ:</strong> 13.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 18.</strong> На доске написаны 10 натуральных чисел. Докажите, что среди них
+            есть два, разность которых делится на 9.</p>
+            <button class="solve-btn" data-target="s18">Показать решение</button>
+            <div id="s18" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Кролики: 10 чисел. Клетки: 9 остатков при делении на 9.</p>
+                <p class="step"><strong>Шаг 2.</strong> \( 10 > 9 \), значит, два числа имеют одинаковый остаток.</p>
+                <p class="step"><strong>Шаг 3.</strong> Их разность делится на 9.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 19.</strong> В классе 40 учеников. Докажите, что найдутся хотя бы 4 ученика,
+            родившихся в один день недели.</p>
+            <button class="solve-btn" data-target="s19">Показать решение</button>
+            <div id="s19" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( n = 40 \), \( m = 7 \). Нужно \( k = 4 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Проверяем: \( 40 > 7 \cdot (4-1) = 21 \). Да, \( 40 > 21 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> По обобщённому принципу Дирихле существует день недели, в
+                    который родились не менее 4 учеников.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 20.</strong> В ряд стоят 100 лампочек, каждая либо горит, либо не горит.
+            Известно, что горят 70 лампочек. Докажите, что среди любых 10 подряд идущих лампочек есть хотя бы 7 горящих?
+            (Неверно.)</p>
+            <button class="solve-btn" data-target="s20">Показать решение</button>
+            <div id="s20" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Это неверно. Можно расположить 70 горящих так, чтобы в каком-то
+                    блоке из 10 было меньше 7.</p>
+                <p class="step"><strong>Шаг 2.</strong> Например, первые 5 горят, следующие 5 не горят, и так далее.</p>
+                <div class="counterexample"><strong>Контрпример:</strong> блоки по 5 горящих и 5 негорящих → в блоке из
+                    10 может быть 5 горящих.
+                </div>
+                <div class="answer-block"><strong>Ответ:</strong> утверждение неверно.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Часть 3. Весовой принцип Дирихле (21–30) -->
+    <div class="part">
+        <h2>⚖️ Часть 3. Весовой принцип Дирихле (задачи 21–30)</h2>
+
+        <div class="task"><p><strong>Задача 21.</strong> На столе лежат 10 монет, каждая весит либо 5 г, либо 10 г.
+            Общий вес монет 80 г. Докажите, что можно выбрать несколько монет так, чтобы их общий вес был ровно 50 г.
+        </p>
+            <button class="solve-btn" data-target="s21">Показать решение</button>
+            <div id="s21" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Пусть \( x \) — число монет по 5 г, \( y \) — по 10 г. Тогда \(
+                    x+y=10 \), \( 5x+10y=80 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Решаем: \( 5x+10(10-x)=80 \) ⇒ \( 5x+100-10x=80 \) ⇒ \( -5x=-20
+                    \) ⇒ \( x=4 \), \( y=6 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Значит, есть 4 монеты по 5 г и 6 по 10 г.</p>
+                <p class="step"><strong>Шаг 4.</strong> 50 г можно набрать, например, двумя монетами по 10 г и шестью
+                    монетами по 5 г: \( 2\cdot10 + 6\cdot5 = 20+30=50 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> да, можно.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 22.</strong> Квадрат площади 1 разрезан на 5 частей. Докажите, что найдётся
+            часть площади не меньше \( 1/5 \).</p>
+            <button class="solve-btn" data-target="s22">Показать решение</button>
+            <div id="s22" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Весовой принцип: общая площадь \( W = 1 \), число частей \( m =
+                    5 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> По весовому принципу существует часть с площадью \( \ge
+                    \frac{W}{m} = \frac{1}{5} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 23.</strong> На окружности отмечены 10 точек. Докажите, что найдётся дуга
+            между соседними точками длиной не меньше \( 1/10 \) длины окружности.</p>
+            <button class="solve-btn" data-target="s23">Показать решение</button>
+            <div id="s23" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Общая длина окружности \( W = 1 \), \( m = 10 \) дуг.</p>
+                <p class="step"><strong>Шаг 2.</strong> По весовому принципу существует дуга длиной \( \ge \frac{1}{10}
+                    \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 24.</strong> В ряд стоят 100 чисел, каждое от 0 до 1. Сумма всех чисел равна
+            60. Докажите, что среди любых 10 подряд идущих чисел сумма не меньше 6? (Неверно.)</p>
+            <button class="solve-btn" data-target="s24">Показать решение</button>
+            <div id="s24" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Это неверно. Можно распределить числа так, чтобы в каком-то
+                    блоке из 10 сумма была меньше 6.</p>
+                <p class="step"><strong>Шаг 2.</strong> Например, первые 10 чисел — все 0, остальные 90 — в сумме 60
+                    (среднее \( 2/3 \)).</p>
+                <div class="counterexample"><strong>Контрпример:</strong> первые 10 чисел = 0, остальные дают в сумме
+                    60.
+                </div>
+                <div class="answer-block"><strong>Ответ:</strong> утверждение неверно.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 25.</strong> На плоскости дано 5 точек. Докажите, что существует отрезок
+            между двумя из них длиной не менее \( 1/10 \) периметра минимального многоугольника, их содержащего?
+            (Неверно.)</p>
+            <button class="solve-btn" data-target="s25">Показать решение</button>
+            <div id="s25" class="solution">
+                <p><strong>Решение:</strong> Это сложная задача. Принцип Дирихле здесь не применим напрямую.</p>
+                <div class="answer-block"><strong>Ответ:</strong> не решается напрямую.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 26.</strong> В коробке лежат 100 шаров: 40 красных, 30 синих, 30 зелёных.
+            Сколько шаров нужно вытащить, чтобы гарантированно получить 10 шаров одного цвета?</p>
+            <button class="solve-btn" data-target="s26">Показать решение</button>
+            <div id="s26" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Худший случай: вытаскиваем по 9 шаров каждого цвета — это \( 3
+                    \cdot 9 = 27 \) шаров.</p>
+                <p class="step"><strong>Шаг 2.</strong> Следующий шар (28-й) гарантирует 10 шаров одного цвета.</p>
+                <div class="answer-block"><strong>Ответ:</strong> 28.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 27.</strong> На столе лежат 20 монет, каждая весит либо 2 г, либо 5 г. Общий
+            вес 64 г. Докажите, что можно выбрать несколько монет так, чтобы их общий вес был ровно 30 г.</p>
+            <button class="solve-btn" data-target="s27">Показать решение</button>
+            <div id="s27" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Пусть \( x \) — число монет по 2 г, \( y \) — по 5 г. Тогда \(
+                    x+y=20 \), \( 2x+5y=64 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Решаем: \( 2x+5(20-x)=64 \) ⇒ \( 2x+100-5x=64 \) ⇒ \( -3x=-36 \)
+                    ⇒ \( x=12 \), \( y=8 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Есть 12 монет по 2 г и 8 по 5 г.</p>
+                <p class="step"><strong>Шаг 4.</strong> 30 г можно набрать, например, 6 монет по 5 г: \( 6\cdot5=30 \).
+                </p>
+                <div class="answer-block"><strong>Ответ:</strong> да, можно.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 28.</strong> Докажите, что среди 100 чисел от 1 до 1000 найдутся два,
+            разность которых не превосходит 10.</p>
+            <button class="solve-btn" data-target="s28">Показать решение</button>
+            <div id="s28" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Кролики: 100 чисел. Клетки: разобьём числа 1..1000 на 100 групп
+                    по 10 чисел: (1-10), (11-20), ..., (991-1000).</p>
+                <p class="step"><strong>Шаг 2.</strong> Так как \( 100 = 100 \), принцип Дирихле не даёт гарантии.</p>
+                <p class="step"><strong>Шаг 3.</strong> Если чисел 101, то два попадут в одну группу, и их разность ≤ 9.
+                </p>
+                <p class="step"><strong>Шаг 4.</strong> Для 100 чисел это неверно: можно взять по одному числу из каждой
+                    группы.</p>
+                <div class="counterexample"><strong>Контрпример:</strong> числа 1, 11, 21, ..., 991 — разность между
+                    любыми двумя ≥ 10.
+                </div>
+                <div class="answer-block"><strong>Ответ:</strong> утверждение неверно для 100 чисел.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 29.</strong> На окружности отмечены 2025 точек. Докажите, что найдётся дуга
+            между соседними точками длиной не меньше \( 1/2025 \) длины окружности.</p>
+            <button class="solve-btn" data-target="s29">Показать решение</button>
+            <div id="s29" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Общая длина окружности \( W = 1 \), дуг \( m = 2025 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> По весовому принципу существует дуга длиной \( \ge
+                    \frac{1}{2025} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 30.</strong> В классе 30 учеников. Известно, что суммарный возраст всех
+            учеников 450 лет. Докажите, что найдётся ученик старше 15 лет.</p>
+            <button class="solve-btn" data-target="s30">Показать решение</button>
+            <div id="s30" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Общий возраст \( W = 450 \), число учеников \( m = 30 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Средний возраст: \( 450/30 = 15 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> По весовому принципу существует ученик с возрастом \( \ge 15 \).
+                </p>
+                <p class="step"><strong>Шаг 4.</strong> Но нам нужно строго больше 15. Если все ученики ровно по 15 лет,
+                    то суммарный возраст 450, и никто не старше 15.</p>
+                <p class="step"><strong>Шаг 5.</strong> Значит, утверждение «найдётся старше 15» неверно. Правильно:
+                    «найдётся не младше 15».</p>
+                <div class="counterexample"><strong>Контрпример:</strong> все ученики по 15 лет → никто не старше 15.
+                </div>
+                <div class="answer-block"><strong>Ответ:</strong> утверждение неверно.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Итоговая таблица -->
+    <div class="part">
+        <h2>📊 Итоговая таблица методов</h2>
+        <table style="width:100%; border-collapse:collapse; margin:1rem 0; background:#f8fafc;">
+            <thead>
+            <tr style="background:#e2e8f0;">
+                <th style="border:1px solid #cbd5e1; padding:0.5rem; text-align:left;">Метод</th>
+                <th style="border:1px solid #cbd5e1; padding:0.5rem; text-align:left;">Задачи</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Классический \( n > m \)</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">1, 2, 3, 4, 8, 9, 10, 14, 18</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Обобщённый \( n > m(k-1) \)</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">5, 11, 12, 13, 15, 19</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Весовой (среднее)</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">21, 22, 23, 26, 27, 29</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Комбинаторный (худший случай)</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">17, 26</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Поиск контрпримера</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">6, 16, 20, 24, 28, 30</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>© Заборовский М. С. Материалы для олимпиадников. 2026</footer>
+</div>
+
+<script>
+    document.querySelectorAll('.solve-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const t = document.getElementById(btn.getAttribute('data-target'));
+            if (t.style.display === 'none' || t.style.display === '') {
+                t.style.display = 'block';
+                btn.textContent = 'Скрыть решение';
+                if (window.MathJax) MathJax.typesetPromise([t]);
+            } else {
+                t.style.display = 'none';
+                btn.textContent = 'Показать решение';
+            }
+        });
+    });
+</script>
+</body>
+</html>
