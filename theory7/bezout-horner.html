@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Теорема Безу и схема Горнера | Полная теория</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f0f4f8;
+            color: #1e2a3e;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #1e5f7a, #0f3b4f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .badge {
+            background: #d4e6f1;
+            display: inline-block;
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cbd5e1;
+        }
+
+        .card h2 {
+            color: #1e5f7a;
+            border-left: 6px solid #3b82f6;
+            padding-left: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+
+        .card h3 {
+            color: #2c5282;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.4rem;
+        }
+
+        .theorem {
+            background: #eef2ff;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #2563eb;
+        }
+
+        .proof {
+            background: #fef9e3;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .example {
+            background: #e6f7f0;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .task {
+            background: #f8fafc;
+            margin: 1.2rem 0;
+            padding: 1rem 1.2rem;
+            border-radius: 1.2rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .solve-btn {
+            background: #1e5f7a;
+            color: white;
+            border: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .solve-btn:hover {
+            background: #0f4b62;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: #eef2ff;
+            border-radius: 0.8rem;
+            border-left: 3px solid #1e5f7a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #f8fafc;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 0.6rem;
+            text-align: left;
+        }
+
+        th {
+            background: #e2e8f0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #cbd5e1;
+            color: #4b5563;
+            font-size: 0.85rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #4b5563;
+            padding: 0.5rem 1rem;
+            border-left: 3px solid #6b7280;
+            margin: 0.8rem 0;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1.2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📐 Теорема Безу и схема Горнера</h1>
+        <div class="badge">Делимость многочленов • Быстрое вычисление • Деление уголком</div>
+    </header>
+
+    <div class="card">
+        <h2>📖 Часть 1. Теорема Безу</h2>
+
+        <h3>1.1. Формулировка</h3>
+        <div class="theorem">
+            <p><strong>Теорема Безу.</strong> Остаток от деления многочлена \( P(x) \) на двучлен \( x - a \) равен \(
+                P(a) \).</p>
+            <p><strong>Следствие:</strong> \( x - a \) делит \( P(x) \) тогда и только тогда, когда \( P(a) = 0 \).</p>
+        </div>
+
+        <h3>1.2. Доказательство</h3>
+        <div class="proof">
+            <p>Пусть \( P(x) \) — многочлен степени \( n \). Разделим его на \( x - a \) с остатком:</p>
+            \[
+            P(x) = (x - a) \cdot Q(x) + R,
+            \]
+            <p>где \( Q(x) \) — многочлен степени \( n-1 \), а \( R \) — число (остаток).</p>
+            <p>Подставим \( x = a \):</p>
+            \[
+            P(a) = (a - a) \cdot Q(a) + R = 0 \cdot Q(a) + R = R.
+            \]
+            <p>Значит, остаток \( R = P(a) \). Теорема доказана.</p>
+        </div>
+
+        <h3>1.3. Следствие 1 (критерий корня)</h3>
+        <div class="theorem">
+            <p>\( a \) является корнем \( P(x) \) ⇔ \( P(a) = 0 \) ⇔ \( (x - a) \mid P(x) \).</p>
+        </div>
+
+        <h3>1.4. Следствие 2 (кратность корня)</h3>
+        <div class="theorem">
+            <p>Если \( P(x) \) делится на \( (x - a)^k \), но не делится на \( (x - a)^{k+1} \), то \( a \) — корень
+                кратности \( k \).</p>
+        </div>
+
+        <h3>1.5. Пример</h3>
+        <div class="example">
+            <p><strong>Задача:</strong> Найти остаток от деления \( P(x) = x^3 - 2x^2 + 3x - 5 \) на \( x - 2 \).</p>
+            <p><strong>Решение:</strong> По теореме Безу, остаток равен \( P(2) = 8 - 8 + 6 - 5 = 1 \).</p>
+            <p><strong>Ответ:</strong> 1.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🔧 Часть 2. Схема Горнера</h2>
+
+        <h3>2.1. Что это?</h3>
+        <div class="theorem">
+            <p>Схема Горнера — это алгоритм для:</p>
+            <ul>
+                <li>Быстрого вычисления значения многочлена в точке.</li>
+                <li>Деления многочлена на \( x - a \).</li>
+                <li>Разложения многочлена по степеням \( x - a \).</li>
+            </ul>
+        </div>
+
+        <h3>2.2. Алгоритм вычисления значения</h3>
+        <div class="proof">
+            <p>Пусть \( P(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0 \).</p>
+            <p>Чтобы вычислить \( P(a) \), делаем:</p>
+            \[
+            b_n = a_n,
+            \]
+            \[
+            b_{k} = a_k + a \cdot b_{k+1} \quad \text{для } k = n-1, \dots, 0.
+            \]
+            <p>Тогда \( P(a) = b_0 \).</p>
+        </div>
+
+        <h3>2.3. Алгоритм деления на \( x - a \)</h3>
+        <div class="proof">
+            <p>Если \( P(x) = (x - a) \cdot Q(x) + R \), где</p>
+            \[
+            Q(x) = b_{n-1} x^{n-1} + b_{n-2} x^{n-2} + \dots + b_0,
+            \]
+            <p>то коэффициенты \( Q(x) \) и остаток \( R \) находятся так:</p>
+            \[
+            b_{n-1} = a_n,
+            \]
+            \[
+            b_{k-1} = a_k + a \cdot b_k \quad \text{для } k = n-1, \dots, 1,
+            \]
+            \[
+            R = a_0 + a \cdot b_0.
+            \]
+        </div>
+
+        <h3>2.4. Табличная запись</h3>
+        <div class="example">
+            <p>Схема Горнера удобно записывается в виде таблицы:</p>
+            <table>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>\(a_n\)</th>
+                    <th>\(a_{n-1}\)</th>
+                    <th>\(\dots\)</th>
+                    <th>\(a_1\)</th>
+                    <th>\(a_0\)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td>\(b_{n-1}\)</td>
+                    <td>\(b_{n-2}\)</td>
+                    <td>\(\dots\)</td>
+                    <td>\(b_0\)</td>
+                    <td>\(R\)</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>2.5. Пример деления</h3>
+        <div class="example">
+            <p><strong>Задача:</strong> Разделить \( P(x) = 2x^3 - 3x^2 + 4x - 5 \) на \( x - 2 \).</p>
+            <table>
+                <thead>
+                <tr>
+                    <th>Коэффициенты</th>
+                    <th>2</th>
+                    <th>-3</th>
+                    <th>4</th>
+                    <th>-5</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Умножаем на 2</td>
+                    <td></td>
+                    <td>4</td>
+                    <td>2</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>Складываем</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>6</td>
+                    <td>7</td>
+                </tr>
+                </tbody>
+            </table>
+            <p>Получаем: \( Q(x) = 2x^2 + x + 6 \), \( R = 7 \).</p>
+            <p>Проверка: \( (x-2)(2x^2+x+6) + 7 = 2x^3 - 3x^2 + 4x - 5 \). Верно.</p>
+        </div>
+
+        <h3>2.6. Почему это работает?</h3>
+        <div class="proof">
+            <p>Схема Горнера — это просто переписывание деления «уголком» в компактной табличной форме. Она основана на
+                рекуррентном соотношении между коэффициентами частного.</p>
+            <p>Если \( P(x) = (x-a)Q(x) + R \), где \( Q(x) = b_{n-1}x^{n-1} + \dots + b_0 \), то:</p>
+            \[
+            P(x) = (x-a)(b_{n-1}x^{n-1} + \dots + b_0) + R.
+            \]
+            <p>Раскрывая скобки и приравнивая коэффициенты при одинаковых степенях, получаем рекуррентные формулы для \(
+                b_k \).</p>
+        </div>
+
+        <h3>2.7. Пример вычисления значения</h3>
+        <div class="example">
+            <p><strong>Задача:</strong> Вычислить \( P(3) \) для \( P(x) = 2x^4 - 3x^3 + 5x^2 - 7x + 1 \).</p>
+            <table>
+                <thead>
+                <tr>
+                    <th>Коэффициенты</th>
+                    <th>2</th>
+                    <th>-3</th>
+                    <th>5</th>
+                    <th>-7</th>
+                    <th>1</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Умножаем на 3</td>
+                    <td></td>
+                    <td>6</td>
+                    <td>9</td>
+                    <td>42</td>
+                    <td>105</td>
+                </tr>
+                <tr>
+                    <td>Складываем</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>14</td>
+                    <td>35</td>
+                    <td>106</td>
+                </tr>
+                </tbody>
+            </table>
+            <p>Получаем: \( P(3) = 106 \).</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>✍️ Практика</h2>
+
+        <div class="task">
+            <p><strong>Задача 1.</strong> Найдите остаток от деления \( P(x) = x^4 - 2x^3 + 3x^2 - 4x + 5 \) на \( x - 1
+                \).</p>
+            <button class="solve-btn" data-target="sol1">Показать решение</button>
+            <div id="sol1" class="solution">
+                <p><strong>Решение:</strong> По теореме Безу, остаток равен \( P(1) = 1 - 2 + 3 - 4 + 5 = 3 \).</p>
+                <p><strong>Ответ:</strong> 3.</p>
+            </div>
+        </div>
+
+        <div class="task">
+            <p><strong>Задача 2.</strong> Разделите \( P(x) = x^3 - 4x^2 + 6x - 4 \) на \( x - 2 \) с помощью схемы
+                Горнера.</p>
+            <button class="solve-btn" data-target="sol2">Показать решение</button>
+            <div id="sol2" class="solution">
+                <p><strong>Решение:</strong></p>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Коэффициенты</th>
+                        <th>1</th>
+                        <th>-4</th>
+                        <th>6</th>
+                        <th>-4</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Умножаем на 2</td>
+                        <td></td>
+                        <td>2</td>
+                        <td>-4</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>Складываем</td>
+                        <td>1</td>
+                        <td>-2</td>
+                        <td>2</td>
+                        <td>0</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p>Получаем: \( Q(x) = x^2 - 2x + 2 \), \( R = 0 \).</p>
+                <p><strong>Ответ:</strong> \( (x-2)(x^2 - 2x + 2) \).</p>
+            </div>
+        </div>
+
+        <div class="task">
+            <p><strong>Задача 3.</strong> Вычислите \( P(5) \) для \( P(x) = 3x^3 - 2x^2 + 4x - 7 \) с помощью схемы
+                Горнера.</p>
+            <button class="solve-btn" data-target="sol3">Показать решение</button>
+            <div id="sol3" class="solution">
+                <p><strong>Решение:</strong></p>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Коэффициенты</th>
+                        <th>3</th>
+                        <th>-2</th>
+                        <th>4</th>
+                        <th>-7</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Умножаем на 5</td>
+                        <td></td>
+                        <td>15</td>
+                        <td>65</td>
+                        <td>345</td>
+                    </tr>
+                    <tr>
+                        <td>Складываем</td>
+                        <td>3</td>
+                        <td>13</td>
+                        <td>69</td>
+                        <td>338</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p>Получаем: \( P(5) = 338 \).</p>
+                <p><strong>Ответ:</strong> 338.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>© Заборовский М. С. Материалы для олимпиадников. 2026</footer>
+</div>
+<script>
+    document.querySelectorAll('.solve-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const t = document.getElementById(btn.getAttribute('data-target'));
+            if (t.style.display === 'none' || t.style.display === '') {
+                t.style.display = 'block';
+                btn.textContent = 'Скрыть решение';
+                if (window.MathJax) MathJax.typesetPromise([t]);
+            } else {
+                t.style.display = 'none';
+                btn.textContent = 'Показать решение';
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Целые корни многочленов | Рациональная теорема</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #e6f7f0;
+            color: #1a3b32;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #22665c, #0f766e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .badge {
+            background: #c0e3db;
+            display: inline-block;
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #bee0d6;
+        }
+
+        .card h2 {
+            color: #22665c;
+            border-left: 6px solid #14b8a6;
+            padding-left: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+
+        .card h3 {
+            color: #1a6b5e;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.4rem;
+        }
+
+        .theorem {
+            background: #eef9f5;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #14b8a6;
+        }
+
+        .proof {
+            background: #f0fdfa;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #22665c;
+        }
+
+        .example {
+            background: #f0fdfa;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .task {
+            background: #f9fefc;
+            margin: 1.2rem 0;
+            padding: 1rem 1.2rem;
+            border-radius: 1.2rem;
+            border-left: 4px solid #14b8a6;
+        }
+
+        .solve-btn {
+            background: #22665c;
+            color: white;
+            border: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .solve-btn:hover {
+            background: #0f5b52;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: #d1fae5;
+            border-radius: 0.8rem;
+            border-left: 3px solid #22665c;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #f8fafc;
+        }
+
+        th, td {
+            border: 1px solid #bee0d6;
+            padding: 0.6rem;
+            text-align: left;
+        }
+
+        th {
+            background: #eef9f5;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #bee0d6;
+            color: #2c5f55;
+            font-size: 0.85rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #2c5f55;
+            padding: 0.5rem 1rem;
+            border-left: 3px solid #0f766e;
+            margin: 0.8rem 0;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1.2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📐 Целые корни многочленов</h1>
+        <div class="badge">Рациональная теорема о корнях • Поиск корней</div>
+    </header>
+
+    <div class="card">
+        <h2>📖 Часть 1. Рациональная теорема о корнях</h2>
+
+        <h3>1.1. Формулировка</h3>
+        <div class="theorem">
+            <p>Если многочлен \( P(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0 \) с целыми коэффициентами имеет
+                рациональный корень \( \frac{p}{q} \) (несократимая дробь), то:</p>
+            \[
+            p \mid a_0, \quad q \mid a_n.
+            \]
+        </div>
+
+        <h3>1.2. Доказательство</h3>
+        <div class="proof">
+            <p>Пусть \( P\left(\frac{p}{q}\right) = 0 \). Тогда:</p>
+            \[
+            a_n \left(\frac{p}{q}\right)^n + a_{n-1} \left(\frac{p}{q}\right)^{n-1} + \dots + a_1 \frac{p}{q} + a_0 = 0.
+            \]
+            <p>Умножаем на \( q^n \):</p>
+            \[
+            a_n p^n + a_{n-1} p^{n-1} q + \dots + a_1 p q^{n-1} + a_0 q^n = 0.
+            \]
+            <p>Теперь:</p>
+            <ul>
+                <li>Все члены, кроме \( a_0 q^n \), делятся на \( p \). Значит, \( p \mid a_0 q^n \). Так как \( \gcd(p,
+                    q) = 1 \), то \( p \mid a_0 \).
+                </li>
+                <li>Все члены, кроме \( a_n p^n \), делятся на \( q \). Значит, \( q \mid a_n p^n \). Так как \( \gcd(p,
+                    q) = 1 \), то \( q \mid a_n \).
+                </li>
+            </ul>
+            <p>Теорема доказана.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📐 Часть 2. Следствия</h2>
+
+        <h3>2.1. Следствие 1 (целые корни)</h3>
+        <div class="theorem">
+            <p>Если многочлен имеет целый корень \( m \), то \( m \) делит свободный член \( a_0 \).</p>
+        </div>
+
+        <h3>2.2. Следствие 2 (приведённый многочлен)</h3>
+        <div class="theorem">
+            <p>Если многочлен <strong>приведённый</strong> (старший коэффициент 1), то все его рациональные корни —
+                целые.</p>
+        </div>
+
+        <h3>2.3. Следствие 3 (связь с теоремой Безу)</h3>
+        <div class="theorem">
+            <p>Если \( P(1) \ne 0 \), то \( x-1 \) не делит \( P(x) \).</p>
+            <p>Если \( P(-1) \ne 0 \), то \( x+1 \) не делит \( P(x) \).</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📐 Часть 3. Алгоритм поиска корней</h2>
+
+        <div class="proof">
+            <p><strong>Шаг 1.</strong> Найти все делители свободного члена \( a_0 \).</p>
+            <p><strong>Шаг 2.</strong> Найти все делители старшего коэффициента \( a_n \).</p>
+            <p><strong>Шаг 3.</strong> Составить все возможные дроби \( \frac{p}{q} \), где \( p \mid a_0 \), \( q \mid
+                a_n \).</p>
+            <p><strong>Шаг 4.</strong> Проверить каждую дробь подстановкой в \( P(x) \).</p>
+            <p><strong>Шаг 5.</strong> Найденные корни использовать для разложения на множители (с помощью схемы
+                Горнера).</p>
+        </div>
+
+        <h3>3.1. Пример</h3>
+        <div class="example">
+            <p><strong>Задача:</strong> Найти рациональные корни \( P(x) = 2x^3 - 3x^2 - 8x + 12 \).</p>
+            <p><strong>Решение:</strong></p>
+            <p>1. Делители свободного члена 12: \( \pm 1, \pm 2, \pm 3, \pm 4, \pm 6, \pm 12 \).</p>
+            <p>2. Делители старшего коэффициента 2: \( \pm 1, \pm 2 \).</p>
+            <p>3. Возможные рациональные корни: \( \pm 1, \pm 2, \pm 3, \pm 4, \pm 6, \pm 12, \pm \frac{1}{2}, \pm
+                \frac{3}{2} \).</p>
+            <p>4. Проверяем:</p>
+            <ul>
+                <li>\( P(2) = 16 - 12 - 16 + 12 = 0 \) ⇒ \( x=2 \) — корень.</li>
+                <li>Делим на \( x-2 \): \( (x-2)(2x^2 + x - 6) \).</li>
+                <li>\( 2x^2 + x - 6 = (2x - 3)(x + 2) \).</li>
+            </ul>
+            <p>Корни: \( x = 2, x = \frac{3}{2}, x = -2 \).</p>
+            <p><strong>Ответ:</strong> \( 2, \frac{3}{2}, -2 \).</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📐 Часть 4. Связь методов</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Метод</th>
+                <th>Что даёт</th>
+                <th>Когда применять</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Теорема Безу</td>
+                <td>Остаток, делимость на \( x-a \)</td>
+                <td>Проверка корней, деление</td>
+            </tr>
+            <tr>
+                <td>Схема Горнера</td>
+                <td>Быстрое деление и вычисление</td>
+                <td>Когда нужно много раз делить на \( x-a \)</td>
+            </tr>
+            <tr>
+                <td>Рациональная теорема</td>
+                <td>Кандидаты в корни</td>
+                <td>Поиск корней многочлена с целыми коэффициентами</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>📋 Часть 5. Шпаргалка</h2>
+
+        <div class="theorem">
+            <p><strong>Рациональная теорема:</strong></p>
+            \[
+            \frac{p}{q} \text{ — корень } \Rightarrow p \mid a_0, \ q \mid a_n.
+            \]
+        </div>
+
+        <div class="theorem">
+            <p><strong>Для приведённого многочлена:</strong> все рациональные корни — целые.</p>
+        </div>
+
+        <div class="theorem">
+            <p><strong>Теорема Безу:</strong> \( P(a) = 0 \) ⇔ \( (x-a) \mid P(x) \).</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>✍️ Практика</h2>
+
+        <div class="task">
+            <p><strong>Задача 1.</strong> Найдите все целые корни \( P(x) = x^3 - 6x^2 + 11x - 6 \).</p>
+            <button class="solve-btn" data-target="sol1">Показать решение</button>
+            <div id="sol1" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p>Делители свободного члена -6: \( \pm 1, \pm 2, \pm 3, \pm 6 \).</p>
+                <p>Проверяем: \( P(1)=0 \), \( P(2)=0 \), \( P(3)=0 \).</p>
+                <p>\( P(x) = (x-1)(x-2)(x-3) \).</p>
+                <p><strong>Ответ:</strong> \( 1, 2, 3 \).</p>
+            </div>
+        </div>
+
+        <div class="task">
+            <p><strong>Задача 2.</strong> Найдите рациональные корни \( P(x) = 6x^3 + 5x^2 - 7x - 4 \).</p>
+            <button class="solve-btn" data-target="sol2">Показать решение</button>
+            <div id="sol2" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p>Делители -4: \( \pm 1, \pm 2, \pm 4 \).</p>
+                <p>Делители 6: \( \pm 1, \pm 2, \pm 3, \pm 6 \).</p>
+                <p>Возможные корни: \( \pm 1, \pm 2, \pm 4, \pm \frac{1}{2}, \pm \frac{1}{3}, \pm \frac{2}{3}, \pm
+                    \frac{4}{3}, \pm \frac{1}{6} \).</p>
+                <p>Проверка: \( P(-1)=0 \) ⇒ \( x=-1 \) — корень.</p>
+                <p>Делим на \( x+1 \): \( 6x^2 - x - 4 = (3x-4)(2x+1) \).</p>
+                <p>Корни: \( -1, \frac{4}{3}, -\frac{1}{2} \).</p>
+                <p><strong>Ответ:</strong> \( -1, \frac{4}{3}, -\frac{1}{2} \).</p>
+            </div>
+        </div>
+
+        <div class="task">
+            <p><strong>Задача 3.</strong> Докажите, что многочлен \( P(x) = x^4 + x^3 + x^2 + x + 1 \) не имеет
+                рациональных корней.</p>
+            <button class="solve-btn" data-target="sol3">Показать решение</button>
+            <div id="sol3" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p>Старший коэффициент 1, значит, все рациональные корни — целые.</p>
+                <p>Делители свободного члена 1: \( \pm 1 \).</p>
+                <p>Проверяем: \( P(1)=5 \ne 0 \), \( P(-1)=1-1+1-1+1=1 \ne 0 \).</p>
+                <p>Ни один из делителей не является корнем, значит, рациональных корней нет.</p>
+                <p><strong>Ответ:</strong> доказано.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>© Заборовский М. С. Материалы для олимпиадников. 2026</footer>
+</div>
+<script>
+    document.querySelectorAll('.solve-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const t = document.getElementById(btn.getAttribute('data-target'));
+            if (t.style.display === 'none' || t.style.display === '') {
+                t.style.display = 'block';
+                btn.textContent = 'Скрыть решение';
+                if (window.MathJax) MathJax.typesetPromise([t]);
+            } else {
+                t.style.display = 'none';
+                btn.textContent = 'Показать решение';
+            }
+        });
+    });
+</script>
+</body>
+</html>

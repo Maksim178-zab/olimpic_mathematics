@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практикум | Многочлены | 40 задач с решениями</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f0f4f8;
+            color: #1e2a3e;
+            padding: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #1e5f7a, #0f3b4f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #2c5282;
+            margin-top: 0.3rem;
+        }
+
+        .badge {
+            background: #d4e6f1;
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .part {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cbd5e1;
+        }
+
+        .part h2 {
+            color: #1e5f7a;
+            border-left: 5px solid #3b82f6;
+            padding-left: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .task {
+            background: #f8fafc;
+            margin: 1rem 0;
+            padding: 1rem 1.2rem;
+            border-radius: 1rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .task p {
+            margin-bottom: 0.3rem;
+        }
+
+        .solve-btn {
+            background: #1e5f7a;
+            color: white;
+            border: none;
+            padding: 0.3rem 1rem;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.3rem;
+            transition: background 0.2s;
+        }
+
+        .solve-btn:hover {
+            background: #0f4b62;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 1rem 1.2rem;
+            background: #eef2ff;
+            border-radius: 0.8rem;
+            border-left: 3px solid #1e5f7a;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .solution p {
+            margin: 0.6rem 0;
+        }
+
+        .solution .step {
+            margin-left: 1.2rem;
+            margin-top: 0.4rem;
+        }
+
+        .solution .formula-block {
+            background: #f8fafc;
+            padding: 0.6rem;
+            border-radius: 0.6rem;
+            text-align: center;
+            margin: 0.6rem 0;
+        }
+
+        .solution .answer-block {
+            background: #d1fae5;
+            padding: 0.6rem;
+            border-radius: 0.6rem;
+            text-align: center;
+            margin: 0.6rem 0;
+            font-weight: bold;
+            font-size: 1.05rem;
+        }
+
+        .solution .table-block {
+            background: #f8fafc;
+            padding: 0.6rem;
+            border-radius: 0.6rem;
+            margin: 0.6rem 0;
+            overflow-x: auto;
+        }
+
+        .solution .table-block table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .solution .table-block td {
+            border: 1px solid #cbd5e1;
+            padding: 0.3rem;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            border-top: 1px solid #cbd5e1;
+            padding-top: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .part {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .solution {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📐 Многочлены</h1>
+        <div class="subtitle">40 задач с полными решениями</div>
+        <div class="badge">Теорема Безу • Горнер • Интерполяция • Корни</div>
+    </header>
+
+    <!-- Часть 1. Теорема Безу и схема Горнера (1–10) -->
+    <div class="part">
+        <h2>📖 Часть 1. Теорема Безу и схема Горнера (задачи 1–10)</h2>
+
+        <div class="task"><p><strong>Задача 1.</strong> Найдите остаток от деления \( P(x) = x^3 - 2x^2 + 3x - 5 \) на
+            \( x - 2 \).</p>
+            <button class="solve-btn" data-target="s1">Показать решение</button>
+            <div id="s1" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> По теореме Безу, остаток от деления на \( x - a \) равен \( P(a)
+                    \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Вычисляем \( P(2) = 2^3 - 2\cdot 2^2 + 3\cdot 2 - 5 = 8 - 8 + 6
+                    - 5 = 1 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Значит, остаток равен 1.</p>
+                <div class="answer-block"><strong>Ответ:</strong> 1.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 2.</strong> Найдите остаток от деления \( P(x) = 2x^4 - 3x^3 + x - 7 \) на
+            \( x + 1 \).</p>
+            <button class="solve-btn" data-target="s2">Показать решение</button>
+            <div id="s2" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( x + 1 = x - (-1) \), значит, остаток равен \( P(-1) \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( P(-1) = 2(-1)^4 - 3(-1)^3 + (-1) - 7 = 2 + 3 - 1 - 7 = -3 \).
+                </p>
+                <div class="answer-block"><strong>Ответ:</strong> -3.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 3.</strong> Разделите \( P(x) = 3x^3 - 5x^2 + 2x - 4 \) на \( x - 2 \) с
+            помощью схемы Горнера.</p>
+            <button class="solve-btn" data-target="s3">Показать решение</button>
+            <div id="s3" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Выписываем коэффициенты: \( 3, -5, 2, -4 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Схема Горнера для \( a = 2 \):</p>
+                <div class="table-block">
+                    <table>
+                        <tr>
+                            <td>Коэффициенты</td>
+                            <td>3</td>
+                            <td>-5</td>
+                            <td>2</td>
+                            <td>-4</td>
+                        </tr>
+                        <tr>
+                            <td>Умножаем на 2</td>
+                            <td></td>
+                            <td>6</td>
+                            <td>2</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>Складываем</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>4</td>
+                            <td>4</td>
+                        </tr>
+                    </table>
+                </div>
+                <p class="step"><strong>Шаг 3.</strong> Получаем частное \( Q(x) = 3x^2 + x + 4 \), остаток \( R = 4 \).
+                </p>
+                <p class="step"><strong>Шаг 4.</strong> Проверка: \( (x-2)(3x^2 + x + 4) + 4 = 3x^3 - 5x^2 + 2x - 4 \).
+                    Верно.</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( Q(x) = 3x^2 + x + 4 \), \( R = 4 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 4.</strong> Разделите \( P(x) = x^4 - 3x^3 + 2x^2 - x + 5 \) на \( x - 1 \).
+        </p>
+            <button class="solve-btn" data-target="s4">Показать решение</button>
+            <div id="s4" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Коэффициенты: \( 1, -3, 2, -1, 5 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Схема Горнера для \( a = 1 \):</p>
+                <div class="table-block">
+                    <table>
+                        <tr>
+                            <td>Коэффициенты</td>
+                            <td>1</td>
+                            <td>-3</td>
+                            <td>2</td>
+                            <td>-1</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Умножаем на 1</td>
+                            <td></td>
+                            <td>1</td>
+                            <td>-2</td>
+                            <td>0</td>
+                            <td>-1</td>
+                        </tr>
+                        <tr>
+                            <td>Складываем</td>
+                            <td>1</td>
+                            <td>-2</td>
+                            <td>0</td>
+                            <td>-1</td>
+                            <td>4</td>
+                        </tr>
+                    </table>
+                </div>
+                <p class="step"><strong>Шаг 3.</strong> Частное: \( Q(x) = x^3 - 2x^2 + 0x - 1 = x^3 - 2x^2 - 1 \),
+                    остаток \( R = 4 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( Q(x) = x^3 - 2x^2 - 1 \), \( R = 4 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 5.</strong> Докажите, что \( x - 1 \) делит \( P(x) = x^{2025} - 1 \).</p>
+            <button class="solve-btn" data-target="s5">Показать решение</button>
+            <div id="s5" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> По теореме Безу, \( x - 1 \) делит \( P(x) \) тогда и только
+                    тогда, когда \( P(1) = 0 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( P(1) = 1^{2025} - 1 = 1 - 1 = 0 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Значит, \( x - 1 \) делит \( P(x) \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 6.</strong> Докажите, что \( x + 1 \) делит \( P(x) = x^{2025} + 1 \).</p>
+            <button class="solve-btn" data-target="s6">Показать решение</button>
+            <div id="s6" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( x + 1 = x - (-1) \). Нужно проверить \( P(-1) = 0 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( P(-1) = (-1)^{2025} + 1 = -1 + 1 = 0 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Значит, \( x + 1 \) делит \( P(x) \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 7.</strong> Найдите значение многочлена \( P(x) = 2x^3 - 5x^2 + 3x - 7 \) в
+            точке \( x = 3 \) с помощью схемы Горнера.</p>
+            <button class="solve-btn" data-target="s7">Показать решение</button>
+            <div id="s7" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Коэффициенты: \( 2, -5, 3, -7 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Схема Горнера для \( a = 3 \):</p>
+                <div class="table-block">
+                    <table>
+                        <tr>
+                            <td>Коэффициенты</td>
+                            <td>2</td>
+                            <td>-5</td>
+                            <td>3</td>
+                            <td>-7</td>
+                        </tr>
+                        <tr>
+                            <td>Умножаем на 3</td>
+                            <td></td>
+                            <td>6</td>
+                            <td>3</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td>Складываем</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>6</td>
+                            <td>11</td>
+                        </tr>
+                    </table>
+                </div>
+                <p class="step"><strong>Шаг 3.</strong> Последнее число — это значение \( P(3) = 11 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> 11.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 8.</strong> Найдите \( a \), при котором \( x - 2 \) делит \( P(x) = x^3 +
+            ax^2 - 5x + 6 \).</p>
+            <button class="solve-btn" data-target="s8">Показать решение</button>
+            <div id="s8" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> По теореме Безу, \( P(2) = 0 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( P(2) = 8 + 4a - 10 + 6 = 4a + 4 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( 4a + 4 = 0 \) ⇒ \( a = -1 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( a = -1 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 9.</strong> Найдите \( a \), при котором \( x + 1 \) делит \( P(x) = x^3 -
+            2x^2 + ax + 3 \).</p>
+            <button class="solve-btn" data-target="s9">Показать решение</button>
+            <div id="s9" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( x + 1 = x - (-1) \), значит, \( P(-1) = 0 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( P(-1) = -1 - 2 - a + 3 = -a \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( -a = 0 \) ⇒ \( a = 0 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( a = 0 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 10.</strong> Разложите \( P(x) = x^3 - 6x^2 + 11x - 6 \) на множители, зная,
+            что \( x = 1 \) — корень.</p>
+            <button class="solve-btn" data-target="s10">Показать решение</button>
+            <div id="s10" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Делим \( P(x) \) на \( x - 1 \) схемой Горнера:</p>
+                <div class="table-block">
+                    <table>
+                        <tr>
+                            <td>Коэффициенты</td>
+                            <td>1</td>
+                            <td>-6</td>
+                            <td>11</td>
+                            <td>-6</td>
+                        </tr>
+                        <tr>
+                            <td>Умножаем на 1</td>
+                            <td></td>
+                            <td>1</td>
+                            <td>-5</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>Складываем</td>
+                            <td>1</td>
+                            <td>-5</td>
+                            <td>6</td>
+                            <td>0</td>
+                        </tr>
+                    </table>
+                </div>
+                <p class="step"><strong>Шаг 2.</strong> \( P(x) = (x-1)(x^2 - 5x + 6) \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( x^2 - 5x + 6 = (x-2)(x-3) \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Значит, \( P(x) = (x-1)(x-2)(x-3) \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( (x-1)(x-2)(x-3) \).</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Часть 2. Поиск корней (11–20) -->
+    <div class="part">
+        <h2>🔍 Часть 2. Поиск корней (задачи 11–20)</h2>
+
+        <div class="task"><p><strong>Задача 11.</strong> Найдите все рациональные корни \( P(x) = 2x^3 - 3x^2 - 8x + 12
+            \).</p>
+            <button class="solve-btn" data-target="s11">Показать решение</button>
+            <div id="s11" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Свободный член \( a_0 = 12 \). Его делители: \( \pm 1, \pm 2,
+                    \pm 3, \pm 4, \pm 6, \pm 12 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Старший коэффициент \( a_3 = 2 \). Его делители: \( \pm 1, \pm 2
+                    \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Возможные рациональные корни: \( \pm 1, \pm 2, \pm 3, \pm 4, \pm
+                    6, \pm 12, \pm \frac{1}{2}, \pm \frac{3}{2} \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Проверяем: \( P(2) = 16 - 12 - 16 + 12 = 0 \) ⇒ \( x = 2 \) —
+                    корень.</p>
+                <p class="step"><strong>Шаг 5.</strong> Делим на \( x-2 \): получаем \( 2x^2 + x - 6 \).</p>
+                <p class="step"><strong>Шаг 6.</strong> \( 2x^2 + x - 6 = (2x-3)(x+2) \).</p>
+                <p class="step"><strong>Шаг 7.</strong> Корни: \( x = 2, x = \frac{3}{2}, x = -2 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( 2, \frac{3}{2}, -2 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 12.</strong> Найдите все целые корни \( P(x) = x^3 - 4x^2 + x + 6 \).</p>
+            <button class="solve-btn" data-target="s12">Показать решение</button>
+            <div id="s12" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Многочлен приведённый (старший коэффициент 1), значит, все
+                    рациональные корни — целые.</p>
+                <p class="step"><strong>Шаг 2.</strong> Целые корни — делители свободного члена 6: \( \pm 1, \pm 2, \pm
+                    3, \pm 6 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Проверяем: \( P(1) = 1 - 4 + 1 + 6 = 4 \ne 0 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> \( P(-1) = -1 - 4 - 1 + 6 = 0 \) ⇒ \( x = -1 \) — корень.</p>
+                <p class="step"><strong>Шаг 5.</strong> Делим на \( x+1 \): получаем \( x^2 - 5x + 6 = (x-2)(x-3) \).
+                </p>
+                <p class="step"><strong>Шаг 6.</strong> Корни: \( -1, 2, 3 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( -1, 2, 3 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 13.</strong> Найдите все рациональные корни \( P(x) = 6x^3 - 7x^2 - 7x + 6
+            \).</p>
+            <button class="solve-btn" data-target="s13">Показать решение</button>
+            <div id="s13" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( a_0 = 6 \), делители: \( \pm 1, \pm 2, \pm 3, \pm 6 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( a_3 = 6 \), делители: \( \pm 1, \pm 2, \pm 3, \pm 6 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Возможные корни: \( \pm 1, \pm 2, \pm 3, \pm 6, \pm \frac{1}{2},
+                    \pm \frac{1}{3}, \pm \frac{1}{6}, \pm \frac{2}{3}, \pm \frac{3}{2} \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Проверяем: \( P(-1) = -6 - 7 + 7 + 6 = 0 \) ⇒ \( x = -1 \) —
+                    корень.</p>
+                <p class="step"><strong>Шаг 5.</strong> Делим на \( x+1 \): \( 6x^2 - 13x + 6 \).</p>
+                <p class="step"><strong>Шаг 6.</strong> \( 6x^2 - 13x + 6 = (2x-3)(3x-2) \).</p>
+                <p class="step"><strong>Шаг 7.</strong> Корни: \( -1, \frac{3}{2}, \frac{2}{3} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( -1, \frac{3}{2}, \frac{2}{3} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 14.</strong> Докажите, что \( P(x) = x^5 - 5x^4 + 10x^3 - 10x^2 + 5x - 1 \)
+            имеет корень \( x = 1 \) кратности 5.</p>
+            <button class="solve-btn" data-target="s14">Показать решение</button>
+            <div id="s14" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Заметим, что \( P(x) = (x-1)^5 \) по формуле бинома Ньютона.</p>
+                <p class="step"><strong>Шаг 2.</strong> Значит, \( x = 1 \) — корень кратности 5.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 15.</strong> Найдите все целые корни \( P(x) = x^4 - 2x^3 - 3x^2 + 4x + 4
+            \).</p>
+            <button class="solve-btn" data-target="s15">Показать решение</button>
+            <div id="s15" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Делители свободного члена 4: \( \pm 1, \pm 2, \pm 4 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Проверяем: \( P(-1) = 1 + 2 - 3 - 4 + 4 = 0 \) ⇒ \( x = -1 \) —
+                    корень.</p>
+                <p class="step"><strong>Шаг 3.</strong> \( P(2) = 16 - 16 - 12 + 8 + 4 = 0 \) ⇒ \( x = 2 \) — корень.
+                </p>
+                <p class="step"><strong>Шаг 4.</strong> Делим на \( (x+1)(x-2) = x^2 - x - 2 \):</p>
+                <p>\( P(x) = (x^2 - x - 2)(x^2 - x - 2) = (x^2 - x - 2)^2 \).</p>
+                <p class="step"><strong>Шаг 5.</strong> Корни: \( -1 \) (кратность 2), \( 2 \) (кратность 2).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( -1, 2 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 16.</strong> Найдите все рациональные корни \( P(x) = 2x^4 - 5x^3 + 5x - 2
+            \).</p>
+            <button class="solve-btn" data-target="s16">Показать решение</button>
+            <div id="s16" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( a_0 = -2 \), делители: \( \pm 1, \pm 2 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( a_4 = 2 \), делители: \( \pm 1, \pm 2 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Возможные корни: \( \pm 1, \pm 2, \pm \frac{1}{2} \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Проверяем: \( P(1) = 2 - 5 + 5 - 2 = 0 \) ⇒ \( x = 1 \) —
+                    корень.</p>
+                <p class="step"><strong>Шаг 5.</strong> \( P(-1) = 2 + 5 - 5 - 2 = 0 \) ⇒ \( x = -1 \) — корень.</p>
+                <p class="step"><strong>Шаг 6.</strong> \( P(2) = 32 - 40 + 10 - 2 = 0 \) ⇒ \( x = 2 \) — корень.</p>
+                <p class="step"><strong>Шаг 7.</strong> \( P(1/2) = 2/16 - 5/8 + 5/2 - 2 = 0 \) ⇒ \( x = \frac{1}{2} \)
+                    — корень.</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( 1, -1, 2, \frac{1}{2} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 17.</strong> Докажите, что многочлен \( x^{2025} - 2025x + 2024 \) делится
+            на \( (x-1)^2 \).</p>
+            <button class="solve-btn" data-target="s17">Показать решение</button>
+            <div id="s17" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Проверим \( P(1) = 1 - 2025 + 2024 = 0 \) ⇒ \( x-1 \) — корень.
+                </p>
+                <p class="step"><strong>Шаг 2.</strong> Найдём \( P'(x) = 2025x^{2024} - 2025 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( P'(1) = 2025 - 2025 = 0 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Значит, \( x=1 \) — корень кратности не менее 2, то есть \(
+                    (x-1)^2 \) делит \( P(x) \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 18.</strong> Найдите все целые корни \( P(x) = x^3 - 6x^2 + 11x - 6 \).</p>
+            <button class="solve-btn" data-target="s18">Показать решение</button>
+            <div id="s18" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Делители 6: \( \pm 1, \pm 2, \pm 3, \pm 6 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Проверяем: \( P(1) = 0, P(2) = 0, P(3) = 0 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Корни: \( 1, 2, 3 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( 1, 2, 3 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 19.</strong> Найдите все рациональные корни \( P(x) = 4x^3 - 8x^2 - x + 2
+            \).</p>
+            <button class="solve-btn" data-target="s19">Показать решение</button>
+            <div id="s19" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( a_0 = 2 \), делители: \( \pm 1, \pm 2 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( a_3 = 4 \), делители: \( \pm 1, \pm 2, \pm 4 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Возможные корни: \( \pm 1, \pm 2, \pm \frac{1}{2}, \pm
+                    \frac{1}{4} \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Проверяем: \( P(2) = 32 - 32 - 2 + 2 = 0 \) ⇒ \( x = 2 \) —
+                    корень.</p>
+                <p class="step"><strong>Шаг 5.</strong> \( P(1/2) = 0.5 - 2 - 0.5 + 2 = 0 \) ⇒ \( x = \frac{1}{2} \) —
+                    корень.</p>
+                <p class="step"><strong>Шаг 6.</strong> \( P(-1/2) = -0.5 - 2 + 0.5 + 2 = 0 \) ⇒ \( x = -\frac{1}{2} \)
+                    — корень.</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( 2, \frac{1}{2}, -\frac{1}{2} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 20.</strong> Докажите, что \( P(x) = x^3 - 3x^2 + 3x - 1 \) имеет только
+            один корень (кратности 3).</p>
+            <button class="solve-btn" data-target="s20">Показать решение</button>
+            <div id="s20" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Заметим, что \( P(x) = (x-1)^3 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Значит, корень только \( x=1 \) кратности 3.</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( x = 1 \).</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Часть 3. Интерполяция (21–30) -->
+    <div class="part">
+        <h2>📐 Часть 3. Интерполяция (задачи 21–30)</h2>
+
+        <div class="task"><p><strong>Задача 21.</strong> Найдите многочлен степени не выше 2, проходящий через точки \(
+            (1, 2), (2, 3), (3, 6) \).</p>
+            <button class="solve-btn" data-target="s21">Показать решение</button>
+            <div id="s21" class="solution">
+                <p><strong>Решение (Лагранж):</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( L_0(x) = \frac{(x-2)(x-3)}{(1-2)(1-3)} = \frac{(x-2)(x-3)}{2}
+                    \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( L_1(x) = \frac{(x-1)(x-3)}{(2-1)(2-3)} = -(x-1)(x-3) \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( L_2(x) = \frac{(x-1)(x-2)}{(3-1)(3-2)} = \frac{(x-1)(x-2)}{2}
+                    \).</p>
+                <p class="step"><strong>Шаг 4.</strong> \( P(x) = 2L_0(x) + 3L_1(x) + 6L_2(x) \).</p>
+                <p class="step"><strong>Шаг 5.</strong> \( P(x) = (x-2)(x-3) - 3(x-1)(x-3) + 3(x-1)(x-2) \).</p>
+                <p class="step"><strong>Шаг 6.</strong> Раскрываем: \( P(x) = x^2 - 2x + 3 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( P(x) = x^2 - 2x + 3 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 22.</strong> Найдите многочлен степени не выше 3, проходящий через точки \(
+            (0, 1), (1, 0), (2, 1), (3, 10) \).</p>
+            <button class="solve-btn" data-target="s22">Показать решение</button>
+            <div id="s22" class="solution">
+                <p><strong>Решение (Лагранж):</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Базисные многочлены:</p>
+                \[
+                L_0(x) = -\frac{(x-1)(x-2)(x-3)}{6}
+                \]
+                \[
+                L_1(x) = \frac{x(x-2)(x-3)}{2}
+                \]
+                \[
+                L_2(x) = -\frac{x(x-1)(x-3)}{2}
+                \]
+                \[
+                L_3(x) = \frac{x(x-1)(x-2)}{6}
+                \]
+                <p class="step"><strong>Шаг 2.</strong> \( P(x) = 1 \cdot L_0(x) + 1 \cdot L_2(x) + 10 \cdot L_3(x) \).
+                </p>
+                <p class="step"><strong>Шаг 3.</strong> После упрощения: \( P(x) = x^3 - 2x^2 + 2x + 1 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( P(x) = x^3 - 2x^2 + 2x + 1 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 23.</strong> Найдите многочлен степени не выше 2, проходящий через точки \(
+            (0, 1), (1, 2), (2, 5) \).</p>
+            <button class="solve-btn" data-target="s23">Показать решение</button>
+            <div id="s23" class="solution">
+                <p><strong>Решение (Ньютон):</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( f[x_0] = 1 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( f[x_0, x_1] = \frac{2-1}{1-0} = 1 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( f[x_1, x_2] = \frac{5-2}{2-1} = 3 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> \( f[x_0, x_1, x_2] = \frac{3-1}{2-0} = 1 \).</p>
+                <p class="step"><strong>Шаг 5.</strong> \( P(x) = 1 + 1 \cdot x + 1 \cdot x(x-1) = x^2 + 1 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( P(x) = x^2 + 1 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 24.</strong> Докажите, что существует единственный многочлен степени не выше
+            \( n \), проходящий через \( n+1 \) точек с различными \( x \)-координатами.</p>
+            <button class="solve-btn" data-target="s24">Показать решение</button>
+            <div id="s24" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Предположим, есть два таких многочлена \( P \) и \( Q \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Их разность \( R(x) = P(x) - Q(x) \) имеет \( n+1 \) корень (в
+                    точках \( x_i \)).</p>
+                <p class="step"><strong>Шаг 3.</strong> Но степень \( R(x) \) не превосходит \( n \), значит, \( R(x)
+                    \equiv 0 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Следовательно, \( P \equiv Q \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 25.</strong> Найдите многочлен степени не выше 2, проходящий через точки \(
+            (1, 1), (2, 4), (3, 9) \). Что вы замечаете?</p>
+            <button class="solve-btn" data-target="s25">Показать решение</button>
+            <div id="s25" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Это точки параболы \( y = x^2 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( f[x_0] = 1, f[x_0,x_1] = 3, f[x_0,x_1,x_2] = 1 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( P(x) = 1 + 3(x-1) + 1(x-1)(x-2) = x^2 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( P(x) = x^2 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 26.</strong> Найдите многочлен степени не выше 3, принимающий значения: \(
+            P(0) = 2, P(1) = 3, P(2) = 6, P(3) = 11 \).</p>
+            <button class="solve-btn" data-target="s26">Показать решение</button>
+            <div id="s26" class="solution">
+                <p><strong>Решение (метод конечных разностей):</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Таблица значений: \( x: 0,1,2,3 \); \( y: 2,3,6,11 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Первые разности: \( 1, 3, 5 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Вторые разности: \( 2, 2 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Третья разность: \( 0 \).</p>
+                <p class="step"><strong>Шаг 5.</strong> Так как третья разность равна 0, многочлен — квадратичный.</p>
+                <p class="step"><strong>Шаг 6.</strong> \( P(x) = 2 + 1 \cdot x + \frac{2}{2}x(x-1) = x^2 + 2 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( P(x) = x^2 + 2 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 27.</strong> Найдите многочлен \( P(x) \) степени не выше 2, если \( P(0) =
+            1, P(1) = 3, P(2) = 9 \).</p>
+            <button class="solve-btn" data-target="s27">Показать решение</button>
+            <div id="s27" class="solution">
+                <p><strong>Решение (Лагранж):</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( L_0(x) = \frac{(x-1)(x-2)}{2} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( L_1(x) = -x(x-2) \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( L_2(x) = \frac{x(x-1)}{2} \).</p>
+                <p class="step"><strong>Шаг 4.</strong> \( P(x) = 1 \cdot L_0 + 3 \cdot L_1 + 9 \cdot L_2 \).</p>
+                <p class="step"><strong>Шаг 5.</strong> После упрощения: \( P(x) = 2x^2 + 1 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( P(x) = 2x^2 + 1 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 28.</strong> Докажите, что для любых \( n+1 \) точек с различными \( x
+            \)-координатами существует многочлен степени не выше \( n \), проходящий через них. (Построение Лагранжа.)
+        </p>
+            <button class="solve-btn" data-target="s28">Показать решение</button>
+            <div id="s28" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Построим многочлен:</p>
+                \[
+                P(x) = \sum_{i=0}^{n} y_i \prod_{j \ne i} \frac{x - x_j}{x_i - x_j}.
+                \]
+                <p class="step"><strong>Шаг 2.</strong> При \( x = x_k \) все слагаемые, кроме \( i = k \), равны 0, а
+                    \( i = k \) даёт \( y_k \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Значит, \( P(x_k) = y_k \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 29.</strong> Найдите многочлен \( P(x) \) степени не выше 3, если \( P(0) =
+            1, P(1) = 0, P(2) = 1, P(3) = 10 \).</p>
+            <button class="solve-btn" data-target="s29">Показать решение</button>
+            <div id="s29" class="solution">
+                <p><strong>Решение:</strong> (см. задачу 22) \( P(x) = x^3 - 2x^2 + 2x + 1 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( P(x) = x^3 - 2x^2 + 2x + 1 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 30.</strong> Докажите, что многочлен Лагранжа для точек \( (x_i, y_i) \)
+            является единственным решением задачи интерполяции.</p>
+            <button class="solve-btn" data-target="s30">Показать решение</button>
+            <div id="s30" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Предположим, есть два многочлена \( P \) и \( Q \) степени ≤ n.
+                </p>
+                <p class="step"><strong>Шаг 2.</strong> Их разность \( R = P - Q \) имеет корни \( x_0, x_1, \dots, x_n
+                    \), то есть \( n+1 \) корень.</p>
+                <p class="step"><strong>Шаг 3.</strong> Так как степень \( R \) ≤ n, то \( R \equiv 0 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Значит, \( P \equiv Q \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Часть 4. Олимпиадные задачи (31–40) -->
+    <div class="part">
+        <h2>🏆 Часть 4. Олимпиадные задачи (31–40)</h2>
+
+        <div class="task"><p><strong>Задача 31.</strong> Докажите, что если \( P(x) \) — многочлен с целыми
+            коэффициентами и \( P(0) \) и \( P(1) \) нечётны, то \( P(x) \) не имеет целых корней.</p>
+            <button class="solve-btn" data-target="s31">Показать решение</button>
+            <div id="s31" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Пусть \( m \) — целый корень. Тогда \( P(m) = 0 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Если \( m \) чётное, то \( P(m) \equiv P(0) \pmod{2} \). Значит,
+                    \( 0 \equiv P(0) \pmod{2} \), но \( P(0) \) нечётно. Противоречие.</p>
+                <p class="step"><strong>Шаг 3.</strong> Если \( m \) нечётное, то \( P(m) \equiv P(1) \pmod{2} \), но \(
+                    P(1) \) нечётно. Противоречие.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 32.</strong> Найдите все многочлены \( P(x) \) с целыми коэффициентами,
+            такие что \( P(0) = 0 \), \( P(1) = 1 \), и \( P(x) \) делится на \( x^2 + x + 1 \).</p>
+            <button class="solve-btn" data-target="s32">Показать решение</button>
+            <div id="s32" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( P(x) = (x^2 + x + 1)Q(x) \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( P(0) = Q(0) = 0 \) ⇒ \( Q(0) = 0 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( P(1) = 3Q(1) = 1 \) ⇒ \( Q(1) = \frac{1}{3} \). Это
+                    невозможно, если \( Q \) имеет целые коэффициенты.</p>
+                <div class="answer-block"><strong>Ответ:</strong> нет решений.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 33.</strong> Докажите, что \( x^{2025} - 2025x + 2024 \) делится на \(
+            (x-1)^2 \).</p>
+            <button class="solve-btn" data-target="s33">Показать решение</button>
+            <div id="s33" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( P(1) = 1 - 2025 + 2024 = 0 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( P'(x) = 2025x^{2024} - 2025 \), \( P'(1) = 0 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Значит, \( x=1 \) — корень кратности не менее 2.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 34.</strong> Найдите остаток от деления \( P(x) = x^{2025} - x^{2024} +
+            x^{2023} - \dots - x + 1 \) на \( x^2 - 1 \).</p>
+            <button class="solve-btn" data-target="s34">Показать решение</button>
+            <div id="s34" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( x^2 - 1 = (x-1)(x+1) \). Остаток имеет вид \( ax + b \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( P(1) = 0 \) (чередование с чётным числом слагаемых).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( P(-1) = -2025 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> \( a + b = 0 \), \( -a + b = -2025 \) ⇒ \( a = \frac{2025}{2}, b
+                    = -\frac{2025}{2} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \frac{2025}{2}(x-1) \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 35.</strong> Найдите все многочлены \( P(x) \) такие, что \( P(x^2) = P(x)^2
+            \) и \( P(0) = 1 \).</p>
+            <button class="solve-btn" data-target="s35">Показать решение</button>
+            <div id="s35" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Пусть \( P(x) = a_n x^n + \dots + a_0 \). \( P(0)=1 \) ⇒ \(
+                    a_0=1 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Сравниваем степени: \( \deg(P(x^2)) = 2n \), \( \deg(P(x)^2) =
+                    2n \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Старший коэффициент: \( a_n = a_n^2 \) ⇒ \( a_n = 1 \).</p>
+                <p class="step"><strong>Шаг 4.</strong> Проверяем: \( P(x) = x^n \) или \( P(x) \equiv 1 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( P(x) = x^n \) или \( P(x) \equiv 1 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 36.</strong> Докажите, что многочлен \( x^n + a_1 x^{n-1} + \dots + a_n \) с
+            целыми коэффициентами не может иметь корнем число \( \sqrt{2} + \sqrt{3} \), если \( n < 4 \).</p>
+            <button class="solve-btn" data-target="s36">Показать решение</button>
+            <div id="s36" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( \alpha = \sqrt{2} + \sqrt{3} \). Возведём в квадрат: \(
+                    \alpha^2 = 5 + 2\sqrt{6} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( (\alpha^2 - 5)^2 = 24 \) ⇒ \( \alpha^4 - 10\alpha^2 + 1 = 0
+                    \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( \alpha \) — корень многочлена \( x^4 - 10x^2 + 1 \) степени
+                    4.</p>
+                <p class="step"><strong>Шаг 4.</strong> Если \( \alpha \) — корень многочлена степени < 4, то этот
+                    многочлен должен делиться на минимальный, что невозможно.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 37.</strong> Докажите, что многочлен \( x^{2025} - x^{2024} + x^{2023} -
+            \dots - x + 1 \) не имеет целых корней.</p>
+            <button class="solve-btn" data-target="s37">Показать решение</button>
+            <div id="s37" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Если \( m \) — целый корень, то \( m \mid 1 \), значит \( m =
+                    \pm 1 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( P(1) = 1 \) ⇒ не корень.</p>
+                <p class="step"><strong>Шаг 3.</strong> \( P(-1) = -2025 \) ⇒ не корень.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 38.</strong> Найдите многочлен \( P(x) \) степени не выше 3, если \( P(0) =
+            2 \), \( P(1) = 5 \), \( P(2) = 10 \), \( P(3) = 17 \).</p>
+            <button class="solve-btn" data-target="s38">Показать решение</button>
+            <div id="s38" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Таблица разностей: \( y: 2,5,10,17 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Первые разности: \( 3,5,7 \). Вторые разности: \( 2,2 \). Третья
+                    разность: \( 0 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( P(x) = 2 + 3x + x(x-1) = x^2 + 2x + 2 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( P(x) = x^2 + 2x + 2 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 39.</strong> Докажите, что если \( P(x) \) — многочлен с целыми
+            коэффициентами и \( P(0), P(1), P(2) \) нечётны, то \( P(x) \) не имеет целых корней.</p>
+            <button class="solve-btn" data-target="s39">Показать решение</button>
+            <div id="s39" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Если \( m \) — целый корень, то \( m \equiv 0, 1, 2 \pmod{3} \).
+                </p>
+                <p class="step"><strong>Шаг 2.</strong> По модулю 3: \( P(m) \equiv P(0) \), \( P(1) \), \( P(2) \)
+                    соответственно.</p>
+                <p class="step"><strong>Шаг 3.</strong> Все значения нечётны ⇒ не равны 0.</p>
+                <div class="answer-block"><strong>Ответ:</strong> доказано.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 40.</strong> Найдите все многочлены \( P(x) \) такие, что \( P(x+1) - P(x) =
+            2x \) и \( P(0) = 0 \).</p>
+            <button class="solve-btn" data-target="s40">Показать решение</button>
+            <div id="s40" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Это конечная разность.</p>
+                <p class="step"><strong>Шаг 2.</strong> Проверим \( P(x) = x^2 - x \):</p>
+                <p>\( P(x+1) - P(x) = ((x+1)^2 - (x+1)) - (x^2 - x) = 2x \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( P(0) = 0 \) — подходит.</p>
+                <p class="step"><strong>Шаг 4.</strong> Любое решение отличается на константу, но \( P(0)=0 \) фиксирует
+                    её.</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( P(x) = x^2 - x \).</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Итоговая таблица -->
+    <div class="part">
+        <h2>📊 Итоговая таблица методов</h2>
+        <table style="width:100%; border-collapse:collapse; margin:1rem 0; background:#f8fafc;">
+            <thead>
+            <tr style="background:#e2e8f0;">
+                <th style="border:1px solid #cbd5e1; padding:0.5rem; text-align:left;">Метод</th>
+                <th style="border:1px solid #cbd5e1; padding:0.5rem; text-align:left;">Задачи</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Теорема Безу</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">1, 2, 5, 6, 8, 9, 33, 34</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Схема Горнера</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">3, 4, 7, 10</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Рациональная теорема о корнях</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">11, 12, 13, 15, 16, 18, 19</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Интерполяция Лагранжа</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">21, 22, 25, 27, 29</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Интерполяция Ньютона</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">23, 26, 38</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Кратность корней (производная)</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">14, 17, 20, 33</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">Доказательство от противного</td>
+                <td style="border:1px solid #cbd5e1; padding:0.5rem;">31, 32, 37, 39</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>© Заборовский М. С. Материалы для олимпиадников. 2026</footer>
+</div>
+
+<script>
+    document.querySelectorAll('.solve-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const t = document.getElementById(btn.getAttribute('data-target'));
+            if (t.style.display === 'none' || t.style.display === '') {
+                t.style.display = 'block';
+                btn.textContent = 'Скрыть решение';
+                if (window.MathJax) MathJax.typesetPromise([t]);
+            } else {
+                t.style.display = 'none';
+                btn.textContent = 'Показать решение';
+            }
+        });
+    });
+</script>
+</body>
+</html>

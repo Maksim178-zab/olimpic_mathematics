@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерполяция многочленов | Лагранж, Ньютон</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #fef9e6;
+            color: #2d3e2b;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #b85c1a, #a0522d);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .badge {
+            background: #f3e0be;
+            display: inline-block;
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f0dbc0;
+        }
+
+        .card h2 {
+            color: #a0522d;
+            border-left: 6px solid #f59e0b;
+            padding-left: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+
+        .card h3 {
+            color: #b85c1a;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.4rem;
+        }
+
+        .theorem {
+            background: #fff7e6;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #f59e0b;
+        }
+
+        .proof {
+            background: #fef9e3;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #b85c1a;
+        }
+
+        .example {
+            background: #e6f7f0;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .task {
+            background: #fef9e6;
+            margin: 1.2rem 0;
+            padding: 1rem 1.2rem;
+            border-radius: 1.2rem;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .solve-btn {
+            background: #b85c1a;
+            color: white;
+            border: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .solve-btn:hover {
+            background: #8e4512;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: #fef3c7;
+            border-radius: 0.8rem;
+            border-left: 3px solid #b85c1a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #f8fafc;
+        }
+
+        th, td {
+            border: 1px solid #f0dbc0;
+            padding: 0.6rem;
+            text-align: left;
+        }
+
+        th {
+            background: #fff7e6;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2d5b6;
+            color: #6b5b3e;
+            font-size: 0.85rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #6b5b3e;
+            padding: 0.5rem 1rem;
+            border-left: 3px solid #a0522d;
+            margin: 0.8rem 0;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1.2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📐 Интерполяция многочленов</h1>
+        <div class="badge">Лагранж • Ньютон • Восстановление по точкам</div>
+    </header>
+
+    <div class="card">
+        <h2>📖 Часть 1. Постановка задачи</h2>
+        <div class="theorem">
+            <p>Даны \( n+1 \) точек \( (x_0, y_0), (x_1, y_1), \dots, (x_n, y_n) \) с попарно различными \( x_i \).</p>
+            <p>Требуется найти многочлен \( P(x) \) степени не выше \( n \), проходящий через все эти точки:</p>
+            \[
+            P(x_i) = y_i \quad \forall i.
+            \]
+            <p><strong>Теорема:</strong> такой многочлен существует и единственен.</p>
+        </div>
+
+        <h3>1.1. Доказательство единственности</h3>
+        <div class="proof">
+            <p>Если есть два многочлена \( P \) и \( Q \) степени ≤ n, проходящие через одни и те же \( n+1 \) точек, то
+                их разность \( R(x) = P(x) - Q(x) \) имеет \( n+1 \) корень.</p>
+            <p>Но степень \( R(x) \) ≤ n, а многочлен степени ≤ n не может иметь более n корней (если он не равен
+                тождественно нулю).</p>
+            <p>Значит, \( R(x) \equiv 0 \), то есть \( P(x) = Q(x) \). Единственность доказана.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📐 Часть 2. Интерполяционный многочлен Лагранжа</h2>
+
+        <h3>2.1. Формула Лагранжа</h3>
+        <div class="theorem">
+            \[
+            P(x) = \sum_{i=0}^{n} y_i \cdot L_i(x),
+            \]
+            <p>где</p>
+            \[
+            L_i(x) = \prod_{\substack{j=0 \\ j \ne i}}^{n} \frac{x - x_j}{x_i - x_j}.
+            \]
+        </div>
+
+        <h3>2.2. Свойства базисных многочленов</h3>
+        <div class="proof">
+            <p><strong>Свойство 1:</strong> \( L_i(x) \) — многочлен степени \( n \), так как это произведение \( n \)
+                множителей.</p>
+            <p><strong>Свойство 2:</strong> \( L_i(x_i) = 1 \).</p>
+            <p>При \( x = x_i \): каждый множитель равен \( \frac{x_i - x_j}{x_i - x_j} = 1 \), произведение равно
+                1.</p>
+            <p><strong>Свойство 3:</strong> \( L_i(x_j) = 0 \) при \( j \ne i \).</p>
+            <p>При \( x = x_j \) в числителе появляется множитель \( x_j - x_j = 0 \), значит \( L_i(x_j) = 0 \).</p>
+        </div>
+
+        <h3>2.3. Проверка</h3>
+        <div class="proof">
+            <p>Для любого \( k \):</p>
+            \[
+            P(x_k) = \sum_{i=0}^{n} y_i \cdot L_i(x_k) = y_k \cdot 1 = y_k.
+            \]
+            <p>Значит, многочлен Лагранжа действительно проходит через все заданные точки.</p>
+        </div>
+
+        <h3>2.4. Пример</h3>
+        <div class="example">
+            <p><strong>Задача:</strong> Найти многочлен, проходящий через точки \( (1, 2), (2, 3), (3, 6) \).</p>
+            <p><strong>Решение:</strong></p>
+            <p>Вычисляем базисные многочлены:</p>
+            \[
+            L_0(x) = \frac{(x-2)(x-3)}{(1-2)(1-3)} = \frac{(x-2)(x-3)}{2},
+            \]
+            \[
+            L_1(x) = \frac{(x-1)(x-3)}{(2-1)(2-3)} = -(x-1)(x-3),
+            \]
+            \[
+            L_2(x) = \frac{(x-1)(x-2)}{(3-1)(3-2)} = \frac{(x-1)(x-2)}{2}.
+            \]
+            <p>Тогда:</p>
+            \[
+            P(x) = 2 \cdot \frac{(x-2)(x-3)}{2} + 3 \cdot (-(x-1)(x-3)) + 6 \cdot \frac{(x-1)(x-2)}{2}.
+            \]
+            <p>Упрощаем:</p>
+            \[
+            P(x) = (x-2)(x-3) - 3(x-1)(x-3) + 3(x-1)(x-2).
+            \]
+            <p>Раскрываем:</p>
+            \[
+            P(x) = (x^2 - 5x + 6) - 3(x^2 - 4x + 3) + 3(x^2 - 3x + 2).
+            \]
+            \[
+            P(x) = x^2 - 5x + 6 - 3x^2 + 12x - 9 + 3x^2 - 9x + 6.
+            \]
+            \[
+            P(x) = x^2 - 2x + 3.
+            \]
+            <p>Проверка: \( P(1)=2, P(2)=3, P(3)=6 \).</p>
+            <p><strong>Ответ:</strong> \( P(x) = x^2 - 2x + 3 \).</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📐 Часть 3. Интерполяционная формула Ньютона</h2>
+
+        <h3>3.1. Разделённые разности</h3>
+        <div class="theorem">
+            <p><strong>Определение:</strong> Разделённые разности определяются рекуррентно:</p>
+            \[
+            f[x_i] = y_i,
+            \]
+            \[
+            f[x_i, x_{i+1}, \dots, x_{i+k}] = \frac{f[x_{i+1}, \dots, x_{i+k}] - f[x_i, \dots, x_{i+k-1}]}{x_{i+k} -
+            x_i}.
+            \]
+        </div>
+
+        <h3>3.2. Формула Ньютона</h3>
+        <div class="theorem">
+            \[
+            P(x) = f[x_0] + f[x_0, x_1](x - x_0) + f[x_0, x_1, x_2](x - x_0)(x - x_1) + \dots
+            \]
+            \[
+            + f[x_0, x_1, \dots, x_n] \prod_{i=0}^{n-1} (x - x_i).
+            \]
+        </div>
+
+        <h3>3.3. Пример</h3>
+        <div class="example">
+            <p><strong>Задача:</strong> Для точек \( (1,2), (2,3), (3,6) \) построить многочлен Ньютона.</p>
+            <p><strong>Решение:</strong></p>
+            <p>1. \( f[x_0] = 2 \), \( f[x_1] = 3 \), \( f[x_2] = 6 \).</p>
+            <p>2. Первые разделённые разности:</p>
+            \[
+            f[x_0, x_1] = \frac{3-2}{2-1} = 1, \quad f[x_1, x_2] = \frac{6-3}{3-2} = 3.
+            \]
+            <p>3. Вторая разделённая разность:</p>
+            \[
+            f[x_0, x_1, x_2] = \frac{3-1}{3-1} = 1.
+            \]
+            <p>4. Многочлен Ньютона:</p>
+            \[
+            P(x) = 2 + 1 \cdot (x-1) + 1 \cdot (x-1)(x-2).
+            \]
+            \[
+            P(x) = 2 + x - 1 + (x^2 - 3x + 2) = x^2 - 2x + 3.
+            \]
+            <p><strong>Ответ:</strong> \( P(x) = x^2 - 2x + 3 \).</p>
+        </div>
+
+        <h3>3.4. Сравнение Лагранжа и Ньютона</h3>
+        <div class="proof">
+            <table>
+                <thead>
+                <tr>
+                    <th>Метод</th>
+                    <th>Преимущества</th>
+                    <th>Недостатки</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><strong>Лагранж</strong></td>
+                    <td>Простая формула, легко запомнить</td>
+                    <td>При добавлении точки нужно пересчитывать всё заново</td>
+                </tr>
+                <tr>
+                    <td><strong>Ньютон</strong></td>
+                    <td>Легко добавлять новые точки</td>
+                    <td>Нужно вычислять разделённые разности</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>✍️ Практика</h2>
+
+        <div class="task">
+            <p><strong>Задача 1.</strong> Найдите многочлен Лагранжа для точек \( (0,1), (1,3), (2,7) \).</p>
+            <button class="solve-btn" data-target="sol1">Показать решение</button>
+            <div id="sol1" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p>\( L_0(x) = \frac{(x-1)(x-2)}{(0-1)(0-2)} = \frac{(x-1)(x-2)}{2} \).</p>
+                <p>\( L_1(x) = \frac{(x-0)(x-2)}{(1-0)(1-2)} = -x(x-2) \).</p>
+                <p>\( L_2(x) = \frac{(x-0)(x-1)}{(2-0)(2-1)} = \frac{x(x-1)}{2} \).</p>
+                <p>\( P(x) = 1 \cdot L_0 + 3 \cdot L_1 + 7 \cdot L_2 \).</p>
+                <p>\( P(x) = \frac{(x-1)(x-2)}{2} - 3x(x-2) + \frac{7x(x-1)}{2} \).</p>
+                <p>Упрощаем: \( P(x) = x^2 + 2x + 1 \).</p>
+                <p><strong>Ответ:</strong> \( P(x) = x^2 + 2x + 1 \).</p>
+            </div>
+        </div>
+
+        <div class="task">
+            <p><strong>Задача 2.</strong> Для точек \( (1,1), (2,4), (3,9) \) постройте многочлен Ньютона.</p>
+            <button class="solve-btn" data-target="sol2">Показать решение</button>
+            <div id="sol2" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p>\( f[x_0]=1, f[x_1]=4, f[x_2]=9 \).</p>
+                <p>\( f[x_0,x_1] = \frac{4-1}{2-1} = 3 \).</p>
+                <p>\( f[x_1,x_2] = \frac{9-4}{3-2} = 5 \).</p>
+                <p>\( f[x_0,x_1,x_2] = \frac{5-3}{3-1} = 1 \).</p>
+                <p>\( P(x) = 1 + 3(x-1) + 1(x-1)(x-2) = x^2 \).</p>
+                <p><strong>Ответ:</strong> \( P(x) = x^2 \).</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>© Заборовский М. С. Материалы для олимпиадников. 2026</footer>
+</div>
+<script>
+    document.querySelectorAll('.solve-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const t = document.getElementById(btn.getAttribute('data-target'));
+            if (t.style.display === 'none' || t.style.display === '') {
+                t.style.display = 'block';
+                btn.textContent = 'Скрыть решение';
+                if (window.MathJax) MathJax.typesetPromise([t]);
+            } else {
+                t.style.display = 'none';
+                btn.textContent = 'Показать решение';
+            }
+        });
+    });
+</script>
+</body>
+</html>
