@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Определители | Полная теория</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f0f4f8;
+            color: #1e2a3e;
+            padding: 2rem 1.5rem;
+            line-height: 1.7;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 2.5rem; }
+        h1 { font-size: 2.8rem; background: linear-gradient(135deg, #1e5f7a, #0f3b4f); background-clip: text; -webkit-background-clip: text; color: transparent; }
+        .badge { background: #d4e6f1; display: inline-block; padding: 0.4rem 1.4rem; border-radius: 40px; font-size: 0.9rem; margin-top: 0.8rem; }
+        .card { background: white; border-radius: 2rem; padding: 1.8rem 2rem; margin-bottom: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #cbd5e1; }
+        .card h2 { color: #1e5f7a; border-left: 6px solid #3b82f6; padding-left: 1.2rem; margin-bottom: 1.2rem; font-size: 1.8rem; }
+        .card h3 { color: #2c5282; margin: 1rem 0 0.5rem 0; font-size: 1.4rem; }
+        .theorem { background: #eef2ff; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; border-left: 5px solid #2563eb; }
+        .definition { background: #fef9e3; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; border-left: 4px solid #f59e0b; }
+        .example { background: #e6f7f0; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; }
+        .property { background: #e0f2fe; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; border-left: 5px solid #0284c7; }
+        .warning { background: #fee2e2; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; border-left: 5px solid #dc2626; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; background: #f8fafc; }
+        th, td { border: 1px solid #cbd5e1; padding: 0.6rem; text-align: center; }
+        th { background: #e2e8f0; }
+        .matrix { font-family: monospace; font-size: 1.1rem; }
+        footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #cbd5e1; color: #4b5563; font-size: 0.85rem; }
+        .quote { font-style: italic; color: #4b5563; padding: 0.5rem 1rem; border-left: 3px solid #6b7280; margin: 0.8rem 0; }
+        @media (max-width: 700px) { body { padding: 1rem; } .card { padding: 1.2rem; } h1 { font-size: 2rem; } table { font-size: 0.85rem; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📐 Определители</h1>
+        <div class="badge">Полная теория • Факториал • Перестановки • Инверсии • Свойства • Миноры</div>
+    </header>
+
+    <!-- Часть 1.6. Понятие определителя -->
+    <div class="card">
+        <h2>📖 1.6. Понятие определителя</h2>
+
+        <h3>Факториал</h3>
+        <div class="definition">
+            <p>Пусть \( n \) — натуральное число. <strong>Факториалом</strong> числа \( n \) (обозначают: \( n! \)) называют произведение натуральных чисел от 1 до \( n \) включительно, то есть</p>
+            \[
+            n! = 1 \cdot 2 \cdot 3 \cdot \ldots \cdot n.
+            \]
+            <p>Факториал числа 0 полагают равным 1.</p>
+        </div>
+
+        <h3>Перестановки</h3>
+        <div class="definition">
+            <p>Расположение \( n \) чисел \( 1, 2, 3, \ldots, n \) в любом порядке называется <strong>перестановкой</strong> этих чисел.</p>
+        </div>
+
+        <h3>Инверсии</h3>
+        <div class="definition">
+            <p>Пусть дана некоторая перестановка чисел \( 1, 2, 3, \ldots, n \):</p>
+            \[
+            \alpha_1, \alpha_2, \ldots, \alpha_i, \ldots, \alpha_k, \ldots, \alpha_n.
+            \]
+            <p>Говорят, что два числа \( \alpha_i \) и \( \alpha_k \) образуют <strong>инверсию</strong> в перестановке, если большее число стоит левее меньшего, то есть если \( \alpha_i > \alpha_k \). Количество пар, образующих инверсию в перестановке, называется <strong>числом инверсии</strong> в перестановке.</p>
+        </div>
+
+        <div class="example">
+            <p><strong>Пример.</strong> В перестановке 1, 4, 5, 3, 2 инверсию образуют следующие пары чисел: 4 и 3, 4 и 2, 5 и 3, 5 и 2, 3 и 2. Число инверсий — 5.</p>
+        </div>
+
+        <h3>Определение определителя</h3>
+        <div class="definition">
+            <p>Пусть \( A = (a_{ij}) \) — квадратная матрица порядка \( n \).</p>
+            <p><strong>Определение. Определителем</strong> матрицы \( A \) (<strong>определителем порядка \( n \))</strong> называется сумма \( n! \) членов, составленных следующим образом. Членами определителя служат всевозможные произведения \( n \) элементов матрицы, взятых по одному из каждой строки и каждого столбца матрицы. При этом произведение берется со знаком «плюс», если число инверсий в перестановке первых индексов сомножителей и число инверсий в перестановке вторых индексов сомножителей в сумме дают четное число, а со знаком «минус» — в противном случае.</p>
+        </div>
+
+        <div class="theorem">
+            <p>Определитель матрицы \( A \) обозначают:</p>
+            \[
+            |A|, \quad \text{det } A,
+            \]
+            \[
+            \begin{vmatrix}
+            a_{11} & a_{12} & \cdots & a_{1n} \\
+            a_{21} & a_{22} & \cdots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{n1} & a_{n2} & \cdots & a_{nn}
+            \end{vmatrix}.
+            \]
+            <p>Элементы, строки, столбцы матрицы называют соответственно элементами, строками, столбцами определителя матрицы.</p>
+        </div>
+
+        <h3>Определитель второго порядка</h3>
+        <div class="theorem">
+            <p>Согласно определению получаем, что</p>
+            \[
+            \begin{vmatrix}
+            a_{11} & a_{12} \\
+            a_{21} & a_{22}
+            \end{vmatrix}
+            = a_{11}a_{22} - a_{12}a_{21}.
+            \]
+        </div>
+
+        <h3>Определитель третьего порядка</h3>
+        <div class="theorem">
+            <p>По определению можно получить и формулу для нахождения определителя третьего порядка:</p>
+            \[
+            \begin{vmatrix}
+            a_{11} & a_{12} & a_{13} \\
+            a_{21} & a_{22} & a_{23} \\
+            a_{31} & a_{32} & a_{33}
+            \end{vmatrix}
+            = a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32} -
+            \]
+            \[
+            - a_{13}a_{22}a_{31} - a_{12}a_{21}a_{33} - a_{11}a_{23}a_{32}.
+            \]
+        </div>
+
+        <h3>Правило треугольников</h3>
+        <div class="definition">
+            <p>Для запоминания этой формулы пользуются так называемым <strong>правилом треугольников</strong>.</p>
+            <p>Определитель третьего порядка равен алгебраической сумме шести произведений. Со знаком «плюс» берутся произведение элементов главной диагонали и произведения элементов, стоящих в вершинах двух равнобедренных треугольников, основания которых параллельны главной диагонали. Со знаком «минус» берутся произведение элементов побочной диагонали и произведения элементов, стоящих в вершинах двух равнобедренных треугольников, основания которых параллельны побочной диагонали.</p>
+        </div>
+
+        <div class="example">
+            <p><strong>Пример.</strong></p>
+            \[
+            \begin{vmatrix}
+            -2 & 3 & 5 \\
+            1 & -1 & 3 \\
+            4 & 1 & -3
+            \end{vmatrix}
+            = (-2) \cdot (-1) \cdot (-3) + 3 \cdot 3 \cdot 4 + 5 \cdot 1 \cdot 1 -
+            \]
+            \[
+            - 5 \cdot (-1) \cdot 4 - (-2) \cdot 3 \cdot 1 - 1 \cdot 3 \cdot (-3) =
+            \]
+            \[
+            = -6 + 36 + 5 - (-20) - (-6) - (-9) = 70.
+            \]
+        </div>
+    </div>
+
+    <!-- Часть 1.7. Свойства определителей -->
+    <div class="card">
+        <h2>📐 1.7. Свойства определителей</h2>
+
+        <div class="property">
+            <p><strong>1.</strong> <em>При транспонировании матрицы ее определитель не меняется.</em></p>
+            <p>Из этого свойства следует, что строки и столбцы в определителе равноправны, то есть любое утверждение, верное для строк определителя, будет верно и для его столбцов.</p>
+        </div>
+
+        <div class="property">
+            <p><strong>2.</strong> <em>При перестановке любых двух строк (столбцов) определитель меняет знак.</em></p>
+            <div class="example">
+                <p><strong>Пример.</strong></p>
+                \[
+                \begin{vmatrix}
+                1 & 2 & 3 \\
+                2 & 3 & 4 \\
+                3 & 4 & 5
+                \end{vmatrix}
+                =
+                -
+                \begin{vmatrix}
+                2 & 3 & 4 \\
+                1 & 2 & 3 \\
+                3 & 4 & 5
+                \end{vmatrix}.
+                \]
+            </div>
+        </div>
+
+        <div class="property">
+            <p><strong>3.</strong> <em>Общий множитель элементов любой строки (столбца) можно выносить за знак определителя.</em></p>
+            <div class="example">
+                <p><strong>Пример.</strong></p>
+                \[
+                \begin{vmatrix}
+                1 & 2 & 3 \\
+                2 \cdot 1 & 2 \cdot 3 & 2 \cdot 4 \\
+                3 & 4 & 5
+                \end{vmatrix}
+                = 2 \cdot
+                \begin{vmatrix}
+                1 & 2 & 3 \\
+                1 & 3 & 4 \\
+                3 & 4 & 5
+                \end{vmatrix}.
+                \]
+            </div>
+        </div>
+
+        <div class="property">
+            <p><strong>4.</strong> <em>Определитель, у которого каждый элемент некоторой строки (столбца) является суммой двух слагаемых, равен сумме двух определителей, у первого из которых в указанной строке (столбце) стоят первые слагаемые, а у второго — вторые слагаемые; остальные строки (столбцы) у всех определителей одинаковые.</em></p>
+            <div class="example">
+                <p><strong>Пример.</strong></p>
+                \[
+                \begin{vmatrix}
+                1 & 2 & 3 \\
+                2 + 1 & 2 - 3 & 1 + 4 \\
+                3 & 4 & 5
+                \end{vmatrix}
+                =
+                \begin{vmatrix}
+                1 & 2 & 3 \\
+                2 & 2 & 1 \\
+                3 & 4 & 5
+                \end{vmatrix}
+                +
+                \begin{vmatrix}
+                1 & 2 & 3 \\
+                1 & -3 & 4 \\
+                3 & 4 & 5
+                \end{vmatrix}.
+                \]
+            </div>
+        </div>
+
+        <div class="definition">
+            <p><strong>Определение.</strong> Если в матрице некоторая строка (столбец) может быть представлена в виде суммы других \( k \) строк, умноженных соответственно на числа \( \alpha_1, \alpha_2, \dots, \alpha_k \), то говорят, что данная строка (столбец) является <strong>линейной комбинацией</strong> указанных строк (столбцов).</p>
+        </div>
+
+        <div class="property">
+            <p><strong>5.</strong> <em>Определитель равен нулю если:</em></p>
+            <ul>
+                <li>а) он имеет строку (столбец), состоящую из нулей;</li>
+                <li>б) он имеет хотя бы две одинаковые строки (два одинаковых столбца);</li>
+                <li>в) он имеет хотя бы две пропорциональные (то есть отличающиеся множителем) строки (столбца);</li>
+                <li>г) хотя бы одна строка (столбец) является линейной комбинацией нескольких других строк (столбцов).</li>
+            </ul>
+        </div>
+
+        <div class="example">
+            <p><strong>Пример.</strong></p>
+            \[
+            \begin{vmatrix}
+            1 & 2 & 3 \\
+            4 & 5 & 6 \\
+            7 & 8 & 9
+            \end{vmatrix}
+            = 0,
+            \]
+            <p>так как третий столбец определителя является линейной комбинацией второго и первого с коэффициентами 2 и -1.</p>
+        </div>
+
+        <div class="property">
+            <p><strong>6.</strong> <em>Определитель не изменится, если к каждому элементу одной строки (столбца) прибавить соответствующий элемент другой строки (столбца), умноженный на некоторое число.</em></p>
+            <div class="example">
+                <p><strong>Пример.</strong></p>
+                \[
+                \begin{vmatrix}
+                1 & 2 & 3 \\
+                2 & 3 & 4 \\
+                3 & 4 & 5
+                \end{vmatrix}
+                \xrightarrow{\text{к 2-й строке прибавим 1-ю, умноженную на }(-2)}
+                \begin{vmatrix}
+                1 & 2 & 3 \\
+                0 & -1 & -2 \\
+                3 & 4 & 5
+                \end{vmatrix}.
+                \]
+            </div>
+        </div>
+
+        <div class="property">
+            <p><strong>7.</strong> <em>Если \( A \) и \( B \) — квадратные матрицы порядка \( n \), то</em></p>
+            \[
+            |A \cdot B| = |B \cdot A| = |A| \cdot |B|.
+            \]
+        </div>
+    </div>
+
+    <!-- Часть 1.8. Миноры, дополнительные миноры, алгебраические дополнения -->
+    <div class="card">
+        <h2>📐 1.8. Миноры, дополнительные миноры, алгебраические дополнения</h2>
+
+        <div class="definition">
+            <p>Пусть \( A = (a_{ij}) \) – матрица размера \( m \times n \) и пусть \( k \) – некоторое число, такое, что \( 1 \leq k, \, k \leq m, \, k \leq n \).</p>
+            <p><strong>Определение.</strong> Выберем в матрице \( A \) произвольно \( k \) строк и \( k \) столбцов. Из элементов, стоящих на пересечении выбранных строк и столбцов, составим определитель \( M_k \). Этот определитель называют <strong>минором \( k \)-го порядка</strong> матрицы \( A \) (её определителя).</p>
+        </div>
+
+        <div class="example">
+            <p><strong>Пример.</strong></p>
+            \[
+            A = 
+            \begin{pmatrix}
+            1 & 0 & 3 & 7 \\
+            2 & 4 & 8 & 2 \\
+            3 & 0 & 5 & 7
+            \end{pmatrix}
+            \]
+            <p>Выбирая первую строку и четвертый столбец, получаем минор первого порядка матрицы \( A \):</p>
+            \[
+            M_1 = |7|.
+            \]
+            <p>Выбирая вторую, третью строки и первый, второй столбцы, получаем минор второго порядка матрицы \( A \):</p>
+            \[
+            M_2 = 
+            \begin{vmatrix}
+            2 & 4 \\
+            3 & 0
+            \end{vmatrix}.
+            \]
+        </div>
+
+        <div class="definition">
+            <p>Пусть \( A = (a_{ij}) \) – квадратная матрица порядка \( n \).</p>
+            <p>Выберем в \( A \) минор \( k \)-го порядка \( M_k \). <strong>Дополнительным минором</strong> к минору \( M_k \) называется определитель матрицы, оставшейся после вычёркивания тех строк и столбцов матрицы \( A \), которые входят в минор \( M_k \).</p>
+            <p><strong>Алгебраическим дополнением</strong> \( A_k \) минора \( M_k \) называется дополнительный к нему минор, умноженный на \( (-1)^S \), где \( S \) — сумма номеров строк и столбцов данной матрицы, которые входят в минор \( M_k \).</p>
+        </div>
+
+        <div class="example">
+            <p><strong>Пример.</strong></p>
+            \[
+            |A| = 
+            \begin{vmatrix}
+            1 & 2 & 3 & 4 \\
+            5 & 6 & 7 & 8 \\
+            9 & 10 & 11 & 12 \\
+            13 & 14 & 15 & 16
+            \end{vmatrix}.
+            \]
+            <p>Выберем минор второго порядка \( M_2 = 
+            \begin{vmatrix}
+            2 & 4 \\
+            6 & 8
+            \end{vmatrix} \).</p>
+            <p>Тогда алгебраическим дополнением к нему будет</p>
+            \[
+            A_2 = (-1)^{1+2+2+4} 
+            \begin{vmatrix}
+            9 & 11 \\
+            13 & 15
+            \end{vmatrix} = 
+            \begin{vmatrix}
+            9 & 11 \\
+            13 & 15
+            \end{vmatrix}.
+            \]
+        </div>
+
+        <div class="definition">
+            <p><strong>Замечание.</strong> Дополнительный минор элемента \( a_{ij} \) (будем обозначать его \( M_{ij} \)) – это определитель порядка \( n-1 \), полученный из определителя \( |A| \) вычеркиванием строки с номером \( i \) и столбца с номером \( j \).</p>
+            <p>А алгебраическое дополнение элемента \( a_{ij} \) (будем обозначать его \( A_{ij} \)) – это произведение \( (-1)^{i+j} M_{ij} \).</p>
+        </div>
+    </div>
+
+    <footer>© Заборовский М. С. Материалы для олимпиадников. 2026</footer>
+</div>
+</body>
+</html></title>
+</head>
+<body>
+
+</body>
+</html>
