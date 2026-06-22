@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Системы линейных уравнений | Полная теория</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f0f4f8;
+            color: #1e2a3e;
+            padding: 2rem 1.5rem;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #1e5f7a, #0f3b4f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .badge {
+            background: #d4e6f1;
+            display: inline-block;
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cbd5e1;
+        }
+
+        .card h2 {
+            color: #1e5f7a;
+            border-left: 6px solid #3b82f6;
+            padding-left: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+
+        .card h3 {
+            color: #2c5282;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.4rem;
+        }
+
+        .theorem {
+            background: #eef2ff;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #2563eb;
+        }
+
+        .definition {
+            background: #fef9e3;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .proof {
+            background: #fef9e3;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #b85c1a;
+        }
+
+        .example {
+            background: #e6f7f0;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .property {
+            background: #e0f2fe;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #0284c7;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #f8fafc;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 0.6rem;
+            text-align: center;
+        }
+
+        th {
+            background: #e2e8f0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #cbd5e1;
+            color: #4b5563;
+            font-size: 0.85rem;
+        }
+
+        .formula-block {
+            background: #f8fafc;
+            padding: 0.6rem;
+            border-radius: 0.6rem;
+            text-align: center;
+            margin: 0.6rem 0;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1.2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📐 Системы линейных уравнений</h1>
+        <div class="badge">Полная теория • Матричный метод • Метод Крамера</div>
+    </header>
+
+    <!-- Глава 2. Системы линейных уравнений -->
+    <div class="card">
+        <h2>📖 Глава 2. Системы линейных уравнений</h2>
+
+        <h3>2.1. Основные понятия</h3>
+        <div class="definition">
+            <p><strong>Линейным уравнением</strong> с \( n \) неизвестными \( x_1, x_2, \ldots, x_n \) называется
+                уравнение, которое имеет следующий вид</p>
+            \[
+            a_1 x_1 + a_2 x_2 + \ldots + a_n x_n = b,
+            \]
+            <p>где \( a_1, a_2, \ldots, a_n \) — некоторые числа, называемые <strong>коэффициентами</strong> этого
+                уравнения, а \( b \) — число, называемое <strong>свободным членом</strong>.</p>
+            <p>Если \( b = 0 \), то уравнение называется <strong>однородным</strong>. Если \( b \neq 0 \), то уравнение
+                называется <strong>неоднородным</strong>.</p>
+        </div>
+
+        <div class="theorem">
+            <p>Рассмотрим систему \( m \) линейных уравнений с \( n \) неизвестными:</p>
+            \[
+            \begin{cases}
+            a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = b_1, \\
+            a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n = b_2, \\
+            \vdots \\
+            a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = b_m.
+            \end{cases}
+            \tag{2.1}
+            \]
+            <p>Обозначим через \( A \) и \( A^* \) следующие матрицы:</p>
+            \[
+            A =
+            \begin{pmatrix}
+            a_{11} & a_{12} & \cdots & a_{1n} \\
+            a_{21} & a_{22} & \cdots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{m1} & a_{m2} & \cdots & a_{mn}
+            \end{pmatrix}, \quad
+            A^* =
+            \begin{pmatrix}
+            a_{11} & a_{12} & \cdots & a_{1n} & b_1 \\
+            a_{21} & a_{22} & \cdots & a_{2n} & b_2 \\
+            \vdots & \vdots & \ddots & \vdots & \vdots \\
+            a_{m1} & a_{m2} & \cdots & a_{mn} & b_m
+            \end{pmatrix}.
+            \]
+            <p>Матрицу \( A \) называют <strong>матрицей</strong> или <strong>основной матрицей</strong> системы (2.1),
+                а матрицу \( A^* \) – <strong>расширенной матрицей</strong> этой системы.</p>
+        </div>
+
+        <div class="definition">
+            <p>Решение \( c_1, c_2, \ldots, c_n \) системы (2.1) также можно записать в виде матрицы-столбца</p>
+            \[
+            C =
+            \begin{pmatrix}
+            c_1 \\
+            c_2 \\
+            \vdots \\
+            c_n
+            \end{pmatrix}.
+            \]
+            <p>Эта матрица удовлетворяет уравнению (2.2).</p>
+            <p>Если система линейных уравнений имеет хотя бы одно решение, то ее называют <strong>совместной</strong>.
+                Система линейных уравнений, не имеющая решений, называется <strong>несовместной</strong>.</p>
+            <p><strong>Решить систему</strong> – это значит выяснить, совместна она или несовместна, и если совместна,
+                то найти все её решения.</p>
+        </div>
+
+        <div class="theorem">
+            <p><strong>Теорема 2.1 (Кронекера–Капелли).</strong></p>
+            <p>Система линейных уравнений совместна тогда и только тогда, когда ранг основной матрицы системы равен
+                рангу ее расширенной матрицы, то есть \( r(A) = r(A^*) \).</p>
+        </div>
+
+        <div class="theorem">
+            <p><strong>Теорема 2.2.</strong></p>
+            <p>Если система линейных уравнений совместна, то она имеет единственное решение или бесконечное множество
+                решений.</p>
+        </div>
+
+        <div class="definition">
+            <p>Система, имеющая единственное решение, называется <strong>определенной</strong>. Система, имеющая
+                бесконечное множество решений, называется <strong>неопределенной</strong>. В последнем случае каждое её
+                решение называют <strong>частным решением</strong> системы, а совокупность всех частных решений —
+                <strong>общим решением</strong> системы.</p>
+        </div>
+
+        <div class="theorem">
+            <p><strong>Теорема 2.3 (критерий единственности решения).</strong></p>
+            <p>Система линейных уравнений имеет единственное решение тогда и только тогда, когда ранг основной матрицы
+                системы равен рангу ее расширенной матрицы и равен числу переменных, то есть</p>
+            \[
+            r(A) = r(A^*) = n.
+            \]
+        </div>
+    </div>
+
+    <!-- Часть 2.2. Матричный метод -->
+    <div class="card">
+        <h2>📖 2.2. Решение систем линейных уравнений матричным методом</h2>
+
+        <div class="definition">
+            <p>Рассмотрим систему линейных уравнений, у которой число уравнений совпадает с числом неизвестных, то есть
+                \( m = n \). Тогда основная матрица \( A \) системы квадратная. Если \( |A| \neq 0 \), то системы такого
+                вида называют <strong>невырожденными</strong>.</p>
+            <p>Заметим, что если \( |A| \neq 0 \), то ранг матрицы \( A \) равен её порядку, то есть \( r(A) = n \). Но
+                тогда и \( r(A^*) = n \), следовательно, \( r(A) = r(A^*) = n \), откуда согласно теореме 2.3, решение
+                системы единственно.</p>
+            <p>Итак, <strong>невырожденная система линейных уравнений имеет единственное решение</strong>.</p>
+        </div>
+
+        <div class="proof">
+            <p>Покажем, как можно найти решение невырожденной системы линейных уравнений. Так как \( |A| \neq 0 \), то
+                согласно теореме 1.6 об обратной матрице, матрица \( A \) имеет обратную матрицу \( A^{-1} \).</p>
+            <p>Запишем систему в матричной форме:</p>
+            \[
+            A \cdot X = B.
+            \]
+            <p>Умножим обе части этого равенства на матрицу \( A^{-1} \) слева. Согласно свойствам операции умножения
+                матриц и определению обратной матрицы, получаем:</p>
+            \[
+            A^{-1} \cdot (A \cdot X) = A^{-1} \cdot B \implies
+            \]
+            \[
+            (A^{-1} \cdot A) \cdot X = A^{-1} \cdot B \implies
+            \]
+            \[
+            E \cdot X = A^{-1} \cdot B \implies
+            \]
+            \[
+            X = A^{-1} \cdot B.
+            \tag{2.3}
+            \]
+            <p>Нахождение решения по формуле (2.3) называют <strong>матричным методом решения</strong> системы.</p>
+        </div>
+
+        <div class="example">
+            <p><strong>Пример.</strong></p>
+            <p>Решим систему</p>
+            \[
+            \begin{cases}
+            2x_1 + 3x_2 = -1 \\
+            3x_1 + 4x_2 = -1
+            \end{cases}
+            \]
+            <p>Так как \( |A| = \begin{vmatrix} 2 & 3 \\ 3 & 4 \end{vmatrix} = -1 \neq 0 \), можно применить матричный
+                метод:</p>
+            \[
+            A^{-1} = \begin{pmatrix} -4 & 3 \\ 3 & -2 \end{pmatrix} \implies X = A^{-1} \cdot B = \begin{pmatrix} -4 & 3
+            \\ 3 & -2 \end{pmatrix}\begin{pmatrix} -1 \\ -1 \end{pmatrix} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}.
+            \]
+            <p>Итак, решением является \( x_1 = 1 \), \( x_2 = -1 \).</p>
+        </div>
+    </div>
+
+    <!-- Часть 2.3. Метод Крамера -->
+    <div class="card">
+        <h2>📖 2.3. Решение систем линейных уравнений методом Крамера</h2>
+
+        <div class="definition">
+            <p>Также как и матричный метод, этот метод применяется для решения невырожденных систем линейных уравнений,
+                то есть таких систем, у которых число уравнений совпадает с числом неизвестных (\(m = n\)) и
+                определитель матрицы системы отличен от нуля (\(|A| \neq 0\)).</p>
+        </div>
+
+        <div class="theorem">
+            <p><strong>Теорема 2.4 (Крамера).</strong></p>
+            <p>Решение невырожденной системы линейных уравнений может быть найдено по формулам</p>
+            \[
+            x_i = \frac{\Delta_i}{\Delta} \quad (i = 1, 2, \dots, n),
+            \]
+            <p>где \(\Delta = |A|\), а \(\Delta_i\) — определитель, получаемый из определителя \(\Delta\) заменой
+                столбца с номером \(i\) на столбец свободных членов.</p>
+            <p>Формулы (2.4) называют <strong>формулами Крамера</strong>.</p>
+        </div>
+
+        <div class="proof">
+            <p><strong>Доказательство.</strong></p>
+            <p>Решая систему матричным методом, согласно формуле (2.3), имеем</p>
+            \[
+            X = A^{-1} \cdot B,
+            \]
+            <p>а согласно теореме 1.6 об обратной матрице,</p>
+            \[
+            A^{-1} = \frac{1}{|A|} \cdot S^T,
+            \]
+            <p>где \( S \) — матрица, составленная из алгебраических дополнений элементов матрицы \( A \). Тогда</p>
+            \[
+            X = A^{-1} \cdot B = \frac{1}{|A|} \cdot S^T \cdot B = \frac{1}{\Delta} \cdot S^T \cdot B \implies
+            \]
+            \[
+            \begin{pmatrix}
+            x_1 \\
+            \vdots \\
+            x_i \\
+            \vdots \\
+            x_n
+            \end{pmatrix}
+            =
+            \frac{1}{\Delta} \cdot
+            \begin{pmatrix}
+            A_{11} & A_{21} & \cdots & A_{n1} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            A_{1i} & A_{2i} & \cdots & A_{ni} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            A_{1n} & A_{2n} & \cdots & A_{nn}
+            \end{pmatrix}
+            \cdot
+            \begin{pmatrix}
+            b_1 \\
+            \vdots \\
+            b_i \\
+            \vdots \\
+            b_n
+            \end{pmatrix}
+            =
+            \frac{1}{\Delta} \cdot
+            \begin{pmatrix}
+            A_{11}b_1 + A_{21}b_2 + \cdots + A_{n1}b_n \\
+            \vdots \\
+            A_{1i}b_1 + A_{2i}b_2 + \cdots + A_{ni}b_n \\
+            \vdots \\
+            A_{1n}b_1 + A_{2n}b_2 + \cdots + A_{nn}b_n
+            \end{pmatrix},
+            \]
+            <p>то есть</p>
+            \[
+            x_i = \frac{1}{\Delta} \cdot (b_1 A_{1i} + b_2 A_{2i} + \cdots + b_n A_{ni}), \quad \text{где } 1 \leq i
+            \leq n.
+            \]
+        </div>
+
+        <div class="proof">
+            <p>Рассмотрим теперь определитель \(\Delta_i\), получаемый из определителя \(\Delta\) матрицы \(A\) заменой
+                столбца с номером \(i\) на столбец свободных членов:</p>
+            \[
+            \Delta =
+            \begin{vmatrix}
+            a_{11} & a_{12} & \cdots & a_{1i} & \cdots & a_{1n} \\
+            a_{21} & a_{22} & \cdots & a_{2i} & \cdots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+            a_{n1} & a_{n2} & \cdots & a_{ni} & \cdots & a_{nn}
+            \end{vmatrix}
+            \Rightarrow \Delta_i =
+            \begin{vmatrix}
+            a_{11} & a_{12} & \cdots & b_1 & \cdots & a_{1n} \\
+            a_{21} & a_{22} & \cdots & b_2 & \cdots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+            a_{n1} & a_{n2} & \cdots & b_n & \cdots & a_{nn}
+            \end{vmatrix}.
+            \]
+            <p>У определителей \(\Delta\) и \(\Delta_i\) все столбцы, кроме столбцов с номером \(i\), одинаковые,
+                следовательно, алгебраические дополнения к соответствующим элементам этих столбцов также одинаковые.
+                Тогда раскладывая определитель \(\Delta_i\) по столбцу с номером \(i\) (согласно следствию 1.2 теоремы
+                Лапласа), получаем</p>
+            \[
+            \Delta_i = b_1 A_{1i} + b_2 A_{2i} + \cdots + b_n A_{ni} \Rightarrow
+            \]
+            \[
+            x_i = \frac{1}{\Delta} \cdot (b_1 A_{1i} + b_2 A_{2i} + \cdots + b_n A_{ni}) = \frac{\Delta_i}{\Delta}.
+            \]
+            <p>Теорема доказана.</p>
+        </div>
+
+        <div class="example">
+            <p><strong>Пример.</strong></p>
+            <p>Решим систему</p>
+            \[
+            \begin{cases}
+            2x_1 + 3x_2 = -1 \\
+            3x_1 + 4x_2 = -1
+            \end{cases}
+            \]
+            <p>Так как \( |A| = \begin{vmatrix} 2 & 3 \\ 3 & 4 \end{vmatrix} = -1 \neq 0 \), можно применить метод
+                Крамера:</p>
+            \[
+            \Delta = \begin{vmatrix} 2 & 3 \\ 3 & 4 \end{vmatrix} = -1, \quad
+            \Delta_1 = \begin{vmatrix} -1 & 3 \\ -1 & 4 \end{vmatrix} = -1, \quad
+            \Delta_2 = \begin{vmatrix} 2 & -1 \\ 3 & -1 \end{vmatrix} = 1.
+            \]
+            <p>Следовательно,</p>
+            \[
+            x_1 = \frac{\Delta_1}{\Delta} = \frac{-1}{-1} = 1, \quad
+            x_2 = \frac{\Delta_2}{\Delta} = \frac{1}{-1} = -1.
+            \]
+        </div>
+    </div>
+
+    <footer>© Заборовский М. С. Материалы для олимпиадников. 2026</footer>
+</div>
+</body>
+</html>

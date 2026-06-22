@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Матрицы | Полная теория</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f0f4f8;
+            color: #1e2a3e;
+            padding: 2rem 1.5rem;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #1e5f7a, #0f3b4f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .badge {
+            background: #d4e6f1;
+            display: inline-block;
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cbd5e1;
+        }
+
+        .card h2 {
+            color: #1e5f7a;
+            border-left: 6px solid #3b82f6;
+            padding-left: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+
+        .card h3 {
+            color: #2c5282;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.4rem;
+        }
+
+        .theorem {
+            background: #eef2ff;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #2563eb;
+        }
+
+        .definition {
+            background: #fef9e3;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .example {
+            background: #e6f7f0;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .property {
+            background: #e0f2fe;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #0284c7;
+        }
+
+        .matrix {
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #f8fafc;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 0.6rem;
+            text-align: center;
+        }
+
+        th {
+            background: #e2e8f0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #cbd5e1;
+            color: #4b5563;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1.2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📐 Матрицы</h1>
+        <div class="badge">Полная теория • Понятие матрицы • Виды • Операции • Умножение • Транспонирование</div>
+    </header>
+
+    <div class="card">
+        <h2>📖 Глава 1. Матрицы. Определители</h2>
+
+        <h3>1.1. Понятие матрицы</h3>
+        <div class="definition">
+            <p><strong>Определение.</strong> <em>Матрицей размера \( m \times n \)</em> называется таблица, образованная
+                из элементов некоторого множества и имеющая \( m \) строк и \( n \) столбцов. Если \( m \neq n \), то
+                матрицу называют <em>прямоугольной</em>, а если \( m = n \), то <em>квадратной порядка \( n \)</em>.</p>
+            <p>Элементы, из которых составлена матрица, называют <em>элементами</em> матрицы. Их обычно обозначают
+                маленькой латинской буквой с нижним индексом из двух цифр. Он указывает положение элемента в матрице:
+                первая цифра индекса – номер строки, в которой стоит элемент, а вторая – номер столбца.</p>
+        </div>
+        <div class="example">
+            <p><strong>Пример.</strong></p>
+            <p>\( a_{24} \) – элемент второй строки и четвертого столбца,</p>
+            <p>\( a_{13} \) – элемент первой строки и третьего столбца.</p>
+        </div>
+        <div class="theorem">
+            <p>Матрицы обычно обозначают большими латинскими буквами и при записи заключают в круглые скобки:</p>
+            \[
+            \mathbf{A} =
+            \begin{pmatrix}
+            a_{11} & a_{12} & \cdots & a_{1n} \\
+            a_{21} & a_{22} & \cdots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{m1} & a_{m2} & \cdots & a_{mn}
+            \end{pmatrix}.
+            \]
+            <p>Используется также сокращенная запись: \(\mathbf{A} = (a_{ij})\).</p>
+            <p>Две матрицы \(\mathbf{A} = (a_{ij})\) и \(\mathbf{B} = (b_{ij})\) считаются равными, если они одинакового
+                размера, и элементы, стоящие в \(\mathbf{A}\) и \(\mathbf{B}\) на одинаковых местах, равны между собой,
+                то есть \(a_{ij} = b_{ij}\).</p>
+            <p>Наиболее часто рассматриваются матрицы, элементами которых являются числа. Такие матрицы называются
+                числовыми.</p>
+        </div>
+
+        <h3>1.2. Некоторые виды матриц</h3>
+
+        <div class="definition">
+            <p><strong>1.</strong> Матрицу размера \( m \times 1 \) называют <strong>столбцом длины \( m \)</strong>.
+            </p>
+            \[
+            A =
+            \begin{pmatrix}
+            a_{11} \\
+            a_{21} \\
+            \vdots \\
+            a_{m1}
+            \end{pmatrix}.
+            \]
+        </div>
+
+        <div class="definition">
+            <p><strong>2.</strong> Матрицу размера \( 1 \times n \) называют <strong>строкой длины \( n \)</strong>.</p>
+            \[
+            A = \begin{pmatrix} a_{11} & a_{12} & \cdots & a_{1n} \end{pmatrix}.
+            \]
+        </div>
+
+        <div class="definition">
+            <p><strong>3.</strong> <strong>Нулевой</strong> матрицей называют матрицу, все элементы которой равны нулю.
+                Будем обозначать её буквой \( O \).</p>
+            \[
+            O = \begin{pmatrix} 0 & 0 & \cdots & 0 \\ 0 & 0 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 &
+            \cdots & 0 \end{pmatrix}.
+            \]
+        </div>
+
+        <div class="definition">
+            <p><strong>4.</strong> Условную линию в квадратной матрице \( A \) порядка \( n \), на которой расположены
+                элементы \( a_{11}, a_{22}, \ldots, a_{nn} \) называют <strong>главной диагональю</strong> этой матрицы.
+            </p>
+            <p>Условную линию в квадратной матрице \( A \) порядка \( n \), на которой расположены элементы \( a_{1n},
+                a_{2n-1}, \ldots, a_{n1} \), называют <strong>побочной диагональю</strong> этой матрицы.</p>
+        </div>
+
+        <div class="definition">
+            <p>Квадратная матрица, у которой все элементы, стоящие вне главной диагонали, равны нулю, называется
+                <strong>диагональной</strong>.</p>
+            \[
+            A =
+            \begin{pmatrix}
+            a_{11} & 0 & \cdots & 0 \\
+            0 & a_{22} & \cdots & 0 \\
+            \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & \cdots & a_{m}
+            \end{pmatrix}.
+            \]
+            <p>Диагональная матрица, у которой все элементы, стоящие на главной диагонали, равны 1, называется <strong>единичной</strong>.
+            </p>
+            \[
+            \begin{pmatrix}
+            1 & 0 & \cdots & 0 \\
+            0 & 1 & \cdots & 0 \\
+            \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & \cdots & 1
+            \end{pmatrix}.
+            \]
+            <p>Единичную матрицу принято обозначать буквой \( E \) (или \( E_n \), если требуется указать порядок
+                матрицы).</p>
+        </div>
+
+        <div class="definition">
+            <p><strong>5.</strong> Квадратные матрицы, у которых все элементы выше или ниже главной диагонали равны
+                нулю, называются <strong>треугольными</strong>.</p>
+            \[
+            A =
+            \begin{pmatrix}
+            a_{11} & a_{12} & a_{13} & \cdots & a_{1n} \\
+            0 & a_{22} & a_{23} & \cdots & a_{2n} \\
+            0 & 0 & a_{33} & \cdots & a_{3n} \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & 0 & \cdots & a_{nn}
+            \end{pmatrix}, \quad B =
+            \begin{pmatrix}
+            b_{11} & 0 & 0 & \cdots & 0 \\
+            b_{21} & b_{22} & 0 & \cdots & 0 \\
+            b_{31} & b_{32} & b_{33} & \cdots & 0 \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            b_{n1} & b_{n2} & b_{n3} & \cdots & b_{nn}
+            \end{pmatrix}.
+            \]
+            <p>При этом матрица \( A \) называется <strong>верхней треугольной</strong>, а \( B \) – <strong>нижней
+                треугольной</strong>.</p>
+        </div>
+
+        <div class="definition">
+            <p><strong>6.</strong> Прямоугольную матрицу называют <strong>трапециевидной</strong>, если она имеет вид:
+            </p>
+            \[
+            A =
+            \begin{pmatrix}
+            a_{11} & a_{12} & a_{13} & \cdots & a_{1m} & \cdots & a_{1n} \\
+            0 & a_{22} & a_{23} & \cdots & a_{2m} & \cdots & a_{2n} \\
+            0 & 0 & a_{33} & \cdots & a_{3m} & \cdots & a_{3n} \\
+            \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+            0 & 0 & 0 & \cdots & a_{mm} & \cdots & a_{mn}
+            \end{pmatrix}.
+            \]
+        </div>
+
+        <div class="definition">
+            <p><strong>7.</strong> Прямоугольная матрица называется <strong>ступенчатой</strong>, если первый ненулевой
+                элемент каждой строки находится правее первого ненулевого элемента предыдущей строки.</p>
+        </div>
+        <div class="example">
+            <p><strong>Пример.</strong></p>
+            \[
+            \begin{pmatrix}
+            1 & 2 & 3 & 4 & 5 & 6 \\
+            0 & 1 & 2 & 3 & 4 & 5 \\
+            0 & 0 & 0 & 1 & 2 & 3 \\
+            0 & 0 & 0 & 0 & 0 & 0
+            \end{pmatrix}
+            - \text{ ступенчатая матрица},
+            \]
+            \[
+            \begin{pmatrix}
+            1 & 2 & 0 & 0 \\
+            0 & 1 & 2 & 0 \\
+            0 & 1 & 2 & 0 \\
+            0 & 0 & 1 & 2
+            \end{pmatrix}
+            - \text{ не является ступенчатой}.
+            \]
+        </div>
+
+        <h3>1.3. Линейные операции над матрицами</h3>
+        <div class="definition">
+            <p>К линейным операциям над матрицами относятся умножение матрицы на число и сложение матриц.</p>
+            <p><strong>Определение.</strong> <em>Произведение</em> матрицы \( A = (a_{ij}) \) <em>на число \( \alpha
+                \)</em> называется такая матрица \( B = (b_{ij}) \), элементы которой равны произведениям
+                соответствующих элементов матрицы \( A \) на число \( \alpha \), то есть \( b_{ij} = \alpha \cdot a_{ij}
+                \).</p>
+            <p>Произведение матрицы \( A \) на число \( \alpha \) обозначают \( \alpha A \).</p>
+        </div>
+        <div class="example">
+            <p><strong>Пример.</strong></p>
+            <p>Если \( A = \begin{pmatrix} 1 & 2 & 3 \\ 0 & -1 & 4 \end{pmatrix} \), то \( 2A = \begin{pmatrix} 2 & 4 &
+                6 \\ 0 & -2 & 8 \end{pmatrix} \), \( (-3)A = \begin{pmatrix} -3 & -6 & -9 \\ 0 & 3 & -12 \end{pmatrix}
+                \).</p>
+            <p>Частным случаем произведения матрицы \( A \) на число является произведение \( (-1)A \). Такую матрицу
+                называют <em>противоположной матрице \( A \)</em> и обозначают \( -A \).</p>
+        </div>
+
+        <div class="definition">
+            <p><strong>Определение.</strong> Суммой двух матриц \( A = (a_{ij}) \) и \( B = (b_{ij}) \) одинакового
+                размера, называется такая матрица \( C = (c_{ij}) \), элементы которой равны суммам соответствующих
+                элементов матриц \( A \) и \( B \), то есть \( c_{ij} = a_{ij} + b_{ij} \).</p>
+            <p>Сумму матриц \( A \) и \( B \) обозначают \( A + B \).</p>
+        </div>
+        <div class="example">
+            <p><strong>Пример.</strong></p>
+            <p>Если \( A = \begin{pmatrix} 1 & 2 & 3 \\ 0 & -1 & 4 \end{pmatrix}, \quad B = \begin{pmatrix} -1 & 3 & 0
+                \\ 2 & -4 & -3 \end{pmatrix} \),</p>
+            <p>то \( A + B = \begin{pmatrix} 0 & 5 & 3 \\ 2 & -5 & 1 \end{pmatrix}. \)</p>
+            <p>Частным случаем суммы двух матриц является сумма \( A + (-B) \). Такую матрицу называют
+                <strong>разностью</strong> матриц \( A \) и \( B \), и обозначают \( A - B \).</p>
+        </div>
+
+        <div class="property">
+            <p>Введенные таким образом линейные операции над матрицами обладают следующими свойствами:</p>
+            <p>1. \( A + B = B + A \);</p>
+            <p>2. \( (A + B) + C = A + (B + C) \);</p>
+            <p>3. \( A + O = A \);</p>
+            <p>4. \( A + (-A) = O \);</p>
+            <p>5. \( \alpha (\beta A) = (\alpha \beta) A \);</p>
+            <p>6. \( (\alpha + \beta) A = \alpha A + \beta A \);</p>
+            <p>7. \( \alpha (A + B) = \alpha A + \alpha B \);</p>
+            <p>8. \( 1A = A \).</p>
+        </div>
+
+        <h3>1.4. Умножение матриц</h3>
+        <div class="definition">
+            <p><strong>Определение.</strong> Пусть \( A = (a_{ij}) \) — строка и \( B = (b_{i1}) \) — столбец одинаковой
+                длины \( n \). <strong>Произведение строки \( A \) на столбец \( B \)</strong> называется число \( c \)
+                (т.е. матрица размера \( 1 \times 1 \)), равное сумме произведений их соответствующих элементов, то есть
+            </p>
+            \[
+            c = a_{11} \cdot b_{11} + a_{12} \cdot b_{21} + a_{13} \cdot b_{31} + \dots + a_{1n} \cdot b_{n1}.
+            \]
+        </div>
+        <div class="example">
+            <p><strong>Пример.</strong></p>
+            <p>Если \( A = (1 \ 2 \ -3) \), \( B = \begin{pmatrix} -5 \\ 3 \\ 4 \end{pmatrix} \), то произведением \( A
+                \) на \( B \) будет число</p>
+            \[
+            c = 1 \cdot (-5) + 2 \cdot 3 + (-3) \cdot 4 = -11.
+            \]
+        </div>
+
+        <div class="definition">
+            <p><strong>Определение.</strong> Пусть \( A = (a_{ij}) \) – матрица размера \( m \times n \), \( B =
+                (b_{ij}) \) – матрица размера \( n \times k \) (то есть количество столбцов в матрице \( A \) совпадает
+                с количеством строк матрицы \( B \)). <strong>Произведение</strong> матрицы \( A \) на матрицу \( B \)
+                называется матрица \( C \) размера \( m \times k \) такая, что каждый ее элемент \( c_{ij} \) является
+                произведением строки матрицы \( A \) с номером \( i \) на столбец матрицы \( B \) с номером \( j \), то
+                есть</p>
+            \[
+            c_{ij} = a_{i1} \cdot b_{1j} + a_{i2} \cdot b_{2j} + a_{i3} \cdot b_{3j} + \dots + a_{in} \cdot b_{nj}.
+            \]
+            <p>Произведение матрицы \( A \) на \( B \) обозначают \( A \cdot B \) или \( AB \).</p>
+        </div>
+
+        <div class="example">
+            <p><strong>Пример 1.</strong></p>
+            <p>Пусть \( A = \begin{pmatrix} 1 & 2 \\ 0 & -1 \end{pmatrix} \) и \( B = \begin{pmatrix} -1 & 3 & 1 \\ 2 &
+                -4 & -2 \end{pmatrix} \). Тогда \( A \) можно умножить на \( B \). В результате получим матрицу</p>
+            \[
+            AB = \begin{pmatrix} 1 & 2 \\ 0 & -1 \end{pmatrix} \cdot \begin{pmatrix} -1 & 3 & 1 \\ 2 & -4 & -2
+            \end{pmatrix} = \begin{pmatrix} 3 & -5 & -3 \\ -2 & 4 & 2 \end{pmatrix}.
+            \]
+        </div>
+
+        <div class="example">
+            <p><strong>Пример 2.</strong></p>
+            <p>Пусть \( A = \begin{pmatrix} 1 & -2 & 0 \\ 3 & -1 & 5 \end{pmatrix} \) и \( B = \begin{pmatrix} 1 & 7 \\
+                3 & 4 \\ -1 & 0 \end{pmatrix} \). Тогда \( A \) можно умножить на \( B \) и \( B \) можно умножить на \(
+                A \). В результате получим матрицы</p>
+            \[
+            AB = \begin{pmatrix} -5 & -1 \\ -5 & 17 \end{pmatrix}, \quad
+            BA = \begin{pmatrix} 22 & -9 & 35 \\ 15 & -10 & 20 \\ -1 & 2 & 0 \end{pmatrix}.
+            \]
+            <p>Последний пример показывает, что если произведения \( AB \) и \( BA \) существуют, то в общем случае \(
+                AB \neq BA \). Но для некоторых матриц равенство \( AB = BA \) возможно. Если \( AB = BA \), то матрицы
+                \( A \) и \( B \) называют <strong>перестановочными</strong> или <strong>коммутативными</strong>.</p>
+        </div>
+
+        <div class="property">
+            <p>Операция умножения матриц обладает следующими свойствами (при условии, что все записанные произведения
+                имеют смысл):</p>
+            <p>1. \( AE = EA = A \);</p>
+            <p>2. \( AO = OA = O \);</p>
+            <p>3. \( (AB)C = A(BC) \);</p>
+            <p>4. \( (A + B)C = AC + BC \);</p>
+            <p>5. \( C(A + B) = CA + CB \).</p>
+        </div>
+
+        <h3>1.5. Транспонирование матриц</h3>
+        <div class="definition">
+            <p><strong>Определение.</strong> Пусть \( A \) — матрица размера \( m \times n \). Матрица размера \( n
+                \times m \), полученная из \( A \) заменой каждой ее строки столбцом с тем же номером, называется
+                <strong>транспонированной к \( A \)</strong> и обозначается \( A^T \). Операция нахождения матрицы \(
+                A^T \) называется <strong>транспонированием матрицы \( A \)</strong>.</p>
+        </div>
+        <div class="example">
+            <p><strong>Пример.</strong></p>
+            <p>Пусть \( A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix} \). Тогда \( A^T = \begin{pmatrix} 1 &
+                4 \\ 2 & 5 \\ 3 & 6 \end{pmatrix} \).</p>
+        </div>
+        <div class="property">
+            <p>Операция транспонирования матриц обладает следующими свойствами:</p>
+            <p>1. \( (A^T)^T = A \);</p>
+            <p>2. \( (A + B)^T = A^T + B^T \);</p>
+            <p>3. \( (\alpha A)^T = \alpha A^T \);</p>
+            <p>4. \( (A \cdot B)^T = B^T \cdot A^T \).</p>
+        </div>
+    </div>
+
+    <footer>© Заборовский М. С. Материалы для олимпиадников. 2026</footer>
+</div>
+</body>
+</html>

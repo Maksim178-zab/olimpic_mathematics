@@ -120,6 +120,18 @@ const resources = {
         practice: [
             { text: "📚 Сборник олимпиадных задач (40 задач с решениями)", url: "theory7/practice-polynomials.html", isInternal: true }
         ]
+    },
+    algebra: {
+        theory: [
+            { text: "Понятие матрицы",  url: "theory8/matrices-theory.html", isInternal: true },
+            { text: "Определитель матрицы",  url: "theory8/determinants-theory.html", isInternal: true },
+            { text: "Миноры и обратная матрица",  url: "theory8/minor-theory.html", isInternal: true },
+            { text: "Матричный метод и метод Крамера для решения СЛУ",  url: "theory8/linear-systems-theory.html", isInternal: true },
+            { text: "Метод Гаусса для решения СЛУ",  url: "theory8/gauss-theory.html", isInternal: true }
+        ],
+        practice: [
+            { text: "📚 Сборник олимпиадных задач (40 задач с решениями)", url: "theory7/practice-polynomials.html", isInternal: true }
+        ]
     }
 };
 
@@ -155,7 +167,8 @@ function populateAllSections() {
         { theoryId: "theory-geoopt", practiceId: "practice-geoopt", key: "geoopt" },
         { theoryId: "theory-invariant", practiceId: "practice-invariant", key: "invariant" },
         { theoryId: "theory-dirichlet", practiceId: "practice-dirichlet", key: "dirichlet" },
-        { theoryId: "theory-polynomials", practiceId: "practice-polynomials", key: "polynomials" }
+        { theoryId: "theory-polynomials", practiceId: "practice-polynomials", key: "polynomials" },
+        { theoryId: "theory-algebra", practiceId: "practice-algebra", key: "algebra" }
     ];
 
     sections.forEach(section => {
