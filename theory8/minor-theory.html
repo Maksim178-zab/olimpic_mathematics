@@ -6,7 +6,12 @@
     <title>Теорема Лапласа и обратная матрица | Полная теория</title>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Segoe UI', 'Georgia', serif;
             background: #f0f4f8;
@@ -14,24 +19,144 @@
             padding: 2rem 1.5rem;
             line-height: 1.7;
         }
-        .container { max-width: 1100px; margin: 0 auto; }
-        header { text-align: center; margin-bottom: 2.5rem; }
-        h1 { font-size: 2.8rem; background: linear-gradient(135deg, #1e5f7a, #0f3b4f); background-clip: text; -webkit-background-clip: text; color: transparent; }
-        .badge { background: #d4e6f1; display: inline-block; padding: 0.4rem 1.4rem; border-radius: 40px; font-size: 0.9rem; margin-top: 0.8rem; }
-        .card { background: white; border-radius: 2rem; padding: 1.8rem 2rem; margin-bottom: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #cbd5e1; }
-        .card h2 { color: #1e5f7a; border-left: 6px solid #3b82f6; padding-left: 1.2rem; margin-bottom: 1.2rem; font-size: 1.8rem; }
-        .card h3 { color: #2c5282; margin: 1rem 0 0.5rem 0; font-size: 1.4rem; }
-        .theorem { background: #eef2ff; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; border-left: 5px solid #2563eb; }
-        .definition { background: #fef9e3; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; border-left: 4px solid #f59e0b; }
-        .proof { background: #fef9e3; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; border-left: 4px solid #b85c1a; }
-        .example { background: #e6f7f0; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; }
-        .property { background: #e0f2fe; padding: 1rem 1.5rem; border-radius: 1.5rem; margin: 1rem 0; border-left: 5px solid #0284c7; }
-        .matrix { font-family: monospace; font-size: 1.1rem; }
-        table { width: 100%; border-collapse: collapse; margin: 1rem 0; background: #f8fafc; }
-        th, td { border: 1px solid #cbd5e1; padding: 0.6rem; text-align: center; }
-        th { background: #e2e8f0; }
-        footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #cbd5e1; color: #4b5563; font-size: 0.85rem; }
-        @media (max-width: 700px) { body { padding: 1rem; } .card { padding: 1.2rem; } h1 { font-size: 2rem; } table { font-size: 0.85rem; } }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #1e5f7a, #0f3b4f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .badge {
+            background: #d4e6f1;
+            display: inline-block;
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cbd5e1;
+        }
+
+        .card h2 {
+            color: #1e5f7a;
+            border-left: 6px solid #3b82f6;
+            padding-left: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+
+        .card h3 {
+            color: #2c5282;
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.4rem;
+        }
+
+        .theorem {
+            background: #eef2ff;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #2563eb;
+        }
+
+        .definition {
+            background: #fef9e3;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .proof {
+            background: #fef9e3;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #b85c1a;
+        }
+
+        .example {
+            background: #e6f7f0;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .property {
+            background: #e0f2fe;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #0284c7;
+        }
+
+        .matrix {
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #f8fafc;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 0.6rem;
+            text-align: center;
+        }
+
+        th {
+            background: #e2e8f0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #cbd5e1;
+            color: #4b5563;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .card {
+                padding: 1.2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -41,23 +166,114 @@
         <div class="badge">Теорема Лапласа • Следствие • Обратная матрица • Доказательства</div>
     </header>
 
+    <!-- Часть 1.8. Миноры, дополнительные миноры, алгебраические дополнения -->
+    <div class="card">
+        <h2>📐 1.8. Миноры, дополнительные миноры, алгебраические дополнения</h2>
+
+        <div class="definition">
+            <p>Пусть \( A = (a_{ij}) \) – матрица размера \( m \times n \) и пусть \( k \) – некоторое число, такое, что
+                \( 1 \leq k, \, k \leq m, \, k \leq n \).</p>
+            <p><strong>Определение.</strong> Выберем в матрице \( A \) произвольно \( k \) строк и \( k \) столбцов. Из
+                элементов, стоящих на пересечении выбранных строк и столбцов, составим определитель \( M_k \). Этот
+                определитель называют <strong>минором \( k \)-го порядка</strong> матрицы \( A \) (её определителя).</p>
+        </div>
+
+        <div class="example">
+            <p><strong>Пример.</strong></p>
+            \[
+            A =
+            \begin{pmatrix}
+            1 & 0 & 3 & 7 \\
+            2 & 4 & 8 & 2 \\
+            3 & 0 & 5 & 7
+            \end{pmatrix}
+            \]
+            <p>Выбирая первую строку и четвертый столбец, получаем минор первого порядка матрицы \( A \):</p>
+            \[
+            M_1 = |7|.
+            \]
+            <p>Выбирая вторую, третью строки и первый, второй столбцы, получаем минор второго порядка матрицы \( A
+                \):</p>
+            \[
+            M_2 =
+            \begin{vmatrix}
+            2 & 4 \\
+            3 & 0
+            \end{vmatrix}.
+            \]
+        </div>
+
+        <div class="definition">
+            <p>Пусть \( A = (a_{ij}) \) – квадратная матрица порядка \( n \).</p>
+            <p>Выберем в \( A \) минор \( k \)-го порядка \( M_k \). <strong>Дополнительным минором</strong> к минору \(
+                M_k \) называется определитель матрицы, оставшейся после вычёркивания тех строк и столбцов матрицы \( A
+                \), которые входят в минор \( M_k \).</p>
+            <p><strong>Алгебраическим дополнением</strong> \( A_k \) минора \( M_k \) называется дополнительный к нему
+                минор, умноженный на \( (-1)^S \), где \( S \) — сумма номеров строк и столбцов данной матрицы, которые
+                входят в минор \( M_k \).</p>
+        </div>
+
+        <div class="example">
+            <p><strong>Пример.</strong></p>
+            \[
+            |A| =
+            \begin{vmatrix}
+            1 & 2 & 3 & 4 \\
+            5 & 6 & 7 & 8 \\
+            9 & 10 & 11 & 12 \\
+            13 & 14 & 15 & 16
+            \end{vmatrix}.
+            \]
+            <p>Выберем минор второго порядка \( M_2 =
+                \begin{vmatrix}
+                2 & 4 \\
+                6 & 8
+                \end{vmatrix} \).</p>
+            <p>Тогда алгебраическим дополнением к нему будет</p>
+            \[
+            A_2 = (-1)^{1+2+2+4}
+            \begin{vmatrix}
+            9 & 11 \\
+            13 & 15
+            \end{vmatrix} =
+            \begin{vmatrix}
+            9 & 11 \\
+            13 & 15
+            \end{vmatrix}.
+            \]
+        </div>
+
+        <div class="definition">
+            <p><strong>Замечание.</strong> Дополнительный минор элемента \( a_{ij} \) (будем обозначать его \( M_{ij}
+                \)) – это определитель порядка \( n-1 \), полученный из определителя \( |A| \) вычеркиванием строки с
+                номером \( i \) и столбца с номером \( j \).</p>
+            <p>А алгебраическое дополнение элемента \( a_{ij} \) (будем обозначать его \( A_{ij} \)) – это произведение
+                \( (-1)^{i+j} M_{ij} \).</p>
+        </div>
+    </div>
+
     <!-- Часть 1.9. Теорема Лапласа -->
     <div class="card">
         <h2>📖 1.9. Теорема Лапласа и ее следствие</h2>
 
         <div class="theorem">
-            <p><strong>Теорема 1.1 (Лапласа).</strong> Пусть в определителе порядка \( n \) выбрано \( k \) строк (столбцов), где \( 1 \leq k \leq n-1 \). Тогда определитель равен сумме произведений всех миноров \( k \)-го порядка, содержащихся в выбранных строках (столбцах), на их алгебраические дополнения.</p>
+            <p><strong>Теорема 1.1 (Лапласа).</strong> Пусть в определителе порядка \( n \) выбрано \( k \) строк
+                (столбцов), где \( 1 \leq k \leq n-1 \). Тогда определитель равен сумме произведений всех миноров \( k
+                \)-го порядка, содержащихся в выбранных строках (столбцах), на их алгебраические дополнения.</p>
         </div>
 
         <div class="theorem">
-            <p><strong>Следствие 1.2 (теоремы Лапласа).</strong> Определитель равен сумме произведений всех элементов любой строки (столбца) на их алгебраические дополнения:</p>
+            <p><strong>Следствие 1.2 (теоремы Лапласа).</strong> Определитель равен сумме произведений всех элементов
+                любой строки (столбца) на их алгебраические дополнения:</p>
             \[
             |A| = a_{i1} \cdot A_{i1} + a_{i2} \cdot A_{i2} + \dots + a_{in} \cdot A_{in},
             \]
             \[
             |A| = a_{1j} \cdot A_{1j} + a_{2j} \cdot A_{2j} + \dots + a_{nj} \cdot A_{nj}.
             \]
-            <p>Полученные выражения называют <strong>разложением определителя по строке</strong> или <strong>столбцу</strong> соответственно. Они позволяют свести вычисление определителя порядка \( n \) к вычислению \( n \) определителей порядка \( n-1 \).</p>
+            <p>Полученные выражения называют <strong>разложением определителя по строке</strong> или
+                <strong>столбцу</strong> соответственно. Они позволяют свести вычисление определителя порядка \( n \) к
+                вычислению \( n \) определителей порядка \( n-1 \).</p>
         </div>
 
         <div class="example">
@@ -105,7 +321,8 @@
             \end{vmatrix} =
             \]
             \[
-            = 1 \cdot 1 \cdot 17 + (-1) \cdot (-1) \cdot (-57) + (-1) \cdot 1 \cdot (-22) + 2 \cdot 1 \cdot (-42) = -102.
+            = 1 \cdot 1 \cdot 17 + (-1) \cdot (-1) \cdot (-57) + (-1) \cdot 1 \cdot (-22) + 2 \cdot 1 \cdot (-42) =
+            -102.
             \]
         </div>
     </div>
@@ -115,17 +332,22 @@
         <h2>📖 1.10. Понятие обратной матрицы</h2>
 
         <div class="definition">
-            <p><strong>Определение.</strong> <em>Обратной</em> к матрице \( A \) называется матрица, обозначаемая \( A^{-1} \), такая, что \( A \cdot A^{-1} = A^{-1} \cdot A = E \).</p>
+            <p><strong>Определение.</strong> <em>Обратной</em> к матрице \( A \) называется матрица, обозначаемая \(
+                A^{-1} \), такая, что \( A \cdot A^{-1} = A^{-1} \cdot A = E \).</p>
         </div>
 
         <div class="theorem">
-            <p><strong>Лемма 1.3.</strong> Если матрица \( A \) имеет обратную матрицу, то \( A \) и \( A^{-1} \) — квадратные матрицы одинакового порядка.</p>
+            <p><strong>Лемма 1.3.</strong> Если матрица \( A \) имеет обратную матрицу, то \( A \) и \( A^{-1} \) —
+                квадратные матрицы одинакового порядка.</p>
         </div>
 
         <div class="proof">
             <p><strong>Доказательство.</strong></p>
-            <p>Чтобы существовали произведения \( A \cdot A^{-1} \) и \( A^{-1} \cdot A \) необходимо, чтобы матрицы \( A \) и \( A^{-1} \) имели соответственно размеры \( n \times m \) и \( m \times n \).</p>
-            <p>Тогда матрица \( A \cdot A^{-1} \) будет иметь размер \( n \times n \), а матрица \( A^{-1} \cdot A \) — размер \( m \times m \). Но для равенства \( A \cdot A^{-1} = A^{-1} \cdot A \) необходимо, чтобы размеры матриц \( A \cdot A^{-1} \) и \( A^{-1} \cdot A \) совпадали, то есть \( n = m \).</p>
+            <p>Чтобы существовали произведения \( A \cdot A^{-1} \) и \( A^{-1} \cdot A \) необходимо, чтобы матрицы \(
+                A \) и \( A^{-1} \) имели соответственно размеры \( n \times m \) и \( m \times n \).</p>
+            <p>Тогда матрица \( A \cdot A^{-1} \) будет иметь размер \( n \times n \), а матрица \( A^{-1} \cdot A \) —
+                размер \( m \times m \). Но для равенства \( A \cdot A^{-1} = A^{-1} \cdot A \) необходимо, чтобы
+                размеры матриц \( A \cdot A^{-1} \) и \( A^{-1} \cdot A \) совпадали, то есть \( n = m \).</p>
             <p>Лемма доказана.</p>
         </div>
 
@@ -143,7 +365,8 @@
             \[
             A \cdot C = C \cdot A = E.
             \]
-            <p>Тогда существует и произведение \( B \cdot A \cdot C \), причем согласно свойствам операции умножения матриц,</p>
+            <p>Тогда существует и произведение \( B \cdot A \cdot C \), причем согласно свойствам операции умножения
+                матриц,</p>
             \[
             B \cdot A \cdot C = (B \cdot A) \cdot C = E \cdot C = C,
             \]
@@ -155,18 +378,22 @@
         </div>
 
         <div class="theorem">
-            <p><strong>Лемма 1.5.</strong> Если матрица \( A \) имеет обратную матрицу, то её определитель отличен от нуля.</p>
+            <p><strong>Лемма 1.5.</strong> Если матрица \( A \) имеет обратную матрицу, то её определитель отличен от
+                нуля.</p>
         </div>
 
         <div class="proof">
             <p><strong>Доказательство.</strong></p>
-            <p>В лемме 1.3 утверждается, что \( A \) и \( A^{-1} \) — квадратные матрицы одинакового порядка. Тогда согласно свойству 7 определителей</p>
+            <p>В лемме 1.3 утверждается, что \( A \) и \( A^{-1} \) — квадратные матрицы одинакового порядка. Тогда
+                согласно свойству 7 определителей</p>
             \[
             \left| A \cdot A^{-1} \right| = \left| A \right| \cdot \left| A^{-1} \right|.
             \]
             <p>Но</p>
             \[
-            \left| A \cdot A^{-1} \right| = \left| E \right|, \quad \text{а } \left| E \right| = 1, \text{ следовательно, } \left| A \right| \cdot \left| A^{-1} \right| = 1, \text{ откуда получаем, что } \left| A \right| \neq 0 \quad \text{и} \quad \left| A^{-1} \right| \neq 0.
+            \left| A \cdot A^{-1} \right| = \left| E \right|, \quad \text{а } \left| E \right| = 1, \text{
+            следовательно, } \left| A \right| \cdot \left| A^{-1} \right| = 1, \text{ откуда получаем, что } \left| A
+            \right| \neq 0 \quad \text{и} \quad \left| A^{-1} \right| \neq 0.
             \]
             <p>Лемма доказана.</p>
         </div>
@@ -181,7 +408,9 @@
         </div>
 
         <div class="theorem">
-            <p><strong>Теорема 1.6 (об обратной матрице).</strong> Пусть \( A \) — квадратная матрица порядка \( n \). Матрица \( A \) имеет обратную тогда и только тогда, когда ее определитель \( |A| \) отличен от нуля. Причем</p>
+            <p><strong>Теорема 1.6 (об обратной матрице).</strong> Пусть \( A \) — квадратная матрица порядка \( n \).
+                Матрица \( A \) имеет обратную тогда и только тогда, когда ее определитель \( |A| \) отличен от нуля.
+                Причем</p>
             \[
             A^{-1} = \frac{1}{|A|} S^T,
             \]
@@ -200,8 +429,11 @@
 
         <div class="proof">
             <p><strong>Доказательство.</strong></p>
-            <p><strong>1)</strong> Пусть матрица \( A \) имеет обратную матрицу. Тогда согласно лемме 1.5, \( |A| \neq 0 \).</p>
-            <p><strong>2)</strong> Пусть \( |A| \neq 0 \). Надо доказать, что матрица \( A \) имеет обратную матрицу. Для этого покажем, что матрица \( \frac{1}{|A|} \cdot S^T \) является обратной к \( A \), то есть что</p>
+            <p><strong>1)</strong> Пусть матрица \( A \) имеет обратную матрицу. Тогда согласно лемме 1.5, \( |A| \neq 0
+                \).</p>
+            <p><strong>2)</strong> Пусть \( |A| \neq 0 \). Надо доказать, что матрица \( A \) имеет обратную матрицу.
+                Для этого покажем, что матрица \( \frac{1}{|A|} \cdot S^T \) является обратной к \( A \), то есть что
+            </p>
             \[
             A \cdot \left( \frac{1}{|A|} \cdot S^T \right) = \left( \frac{1}{|A|} \cdot S^T \right) \cdot A = E.
             \]
@@ -242,7 +474,8 @@
             \[
             d_{nn} = a_{n1}A_{n1} + a_{n2}A_{n2} + \cdots + a_{nn}A_{nn}.
             \]
-            <p>Но согласно следствию 1.2 теоремы Лапласа, полученные выражения являются разложениями \( |A| \) по строкам, то есть</p>
+            <p>Но согласно следствию 1.2 теоремы Лапласа, полученные выражения являются разложениями \( |A| \) по
+                строкам, то есть</p>
             \[
             a_{11}A_{11} + a_{12}A_{12} + \cdots + a_{1n}A_{1n} = |A|,
             \]
@@ -263,7 +496,8 @@
             \[
             d_{ij} = a_{i1}A_{j1} + a_{i2}A_{j2} + \dots + a_{in}A_{jn}.
             \]
-            <p>Заменим в матрице \( A \) элементы строки с номером \( j \) на соответствующие элементы строки с номером \( i \). Построенную таким образом новую матрицу обозначим \( A' \).</p>
+            <p>Заменим в матрице \( A \) элементы строки с номером \( j \) на соответствующие элементы строки с номером
+                \( i \). Построенную таким образом новую матрицу обозначим \( A' \).</p>
             \[
             A =
             \begin{pmatrix}
@@ -286,11 +520,13 @@
             a_{n1} & a_{n2} & \cdots & a_{nn}
             \end{pmatrix}.
             \]
-            <p>Так как в матрице \( A' \) две одинаковые строки, \( |A'| = 0 \). Запишем теперь разложение \( |A'| \) по строке с номером \( j \) (согласно следствию 1.2 теоремы Лапласа):</p>
+            <p>Так как в матрице \( A' \) две одинаковые строки, \( |A'| = 0 \). Запишем теперь разложение \( |A'| \) по
+                строке с номером \( j \) (согласно следствию 1.2 теоремы Лапласа):</p>
             \[
             |A'| = a_{i1}A'_{j1} + a_{i2}A'_{j2} + \cdots + a_{in}A'_{jn}.
             \]
-            <p>Но в матрицах \( A \) и \( A' \) все строки, кроме строки с номером \( j \), одинаковые, следовательно,</p>
+            <p>Но в матрицах \( A \) и \( A' \) все строки, кроме строки с номером \( j \), одинаковые,
+                следовательно,</p>
             \[
             A_{j1} = A'_{j1}, \quad A_{j2} = A'_{j2}, \quad \dots, \quad A_{jn} = A'_{jn},
             \]
@@ -314,7 +550,8 @@
             = |A| \cdot E
             \]
             \[
-            \Rightarrow \quad A \cdot S^T = |A| \cdot E \quad \Rightarrow \quad A \cdot \left( \frac{1}{|A|} \cdot S^T \right) = E.
+            \Rightarrow \quad A \cdot S^T = |A| \cdot E \quad \Rightarrow \quad A \cdot \left( \frac{1}{|A|} \cdot S^T
+            \right) = E.
             \]
         </div>
 
