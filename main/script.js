@@ -130,7 +130,7 @@ const resources = {
             { text: "Метод Гаусса для решения СЛУ",  url: "theory8/gauss-theory.html", isInternal: true }
         ],
         practice: [
-            { text: "📚 Сборник олимпиадных задач (40 задач с решениями)", url: "theory7/practice-polynomials.html", isInternal: true }
+            { text: "📚 Сборник задач задач (30 задач с решениями)", url: "theory8/practice-linear-algebra.html", isInternal: true }
         ]
     }
 };

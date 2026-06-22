@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практикум | Линейная алгебра | 30 задач</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', serif;
+            background: #f0f4f8;
+            color: #1e2a3e;
+            padding: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #1e5f7a, #0f3b4f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #2c5282;
+            margin-top: 0.3rem;
+        }
+
+        .badge {
+            background: #d4e6f1;
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .part {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cbd5e1;
+        }
+
+        .part h2 {
+            color: #1e5f7a;
+            border-left: 5px solid #3b82f6;
+            padding-left: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .task {
+            background: #f8fafc;
+            margin: 1rem 0;
+            padding: 1rem 1.2rem;
+            border-radius: 1rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .task p {
+            margin-bottom: 0.3rem;
+        }
+
+        .solve-btn {
+            background: #1e5f7a;
+            color: white;
+            border: none;
+            padding: 0.3rem 1rem;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.3rem;
+            transition: background 0.2s;
+        }
+
+        .solve-btn:hover {
+            background: #0f4b62;
+        }
+
+        .solution {
+            display: none;
+            margin-top: 0.8rem;
+            padding: 1rem 1.2rem;
+            background: #eef2ff;
+            border-radius: 0.8rem;
+            border-left: 3px solid #1e5f7a;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .solution p {
+            margin: 0.6rem 0;
+        }
+
+        .solution .step {
+            margin-left: 1.2rem;
+            margin-top: 0.4rem;
+        }
+
+        .solution .formula-block {
+            background: #f8fafc;
+            padding: 0.6rem;
+            border-radius: 0.6rem;
+            text-align: center;
+            margin: 0.6rem 0;
+        }
+
+        .solution .answer-block {
+            background: #d1fae5;
+            padding: 0.6rem;
+            border-radius: 0.6rem;
+            text-align: center;
+            margin: 0.6rem 0;
+            font-weight: bold;
+            font-size: 1.05rem;
+        }
+
+        .solution .table-block {
+            background: #f8fafc;
+            padding: 0.6rem;
+            border-radius: 0.6rem;
+            margin: 0.6rem 0;
+            overflow-x: auto;
+        }
+
+        .solution .table-block table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .solution .table-block td {
+            border: 1px solid #cbd5e1;
+            padding: 0.3rem;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            border-top: 1px solid #cbd5e1;
+            padding-top: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+
+            .part {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .solution {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📐 Линейная алгебра</h1>
+        <div class="subtitle">30 задач с полными решениями</div>
+        <div class="badge">Матрицы • Определители • Обратная матрица • Системы</div>
+    </header>
+
+    <!-- Часть 1. Матрицы и операции (задачи 1–6) -->
+    <div class="part">
+        <h2>📖 Часть 1. Матрицы и операции (задачи 1–6)</h2>
+
+        <div class="task"><p><strong>Задача 1.</strong> Даны матрицы \( A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}
+            \) и \( B = \begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix} \). Найдите \( A + B \).</p>
+            <button class="solve-btn" data-target="s1">Показать решение</button>
+            <div id="s1" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> При сложении матриц складываем соответствующие элементы:</p>
+                <p>\( A + B = \begin{pmatrix} 1+5 & 2+6 \\ 3+7 & 4+8 \end{pmatrix} = \begin{pmatrix} 6 & 8 \\ 10 & 12
+                    \end{pmatrix} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \begin{pmatrix} 6 & 8 \\ 10 & 12 \end{pmatrix} \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 2.</strong> Дана матрица \( A = \begin{pmatrix} 1 & -2 & 3 \\ 4 & 0 & -1
+            \end{pmatrix} \). Найдите \( 3A \).</p>
+            <button class="solve-btn" data-target="s2">Показать решение</button>
+            <div id="s2" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> При умножении матрицы на число умножаем каждый элемент на это
+                    число:</p>
+                <p>\( 3A = \begin{pmatrix} 3\cdot1 & 3\cdot(-2) & 3\cdot3 \\ 3\cdot4 & 3\cdot0 & 3\cdot(-1)
+                    \end{pmatrix} = \begin{pmatrix} 3 & -6 & 9 \\ 12 & 0 & -3 \end{pmatrix} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \begin{pmatrix} 3 & -6 & 9 \\ 12 & 0 & -3
+                    \end{pmatrix} \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 3.</strong> Найдите произведение матриц \( A = \begin{pmatrix} 1 & 2 \\ 3 &
+            4 \end{pmatrix} \) и \( B = \begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix} \).</p>
+            <button class="solve-btn" data-target="s3">Показать решение</button>
+            <div id="s3" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( AB = \begin{pmatrix} 1\cdot5+2\cdot7 & 1\cdot6+2\cdot8 \\
+                    3\cdot5+4\cdot7 & 3\cdot6+4\cdot8 \end{pmatrix} = \begin{pmatrix} 5+14 & 6+16 \\ 15+28 & 18+32
+                    \end{pmatrix} = \begin{pmatrix} 19 & 22 \\ 43 & 50 \end{pmatrix} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \begin{pmatrix} 19 & 22 \\ 43 & 50 \end{pmatrix}
+                    \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 4.</strong> Найдите транспонированную матрицу для \( A = \begin{pmatrix} 1 &
+            2 & 3 \\ 4 & 5 & 6 \end{pmatrix} \).</p>
+            <button class="solve-btn" data-target="s4">Показать решение</button>
+            <div id="s4" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> При транспонировании строки становятся столбцами:</p>
+                <p>\( A^T = \begin{pmatrix} 1 & 4 \\ 2 & 5 \\ 3 & 6 \end{pmatrix} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \begin{pmatrix} 1 & 4 \\ 2 & 5 \\ 3 & 6
+                    \end{pmatrix} \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 5.</strong> Найдите \( AB \), если \( A = \begin{pmatrix} 1 & -1 \\ 2 & 0 \\
+            3 & 1 \end{pmatrix} \), \( B = \begin{pmatrix} 4 & 1 \\ 5 & 2 \end{pmatrix} \).</p>
+            <button class="solve-btn" data-target="s5">Показать решение</button>
+            <div id="s5" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Умножаем строки \( A \) на столбцы \( B \):</p>
+                <p>\( AB = \begin{pmatrix} 1\cdot4+(-1)\cdot5 & 1\cdot1+(-1)\cdot2 \\ 2\cdot4+0\cdot5 & 2\cdot1+0\cdot2
+                    \\ 3\cdot4+1\cdot5 & 3\cdot1+1\cdot2 \end{pmatrix} = \begin{pmatrix} 4-5 & 1-2 \\ 8+0 & 2+0 \\ 12+5
+                    & 3+2 \end{pmatrix} = \begin{pmatrix} -1 & -1 \\ 8 & 2 \\ 17 & 5 \end{pmatrix} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \begin{pmatrix} -1 & -1 \\ 8 & 2 \\ 17 & 5
+                    \end{pmatrix} \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 6.</strong> Найдите \( A^T \cdot A \) для \( A = \begin{pmatrix} 1 & 2 \\ 3
+            & 4 \end{pmatrix} \).</p>
+            <button class="solve-btn" data-target="s6">Показать решение</button>
+            <div id="s6" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( A^T = \begin{pmatrix} 1 & 3 \\ 2 & 4 \end{pmatrix} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( A^T A = \begin{pmatrix} 1\cdot1+3\cdot3 & 1\cdot2+3\cdot4 \\
+                    2\cdot1+4\cdot3 & 2\cdot2+4\cdot4 \end{pmatrix} = \begin{pmatrix} 1+9 & 2+12 \\ 2+12 & 4+16
+                    \end{pmatrix} = \begin{pmatrix} 10 & 14 \\ 14 & 20 \end{pmatrix} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \begin{pmatrix} 10 & 14 \\ 14 & 20 \end{pmatrix}
+                    \).
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Часть 2. Определители (задачи 7–12) -->
+    <div class="part">
+        <h2>📊 Часть 2. Определители (задачи 7–12)</h2>
+
+        <div class="task"><p><strong>Задача 7.</strong> Найдите определитель \( \begin{vmatrix} 3 & 5 \\ 2 & 4
+            \end{vmatrix} \).</p>
+            <button class="solve-btn" data-target="s7">Показать решение</button>
+            <div id="s7" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Для матрицы \( 2\times2 \): \( \begin{vmatrix} a & b \\ c & d
+                    \end{vmatrix} = ad - bc \).</p>
+                <p>\( \begin{vmatrix} 3 & 5 \\ 2 & 4 \end{vmatrix} = 3\cdot4 - 5\cdot2 = 12 - 10 = 2 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> 2.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 8.</strong> Найдите определитель \( \begin{vmatrix} 1 & 2 & 3 \\ 4 & 5 & 6
+            \\ 7 & 8 & 9 \end{vmatrix} \).</p>
+            <button class="solve-btn" data-target="s8">Показать решение</button>
+            <div id="s8" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Используем правило треугольников:</p>
+                \[
+                \begin{vmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{vmatrix} = 1\cdot5\cdot9 + 2\cdot6\cdot7 +
+                3\cdot4\cdot8 - 3\cdot5\cdot7 - 2\cdot4\cdot9 - 1\cdot6\cdot8
+                \]
+                <p class="step"><strong>Шаг 2.</strong> Вычисляем: \( 45 + 84 + 96 - 105 - 72 - 48 = 225 - 225 = 0 \).
+                </p>
+                <div class="answer-block"><strong>Ответ:</strong> 0.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 9.</strong> Найдите определитель \( \begin{vmatrix} 2 & -1 & 3 \\ 1 & 2 & 1
+            \\ -2 & 0 & 4 \end{vmatrix} \).</p>
+            <button class="solve-btn" data-target="s9">Показать решение</button>
+            <div id="s9" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Используем правило треугольников:</p>
+                \[
+                \begin{vmatrix} 2 & -1 & 3 \\ 1 & 2 & 1 \\ -2 & 0 & 4 \end{vmatrix} = 2\cdot2\cdot4 +
+                (-1)\cdot1\cdot(-2) + 3\cdot1\cdot0 - 3\cdot2\cdot(-2) - (-1)\cdot1\cdot4 - 2\cdot1\cdot0
+                \]
+                <p class="step"><strong>Шаг 2.</strong> \( = 16 + 2 + 0 - (-12) - (-4) - 0 = 16 + 2 + 12 + 4 = 34 \).
+                </p>
+                <div class="answer-block"><strong>Ответ:</strong> 34.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 10.</strong> Вычислите определитель, разложив по первому столбцу: \(
+            \begin{vmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{vmatrix} \).</p>
+            <button class="solve-btn" data-target="s10">Показать решение</button>
+            <div id="s10" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Разложение по первому столбцу:</p>
+                \[
+                |A| = 1 \cdot (-1)^{1+1} \begin{vmatrix} 5 & 6 \\ 8 & 9 \end{vmatrix} + 4 \cdot (-1)^{2+1}
+                \begin{vmatrix} 2 & 3 \\ 8 & 9 \end{vmatrix} + 7 \cdot (-1)^{3+1} \begin{vmatrix} 2 & 3 \\ 5 & 6
+                \end{vmatrix}
+                \]
+                <p class="step"><strong>Шаг 2.</strong> \( = 1\cdot(45-48) - 4\cdot(18-24) + 7\cdot(12-15) = -3 -
+                    4\cdot(-6) + 7\cdot(-3) = -3 + 24 - 21 = 0 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> 0.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 11.</strong> Вычислите определитель \( \begin{vmatrix} 2 & 0 & 1 \\ 4 & 3 &
+            2 \\ 1 & 5 & 1 \end{vmatrix} \).</p>
+            <button class="solve-btn" data-target="s11">Показать решение</button>
+            <div id="s11" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Используем правило треугольников:</p>
+                \[
+                \begin{vmatrix} 2 & 0 & 1 \\ 4 & 3 & 2 \\ 1 & 5 & 1 \end{vmatrix} = 2\cdot3\cdot1 + 0\cdot2\cdot1 +
+                1\cdot4\cdot5 - 1\cdot3\cdot1 - 0\cdot4\cdot1 - 2\cdot2\cdot5
+                \]
+                <p class="step"><strong>Шаг 2.</strong> \( = 6 + 0 + 20 - 3 - 0 - 20 = 3 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> 3.</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 12.</strong> Найдите определитель \( \begin{vmatrix} 1 & 2 & -1 \\ 3 & 0 & 2
+            \\ 2 & 1 & 4 \end{vmatrix} \).</p>
+            <button class="solve-btn" data-target="s12">Показать решение</button>
+            <div id="s12" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Используем правило треугольников:</p>
+                \[
+                \begin{vmatrix} 1 & 2 & -1 \\ 3 & 0 & 2 \\ 2 & 1 & 4 \end{vmatrix} = 1\cdot0\cdot4 + 2\cdot2\cdot2 +
+                (-1)\cdot3\cdot1 - (-1)\cdot0\cdot2 - 2\cdot3\cdot4 - 1\cdot2\cdot1
+                \]
+                <p class="step"><strong>Шаг 2.</strong> \( = 0 + 8 - 3 - 0 - 24 - 2 = -21 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> -21.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Часть 3. Обратная матрица (задачи 13–18) -->
+    <div class="part">
+        <h2>🔁 Часть 3. Обратная матрица (задачи 13–18)</h2>
+
+        <div class="task"><p><strong>Задача 13.</strong> Найдите обратную матрицу для \( A = \begin{pmatrix} 2 & 3 \\ 1
+            & 2 \end{pmatrix} \).</p>
+            <button class="solve-btn" data-target="s13">Показать решение</button>
+            <div id="s13" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( |A| = 2\cdot2 - 3\cdot1 = 4 - 3 = 1 \neq 0 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Для матрицы \( 2\times2 \): \( A^{-1} = \frac{1}{|A|}
+                    \begin{pmatrix} d & -b \\ -c & a \end{pmatrix} \).</p>
+                <p>\( A^{-1} = \frac{1}{1} \begin{pmatrix} 2 & -3 \\ -1 & 2 \end{pmatrix} = \begin{pmatrix} 2 & -3 \\ -1
+                    & 2 \end{pmatrix} \).</p>
+                <p class="step"><strong>Проверка:</strong> \( A\cdot A^{-1} = \begin{pmatrix} 2 & 3 \\ 1 & 2
+                    \end{pmatrix} \begin{pmatrix} 2 & -3 \\ -1 & 2 \end{pmatrix} = \begin{pmatrix} 4-3 & -6+6 \\ 2-2 &
+                    -3+4 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \begin{pmatrix} 2 & -3 \\ -1 & 2 \end{pmatrix} \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 14.</strong> Найдите обратную матрицу для \( A = \begin{pmatrix} 1 & 2 \\ 3
+            & 4 \end{pmatrix} \).</p>
+            <button class="solve-btn" data-target="s14">Показать решение</button>
+            <div id="s14" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( |A| = 1\cdot4 - 2\cdot3 = 4 - 6 = -2 \neq 0 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( A^{-1} = \frac{1}{-2} \begin{pmatrix} 4 & -2 \\ -3 & 1
+                    \end{pmatrix} = \begin{pmatrix} -2 & 1 \\ \frac{3}{2} & -\frac{1}{2} \end{pmatrix} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \begin{pmatrix} -2 & 1 \\ \frac{3}{2} &
+                    -\frac{1}{2} \end{pmatrix} \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 15.</strong> Найдите обратную матрицу для \( A = \begin{pmatrix} 1 & 0 & 2
+            \\ 0 & 1 & 0 \\ 2 & 0 & 1 \end{pmatrix} \).</p>
+            <button class="solve-btn" data-target="s15">Показать решение</button>
+            <div id="s15" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( |A| = 1\cdot1\cdot1 + 0 + 0 - 2\cdot1\cdot2 - 0 - 0 = 1 - 4 =
+                    -3 \neq 0 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> Найдём алгебраические дополнения:</p>
+                <p>\( A_{11} = \begin{vmatrix} 1 & 0 \\ 0 & 1 \end{vmatrix} = 1 \), \( A_{12} = -\begin{vmatrix} 0 & 0
+                    \\ 2 & 1 \end{vmatrix} = 0 \), \( A_{13} = \begin{vmatrix} 0 & 1 \\ 2 & 0 \end{vmatrix} = -2 \).</p>
+                <p>\( A_{21} = -\begin{vmatrix} 0 & 2 \\ 0 & 1 \end{vmatrix} = 0 \), \( A_{22} = \begin{vmatrix} 1 & 2
+                    \\ 2 & 1 \end{vmatrix} = 1-4 = -3 \), \( A_{23} = -\begin{vmatrix} 1 & 0 \\ 2 & 0 \end{vmatrix} = 0
+                    \).</p>
+                <p>\( A_{31} = \begin{vmatrix} 0 & 2 \\ 1 & 0 \end{vmatrix} = -2 \), \( A_{32} = -\begin{vmatrix} 1 & 2
+                    \\ 0 & 0 \end{vmatrix} = 0 \), \( A_{33} = \begin{vmatrix} 1 & 0 \\ 0 & 1 \end{vmatrix} = 1 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( S = \begin{pmatrix} 1 & 0 & -2 \\ 0 & -3 & 0 \\ -2 & 0 & 1
+                    \end{pmatrix} \), \( S^T = \begin{pmatrix} 1 & 0 & -2 \\ 0 & -3 & 0 \\ -2 & 0 & 1 \end{pmatrix} \)
+                    (симметричная).</p>
+                <p class="step"><strong>Шаг 4.</strong> \( A^{-1} = \frac{1}{-3} \begin{pmatrix} 1 & 0 & -2 \\ 0 & -3 &
+                    0 \\ -2 & 0 & 1 \end{pmatrix} = \begin{pmatrix} -\frac{1}{3} & 0 & \frac{2}{3} \\ 0 & 1 & 0 \\
+                    \frac{2}{3} & 0 & -\frac{1}{3} \end{pmatrix} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \begin{pmatrix} -\frac{1}{3} & 0 & \frac{2}{3} \\ 0
+                    & 1 & 0 \\ \frac{2}{3} & 0 & -\frac{1}{3} \end{pmatrix} \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 16.</strong> Решите матричное уравнение \( AX = B \), где \( A =
+            \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix} \), \( B = \begin{pmatrix} 3 \\ 2 \end{pmatrix} \).</p>
+            <button class="solve-btn" data-target="s16">Показать решение</button>
+            <div id="s16" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( |A| = 2\cdot1 - 1\cdot1 = 1 \neq 0 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( A^{-1} = \begin{pmatrix} 1 & -1 \\ -1 & 2 \end{pmatrix} \).
+                </p>
+                <p class="step"><strong>Шаг 3.</strong> \( X = A^{-1}B = \begin{pmatrix} 1 & -1 \\ -1 & 2 \end{pmatrix}
+                    \begin{pmatrix} 3 \\ 2 \end{pmatrix} = \begin{pmatrix} 3-2 \\ -3+4 \end{pmatrix} = \begin{pmatrix} 1
+                    \\ 1 \end{pmatrix} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( x_1 = 1, x_2 = 1 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 17.</strong> Решите матричное уравнение \( AX = B \), где \( A =
+            \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} \), \( B = \begin{pmatrix} 5 \\ 11 \end{pmatrix} \).</p>
+            <button class="solve-btn" data-target="s17">Показать решение</button>
+            <div id="s17" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( |A| = 1\cdot4 - 2\cdot3 = -2 \neq 0 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( A^{-1} = \frac{1}{-2} \begin{pmatrix} 4 & -2 \\ -3 & 1
+                    \end{pmatrix} = \begin{pmatrix} -2 & 1 \\ \frac{3}{2} & -\frac{1}{2} \end{pmatrix} \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( X = A^{-1}B = \begin{pmatrix} -2 & 1 \\ \frac{3}{2} &
+                    -\frac{1}{2} \end{pmatrix} \begin{pmatrix} 5 \\ 11 \end{pmatrix} = \begin{pmatrix} -10+11 \\
+                    \frac{15}{2}-\frac{11}{2} \end{pmatrix} = \begin{pmatrix} 1 \\ 2 \end{pmatrix} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( x_1 = 1, x_2 = 2 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 18.</strong> Найдите матрицу \( X \), если \( X \cdot \begin{pmatrix} 1 & 2
+            \\ 3 & 4 \end{pmatrix} = \begin{pmatrix} 5 & 11 \\ 7 & 15 \end{pmatrix} \).</p>
+            <button class="solve-btn" data-target="s18">Показать решение</button>
+            <div id="s18" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( X \cdot A = B \) ⇒ \( X = B \cdot A^{-1} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( A^{-1} = \begin{pmatrix} -2 & 1 \\ \frac{3}{2} & -\frac{1}{2}
+                    \end{pmatrix} \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( X = \begin{pmatrix} 5 & 11 \\ 7 & 15 \end{pmatrix}
+                    \begin{pmatrix} -2 & 1 \\ \frac{3}{2} & -\frac{1}{2} \end{pmatrix} = \begin{pmatrix}
+                    -10+\frac{33}{2} & 5-\frac{11}{2} \\ -14+\frac{45}{2} & 7-\frac{15}{2} \end{pmatrix} =
+                    \begin{pmatrix} \frac{13}{2} & -\frac{1}{2} \\ \frac{17}{2} & -\frac{1}{2} \end{pmatrix} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \begin{pmatrix} \frac{13}{2} & -\frac{1}{2} \\
+                    \frac{17}{2} & -\frac{1}{2} \end{pmatrix} \).
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Часть 4. Системы уравнений (задачи 19–24) -->
+    <div class="part">
+        <h2>📐 Часть 4. Системы линейных уравнений (задачи 19–24)</h2>
+
+        <div class="task"><p><strong>Задача 19 (метод Крамера).</strong> Решите систему \( \begin{cases} 2x + 3y = 8 \\
+            3x + 4y = 11 \end{cases} \).</p>
+            <button class="solve-btn" data-target="s19">Показать решение</button>
+            <div id="s19" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( \Delta = \begin{vmatrix} 2 & 3 \\ 3 & 4 \end{vmatrix} = 8-9 =
+                    -1 \neq 0 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( \Delta_1 = \begin{vmatrix} 8 & 3 \\ 11 & 4 \end{vmatrix} =
+                    32-33 = -1 \), \( \Delta_2 = \begin{vmatrix} 2 & 8 \\ 3 & 11 \end{vmatrix} = 22-24 = -2 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( x = \frac{\Delta_1}{\Delta} = \frac{-1}{-1} = 1 \), \( y =
+                    \frac{\Delta_2}{\Delta} = \frac{-2}{-1} = 2 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( x = 1, y = 2 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 20 (метод Крамера).</strong> Решите систему \( \begin{cases} x + 2y - z = 1
+            \\ 2x + y + z = 4 \\ 3x - y + 2z = 5 \end{cases} \).</p>
+            <button class="solve-btn" data-target="s20">Показать решение</button>
+            <div id="s20" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( \Delta = \begin{vmatrix} 1 & 2 & -1 \\ 2 & 1 & 1 \\ 3 & -1 &
+                    2 \end{vmatrix} = 1\cdot(1\cdot2-1\cdot(-1)) - 2\cdot(2\cdot2-1\cdot3) +
+                    (-1)\cdot(2\cdot(-1)-1\cdot3) \)</p>
+                <p>\( = 1\cdot(2+1) - 2\cdot(4-3) - 1\cdot(-2-3) = 3 - 2 - 1\cdot(-5) = 3 - 2 + 5 = 6 \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( \Delta_1 = \begin{vmatrix} 1 & 2 & -1 \\ 4 & 1 & 1 \\ 5 & -1
+                    & 2 \end{vmatrix} = 1\cdot(1\cdot2-1\cdot(-1)) - 2\cdot(4\cdot2-1\cdot5) +
+                    (-1)\cdot(4\cdot(-1)-1\cdot5) \)</p>
+                <p>\( = 3 - 2\cdot(8-5) - 1\cdot(-4-5) = 3 - 6 + 9 = 6 \).</p>
+                <p>\( \Delta_2 = \begin{vmatrix} 1 & 1 & -1 \\ 2 & 4 & 1 \\ 3 & 5 & 2 \end{vmatrix} =
+                    1\cdot(4\cdot2-1\cdot5) - 1\cdot(2\cdot2-1\cdot3) + (-1)\cdot(2\cdot5-4\cdot3) \)</p>
+                <p>\( = (8-5) - (4-3) - (10-12) = 3 - 1 + 2 = 4 \).</p>
+                <p>\( \Delta_3 = \begin{vmatrix} 1 & 2 & 1 \\ 2 & 1 & 4 \\ 3 & -1 & 5 \end{vmatrix} =
+                    1\cdot(1\cdot5-4\cdot(-1)) - 2\cdot(2\cdot5-4\cdot3) + 1\cdot(2\cdot(-1)-1\cdot3) \)</p>
+                <p>\( = (5+4) - 2\cdot(10-12) + (-2-3) = 9 - 2\cdot(-2) - 5 = 9 + 4 - 5 = 8 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( x = \frac{6}{6}=1 \), \( y = \frac{4}{6}=\frac{2}{3} \), \( z
+                    = \frac{8}{6}=\frac{4}{3} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( x = 1, y = \frac{2}{3}, z = \frac{4}{3} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 21 (матричный метод).</strong> Решите систему \( \begin{cases} 2x + 3y = 8
+            \\ 3x + 4y = 11 \end{cases} \).</p>
+            <button class="solve-btn" data-target="s21">Показать решение</button>
+            <div id="s21" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> \( A = \begin{pmatrix} 2 & 3 \\ 3 & 4 \end{pmatrix} \), \( X =
+                    \begin{pmatrix} x \\ y \end{pmatrix} \), \( B = \begin{pmatrix} 8 \\ 11 \end{pmatrix} \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( |A| = -1 \), \( A^{-1} = \begin{pmatrix} -4 & 3 \\ 3 & -2
+                    \end{pmatrix} \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( X = A^{-1}B = \begin{pmatrix} -4 & 3 \\ 3 & -2 \end{pmatrix}
+                    \begin{pmatrix} 8 \\ 11 \end{pmatrix} = \begin{pmatrix} -32+33 \\ 24-22 \end{pmatrix} =
+                    \begin{pmatrix} 1 \\ 2 \end{pmatrix} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( x = 1, y = 2 \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 22 (метод Гаусса).</strong> Решите систему \( \begin{cases} x + 2y + 3z = 14
+            \\ 2x + y + z = 7 \\ 3x + 4y + 5z = 25 \end{cases} \).</p>
+            <button class="solve-btn" data-target="s22">Показать решение</button>
+            <div id="s22" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Записываем расширенную матрицу:</p>
+                \[
+                \begin{pmatrix} 1 & 2 & 3 & 14 \\ 2 & 1 & 1 & 7 \\ 3 & 4 & 5 & 25 \end{pmatrix}
+                \]
+                <p class="step"><strong>Шаг 2.</strong> К 2-й строке прибавим 1-ю, умноженную на -2; к 3-й строке
+                    прибавим 1-ю, умноженную на -3:</p>
+                \[
+                \begin{pmatrix} 1 & 2 & 3 & 14 \\ 0 & -3 & -5 & -21 \\ 0 & -2 & -4 & -17 \end{pmatrix}
+                \]
+                <p class="step"><strong>Шаг 3.</strong> 2-ю строку умножим на -1/3, 3-ю строку умножим на -1/2:</p>
+                \[
+                \begin{pmatrix} 1 & 2 & 3 & 14 \\ 0 & 1 & \frac{5}{3} & 7 \\ 0 & 1 & 2 & \frac{17}{2} \end{pmatrix}
+                \]
+                <p class="step"><strong>Шаг 4.</strong> К 3-й строке прибавим 2-ю, умноженную на -1:</p>
+                \[
+                \begin{pmatrix} 1 & 2 & 3 & 14 \\ 0 & 1 & \frac{5}{3} & 7 \\ 0 & 0 & \frac{1}{3} & \frac{3}{2}
+                \end{pmatrix}
+                \]
+                <p class="step"><strong>Шаг 5.</strong> Из 3-го уравнения: \( \frac{1}{3}z = \frac{3}{2} \) ⇒ \( z =
+                    \frac{9}{2} \).</p>
+                <p>Из 2-го: \( y + \frac{5}{3}\cdot\frac{9}{2} = 7 \) ⇒ \( y + \frac{15}{2} = 7 \) ⇒ \( y = -\frac{1}{2}
+                    \).</p>
+                <p>Из 1-го: \( x + 2\cdot(-\frac{1}{2}) + 3\cdot\frac{9}{2} = 14 \) ⇒ \( x - 1 + \frac{27}{2} = 14 \) ⇒
+                    \( x + \frac{25}{2} = 14 \) ⇒ \( x = \frac{3}{2} \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( x = \frac{3}{2}, y = -\frac{1}{2}, z = \frac{9}{2}
+                    \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 23 (метод Гаусса).</strong> Решите систему \( \begin{cases} x + 2y + 3z = 1
+            \\ 2x + 4y + 6z = 2 \\ 3x + 6y + 9z = 3 \end{cases} \).</p>
+            <button class="solve-btn" data-target="s23">Показать решение</button>
+            <div id="s23" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Расширенная матрица:</p>
+                \[
+                \begin{pmatrix} 1 & 2 & 3 & 1 \\ 2 & 4 & 6 & 2 \\ 3 & 6 & 9 & 3 \end{pmatrix}
+                \]
+                <p class="step"><strong>Шаг 2.</strong> К 2-й и 3-й строкам прибавим 1-ю, умноженную на -2 и -3
+                    соответственно:</p>
+                \[
+                \begin{pmatrix} 1 & 2 & 3 & 1 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}
+                \]
+                <p class="step"><strong>Шаг 3.</strong> \( r(A) = r(A^*) = 1 < 3 \) ⇒ бесконечно много решений.</p>
+                <p class="step"><strong>Шаг 4.</strong> \( x = 1 - 2y - 3z \). Свободные переменные: \( y, z \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( x = 1 - 2y - 3z, y,z \in \mathbb{R} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 24.</strong> Проверьте совместность системы \( \begin{cases} x + y + z = 1
+            \\ x + 2y + 3z = 2 \\ 2x + 3y + 4z = 3 \end{cases} \).</p>
+            <button class="solve-btn" data-target="s24">Показать решение</button>
+            <div id="s24" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Расширенная матрица:</p>
+                \[
+                \begin{pmatrix} 1 & 1 & 1 & 1 \\ 1 & 2 & 3 & 2 \\ 2 & 3 & 4 & 3 \end{pmatrix}
+                \]
+                <p class="step"><strong>Шаг 2.</strong> Приводим к ступенчатому виду:</p>
+                \[
+                \begin{pmatrix} 1 & 1 & 1 & 1 \\ 0 & 1 & 2 & 1 \\ 0 & 1 & 2 & 1 \end{pmatrix}
+                \sim
+                \begin{pmatrix} 1 & 1 & 1 & 1 \\ 0 & 1 & 2 & 1 \\ 0 & 0 & 0 & 0 \end{pmatrix}
+                \]
+                <p class="step"><strong>Шаг 3.</strong> \( r(A) = r(A^*) = 2 \), система совместна.</p>
+                <div class="answer-block"><strong>Ответ:</strong> система совместна, имеет бесконечно много решений.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Часть 5. Однородные системы и ФСР (задачи 25–30) -->
+    <div class="part">
+        <h2>🔢 Часть 5. Однородные системы и ФСР (задачи 25–30)</h2>
+
+        <div class="task"><p><strong>Задача 25.</strong> Решите однородную систему \( \begin{cases} x + 2y = 0 \\ 3x +
+            6y = 0 \end{cases} \).</p>
+            <button class="solve-btn" data-target="s25">Показать решение</button>
+            <div id="s25" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Второе уравнение: \( 3x+6y=0 \) ⇒ \( x+2y=0 \) — то же самое.
+                </p>
+                <p class="step"><strong>Шаг 2.</strong> \( x = -2y \). Свободная переменная: \( y \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( x = -2y, y \in \mathbb{R} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 26.</strong> Решите однородную систему \( \begin{cases} 2x - y + z = 0 \\ x
+            + y - z = 0 \\ 3x - y + z = 0 \end{cases} \).</p>
+            <button class="solve-btn" data-target="s26">Показать решение</button>
+            <div id="s26" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Матрица системы:</p>
+                \[
+                \begin{pmatrix} 2 & -1 & 1 \\ 1 & 1 & -1 \\ 3 & -1 & 1 \end{pmatrix}
+                \]
+                <p class="step"><strong>Шаг 2.</strong> Приводим к ступенчатому виду. Заметим, что 1-я и 3-я строки
+                    пропорциональны (3-я = 1-я + 2-я? Проверим: (2,-1,1)+(1,1,-1)=(3,0,0) — нет).</p>
+                <p>Из 1-го: \( z = -2x + y \). Из 2-го: \( x + y - (-2x+y) = 0 \) ⇒ \( 3x = 0 \) ⇒ \( x = 0 \).</p>
+                <p>Тогда \( y = y \), \( z = y \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( x = 0, y = t, z = t, t \in \mathbb{R} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 27.</strong> Найдите фундаментальную систему решений для \( \begin{cases} x
+            + y - z = 0 \\ 2x + 2y - 2z = 0 \end{cases} \).</p>
+            <button class="solve-btn" data-target="s27">Показать решение</button>
+            <div id="s27" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> Второе уравнение пропорционально первому. \( x+y-z=0 \) ⇒ \( z =
+                    x+y \).</p>
+                <p class="step"><strong>Шаг 2.</strong> \( r(A) = 1, n = 3 \) ⇒ \( n-r = 2 \) фундаментальных решения.
+                </p>
+                <p class="step"><strong>Шаг 3.</strong> Свободные переменные: \( x, y \).</p>
+                <p>\( x=1, y=0 \) ⇒ \( z=1 \); \( x=0, y=1 \) ⇒ \( z=1 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix},
+                    \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix} \).
+                </div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 28.</strong> Найдите фундаментальную систему решений для \( \begin{cases}
+            x_1 + x_2 - x_3 = 0 \\ 2x_1 + 2x_2 - 2x_3 = 0 \\ x_1 - x_2 + x_3 = 0 \end{cases} \).</p>
+            <button class="solve-btn" data-target="s28">Показать решение</button>
+            <div id="s28" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> 1-е и 2-е уравнения пропорциональны. Система:</p>
+                \[
+                \begin{cases} x_1 + x_2 - x_3 = 0 \\ x_1 - x_2 + x_3 = 0 \end{cases}
+                \]
+                <p class="step"><strong>Шаг 2.</strong> Сложим: \( 2x_1 = 0 \) ⇒ \( x_1 = 0 \). Тогда \( x_2 - x_3 = 0
+                    \) ⇒ \( x_2 = x_3 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> \( r(A) = 2, n = 3 \) ⇒ \( n-r = 1 \) фундаментальное решение.
+                </p>
+                <p class="step"><strong>Шаг 4.</strong> \( x_3 = 1 \) ⇒ \( x_1 = 0, x_2 = 1 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 29.</strong> Решите неоднородную систему \( \begin{cases} x + y - z = 1 \\
+            2x + 2y - 2z = 2 \\ x - y + z = 3 \end{cases} \).</p>
+            <button class="solve-btn" data-target="s29">Показать решение</button>
+            <div id="s29" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> 1-е и 2-е уравнения: 2-е = 2·(1-е). Система:</p>
+                \[
+                \begin{cases} x + y - z = 1 \\ x - y + z = 3 \end{cases}
+                \]
+                <p class="step"><strong>Шаг 2.</strong> Сложим: \( 2x = 4 \) ⇒ \( x = 2 \).</p>
+                <p>Из 1-го: \( 2 + y - z = 1 \) ⇒ \( y - z = -1 \) ⇒ \( y = z - 1 \).</p>
+                <p class="step"><strong>Шаг 3.</strong> Частное решение: \( z=0 \) ⇒ \( y=-1, x=2 \).</p>
+                <p>Однородная система: \( x + y - z = 0 \), \( x - y + z = 0 \) ⇒ \( x=0, y=z \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> \( x=2, y=-1+t, z=t, t\in\mathbb{R} \).</div>
+            </div>
+        </div>
+
+        <div class="task"><p><strong>Задача 30.</strong> Найдите общее решение неоднородной системы \( \begin{cases} x +
+            2y + 3z = 1 \\ 2x + 4y + 6z = 3 \end{cases} \).</p>
+            <button class="solve-btn" data-target="s30">Показать решение</button>
+            <div id="s30" class="solution">
+                <p><strong>Решение:</strong></p>
+                <p class="step"><strong>Шаг 1.</strong> 2-е уравнение: \( 2x+4y+6z=3 \). 1-е: \( x+2y+3z=1 \) ⇒ \(
+                    2x+4y+6z=2 \).</p>
+                <p>Получаем противоречие: \( 2 = 3 \).</p>
+                <div class="answer-block"><strong>Ответ:</strong> система несовместна (решений нет).</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>© Заборовский М. С. Материалы для олимпиадников. 2026</footer>
+</div>
+
+<script>
+    document.querySelectorAll('.solve-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const t = document.getElementById(btn.getAttribute('data-target'));
+            if (t.style.display === 'none' || t.style.display === '') {
+                t.style.display = 'block';
+                btn.textContent = 'Скрыть решение';
+                if (window.MathJax) MathJax.typesetPromise([t]);
+            } else {
+                t.style.display = 'none';
+                btn.textContent = 'Показать решение';
+            }
+        });
+    });
+</script>
+</body>
+</html>
